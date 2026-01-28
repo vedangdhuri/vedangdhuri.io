@@ -1,7 +1,5 @@
 import { Project } from "@/types/project";
 
-import { safecity } from "@/public/img/project/safecityhub.png"
-
 export const projects: Project[] = [
   // {
   //   title: "Portfolio Website",
