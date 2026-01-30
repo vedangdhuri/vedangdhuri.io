@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 import {
   FaLaptopCode,
@@ -20,7 +21,8 @@ const navItems = [
 ];
 
 export const Navbar = () => {
-  const [activeLink, setActiveLink] = useState("");
+  const [activeLink, setActiveLink] = useState("/");
+  const pathname = usePathname();
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
@@ -33,6 +35,37 @@ export const Navbar = () => {
       localStorage.setItem("theme", "dark");
     }
   }, []);
+
+  useEffect(() => {
+    if (pathname === "/projects") {
+      setActiveLink("/projects");
+      return;
+    }
+
+    const sections = ["home", "about", "skills", "projects", "contact"];
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -80% 0px", // Trigger when top of section is near center/top
+      threshold: 0,
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (entry.target.id === "home") setActiveLink("/");
+          else if (entry.target.id === "projects") setActiveLink("/projects");
+          else setActiveLink(`/#${entry.target.id}`);
+        }
+      });
+    }, observerOptions);
+
+    sections.forEach((section) => {
+      const element = document.getElementById(section);
+      if (element) observer.observe(element);
+    });
+
+    return () => observer.disconnect();
+  }, [pathname]);
 
   return (
     <>

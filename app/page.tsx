@@ -25,7 +25,9 @@ export default function Home() {
       <div
         className={`transition-opacity duration-1000 ${loading ? "opacity-0" : "opacity-100"}`}
       >
-        <Hero />
+        <div id="home">
+          <Hero />
+        </div>
         <div id="about">
           <About />
         </div>
