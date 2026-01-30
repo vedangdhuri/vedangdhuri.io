@@ -233,7 +233,7 @@ PortFolio
 
 <p>
 This project is licensed under the 
-<a href="https://github.com/vedangdhuri/vedangdhuri.github.io/blob/main/LICENSE" target="_blank">
+<a href="https://github.com/vedangdhuri/vedangdhuri.io/blob/main/LICENSE" target="_blank">
 MIT License
 </a>.
 </p>
