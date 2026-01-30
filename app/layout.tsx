@@ -4,7 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/pages/Navbar/Navbar";
 import { Footer } from "@/components/pages/Footer/Footer";
 import { StarBackground } from "@/components/pages/Background/Starbackground";
-import TargetCursor from "@/components/ui/TargetCursor";
+// import TargetCursor from "@/components/ui/TargetCursor";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,7 +26,7 @@ export default function RootLayout({
       <body
         className={`${inter.className} bg-black text-white overflow-x-hidden`}
       >
-        <TargetCursor />
+        {/* <TargetCursor /> */}
         <StarBackground />
         <Navbar />
         <main className="min-h-screen">{children}</main>

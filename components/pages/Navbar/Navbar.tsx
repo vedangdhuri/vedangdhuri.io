@@ -38,7 +38,9 @@ export const Navbar = () => {
 
   useEffect(() => {
     if (pathname === "/projects") {
-      setActiveLink("/projects");
+      if (activeLink !== "/projects") {
+        setActiveLink("/projects");
+      }
       return;
     }
 

@@ -8,7 +8,7 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="group relative bg-gradient-to-br from-[#0f1e30] to-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden transition-all duration-500 hover:border-blue-400 hover:shadow-2xl hover:shadow-neutral-900/50 hover:-translate-y-1 cursor-target">
+    <article className="group relative bg-gradient-to-br from-[#0f1e30] to-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden transition-all duration-500 hover:border-blue-400 hover:shadow-2xl hover:shadow-neutral-900/50 hover:-translate-y-1">
       {/* Thumbnail */}
       <div className="relative h-56 overflow-hidden bg-neutral-800">
         <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent z-10" />

@@ -1,8 +1,8 @@
 "use client";
 
 import { EncryptedText } from "@/components/ui/encrypted-text";
-import { motion } from "framer-motion";
 import { GraduationCap } from "lucide-react";
+import MotionWrapper from "../../ui/MotionWrapper";
 
 export const education = [
   {
@@ -25,28 +25,22 @@ const About = () => {
   return (
     <section id="about" className="py-20 text-white z-50">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            My journey, education, and professional experience in the world of
-            technology.
-          </p>
-        </motion.div>
+        <MotionWrapper animation="slide-up" duration={0.6}>
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">About Me</h2>
+            <p className="text-gray-400 max-w-2xl mx-auto">
+              My journey, education, and professional experience in the world of
+              technology.
+            </p>
+          </div>
+        </MotionWrapper>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
           {/* Biography & Education */}
           <div>
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+            <MotionWrapper
+              animation="slide-right"
+              duration={0.6}
               className="mb-12"
             >
               <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
@@ -83,15 +77,14 @@ const About = () => {
                   />
                 </p>
               </div>
-            </motion.div>
+            </MotionWrapper>
           </div>
 
           {/* Experience Timeline */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+          <MotionWrapper
+            animation="slide-left"
+            duration={0.6}
+            delay={0.4}
             className="z-50"
           >
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
@@ -102,7 +95,7 @@ const About = () => {
               {education.map((edu, index) => (
                 <div
                   key={index}
-                  className="bg-[#08101a] p-6 rounded-xl border border-gray-800 hover:border-blue-500/30 transition-colors cursor-target"
+                  className="bg-[#08101a] p-6 rounded-xl border border-gray-800 hover:border-blue-500/30 transition-colors"
                 >
                   <div className="flex items-start gap-4">
                     <div className="p-3 bg-[#061a46] rounded-lg text-blue-500">
@@ -124,7 +117,7 @@ const About = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </MotionWrapper>
         </div>
       </div>
     </section>

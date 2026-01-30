@@ -58,7 +58,7 @@ export const Footer = () => {
         {socialLinks.map((item) => (
           <a
             key={item.href}
-            className="transition delay-100 ease-in-out border text-black bg-white/90 p-3 rounded-xl hover:bg-black/10 hover:border hover:border-white hover:text-white cursor-target"
+            className="transition delay-100 ease-in-out border text-black bg-white/90 p-3 rounded-xl hover:bg-black/10 hover:border hover:border-white hover:text-white"
             href={item.href}
             target="_blank"
           >

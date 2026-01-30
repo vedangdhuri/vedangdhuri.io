@@ -130,7 +130,7 @@ const Contact = () => {
                   <input
                     id="name"
                     {...register("name", { required: "Name is required" })}
-                    className={`w-full bg-gray-900 border ${errors.name ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors cursor-target`}
+                    className={`w-full bg-gray-900 border ${errors.name ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors`}
                     placeholder="John Doe"
                   />
                   {errors.name && (
@@ -156,7 +156,7 @@ const Contact = () => {
                         message: "Invalid email address",
                       },
                     })}
-                    className={`w-full bg-gray-900 border ${errors.email ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors cursor-target`}
+                    className={`w-full bg-gray-900 border ${errors.email ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors `}
                     placeholder="john@example.com"
                   />
                   {errors.email && (
@@ -177,7 +177,7 @@ const Contact = () => {
                 <input
                   id="subject"
                   {...register("subject", { required: "Subject is required" })}
-                  className={`w-full bg-gray-900 border ${errors.subject ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors cursor-target`}
+                  className={`w-full bg-gray-900 border ${errors.subject ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors`}
                   placeholder="Project Inquiry"
                 />
                 {errors.subject && (
@@ -198,7 +198,7 @@ const Contact = () => {
                   id="message"
                   rows={5}
                   {...register("message", { required: "Message is required" })}
-                  className={`w-full bg-gray-900 border ${errors.message ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none cursor-target`}
+                  className={`w-full bg-gray-900 border ${errors.message ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none`}
                   placeholder="Tell me about your project..."
                 />
                 {errors.message && (
@@ -211,7 +211,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed cursor-target"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? (
                   <span className="animate-pulse">Sending...</span>

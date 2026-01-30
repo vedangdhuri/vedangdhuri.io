@@ -11,12 +11,20 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simulate loading time
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 2000);
+    // Check if user has visited before in this session
+    const hasVisited = sessionStorage.getItem("visited");
 
-    return () => clearTimeout(timer);
+    if (hasVisited) {
+      setLoading(false);
+    } else {
+      // Simulate loading time
+      const timer = setTimeout(() => {
+        setLoading(false);
+        sessionStorage.setItem("visited", "true");
+      }, 2000);
+
+      return () => clearTimeout(timer);
+    }
   }, []);
 
   return (
