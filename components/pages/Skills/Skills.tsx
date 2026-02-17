@@ -1,7 +1,8 @@
 "use client";
 
-import { motion } from "framer-motion";
-
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -40,6 +41,8 @@ import { MdAnimation } from "react-icons/md";
 import { MdAutoAwesomeMotion } from "react-icons/md";
 import { LucideIcon } from "lucide-react";
 
+gsap.registerPlugin(ScrollTrigger);
+
 interface Skill {
   name: string;
   icon: React.ReactNode;
@@ -50,6 +53,7 @@ interface SkillCardProps {
   title: string;
   skills: Skill[];
   color: string;
+  index: number;
 }
 
 interface SkillCategory {
@@ -59,41 +63,149 @@ interface SkillCategory {
   skills: Skill[];
 }
 
-const SkillCard = ({ icon: Icon, title, skills, color }: SkillCardProps) => (
-  <Card className="group relative overflow-hidden bg-[#08101a] border-gray-700 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 z-100">
-    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.1)] to-transparent group-hover:via-[rgba(100,100,255,0.2)] animate-shimmer "></div>
-    <CardContent className="p-6 relative z-10 cursor-target">
-      <CometCard>
-        <div className="flex items-center gap-4 mb-6 ">
-          <div
-            className={`p-3 rounded-xl bg-gray-800/50 ${color} group-hover:scale-110 transition-transform duration-300`}
-          >
-            <Icon className="w-8 h-8" />
-          </div>
-          <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-            {title}
-          </h3>
-        </div>
-        <div className="flex flex-wrap gap-2">
-          {skills.map((skill, index) => (
-            <Badge
-              key={index}
-              variant="outline"
-              className="group/badge relative bg-gray-800/50 hover:bg-gray-700/80 text-gray-100 border-gray-600 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/20"
-            >
-              <span className="transform group-hover/badge:scale-110 transition-transform duration-300">
-                {skill.icon}
-              </span>
-              <span className="font-medium">{skill.name}</span>
-            </Badge>
-          ))}
-        </div>
-      </CometCard>
-    </CardContent>
-  </Card>
-);
+const SkillCard = ({
+  icon: Icon,
+  title,
+  skills,
+  color,
+  index,
+}: SkillCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const badgesRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const card = cardRef.current;
+    if (!card) return;
+
+    // Card entrance with GSAP
+    gsap.fromTo(
+      card,
+      { opacity: 0, y: 60, rotateX: -8 },
+      {
+        opacity: 1,
+        y: 0,
+        rotateX: 0,
+        duration: 0.7,
+        delay: index * 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: card,
+          start: "top 88%",
+          toggleActions: "restart none none reset",
+        },
+      },
+    );
+
+    // Badge pop-in when card enters viewport
+    if (badgesRef.current) {
+      const badges = badgesRef.current.children;
+      gsap.fromTo(
+        badges,
+        { opacity: 0, scale: 0.5, y: 15 },
+        {
+          opacity: 1,
+          scale: 1,
+          y: 0,
+          duration: 0.4,
+          stagger: 0.06,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "restart none none reset",
+          },
+        },
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => {
+        if (st.trigger === card) st.kill();
+      });
+    };
+  }, [index]);
+
+  return (
+    <div
+      ref={cardRef}
+      className="h-full"
+      style={{ opacity: 0, perspective: "600px" }}
+    >
+      <Card className="group relative overflow-hidden bg-[#08101a] border-gray-700 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/20 z-100 hover:border-blue-500/30 h-full">
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.1)] to-transparent group-hover:via-[rgba(100,100,255,0.2)] animate-shimmer"></div>
+        {/* Rotating gradient border on hover */}
+        <div className="absolute -inset-[1px] rounded-xl bg-[conic-gradient(from_var(--border-angle),transparent_30%,rgba(59,130,246,0.3)_50%,transparent_70%)] opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10 animate-border-rotate"></div>
+        <CardContent className="p-6 relative z-10 cursor-target h-full">
+          <CometCard>
+            <div className="flex flex-col h-full">
+              <div className="flex items-center gap-4 mb-6">
+                <div
+                  className={`p-3 rounded-xl bg-gray-800/50 ${color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
+                >
+                  <Icon className="w-8 h-8" />
+                </div>
+                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                  {title}
+                </h3>
+              </div>
+              <div
+                ref={badgesRef}
+                className="flex flex-wrap gap-2 flex-1 content-start"
+              >
+                {skills.map((skill, idx) => (
+                  <Badge
+                    key={idx}
+                    variant="outline"
+                    className="group/badge relative bg-gray-800/50 hover:bg-gray-700/80 text-gray-100 border-gray-600 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 h-fit"
+                  >
+                    <span className="transform group-hover/badge:scale-110 group-hover/badge:rotate-12 transition-transform duration-300">
+                      {skill.icon}
+                    </span>
+                    <span className="font-medium">{skill.name}</span>
+                  </Badge>
+                ))}
+              </div>
+            </div>
+          </CometCard>
+        </CardContent>
+      </Card>
+    </div>
+  );
+};
 
 const SkillsSection = () => {
+  const headingRef = useRef<HTMLDivElement>(null);
+  const headingLineRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (headingRef.current && headingLineRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 85%",
+          toggleActions: "restart none none reset",
+        },
+      });
+
+      tl.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+      );
+
+      tl.fromTo(
+        headingLineRef.current,
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
+        "-=0.3",
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
+
   const skillCategories: SkillCategory[] = [
     {
       icon: Code2,
@@ -148,10 +260,7 @@ const SkillsSection = () => {
           name: "Python",
           icon: <FaPython className="w-4 h-4 text-[#3776AB]" />,
         },
-        {
-          name: "Java",
-          icon: <FaJava className="w-4 h-4 text-[#f89820]" />,
-        },
+        { name: "Java", icon: <FaJava className="w-4 h-4 text-[#f89820]" /> },
         {
           name: "SQLite",
           icon: <SiSqlite className="w-4 h-4 text-[#90D4F4]" />,
@@ -187,18 +296,9 @@ const SkillsSection = () => {
       title: "Cloud ",
       color: "text-orange-400",
       skills: [
-        {
-          name: "AWS",
-          icon: <FaAws className="w-4 h-4 text-[#FF9900]" />,
-        },
-        {
-          name: "Vercel",
-          icon: <SiVercel className="w-4 h-4 text-white" />,
-        },
-        {
-          name: "Render ",
-          icon: <SiRender className="w-4 h-4 text-white" />,
-        },
+        { name: "AWS", icon: <FaAws className="w-4 h-4 text-[#FF9900]" /> },
+        { name: "Vercel", icon: <SiVercel className="w-4 h-4 text-white" /> },
+        { name: "Render ", icon: <SiRender className="w-4 h-4 text-white" /> },
         {
           name: "Netlify  ",
           icon: <SiNetlify className="w-4 h-4 text-[#05bdba]" />,
@@ -214,22 +314,13 @@ const SkillsSection = () => {
           name: "VS Code",
           icon: <TbBrandVscode className="w-4 h-4 text-[#007ACC]" />,
         },
-        {
-          name: "Vite",
-          icon: <SiVite className="w-4 h-4 text-[#646CFF]" />,
-        },
-        {
-          name: "Git",
-          icon: <FaGitAlt className="w-4 h-4 text-[#F05032]" />,
-        },
+        { name: "Vite", icon: <SiVite className="w-4 h-4 text-[#646CFF]" /> },
+        { name: "Git", icon: <FaGitAlt className="w-4 h-4 text-[#F05032]" /> },
         {
           name: "GitHub",
           icon: <FaGithub className="w-4 h-4 text-[#F05032]" />,
         },
-        {
-          name: "Linux",
-          icon: <FaLinux className="w-4 h-4 text-[#FCC624]" />,
-        },
+        { name: "Linux", icon: <FaLinux className="w-4 h-4 text-[#FCC624]" /> },
         {
           name: "Arduino",
           icon: <SiArduino className="w-4 h-4 text-[#646CFF]" />,
@@ -259,38 +350,32 @@ const SkillsSection = () => {
 
   return (
     <section id="skills" className="container mx-auto px-4 py-11 relative z-10">
-      <motion.div
-        initial={{ opacity: 0, y: 50 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
-        className="text-center mb-16"
-      >
+      <div ref={headingRef} className="text-center mb-16 opacity-0">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">
           Skills & Expertise
         </h2>
+        <div
+          ref={headingLineRef}
+          className="mx-auto h-[3px] w-20 bg-gradient-to-r from-transparent via-blue-400 to-transparent origin-center mb-4"
+          style={{ transform: "scaleX(0)" }}
+        />
         <p className="text-gray-400 max-w-2xl mx-auto">
           A comprehensive overview of my technical skills and proficiency
           levels.
         </p>
-      </motion.div>
-      <motion.div
-        initial={{ opacity: 0, y: 40 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 1 }}
-        className=" grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-      >
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {skillCategories.map((category, index) => (
           <SkillCard
             key={index}
+            index={index}
             icon={category.icon}
             title={category.title}
             skills={category.skills}
             color={category.color}
           />
         ))}
-      </motion.div>
+      </div>
       <style>{`
         @keyframes shimmer {
           0% {
@@ -302,6 +387,22 @@ const SkillsSection = () => {
         }
         .animate-shimmer {
           animation: shimmer 2s infinite;
+        }
+        @keyframes border-rotate {
+          from {
+            --border-angle: 0deg;
+          }
+          to {
+            --border-angle: 360deg;
+          }
+        }
+        .animate-border-rotate {
+          animation: border-rotate 3s linear infinite;
+        }
+        @property --border-angle {
+          syntax: "<angle>";
+          initial-value: 0deg;
+          inherits: false;
         }
         .bg-grid-pattern {
           background-image: linear-gradient(

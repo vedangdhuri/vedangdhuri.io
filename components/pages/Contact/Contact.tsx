@@ -1,10 +1,14 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useForm } from "react-hook-form";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import IconCloudDemo from "@/components/ui/globe";
+
+gsap.registerPlugin(ScrollTrigger);
 
 type FormData = {
   name: string;
@@ -25,8 +29,101 @@ const Contact = () => {
     "idle" | "success" | "error"
   >("idle");
 
+  const headingRef = useRef<HTMLDivElement>(null);
+  const headingLineRef = useRef<HTMLDivElement>(null);
+  const globeRef = useRef<HTMLDivElement>(null);
+  const formRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    // Heading
+    if (headingRef.current && headingLineRef.current) {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: headingRef.current,
+          start: "top 85%",
+          toggleActions: "restart none none reset",
+        },
+      });
+
+      tl.fromTo(
+        headingRef.current,
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+      );
+
+      tl.fromTo(
+        headingLineRef.current,
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
+        "-=0.3",
+      );
+    }
+
+    // Globe slide in from left
+    if (globeRef.current) {
+      gsap.fromTo(
+        globeRef.current,
+        { opacity: 0, x: -80 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: globeRef.current,
+            start: "top 80%",
+            toggleActions: "restart none none reset",
+          },
+        },
+      );
+    }
+
+    // Form slide in from right with staggered fields
+    if (formRef.current) {
+      const formEl = formRef.current;
+      gsap.fromTo(
+        formEl,
+        { opacity: 0, x: 80 },
+        {
+          opacity: 1,
+          x: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: formEl,
+            start: "top 80%",
+            toggleActions: "restart none none reset",
+          },
+        },
+      );
+
+      // Stagger individual form fields
+      const fields = formEl.querySelectorAll(".form-field");
+      gsap.fromTo(
+        fields,
+        { opacity: 0, y: 30 },
+        {
+          opacity: 1,
+          y: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power3.out",
+          delay: 0.3,
+          scrollTrigger: {
+            trigger: formEl,
+            start: "top 80%",
+            toggleActions: "restart none none reset",
+          },
+        },
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+    };
+  }, []);
+
   const onSubmit = async (data: FormData) => {
-    // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     try {
@@ -83,44 +180,38 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 text-white z-1">
       <div className="container mx-auto px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-3xl md:text-4xl font-bold mb-4">Get In Touch</h2>
+        <div className="text-center mb-16">
+          <div ref={headingRef} className="opacity-0">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Get In Touch
+            </h2>
+          </div>
+          <div
+            ref={headingLineRef}
+            className="mx-auto h-[3px] w-20 bg-gradient-to-r from-transparent via-blue-400 to-transparent origin-center mb-4"
+            style={{ transform: "scaleX(0)" }}
+          />
           <p className="text-gray-400 max-w-2xl mx-auto">
             Have a project in mind or just want to say hi? {"I'd"} love to hear
             from you.
           </p>
-        </motion.div>
+        </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-          {/* Contact Info & Map */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
+          {/* Contact Info & Globe */}
+          <div ref={globeRef} className="space-y-8 opacity-0">
             <IconCloudDemo />
-          </motion.div>
+          </div>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="p-8 rounded-2xl border border-blue-400/80 bg-[#08101a] z-1"
+          <div
+            ref={formRef}
+            className="p-8 rounded-2xl border border-blue-400/80 bg-[#08101a] z-1 opacity-0 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500"
           >
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="space-y-2 ">
+                <div className="space-y-2 form-field">
                   <label
                     htmlFor="name"
                     className="text-sm font-medium text-gray-300"
@@ -130,7 +221,7 @@ const Contact = () => {
                   <input
                     id="name"
                     {...register("name", { required: "Name is required" })}
-                    className={`w-full bg-gray-900 border ${errors.name ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors`}
+                    className={`w-full bg-gray-900 border ${errors.name ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
                     placeholder="John Doe"
                   />
                   {errors.name && (
@@ -140,7 +231,7 @@ const Contact = () => {
                   )}
                 </div>
 
-                <div className="space-y-2">
+                <div className="space-y-2 form-field">
                   <label
                     htmlFor="email"
                     className="text-sm font-medium text-gray-300"
@@ -156,7 +247,7 @@ const Contact = () => {
                         message: "Invalid email address",
                       },
                     })}
-                    className={`w-full bg-gray-900 border ${errors.email ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors `}
+                    className={`w-full bg-gray-900 border ${errors.email ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
                     placeholder="john@example.com"
                   />
                   {errors.email && (
@@ -167,17 +258,17 @@ const Contact = () => {
                 </div>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 form-field">
                 <label
                   htmlFor="subject"
-                  className="text-sm font-medium text-gray-300 "
+                  className="text-sm font-medium text-gray-300"
                 >
                   Subject
                 </label>
                 <input
                   id="subject"
                   {...register("subject", { required: "Subject is required" })}
-                  className={`w-full bg-gray-900 border ${errors.subject ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors`}
+                  className={`w-full bg-gray-900 border ${errors.subject ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
                   placeholder="Project Inquiry"
                 />
                 {errors.subject && (
@@ -187,7 +278,7 @@ const Contact = () => {
                 )}
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-2 form-field">
                 <label
                   htmlFor="message"
                   className="text-sm font-medium text-gray-300"
@@ -198,7 +289,7 @@ const Contact = () => {
                   id="message"
                   rows={5}
                   {...register("message", { required: "Message is required" })}
-                  className={`w-full bg-gray-900 border ${errors.message ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 transition-colors resize-none`}
+                  className={`w-full bg-gray-900 border ${errors.message ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 resize-none`}
                   placeholder="Tell me about your project..."
                 />
                 {errors.message && (
@@ -211,7 +302,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] active:scale-[0.98] btn-pulse"
               >
                 {isSubmitting ? (
                   <span className="animate-pulse">Sending...</span>
@@ -235,7 +326,7 @@ const Contact = () => {
                 </motion.div>
               )}
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

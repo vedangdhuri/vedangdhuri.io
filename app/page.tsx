@@ -5,6 +5,7 @@ import Hero from "@/components/pages/Hero/Hero";
 import SkillsSection from "@/components/pages/Skills/Skills";
 import Loader from "@/components/pages/Loader/Loader";
 import { useEffect, useState } from "react";
+import GitHubGraph from "@/components/pages/GitHub/GitHubGraph";
 import ProjectsPreview from "@/components/pages/Project/ProjectsPreview";
 
 export default function Home() {
@@ -47,6 +48,9 @@ export default function Home() {
         </div>
         <div id="contact">
           <Contact />
+        </div>
+        <div id="github">
+          <GitHubGraph />
         </div>
       </div>
     </>

@@ -1,7 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
+import gsap from "gsap";
 
 import {
   FaLaptopCode,
@@ -23,6 +25,7 @@ const navItems = [
 export const Navbar = () => {
   const [activeLink, setActiveLink] = useState("/");
   const pathname = usePathname();
+  const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
@@ -30,9 +33,25 @@ export const Navbar = () => {
       document.documentElement.classList.remove("dark");
       localStorage.setItem("theme", "dark");
     } else {
-      // default or explicitly dark
       document.documentElement.classList.add("dark");
       localStorage.setItem("theme", "dark");
+    }
+  }, []);
+
+  // Navbar entrance animation
+  useEffect(() => {
+    if (navRef.current) {
+      gsap.fromTo(
+        navRef.current,
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 0.8,
+          delay: 2.8,
+          ease: "back.out(1.7)",
+        },
+      );
     }
   }, []);
 
@@ -47,7 +66,7 @@ export const Navbar = () => {
     const sections = ["home", "about", "skills", "projects", "contact"];
     const observerOptions = {
       root: null,
-      rootMargin: "-20% 0px -80% 0px", // Trigger when top of section is near center/top
+      rootMargin: "-20% 0px -80% 0px",
       threshold: 0,
     };
 
@@ -71,21 +90,46 @@ export const Navbar = () => {
 
   return (
     <>
-      <nav className="w-max z-[9999] fixed bg-gray-700/10 -translate-x-2/4 flex gap-[0.8rem] backdrop-blur-sm px-4 py-[0.5rem] rounded-[3rem] left-2/4 bottom-6 animate-fade-in">
-        <div className="flex gap-4">
+      <nav
+        ref={navRef}
+        className="w-max z-[9999] fixed bg-gray-700/10 -translate-x-2/4 flex gap-[0.8rem] backdrop-blur-md px-4 py-[0.5rem] rounded-[3rem] left-2/4 bottom-6 border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+        style={{ opacity: 0 }}
+      >
+        <div className="flex gap-4 relative">
           {navItems.map((item, key) => (
             <Link
               key={key}
               href={item.href}
               onClick={() => setActiveLink(item.href)}
               className={cn(
-                "flex text-[1.1rem] p-[0.9rem] rounded-[50%] transition-all duration-300",
+                "relative flex text-[1.1rem] p-[0.9rem] rounded-[50%] transition-all duration-300",
                 activeLink === item.href
-                  ? "bg-blue-400 text-black"
-                  : "text-white hover:bg-blue-400 hover:text-black",
+                  ? "text-black"
+                  : "text-white hover:text-blue-300",
               )}
             >
-              {item.logo}
+              {/* Sliding active indicator */}
+              {activeLink === item.href && (
+                <motion.div
+                  layoutId="navbar-active"
+                  className="absolute inset-0 bg-blue-400 rounded-[50%] shadow-[0_0_15px_rgba(96,165,250,0.4)]"
+                  transition={{
+                    type: "spring",
+                    stiffness: 350,
+                    damping: 30,
+                  }}
+                />
+              )}
+
+              {/* Icon */}
+              <motion.span
+                className="relative z-10"
+                whileHover={{ scale: 1.2 }}
+                whileTap={{ scale: 0.9 }}
+                transition={{ type: "spring", stiffness: 400, damping: 17 }}
+              >
+                {item.logo}
+              </motion.span>
             </Link>
           ))}
         </div>
