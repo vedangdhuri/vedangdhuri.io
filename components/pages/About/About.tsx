@@ -47,34 +47,21 @@ const About = () => {
                 <span className="text-blue-500">01.</span> Biography
               </h3>
               <div className="prose prose-invert text-white flex-none  text-justify ">
-                <p className="mb-4">
-                  <EncryptedText
-                    text="I am a passionate Full Stack Developer with a keen eye for
+                <p className="mb-4" style={{ fontSize: "18px" }}>
+                  I am a passionate Full Stack Developer with a keen eye for
                   design and a drive for creating immersive digital experiences.
                   With a strong foundation in computer science and years of
                   hands-on experience, I specialize in building scalable web
-                  applications using modern technologies."
-                    encryptedClassName="text-neutral-500"
-                    revealedClassName="dark:text-white text-black"
-                    revealDelayMs={20}
-                    charset="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-                  />
+                  applications using modern technologies.
                 </p>
                 <br />
-
-                <p>
-                  <EncryptedText
-                    text="My approach combines technical expertise with creative
+                <p style={{ fontSize: "18px" }}>
+                  My approach combines technical expertise with creative
                   problem-solving. I believe that great software is not just
                   about code, but about understanding user needs and delivering
                   solutions that make a difference. When I'm not coding, you
                   can find me exploring new technologies, contributing to open
-                  source, or designing 3D assets."
-                    encryptedClassName="text-neutral-500"
-                    revealedClassName="dark:text-white text-black"
-                    revealDelayMs={20}
-                    charset="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
-                  />
+                  source, or designing 3D assets.
                 </p>
               </div>
             </MotionWrapper>

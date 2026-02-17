@@ -1,15 +1,15 @@
 import { Project } from "@/types/project";
 
 export const projects: Project[] = [
-  // {
-  //   title: "Portfolio Website",
-  //   shortDescription: "Open-source Next.js portfolio template recognized and forked by developers worldwide, optimized for SEO/AEO and performance.",
-  //   techStack: ["Web Dev", "Frontend", "UI/UX"],
-  //   category: "personal",
-  //   thumbnail: "/projects/portfolio-thumb.png",
-  //   github: "https://github.com/username/portfolio",
-  //   liveUrl: "https://portfolio-demo.vercel.app"
-  // },
+  {
+    title: "Portfolio Website",
+    shortDescription: "Open-source Next.js portfolio template recognized and forked by developers worldwide, optimized for SEO/AEO and performance.",
+    techStack: ["Web Dev", "Frontend", "UI/UX"],
+    category: "personal",
+    thumbnail: "https://github.com/vedangdhuri/images/blob/main/portfolio.png?raw=true",
+    github: "https://github.com/vedangdhuri/vedangdhuri-io",
+    liveUrl: "https://vedangdhuri-io.vercel.app"
+  },
   {
     title: "SafeCity Hub",
     shortDescription: "A Multi-Stakeholder Crime Reporting, Monitoring & Real-Time Urban Safety Management Platform.",
