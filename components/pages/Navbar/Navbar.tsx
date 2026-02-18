@@ -11,6 +11,7 @@ import {
   FaUser,
   FaEnvelope,
   FaCode,
+  FaGithub,
 } from "react-icons/fa";
 import { cn } from "@/lib/utils";
 
@@ -20,6 +21,7 @@ const navItems = [
   { logo: <FaCode size={20} />, href: "/#skills" },
   { logo: <FaLaptopCode size={20} />, href: "/projects" },
   { logo: <FaEnvelope size={20} />, href: "/#contact" },
+  { logo: <FaGithub size={20} />, href: "/#github" },
 ];
 
 export const Navbar = () => {
@@ -63,7 +65,14 @@ export const Navbar = () => {
       return;
     }
 
-    const sections = ["home", "about", "skills", "projects", "contact"];
+    const sections = [
+      "home",
+      "about",
+      "skills",
+      "projects",
+      "contact",
+      "github",
+    ];
     const observerOptions = {
       root: null,
       rootMargin: "-20% 0px -80% 0px",
