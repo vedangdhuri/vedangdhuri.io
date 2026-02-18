@@ -1,12 +1,12 @@
-<h1 align="center">NEXT.js Portfolio</h1>
-<h3 align="center">Empowering Innovation, Elevating Digital Experiences Daily</h3>
+<h1 align="center">🚀 Vedang Dhuri — Space Portfolio</h1>
+<h3 align="center">A cosmic, immersive developer portfolio powered by Next.js</h3>
 
 <div align="center">
-  <img src="https://img.shields.io/github/last-commit/vedangdhuri/vedangdhuri.github.io?style=flat&logo=git&logoColor=white&color=0080ff" />
-  <img src="https://img.shields.io/github/languages/top/vedangdhuri/vedangdhuri.github.io?style=flat&color=0080ff" />
-  <img src="https://img.shields.io/github/languages/count/vedangdhuri/vedangdhuri.github.io?style=flat&color=0080ff" />
+  <img src="https://img.shields.io/github/last-commit/vedangdhuri/vedangdhuri.io?style=flat&logo=git&logoColor=white&color=0080ff" />
+  <img src="https://img.shields.io/github/languages/top/vedangdhuri/vedangdhuri.io?style=flat&color=0080ff" />
+  <img src="https://img.shields.io/github/languages/count/vedangdhuri/vedangdhuri.io?style=flat&color=0080ff" />
   <a href="https://vedangdhuri-io.vercel.app">
-    <img src="https://img.shields.io/badge/Visit_Site-Live_Portfolio-0080ff?style=flat" />
+    <img src="https://img.shields.io/badge/🌐_Visit_Site-Live_Portfolio-0080ff?style=flat" />
   </a>
 </div>
 
@@ -18,111 +18,129 @@
   <img src="https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white" />
   <img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB" />
   <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" />
-  <img src="https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white" />
-  <img src="https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white" />
-  <img src="https://img.shields.io/badge/React_Hook_Form-EC5990?logo=reacthookform&logoColor=white" />
+  <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?logo=tailwindcss&logoColor=white" />
+  <img src="https://img.shields.io/badge/Framer_Motion-0055FF?logo=framer&logoColor=white" />
+  <img src="https://img.shields.io/badge/GSAP-88CE02?logo=greensock&logoColor=white" />
+  <img src="https://img.shields.io/badge/Three.js-000000?logo=three.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Vercel-000000?logo=vercel&logoColor=white" />
 </div>
 
 <hr/>
 
-<h2>📌 Overview</h2>
+<h2>🌌 Overview</h2>
 
 <p>
-<strong>vedangdhuri-io</strong> is a modern, performance-focused personal portfolio built using 
-<strong>Next.js App Router</strong> and <strong>TypeScript</strong>.  
-It is designed not just as a static portfolio, but as a <strong>scalable frontend architecture</strong> 
-that can be extended into full-stack applications.
+<strong>vedangdhuri-io</strong> is a fully immersive, <strong>space-themed personal portfolio</strong> built with 
+<strong>Next.js 14 App Router</strong>, <strong>TypeScript</strong>, and cutting-edge animation libraries.
 </p>
 
 <p>
-The project emphasizes:
+Every element — from the animated star background to the orbiting tech stack icons — is designed to create a <strong>cinematic cosmic experience</strong> while showcasing technical skills, projects, and professional achievements. The site combines performance-optimized rendering with rich visual effects to deliver a portfolio that stands out.
 </p>
+
+<h3>🎯 What Makes This Portfolio Different</h3>
 
 <ul>
-  <li>Clean separation of concerns</li>
-  <li>Reusable, animation-ready UI components</li>
-  <li>Type safety across data, components, and utilities</li>
-  <li>High visual impact without sacrificing performance</li>
-</ul>
-
-<p>
-This repository can be used as:
-</p>
-
-<ul>
-  <li>A personal developer portfolio</li>
-  <li>A starter template for Next.js App Router projects</li>
-  <li>A reference for component-driven UI architecture</li>
-</ul>
-
-<hr/>
-
-<h2>🎯 Why This Project Exists</h2>
-
-<p>
-Most portfolios fail in one of two ways:
-</p>
-
-<ul>
-  <li>They look good but are impossible to scale or maintain</li>
-  <li>They are technically solid but visually boring</li>
-</ul>
-
-<p>
-<strong>vedangdhuri-io</strong> intentionally solves both problems by combining:
-</p>
-
-<ul>
-  <li><strong>Structured project architecture</strong> – predictable, maintainable folder layout</li>
-  <li><strong>Interactive UI patterns</strong> – animations, 3D effects, and motion design</li>
-  <li><strong>Type-safe development</strong> – fewer runtime bugs, better DX</li>
-  <li><strong>Production-ready defaults</strong> – ESLint, optimized assets, and clean builds</li>
+  <li>🪐 <strong>Full Space Theme</strong> — Deep cosmic aesthetic across every section with consistent blue/indigo/purple palette</li>
+  <li>🎬 <strong>Cinematic Animations</strong> — GSAP-powered scroll animations, Framer Motion transitions, and CSS keyframe effects</li>
+  <li>🛸 <strong>3D Elements</strong> — Three.js powered 3D spaceship model floating in the hero section</li>
+  <li>⚡ <strong>Performance First</strong> — Optimized rendering, lazy loading, and efficient animation patterns</li>
+  <li>📱 <strong>Responsive Design</strong> — Seamless experience across desktop, tablet, and mobile</li>
 </ul>
 
 <hr/>
 
 <h2>✨ Key Features</h2>
 
+<h3>🏠 Hero Section</h3>
 <ul>
-  <li>
-    <strong>Next.js App Router Architecture</strong><br/>
-    Uses the modern <code>app/</code> directory with layouts, routes, and error handling.
-  </li>
-
-  <li>
-    <strong>Reusable Component System</strong><br/>
-    UI elements are abstracted into composable components for scalability.
-  </li>
-
-  <li>
-    <strong>Advanced UI Animations</strong><br/>
-    Includes animated text, icon clouds, cursor effects, 3D cards, and background effects.
-  </li>
-
-  <li>
-    <strong>Centralized Data Management</strong><br/>
-    Project data is stored in structured TypeScript files, making content updates simple.
-  </li>
-
-  <li>
-    <strong>Strict Type Safety</strong><br/>
-    Strongly typed props, data models, and utility functions reduce bugs and refactor risk.
-  </li>
-
-  <li>
-    <strong>Performance-First Approach</strong><br/>
-    Optimized fonts, assets, and components ensure fast load times.
-  </li>
+  <li><strong>Space Profile Card</strong> — Circular planet-like profile image with 3D mouse-tilt effect, dark space filter, and hover-triggered twinkling stars</li>
+  <li><strong>Orbital System</strong> — Multiple concentric orbit rings with tech stack icons (React, Next.js, TypeScript, Node.js) that orbit the profile card and counter-rotate to stay upright</li>
+  <li><strong>3D Spaceship</strong> — Three.js rendered spaceship model with floating animation</li>
+  <li><strong>Animated Text</strong> — FlipWords component cycling through roles, SparklesText for name highlight, and encrypted text effects</li>
+  <li><strong>Floating Space Elements</strong> — Animated planets, satellites, and stars with smooth GSAP timeline animations</li>
 </ul>
+
+<h3>🌟 Animated Star Background</h3>
+<ul>
+  <li>Persistent star field across all pages with twinkling stars, shooting comets, and nebula-like glows</li>
+  <li>Parallax depth effect creating an immersive space atmosphere</li>
+</ul>
+
+<h3>👤 About Section</h3>
+<ul>
+  <li>Animated entrance with GSAP ScrollTrigger</li>
+  <li>Professional summary with smooth reveal animations</li>
+</ul>
+
+<h3>🛠️ Skills Section</h3>
+<ul>
+  <li><strong>6 Skill Category Cards</strong> — Frontend, Backend, UI/UX, Cloud, Tools, and Creative Skills</li>
+  <li><strong>Badge System</strong> — Each skill displayed as an interactive badge with hover scale and glow effects</li>
+  <li><strong>Comet Card Animation</strong> — Subtle comet trail effect on skill cards</li>
+  <li><strong>Scroll-Triggered Entrance</strong> — Staggered card and badge pop-in animations</li>
+</ul>
+
+<h3>💼 Projects Section</h3>
+<ul>
+  <li><strong>Projects Preview</strong> — Featured projects on the home page with hover effects</li>
+  <li><strong>Dedicated Projects Page</strong> — Full project grid with filtering capabilities at <code>/projects</code></li>
+  <li><strong>Project Cards</strong> — Interactive cards with tech stack badges and live/source links</li>
+</ul>
+
+<h3>📊 GitHub Activity</h3>
+<ul>
+  <li><strong>GitHub Contribution Graph</strong> — Live contribution heatmap showing coding activity</li>
+  <li>Integrated into the home page with smooth scroll navigation from the navbar</li>
+</ul>
+
+<h3>📬 Contact Section</h3>
+<ul>
+  <li>Contact form with validation</li>
+  <li>Social media links with hover animations</li>
+</ul>
+
+<h3>🧭 Navigation</h3>
+<ul>
+  <li><strong>Floating Bottom Navbar</strong> — Glassmorphic navigation bar with icon-based links</li>
+  <li><strong>Active Section Tracking</strong> — IntersectionObserver-based highlighting of the current section</li>
+  <li><strong>Smooth Transitions</strong> — Spring-animated active indicator sliding between icons</li>
+  <li><strong>6 Navigation Items</strong> — Home, About, Skills, Projects, Contact, GitHub</li>
+</ul>
+
+<h3>🦶 Footer</h3>
+<ul>
+  <li>Animated name reveal, staggered social icon fly-in, and navigation links</li>
+  <li>Scroll-triggered animations that replay on route navigation</li>
+  <li>Social links: LinkedIn, Instagram, Facebook, GitHub, Discord, X (Twitter)</li>
+</ul>
+
+<hr/>
+
+<h2>🎨 Design System</h2>
+
+<table>
+  <tr>
+    <th>Element</th>
+    <th>Technology</th>
+  </tr>
+  <tr><td>Layout & Routing</td><td>Next.js 14 App Router</td></tr>
+  <tr><td>Styling</td><td>Tailwind CSS v4</td></tr>
+  <tr><td>Scroll Animations</td><td>GSAP + ScrollTrigger</td></tr>
+  <tr><td>Component Animations</td><td>Framer Motion</td></tr>
+  <tr><td>3D Rendering</td><td>Three.js + React Three Fiber</td></tr>
+  <tr><td>Icons</td><td>Lucide React, React Icons</td></tr>
+  <tr><td>Font</td><td>Inter (Google Fonts)</td></tr>
+  <tr><td>Color Palette</td><td>Deep blues, indigos, purples, cyans</td></tr>
+</table>
 
 <hr/>
 
 <h2>⚙️ Installation & Setup</h2>
 
 <h4>1️⃣ Clone the repository</h4>
-<pre><code>git clone https://github.com/vedangdhuri/vedangdhuri-io.git
-cd vedangdhuri-io</code></pre>
+<pre><code>git clone https://github.com/vedangdhuri/vedangdhuri.io.git
+cd vedangdhuri.io</code></pre>
 
 <h4>2️⃣ Install dependencies</h4>
 <pre><code>npm install</code></pre>
@@ -138,71 +156,53 @@ cd vedangdhuri-io</code></pre>
 <h2>🧭 Project Structure</h2>
 
 <p>
-The project follows a <strong>feature-based component architecture</strong>, separating pages, UI primitives, and shared utilities.
+The project follows a <strong>feature-based component architecture</strong>, separating page sections, reusable UI primitives, and shared utilities.
 </p>
 
 <pre><code>
-PortFolio
-├───app\
-│   ├───globals.css
-│   ├───layout.tsx
-│   ├───not-found.tsx
-│   ├───page.tsx
-│   └───projects\
-│       └───page.tsx
-├───components\
-│   ├───pages\
-│   │   ├───About\
-│   │   │   └───About.tsx
-│   │   ├───Background\
-│   │   │   └───Starbackground.tsx
-│   │   ├───Contact\
-│   │   │   └───Contact.tsx
-│   │   ├───Footer\
-│   │   │   └───Footer.tsx
-│   │   ├───Hero\
-│   │   │   └───Hero.tsx
-│   │   ├───Loader\
-│   │   │   └───Loader.tsx
-│   │   ├───Navbar\
-│   │   │   └───Navbar.tsx
-│   │   ├───Project\
-│   │   │   ├───ProjectCard.tsx
-│   │   │   ├───ProjectsGrid.tsx
-│   │   │   └───ProjectsPreview.tsx
-│   │   └───Skills\
-│   │       └───Skills.tsx
-│   └───ui\
-│       ├───badge.tsx
-│       ├───card.tsx
-│       ├───comet-card.tsx
-│       ├───encrypted-text.tsx
-│       ├───FlipWords.tsx
-│       ├───globe.tsx
-│       ├───icon-cloud.tsx
-│       ├───sparkles-text.tsx
-│       ├───TargetCursor.tsx
-│       └───ProfileCard\
-│           ├───ProfileCard.css
-│           └───ProfileCard.tsx
-├───data\
-│   └───projects.ts
-├───lib\
-│   └───utils.ts
-├───public\
-│   ├───font\
-│   │   ├───BastligaOne.ttf
-│   │   └───Poppins-Bold.ttf
-│   └───img\
-│       ├───code.png
-│       ├───main_image.png
-│       ├───top_icon.png
-│       └───project\
-│           ├───aes-edcryption.png
-│           ├───match-master-game.png
-│           └───safecityhub.png
-└───types\
-    └───project.ts
+vedangdhuri-io/
+├── app/
+│   ├── globals.css          # Global styles & animation keyframes
+│   ├── layout.tsx           # Root layout (Navbar, Footer, StarBackground)
+│   ├── page.tsx             # Home page (Hero, About, Skills, Projects, Contact, GitHub)
+│   ├── not-found.tsx        # 404 page
+│   └── projects/
+│       └── page.tsx         # Dedicated projects page with grid & filters
+├── components/
+│   ├── pages/               # Page-level section components
+│   │   ├── About/           # About section
+│   │   ├── Background/      # Star background with comets & nebula
+│   │   ├── Contact/         # Contact form & social links
+│   │   ├── Footer/          # Animated footer with social icons
+│   │   ├── GitHub/          # GitHub contribution graph
+│   │   ├── Hero/            # Hero section with orbital system
+│   │   ├── Loader/          # Page loader animation
+│   │   ├── Navbar/          # Floating bottom navigation bar
+│   │   ├── Project/         # Project cards, grid & preview
+│   │   └── Skills/          # Skills section with category cards
+│   └── ui/                  # Reusable UI components
+│       ├── SpaceProfileCard/ # Circular planet-style profile avatar
+│       ├── SpaceShip3D/     # Three.js 3D spaceship model
+│       ├── ProfileCard/     # Original profile card (legacy)
+│       ├── badge.tsx         # Badge component
+│       ├── card.tsx          # Card component
+│       ├── comet-card.tsx    # Card with comet trail effect
+│       ├── encrypted-text.tsx # Text decryption animation
+│       ├── FlipWords.tsx     # Word cycling animation
+│       ├── globe.tsx         # 3D globe component
+│       ├── icon-cloud.tsx    # Interactive icon cloud
+│       └── sparkles-text.tsx # Sparkle text effect
+├── data/
+│   └── projects.ts          # Centralized project data
+├── hooks/                   # Custom React hooks
+├── lib/
+│   └── utils.ts             # Utility functions
+├── public/
+│   ├── font/                # Custom fonts
+│   ├── img/                 # Images & project screenshots
+│   └── models/              # 3D model files (.glb)
+└── types/
+    └── project.ts           # TypeScript type definitions
 </code></pre>
 
 <hr/>
@@ -210,9 +210,12 @@ PortFolio
 <h2>🚀 Customization Guide</h2>
 
 <ul>
-  <li>Edit <code>data/projects.ts</code> to add or update portfolio projects</li>
-  <li>Modify page sections inside <code>components/pages</code></li>
-  <li>Extend UI components inside <code>components/ui</code></li>
+  <li>Edit <code>data/projects.ts</code> to add or modify portfolio projects</li>
+  <li>Modify page sections inside <code>components/pages/</code></li>
+  <li>Create new UI components inside <code>components/ui/</code></li>
+  <li>Update the space color palette in <code>app/globals.css</code></li>
+  <li>Add new skill categories in <code>components/pages/Skills/Skills.tsx</code></li>
+  <li>Replace the 3D model in <code>public/models/</code> with your own <code>.glb</code> file</li>
   <li>Update fonts and images in the <code>public/</code> directory</li>
 </ul>
 
@@ -221,10 +224,12 @@ PortFolio
 <h2>📈 Future Improvements</h2>
 
 <ul>
-  <li>Dark/light theme persistence</li>
-  <li>MDX-based blog system</li>
-  <li>CMS or API-driven project data</li>
-  <li>Unit and component testing</li>
+  <li>Blog system with MDX for writing technical articles</li>
+  <li>CMS or API-driven project and content data</li>
+  <li>Interactive 3D globe in the Contact section</li>
+  <li>Page transition animations between routes</li>
+  <li>Analytics dashboard integration</li>
+  <li>Accessibility improvements (ARIA labels, keyboard navigation)</li>
 </ul>
 
 <hr/>
@@ -240,4 +245,10 @@ MIT License
 
 <p>
 You are free to use, modify, and distribute this project with proper attribution.
+</p>
+
+<hr/>
+
+<p align="center">
+  Made with 💙 by <a href="https://github.com/vedangdhuri">Vedang Dhuri</a>
 </p>
