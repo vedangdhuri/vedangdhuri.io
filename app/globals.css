@@ -374,3 +374,117 @@ body::-webkit-scrollbar {
     transform: scale(1.05);
   }
 }
+
+/* === Space Theme Animations === */
+
+/* Orbital ring rotations */
+.animate-orbit-spin {
+  animation: orbit-spin 20s linear infinite;
+}
+
+.animate-orbit-spin-reverse {
+  animation: orbit-spin 30s linear infinite reverse;
+}
+
+.animate-orbit-spin-slow {
+  animation: orbit-spin 45s linear infinite;
+}
+
+@keyframes orbit-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Nebula aurora drift */
+.animate-nebula-drift {
+  animation: nebula-drift 8s ease-in-out infinite;
+}
+
+.animate-nebula-drift-reverse {
+  animation: nebula-drift-reverse 10s ease-in-out infinite;
+}
+
+@keyframes nebula-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translate(30px, -20px) scale(1.1);
+    opacity: 0.9;
+  }
+}
+
+@keyframes nebula-drift-reverse {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translate(-25px, 15px) scale(1.15);
+    opacity: 0.8;
+  }
+}
+
+/* Smooth pulse for profile glow */
+.animate-pulse-slow {
+  animation: pulse-slow 4s ease-in-out infinite;
+}
+
+@keyframes pulse-slow {
+  0%,
+  100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.05);
+  }
+}
+
+/* === Space Profile Card Animations === */
+
+.animate-space-border-spin {
+  animation: space-border-spin 6s linear infinite;
+}
+
+.animate-avatar-ring-spin {
+  animation: avatar-ring-spin 4s linear infinite;
+}
+
+@keyframes space-border-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes avatar-ring-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes star-twinkle {
+  0%,
+  100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.5);
+  }
+}

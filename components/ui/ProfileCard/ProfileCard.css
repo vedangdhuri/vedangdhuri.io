@@ -15,12 +15,12 @@
   --behind-glow-color: rgba(125, 190, 255, 0.67);
   --behind-glow-size: 25%;
   --inner-gradient: none;
-  --sunpillar-1: hsl(2, 100%, 73%);
-  --sunpillar-2: hsl(53, 100%, 69%);
-  --sunpillar-3: hsl(93, 100%, 69%);
-  --sunpillar-4: hsl(176, 100%, 76%);
-  --sunpillar-5: hsl(228, 100%, 74%);
-  --sunpillar-6: hsl(283, 100%, 73%);
+  --sunpillar-1: hsl(220, 90%, 65%);
+  --sunpillar-2: hsl(195, 100%, 60%);
+  --sunpillar-3: hsl(250, 80%, 70%);
+  --sunpillar-4: hsl(180, 90%, 65%);
+  --sunpillar-5: hsl(230, 100%, 74%);
+  --sunpillar-6: hsl(270, 85%, 68%);
   --sunpillar-clr-1: var(--sunpillar-1);
   --sunpillar-clr-2: var(--sunpillar-2);
   --sunpillar-clr-3: var(--sunpillar-3);
@@ -78,13 +78,47 @@
   position: relative;
   background-blend-mode: color-dodge, normal, normal, normal;
   animation: glow-bg 12s linear infinite;
-  box-shadow: rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px)
-    calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px;
-  transition: transform 1s ease;
+  box-shadow:
+    rgba(0, 0, 0, 0.8) calc((var(--pointer-from-left) * 10px) - 3px)
+      calc((var(--pointer-from-top) * 20px) - 6px) 20px -5px,
+    0 0 40px rgba(59, 130, 246, 0.08),
+    0 0 80px rgba(99, 102, 241, 0.04);
+  transition:
+    transform 1s ease,
+    box-shadow 0.5s ease;
   transform: translateZ(0) rotateX(0deg) rotateY(0deg);
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.95);
   backface-visibility: hidden;
   overflow: hidden;
+  border: 1px solid rgba(99, 102, 241, 0.15);
+}
+
+.pc-card::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: calc(var(--card-radius) + 2px);
+  background: conic-gradient(
+    from var(--bgrotate, 0deg),
+    transparent 0%,
+    rgba(59, 130, 246, 0.4) 10%,
+    transparent 20%,
+    rgba(99, 102, 241, 0.3) 35%,
+    transparent 45%,
+    rgba(139, 92, 246, 0.3) 55%,
+    transparent 65%,
+    rgba(34, 211, 238, 0.3) 80%,
+    transparent 90%
+  );
+  z-index: -1;
+  animation: border-rotate 6s linear infinite;
+  opacity: 0.5;
+  transition: opacity 0.5s ease;
+}
+
+.pc-card:hover::before,
+.pc-card.active::before {
+  opacity: 1;
 }
 
 .pc-card:hover,
@@ -113,8 +147,33 @@
   inset: 0;
   position: absolute;
   background-image: var(--inner-gradient);
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(5, 5, 20, 0.95);
   transform: none;
+}
+
+.pc-inside::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: var(--card-radius);
+  background:
+    radial-gradient(
+      ellipse at 20% 80%,
+      rgba(59, 130, 246, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 80% 20%,
+      rgba(139, 92, 246, 0.06) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at 50% 50%,
+      rgba(34, 211, 238, 0.03) 0%,
+      transparent 60%
+    );
+  pointer-events: none;
+  z-index: 0;
 }
 
 .pc-shine {
@@ -398,12 +457,13 @@
   font-weight: bold;
   margin-top: 22.5rem;
   font-size: 4rem;
-  /* margin: 0; */
-  background-image: linear-gradient(to bottom, #fff, #6f6fbe);
-  background-size: 1em 1.5em;
+  background-image: linear-gradient(135deg, #e0e7ff, #818cf8, #60a5fa, #e0e7ff);
+  background-size: 200% 200%;
+  animation: text-shimmer 4s ease-in-out infinite;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(129, 140, 248, 0.3));
 }
 
 .pc-details p {
@@ -416,11 +476,13 @@
   margin: 0 auto;
   margin-top: 10px;
   width: min-content;
-  background-image: linear-gradient(to bottom, #fff, #4a4ac0);
-  background-size: 1em 1.5em;
+  background-image: linear-gradient(135deg, #93c5fd, #a78bfa, #67e8f9);
+  background-size: 200% 200%;
+  animation: text-shimmer 5s ease-in-out infinite;
   -webkit-text-fill-color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
+  filter: drop-shadow(0 0 6px rgba(147, 197, 253, 0.2));
 }
 
 @keyframes glow-bg {
@@ -446,6 +508,25 @@
       0 var(--background-y),
       90% 90%,
       center;
+  }
+}
+
+@keyframes border-rotate {
+  from {
+    --bgrotate: 0deg;
+  }
+  to {
+    --bgrotate: 360deg;
+  }
+}
+
+@keyframes text-shimmer {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
   }
 }
 
@@ -587,4 +668,3 @@
     border-radius: 50px;
   }
 }
-
