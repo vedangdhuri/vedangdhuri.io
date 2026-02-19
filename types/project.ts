@@ -8,4 +8,5 @@ export interface Project {
   thumbnail: string;
   github: string;
   liveUrl?: string;
+  readme?: string; // Markdown content
 }

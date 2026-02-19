@@ -29,7 +29,7 @@ export default function RootLayout({
         {/* <TargetCursor /> */}
         <StarBackground />
         <Navbar />
-        <main className="min-h-screen">{children}</main>
+        <main className="min-h-screen overflow-x-hidden">{children}</main>
         <Footer />
       </body>
     </html>

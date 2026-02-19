@@ -1,7 +1,9 @@
 "use client";
 
 import { useRef, useState } from "react";
+import Link from "next/link";
 import { Project } from "@/types/project";
+import { kebabCase } from "@/utils/utils";
 
 interface ProjectCardProps {
   project: Project;
@@ -95,27 +97,35 @@ export default function ProjectCard({ project }: ProjectCardProps) {
 
         {/* Actions */}
         <div className="flex items-center justify-between pt-2">
-          <a
-            href={project.github}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-900 bg-neutral-100 rounded-lg hover:bg-white hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 group/btn"
-          >
-            Github Link
-            <svg
-              className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+          <div className="flex gap-2">
+            <Link
+              href={`/projects/${kebabCase(project.title)}`}
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-100 bg-neutral-800 border border-neutral-700 rounded-lg hover:bg-neutral-700 hover:border-blue-500/30 transition-all duration-300"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M9 5l7 7-7 7"
-              />
-            </svg>
-          </a>
+              Read More
+            </Link>
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-900 bg-neutral-100 rounded-lg hover:bg-white hover:shadow-[0_0_15px_rgba(255,255,255,0.2)] transition-all duration-300 group/btn"
+            >
+              Github Link
+              <svg
+                className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </article>

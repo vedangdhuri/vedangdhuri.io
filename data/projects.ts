@@ -8,7 +8,30 @@ export const projects: Project[] = [
     category: "personal",
     thumbnail: "https://github.com/vedangdhuri/images/blob/main/portfolio.png?raw=true",
     github: "https://github.com/vedangdhuri/vedangdhuri-io",
-    liveUrl: "https://vedangdhuri-io.vercel.app"
+    liveUrl: "https://vedangdhuri-io.vercel.app",
+    readme: `
+# Portfolio Website
+
+This is a **Next.js** portfolio template recognized and forked by developers worldwide.
+
+## Features
+- Optimized for SEO/AEO
+- High Performance
+- Responsive Design
+- Dark Mode Support
+
+## Tech Stack
+- Next.js
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+
+## Installation
+\`\`\`bash
+npm install
+npm run dev
+\`\`\`
+    `
   },
   {
     title: "SafeCity Hub",
@@ -17,7 +40,67 @@ export const projects: Project[] = [
     category: "professional",
     thumbnail: 'https://github.com/vedangdhuri/images/blob/main/safecityhub.png?raw=true',
     github: "https://github.com/vedangdhuri/SafeCity-Hub",
-    liveUrl: ""
+    liveUrl: "",
+    readme: `
+# 🏙️ SafeCity Hub
+
+### A Multi-Stakeholder Crime Reporting, Monitoring & Real-Time Urban Safety Management Platform
+
+# 📖 Overview
+
+### SafeCity Hub is a smart, integrated platform designed to improve urban safety by connecting citizens, police, and administrative authorities on a single digital system. It enables real-time crime reporting, incident monitoring, and data-driven decision-making to build safer, smarter cities.
+
+# 🚀 Key Features
+- 🧑‍🤝‍🧑 Citizen Portal: Report crimes or safety concerns with location, images, or videos (anonymously or identified).
+- 👮 Police Dashboard: Live monitoring of reported incidents, response assignment, and communication tools.
+- 🏛️ Admin Panel: Analyze crime data, visualize heatmaps, and plan urban safety strategies.
+
+# 🧩 System Architecture
+
+### Stakeholders:
+- Citizens
+- Police / Law Enforcement
+- Municipal & Administrative Authorities
+
+### Stakeholders:
+1. A citizen reports an incident via web/app.
+2. The system logs data in the central database.
+3. Police receive real-time alerts and take action.
+4. Administrators access analytics for policy planning.
+
+# 🛠️ Tech Stack
+
+# ⚙️ Installation & Setup
+[Link](https://youtu.be/MkLX85XU5rU?si=VH0IeGVYaUHZkIDk)
+
+#### ❗ IMPORTANT Note : If you're creating a virtual environment in VS Code, choose Python version 3.6.2.
+
+# ❗ Additional Note
+In the area police station, only the police of area code 001 can view the complaints. Police from other areas (002 or 003) cannot access these complaints.
+
+# 🔐 Security & Privacy
+- End-to-end encrypted communication
+- Role-based access control (Citizen, Police, Admin)
+- Option for anonymous reporting
+- Data protection compliant with standard security guidelines
+
+# 💡 Future Enhancements
+- AI-based crime prediction and pattern recognition
+- IoT integration (smart CCTV, panic buttons)
+- Chatbot for emergency help
+- Integration with government databases for automated response
+
+# 🏆 Impact
+- Faster law enforcement response
+- Improved citizen safety engagement
+- Data-driven urban policy planning
+- Transparent communication between authorities and citizens
+
+# 🏁 OUTPUT
+
+# 📜 License
+This project is licensed under the [MIT License](https://raw.githubusercontent.com/vedangdhuri/SafeCity-Hub/main/LICENSE).
+    `
   },
   {
     title: "Match Master Game",
@@ -26,7 +109,49 @@ export const projects: Project[] = [
     category: "personal",
     thumbnail: "https://github.com/vedangdhuri/images/blob/main/match-master-game.png?raw=true",
     github: "https://github.com/vedangdhuri/Match-Master-Game",
-    liveUrl: "https://match-master-game.vercel.app"
+    liveUrl: "https://match-master-game.vercel.app",
+    readme: `
+# MATCH-MASTER-GAME
+
+### Unleash Your Mind, Master the Memory Challenge
+
+## Built with the tools and technologies:
+
+## ✅ Overview
+Match-Master-Game is a React-based memory matching game designed to provide developers with a fast, maintainable, and scalable foundation for building interactive web applications. Built with Vite, it offers a streamlined development experience with instant updates and optimized performance.
+
+#### Why Match-Master-Game?
+This project simplifies the process of creating engaging React games while ensuring high code quality. The core features include:
+- 🚀 Rapid Setup: Leverages Vite for quick project initialization and fast builds.
+- 🔥 Hot Module Replacement: Enables real-time updates during development for a smoother workflow.
+- 📝 ESLint Integration: Enforces coding standards and best practices across your codebase.
+- 🔧 Modular Architecture: Supports plugin options and future enhancements like React Compiler support.
+- 🎮 Focused on React: Utilizes modern React hooks and components for maintainability and scalability.
+- 🎉 Engaging UI Components: Includes interactive cards, headers, and win messages for a polished user experience.
+
+## ⚙️ Installation & Setup
+
+\`\`\`
+❯ git clone https://github.com/vedangdhuri/Match-Master-Game
+\`\`\`
+
+\`\`\`
+npm install
+\`\`\`
+
+\`\`\`
+npm start
+\`\`\`
+
+The app will automatically open at
+
+\`\`\`
+http://localhost:5173/
+\`\`\`
+
+## 📜 License
+Licensed under the [MIT License](https://github.com/vedangdhuri/Match-Master-Game/blob/main/LICENSE).
+    `
   },
   {
     title: "AES Encryption and Decryption in Java",
@@ -35,16 +160,118 @@ export const projects: Project[] = [
     category: "personal",
     thumbnail: "https://github.com/vedangdhuri/images/blob/main/aes-edcryption.png?raw=true",
     github: "https://github.com/vedangdhuri/AES-Encryption-Decryption-Using-Java",
-    liveUrl: ""
+    liveUrl: "",
+    readme: `
+# AES Encryption and Decryption in Java
+A simple yet powerful Java application that implements the Advanced Encryption Standard (AES) algorithm to perform secure text encryption and decryption. This project demonstrates the practical use of AES symmetric key cryptography for protecting sensitive information in Java.
+
+# 📘 Description
+AES (Advanced Encryption Standard) is a symmetric encryption algorithm widely used for securing data. This project — EDcrypt — provides an educational and functional example of how AES can be implemented in Java using the built-in \`javax.crypto\` package.
+
+# 🚀 Features
+- AES 128-bit encryption and decryption
+- Text-based encryption using a user-defined secret key
+- Command-line interface (CLI) for user input
+- Uses Base64 encoding for readable encrypted output
+- Lightweight and dependency-free
+
+# 🛠️ Tech Stack
+
+#### Language :
+
+#### Code Editor :
+
+# ⚙️ Installation & Setup
+
+### Prerequirements
+- Java JDK 8 or higher installed on your system
+- Basic command-line knowledge
+
+# 💻 Usage Example
+
+### Encrypting a Message
+
+\`\`\`
+Enter text to encrypt: Hello Vedang Enter secret key: mySecretKey123 Encrypted text: z1G7b8x+Nlq90O2ZTYbKAw==
+\`\`\`
+
+### Decrypting a Message
+
+\`\`\`
+Enter text to decrypt: z1G7b8x+Nlq90O2ZTYbKAw== Enter secret key: mySecretKey123 Decrypted text: Hello Vedang
+\`\`\`
+
+# 🧠 How It Works
+1. The user provides text and a secret key.
+2. The key is converted into a secure AES key.
+3. The text is encrypted using AES and encoded with Base64.
+4. During decryption, the process is reversed to reveal the original message.
+
+# 🚀 Future Enhancements
+- File encryption and decryption
+- GUI implementation (Swing/JavaFX)
+- Support for AES-256
+- Key management improvements
+
+# 📜 License
+This project is licensed under the [MIT License](https://raw.githubusercontent.com/vedangdhuri/AES-Encryption-Decryption-Using-Java/main/LICENSE).
+    `
   },
   {
     title: "To Do List Using React",
     shortDescription: "A responsive To-Do List app built with React.js that helps users efficiently organize tasks with an intuitive interface for adding, editing, deleting, and marking tasks as completed.",
-    techStack: ["React", "JavaScript", "Vite" ,"Beginner level"],
+    techStack: ["React", "JavaScript", "Vite", "Beginner level"],
     category: "personal",
     thumbnail: "https://github.com/vedangdhuri/images/blob/main/to_do_list_using_react.png?raw=true",
     github: "https://github.com/vedangdhuri/To-Do-List-Using-REACT",
-    liveUrl: "https://to-do-list-using-react-vd.netlify.app/"
+    liveUrl: "https://to-do-list-using-react-vd.netlify.app/",
+    readme: `
+# TO-DO-LIST-USING-REACT
+
+### Transform Tasks into Triumphs with Seamless Simplicity
+
+## Built with the tools and technologies:
+
+## ✅ Overview
+To-Do List Using React is a sleek, modular task management application designed to help developers organize tasks efficiently with a clean, scalable architecture. Built with modern tools like Vite and React, it emphasizes rapid development and maintainability.
+
+#### Why To-Do-List-Using-REACT?
+This project simplifies task organization with intuitive categorization and dynamic filtering. The core features include:
+- 🧩 Modular Components: Reusable task cards, tags, and columns for flexible UI management.
+- 🚀 Fast Development Setup: Powered by Vite for quick builds and hot-reloading.
+- 🔍 Code Quality & Standards: Enforced through ESLint configuration, ensuring consistent, maintainable code.
+- 📝 Interactive Task Management: Create, categorize, and delete tasks seamlessly.
+- 🌟 Clear Architecture: Well-defined component interactions for easy extension and customization.
+
+## ⚙️ Installation & Setup
+
+\`\`\`
+git clone https://github.com/yourusername/to-do-list-using-react.git
+\`\`\`
+
+\`\`\`
+npm install
+\`\`\`
+
+\`\`\`
+npm start
+\`\`\`
+
+The app will automatically open at
+
+\`\`\`
+http://localhost:5173/
+\`\`\`
+
+## 🚀 Future Enhancements
+- Dark mode toggle
+- Search and filter options
+- Category-based organization
+- PWA offline support
+
+## 📜 License
+Licensed under the [MIT License](https://github.com/vedangdhuri/To-Do-List-Using-REACT/blob/main/LICENSE).
+    `
   },
   {
     title: "Weather App",

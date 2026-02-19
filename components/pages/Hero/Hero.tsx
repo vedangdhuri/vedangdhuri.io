@@ -169,7 +169,7 @@ const Hero = () => {
           <SparklesText sparklesCount={10}>
             <h1
               ref={headingRef}
-              className="text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight overflow-hidden"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight overflow-hidden break-words"
               style={{ perspective: "600px" }}
             >
               {"Creative ".split("").map((char, i) => (
