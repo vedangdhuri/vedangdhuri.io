@@ -31,7 +31,7 @@
 
 <p>
 <strong>vedangdhuri-io</strong> is a fully immersive, <strong>space-themed personal portfolio</strong> built with 
-<strong>Next.js 14 App Router</strong>, <strong>TypeScript</strong>, and cutting-edge animation libraries.
+<strong>Next.js 16 App Router</strong>, <strong>TypeScript</strong>, and cutting-edge animation libraries.
 </p>
 
 <p>
@@ -124,13 +124,13 @@ Every element — from the animated star background to the orbiting tech stack i
     <th>Element</th>
     <th>Technology</th>
   </tr>
-  <tr><td>Layout & Routing</td><td>Next.js 14 App Router</td></tr>
+  <tr><td>Layout & Routing</td><td>Next.js 16 App Router</td></tr>
   <tr><td>Styling</td><td>Tailwind CSS v4</td></tr>
   <tr><td>Scroll Animations</td><td>GSAP + ScrollTrigger</td></tr>
   <tr><td>Component Animations</td><td>Framer Motion</td></tr>
   <tr><td>3D Rendering</td><td>Three.js + React Three Fiber</td></tr>
   <tr><td>Icons</td><td>Lucide React, React Icons</td></tr>
-  <tr><td>Font</td><td>Inter (Google Fonts)</td></tr>
+  <tr><td>Font</td><td>Poppins & Bastliga (Custom)</td></tr>
   <tr><td>Color Palette</td><td>Deep blues, indigos, purples, cyans</td></tr>
 </table>
 
@@ -161,16 +161,18 @@ The project follows a <strong>feature-based component architecture</strong>, sep
 
 <pre><code>
 vedangdhuri-io/
-├── app/
+├── app/                     # Next.js App Router
 │   ├── globals.css          # Global styles & animation keyframes
 │   ├── layout.tsx           # Root layout (Navbar, Footer, StarBackground)
 │   ├── page.tsx             # Home page (Hero, About, Skills, Projects, Contact, GitHub)
 │   ├── not-found.tsx        # 404 page
-│   └── projects/
-│       └── page.tsx         # Dedicated projects page with grid & filters
+│   └── projects/            # Projects routes
+│       ├── page.tsx         # Main projects listing page
+│       └── [id]/            # Individual project details
+│           └── page.tsx     # Dynamic project page with README rendering
 ├── components/
 │   ├── pages/               # Page-level section components
-│   │   ├── About/           # About section
+│   │   ├── About/           # About section components
 │   │   ├── Background/      # Star background with comets & nebula
 │   │   ├── Contact/         # Contact form & social links
 │   │   ├── Footer/          # Animated footer with social icons
@@ -178,31 +180,34 @@ vedangdhuri-io/
 │   │   ├── Hero/            # Hero section with orbital system
 │   │   ├── Loader/          # Page loader animation
 │   │   ├── Navbar/          # Floating bottom navigation bar
-│   │   ├── Project/         # Project cards, grid & preview
+│   │   ├── Project/         # Project cards, grid & preview components
 │   │   └── Skills/          # Skills section with category cards
-│   └── ui/                  # Reusable UI components
+│   └── ui/                  # Reusable UI primitives
+│       ├── ProfileCard/     # Semi-transparent profile card
 │       ├── SpaceProfileCard/ # Circular planet-style profile avatar
-│       ├── SpaceShip3D/     # Three.js 3D spaceship model
-│       ├── ProfileCard/     # Original profile card (legacy)
-│       ├── badge.tsx         # Badge component
-│       ├── card.tsx          # Card component
+│       ├── badge.tsx         # Standard badge component
+│       ├── card.tsx          # Base card component
 │       ├── comet-card.tsx    # Card with comet trail effect
 │       ├── encrypted-text.tsx # Text decryption animation
 │       ├── FlipWords.tsx     # Word cycling animation
 │       ├── globe.tsx         # 3D globe component
 │       ├── icon-cloud.tsx    # Interactive icon cloud
-│       └── sparkles-text.tsx # Sparkle text effect
+│       ├── MotionWrapper.tsx # Framer Motion wrapper for entry animations
+│       ├── sparkles-text.tsx # Sparkle text effect
+│       └── TargetCursor.tsx  # Custom interactive cursor
 ├── data/
-│   └── projects.ts          # Centralized project data
-├── hooks/                   # Custom React hooks
+│   └── projects.ts          # Centralized project data and README content
 ├── lib/
-│   └── utils.ts             # Utility functions
-├── public/
-│   ├── font/                # Custom fonts
-│   ├── img/                 # Images & project screenshots
-│   └── models/              # 3D model files (.glb)
-└── types/
-    └── project.ts           # TypeScript type definitions
+│   └── utils.ts             # Core helper functions (cn, etc.)
+├── public/                  # Static assets
+│   ├── font/                # Custom typography (Poppins, Bastliga)
+│   └── img/                 # Screenshots and project thumbnails
+├── types/
+│   └── project.ts           # Project-related TypeScript interfaces
+└── utils/                   # Shared utilities and custom hooks
+    ├── useGsapReveal.ts     # Hook for GSap-based reveal animations
+    ├── useMagneticEffect.ts # Hook for magnetic interaction effects
+    └── utils.ts             # Miscellaneous utility functions
 </code></pre>
 
 <hr/>
