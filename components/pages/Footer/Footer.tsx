@@ -10,14 +10,6 @@ import { Discord, TwitterX } from "react-bootstrap-icons";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const navItems = [
-  { name: "Home", href: "#home" },
-  { name: "About", href: "#about" },
-  { name: "Skills", href: "#skills" },
-  { name: "Projects", href: "/#projects" },
-  { name: "Contact", href: "#contact" },
-];
-
 const socialLinks = [
   {
     logo: <Linkedin className="w-5 h-5" />,
@@ -138,8 +130,7 @@ export const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      style={{ backgroundColor: "#0b111e" }}
-      className="mx-auto py-100 px-4 relative border-t border-border mt-12 pt-8 flex flex-wrap items-center justify-between"
+      className="mx-auto py-90 px-4 relative border-t border-white/10 mt-12 pt-8 flex flex-wrap items-center justify-between bg-black/40 backdrop-blur-sm"
     >
       {/* Name */}
       <div
@@ -176,24 +167,8 @@ export const Footer = () => {
         ))}
       </div>
 
-      {/* Navigation Items */}
-      <div
-        ref={navLinksRef}
-        className="flex space-x-5 absolute left-1/2 -translate-x-1/2 mt-100 lg:space-x-8 xl:space-x-8 2xl:space-x-8"
-      >
-        {navItems.map((item, key) => (
-          <a
-            key={key}
-            href={item.href}
-            className="text-foreground/80 hover:text-blue-400 transition-colors duration-300 text-lg font-bold"
-          >
-            {item.name}
-          </a>
-        ))}
-      </div>
-
       {/* Copyright */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex mt-130">
+      <div className="absolute left-1/2 -translate-x-1/2 flex mt-100">
         <p className="text-sm text-muted-foreground">
           {" "}
           &copy; {new Date().getFullYear()} Vedang Dhuri. All rights reserved.

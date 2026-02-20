@@ -101,7 +101,7 @@ export const Navbar = () => {
     <>
       <nav
         ref={navRef}
-        className="w-max z-[9999] fixed bg-gray-700/10 -translate-x-2/4 flex gap-[0.8rem] backdrop-blur-md px-4 py-[0.5rem] rounded-[3rem] left-2/4 bottom-6 border border-white/5 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
+        className="w-max z-[9999] fixed bg-indigo-950/30 -translate-x-2/4 flex gap-[0.8rem] backdrop-blur-md px-4 py-[0.5rem] rounded-[3rem] left-2/4 bottom-6 border border-white/10 shadow-[0_8px_32px_rgba(0,0,0,0.3)]"
         style={{ opacity: 0 }}
       >
         <div className="flex gap-4 relative">

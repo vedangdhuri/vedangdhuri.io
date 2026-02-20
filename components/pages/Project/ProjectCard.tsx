@@ -36,7 +36,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative bg-gradient-to-br from-[#0f1e30] to-neutral-950 rounded-2xl border border-neutral-800 overflow-hidden transition-all duration-500 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-500/10"
+      className="group relative bg-indigo-950/20 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden transition-all duration-500 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-500/10"
       style={{
         transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(${isHovered ? -4 : 0}px)`,
         transition: isHovered
@@ -55,8 +55,8 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       />
 
       {/* Thumbnail */}
-      <div className="relative h-56 overflow-hidden bg-neutral-800">
-        <div className="absolute inset-0 bg-gradient-to-t from-neutral-900 via-neutral-900/20 to-transparent z-10" />
+      <div className="relative h-56 overflow-hidden bg-neutral-900/50">
+        <div className="absolute inset-0 bg-gradient-to-t from-[#020617] via-transparent to-transparent z-10" />
         <div className="absolute inset-0 flex items-center justify-center">
           <img
             src={project.thumbnail}
@@ -65,18 +65,18 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           />
         </div>
         {/* Hover tint */}
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/20 to-blue-600/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
+        <div className="absolute inset-0 bg-blue-600/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
       </div>
 
       {/* Content */}
       <div className="p-6 space-y-4">
         {/* Title */}
-        <h3 className="text-xl font-bold text-neutral-100 line-clamp-2 min-h-[3.5rem] group-hover:text-blue-300 transition-colors duration-300">
+        <h3 className="text-xl font-bold text-white line-clamp-2 min-h-[3.5rem] group-hover:text-blue-300 transition-colors duration-300">
           {project.title}
         </h3>
 
         {/* Description */}
-        <p className="text-sm text-neutral-400 line-clamp-2 min-h-[2.5rem] leading-relaxed">
+        <p className="text-sm text-gray-400 line-clamp-2 min-h-[2.5rem] leading-relaxed">
           {project.shortDescription}
         </p>
 
@@ -85,7 +85,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           {project.techStack.map((tech, idx) => (
             <span
               key={tech}
-              className="px-3 py-1 text-xs font-medium bg-neutral-800 text-neutral-300 rounded-full border border-neutral-700 hover:border-blue-500/40 hover:bg-neutral-750 hover:text-blue-300 transition-all duration-300"
+              className="px-3 py-1 text-xs font-medium bg-white/5 text-gray-300 rounded-full border border-white/10 hover:border-blue-500/40 hover:bg-white/10 hover:text-blue-300 transition-all duration-300"
               style={{
                 transitionDelay: `${idx * 50}ms`,
               }}
@@ -100,7 +100,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           <div className="flex gap-2">
             <Link
               href={`/projects/${kebabCase(project.title)}`}
-              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-neutral-100 bg-neutral-800 border border-neutral-700 rounded-lg hover:bg-neutral-700 hover:border-blue-500/30 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/5 border border-white/10 rounded-lg hover:bg-white/10 hover:border-blue-500/30 transition-all duration-300"
             >
               Read More
             </Link>

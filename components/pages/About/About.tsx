@@ -215,10 +215,10 @@ const About = () => {
               {education.map((edu, index) => (
                 <div
                   key={index}
-                  className="group bg-[#08101a] p-6 rounded-xl border border-gray-800 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:-translate-y-1"
+                  className="group bg-indigo-950/20 backdrop-blur-sm p-6 rounded-xl border border-white/10 hover:border-blue-500/30 transition-all duration-500 hover:shadow-[0_0_20px_rgba(59,130,246,0.1)] hover:-translate-y-1"
                 >
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-[#061a46] rounded-lg text-blue-500 group-hover:scale-110 transition-transform duration-300">
+                    <div className="p-3 bg-white/5 rounded-lg text-blue-500 group-hover:scale-110 transition-transform duration-300">
                       <GraduationCap size={24} />
                     </div>
                     <div>

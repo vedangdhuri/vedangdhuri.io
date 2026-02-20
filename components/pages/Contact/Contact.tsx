@@ -206,7 +206,7 @@ const Contact = () => {
           {/* Contact Form */}
           <div
             ref={formRef}
-            className="p-8 rounded-2xl border border-blue-400/80 bg-[#08101a] z-1 opacity-0 hover:border-blue-400 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500"
+            className="p-8 rounded-2xl border border-white/10 bg-indigo-950/20 backdrop-blur-sm z-1 opacity-0 hover:border-blue-400/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500"
           >
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -221,7 +221,7 @@ const Contact = () => {
                   <input
                     id="name"
                     {...register("name", { required: "Name is required" })}
-                    className={`w-full bg-gray-900 border ${errors.name ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
+                    className={`w-full bg-black/50 border ${errors.name ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
                     placeholder="John Doe"
                   />
                   {errors.name && (
@@ -247,7 +247,7 @@ const Contact = () => {
                         message: "Invalid email address",
                       },
                     })}
-                    className={`w-full bg-gray-900 border ${errors.email ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
+                    className={`w-full bg-black/50 border ${errors.email ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
                     placeholder="john@example.com"
                   />
                   {errors.email && (
@@ -268,7 +268,7 @@ const Contact = () => {
                 <input
                   id="subject"
                   {...register("subject", { required: "Subject is required" })}
-                  className={`w-full bg-gray-900 border ${errors.subject ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
+                  className={`w-full bg-black/50 border ${errors.subject ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
                   placeholder="Project Inquiry"
                 />
                 {errors.subject && (
@@ -289,7 +289,7 @@ const Contact = () => {
                   id="message"
                   rows={5}
                   {...register("message", { required: "Message is required" })}
-                  className={`w-full bg-gray-900 border ${errors.message ? "border-red-500" : "border-gray-700"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 resize-none`}
+                  className={`w-full bg-black/50 border ${errors.message ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 resize-none`}
                   placeholder="Tell me about your project..."
                 />
                 {errors.message && (
