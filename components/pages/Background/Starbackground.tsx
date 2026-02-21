@@ -9,11 +9,32 @@ export const StarBackground = () => {
   >([]);
 
   useEffect(() => {
+    const isMobile = window.innerWidth < 768;
+    const starMultiplier = isMobile ? 0.6 : 1; // Decrease by 40% on mobile
+
     // Create 3 layers of stars for parallax depth
     const layers = [
-      { count: 147, speed: 200, size: "1px", opacity: 0.4, class: "stars-bg" }, // Far background (slowest)
-      { count: 74, speed: 120, size: "2px", opacity: 0.7, class: "stars-md" }, // Mid-ground
-      { count: 37, speed: 60, size: "3px", opacity: 1, class: "stars-fg" }, // Foreground (fastest)
+      {
+        count: Math.floor(147 * starMultiplier),
+        speed: 200,
+        size: "1px",
+        opacity: 0.4,
+        class: "stars-bg",
+      }, // Far background (slowest)
+      {
+        count: Math.floor(74 * starMultiplier),
+        speed: 120,
+        size: "2px",
+        opacity: 0.7,
+        class: "stars-md",
+      }, // Mid-ground
+      {
+        count: Math.floor(37 * starMultiplier),
+        speed: 60,
+        size: "3px",
+        opacity: 1,
+        class: "stars-fg",
+      }, // Foreground (fastest)
     ];
 
     layers.forEach((layer) => {
