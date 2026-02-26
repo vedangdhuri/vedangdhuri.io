@@ -34,6 +34,68 @@ npm run dev
     `
   },
   {
+    title: "Opti-Time - AI Integrated Time Table Generator",
+    shortDescription: "Django timetabling engine solving university scheduling with constraint handling, batch management, and optimized faculty allocation.",
+    techStack: ["Python", "Django", "HTML", "CSS", "Bootstrap", "AI", "ML", "PostgreSQL"],
+    category: "personal",
+    thumbnail: "https://github.com/vedangdhuri/images/blob/main/opti_time.png?raw=true",
+    github: "https://github.com/vedangdhuri/Opti-Time-69",
+    liveUrl: "https://opti-time-69-1.onrender.com/",
+    readme: `
+# 🕒 Opti-Time
+
+**Automated Class Timetable Generator**
+A robust, randomized heuristic-based system for automating complex academic scheduling. Built with Django, it easily handles classes, practical batches, and teacher assignments while strictly adhering to constraints.
+
+## ✨ Key Features
+* **🤖 Automated Scheduling:** Generate valid, multi-class timetables with a single click.
+* **⚡ Conflict Detection:** Real-time validation prevents double-booking of teachers and rooms.
+* **🧪 Batch Management:** Automatically handles distinct practical batches (e.g., A1, A2, A3) with unique teachers.
+* **⚖️ Smart Allocation:** Prioritizes practical blocks, limits theory to max 2/day, and intelligently fills gaps.
+* **📊 Visual Dashboards:** Global and per-class analytics for tracking workloads and conflicts.
+* **🔄 Dynamic Regeneration:** One-click alternative schedule generation.
+* **📥 Export Ready:** Download schedules in PDF, Excel, and PNG formats.
+
+## 🛠️ Tech Stack
+* **Backend:** Python 3.11+, Django, SQLite/PostgreSQL, WhiteNoise
+* **Frontend:** HTML5, CSS3, Vanilla JS
+* **Key Libraries:** \`itertools\` & \`random\` (algorithm), \`reportlab\` (PDF), \`xlsxwriter\` (Excel)
+
+## 🧠 How the Algorithm Works
+1. **Phase 1: Practical Scheduling (Hard Constraint)** - Allocates combined practical slots ensuring unique teachers and cross-checking availability.
+2. **Phase 2: Theory Scheduling** - Assigns theory lectures based on teacher availability and a daily load limit (max 2/day).
+3. **Phase 3: Gap Filling & Optimization** - Fills remaining empty slots with "Extra" or "Library" periods to ensure a complete schedule.
+
+## 📦 Quick Start
+
+1. **Clone the repository:**
+   \`\`\`bash
+   git clone https://github.com/vedangdhuri/Opti-Time-69.git
+   cd Opti-Time
+   \`\`\`
+2. **Setup virtual environment & install dependencies:**
+   \`\`\`bash
+   python -m venv .venv
+   source .venv/bin/activate  # On Windows: .venv\\Scripts\\activate
+   pip install -r requirements.txt
+   \`\`\`
+3. **Setup Database & optional sample data:**
+   \`\`\`bash
+   python manage.py makemigrations
+   python manage.py migrate
+   # Optional: Seed data
+   python populate_fyco_real.py
+   python populate_syco_real.py
+   python populate_tyco_real.py
+   \`\`\`
+4. **Run the server:**
+   \`\`\`bash
+   python manage.py runserver
+   \`\`\`
+   *Visit \`http://127.0.0.1:8000/\` in your browser.*
+    `
+  },
+  {
     title: "SafeCity Hub",
     shortDescription: "A Multi-Stakeholder Crime Reporting, Monitoring & Real-Time Urban Safety Management Platform.",
     techStack: ["Full Stack", "Web Dev", "HTML", "CSS", "Bootstrap", "Python", "Django", "MySQL"],
