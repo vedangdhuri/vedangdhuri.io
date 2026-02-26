@@ -1,5 +1,11 @@
 export type ProjectCategory = "personal" | "professional" | "hackathon";
 
+export interface PageInfo {
+  title: string;
+  description: string;
+  imgArr: string[];
+}
+
 export interface Project {
   title: string;
   shortDescription: string;
@@ -9,4 +15,5 @@ export interface Project {
   github: string;
   liveUrl?: string;
   readme?: string; // Markdown content
+  pagesInfoArr?: PageInfo[];
 }

@@ -33,6 +33,7 @@
     "react-icons": "^5.5.0",
     "react-markdown": "^10.1.0",
     "remark-gfm": "^4.0.1",
+    "sharp": "^0.34.5",
     "simple-git": "^3.30.0",
     "tailwind-merge": "^3.4.0",
     "three": "^0.182.0",
