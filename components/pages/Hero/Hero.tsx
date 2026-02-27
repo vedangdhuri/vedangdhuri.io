@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ArrowRight } from "lucide-react";
@@ -29,7 +29,29 @@ const Hero = () => {
   const magneticBtn1 = useMagneticEffect<HTMLAnchorElement>({ strength: 0.3 });
   const magneticBtn2 = useMagneticEffect<HTMLAnchorElement>({ strength: 0.3 });
 
+  const [dustParticles, setDustParticles] = useState<
+    Array<{
+      left: number;
+      top: number;
+      duration: number;
+      delay: number;
+      xStart: number;
+    }>
+  >([]);
+
   useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      setDustParticles(
+        [...Array(20)].map(() => ({
+          left: Math.random() * 100,
+          top: Math.random() * 100,
+          duration: 3 + Math.random() * 4,
+          delay: Math.random() * 5,
+          xStart: Math.random() * 20 - 10,
+        })),
+      );
+    }, 0);
+
     const tl = gsap.timeline({ delay: 2.2 });
 
     // Subtitle entrance
@@ -113,6 +135,7 @@ const Hero = () => {
 
     return () => {
       tl.kill();
+      clearTimeout(timeoutId);
     };
   }, []);
 
@@ -130,24 +153,24 @@ const Hero = () => {
 
       {/* Cosmic dust particles */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[...Array(20)].map((_, i) => (
+        {dustParticles.map((particle, i) => (
           <motion.div
             key={`dust-${i}`}
             className="absolute w-[2px] h-[2px] rounded-full bg-blue-300/60"
             style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
+              left: `${particle.left}%`,
+              top: `${particle.top}%`,
             }}
             animate={{
               y: [0, -30, 0],
-              x: [0, Math.random() * 20 - 10, 0],
+              x: [0, particle.xStart, 0],
               opacity: [0, 0.8, 0],
               scale: [0, 1.5, 0],
             }}
             transition={{
-              duration: 3 + Math.random() * 4,
+              duration: particle.duration,
               repeat: Infinity,
-              delay: Math.random() * 5,
+              delay: particle.delay,
               ease: "easeInOut",
             }}
           />
@@ -163,13 +186,12 @@ const Hero = () => {
               className="text-xl md:text-3xl font-medium text-blue-400 mb-4 opacity-0"
             >
               Hello, I&apos;m{" "}
-              <span className="font-bold text-white">Vedang Dhuri</span> a
+              <span className="font-bold text-white">Vedang Dhuri</span>
             </h2>
           </div>
-          <SparklesText sparklesCount={10}>
             <h1
               ref={headingRef}
-              className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tighter mb-6 leading-tight overflow-hidden break-words"
+              className="text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight mb-6 leading-tight overflow-hidden break-words relative z-10"
               style={{ perspective: "600px" }}
             >
               {"Creative ".split("").map((char, i) => (
@@ -181,7 +203,7 @@ const Hero = () => {
                   {char === " " ? "\u00A0" : char}
                 </span>
               ))}
-              <span className="inline-block">
+              <span className="inline-block ml-2 md:ml-3">
                 {"Developer".split("").map((char, i) => (
                   <span
                     key={`d-${i}`}
@@ -193,7 +215,6 @@ const Hero = () => {
                 ))}
               </span>
             </h1>
-          </SparklesText>
 
           <div
             ref={flipRef}
@@ -439,7 +460,7 @@ const Hero = () => {
       {/* Scroll Indicator */}
       <div
         ref={scrollRef}
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-0"
+        className="absolute bottom-28 left-1/2 transform -translate-x-1/2 flex flex-col items-center opacity-0 z-20"
       >
         <span className="text-xs text-gray-500 mb-2 uppercase tracking-widest">
           Scroll

@@ -215,10 +215,7 @@ const SkillsSection = () => {
           name: "Next.js",
           icon: <SiNextdotjs className="w-4 h-4 text-white" />,
         },
-        {
-          name: "Django",
-          icon: <SiDjango className="w-4 h-4 text-[#2f473e]" />,
-        },
+
         {
           name: "Tailwind CSS",
           icon: <SiTailwindcss className="w-4 h-4 text-[#38B2AC]" />,
@@ -242,6 +239,10 @@ const SkillsSection = () => {
       title: "Backend Development",
       color: "text-green-400",
       skills: [
+        {
+          name: "Django",
+          icon: <SiDjango className="w-4 h-4 text-[#2f473e]" />,
+        },
         {
           name: "Node.js",
           icon: <FaNodeJs className="w-4 h-4 text-[#96cd49]" />,
@@ -316,7 +317,7 @@ const SkillsSection = () => {
         { name: "Git", icon: <FaGitAlt className="w-4 h-4 text-[#F05032]" /> },
         {
           name: "GitHub",
-          icon: <FaGithub className="w-4 h-4 text-[#F05032]" />,
+          icon: <FaGithub className="w-4 h-4 text-[#FFFFFF]" />,
         },
         { name: "Linux", icon: <FaLinux className="w-4 h-4 text-[#FCC624]" /> },
         {

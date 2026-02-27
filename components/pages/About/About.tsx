@@ -10,10 +10,10 @@ gsap.registerPlugin(ScrollTrigger);
 export const education = [
   {
     degree: "Diploma in Computer Engineering",
-    institution: "Yashwantrao bhonsale institute of technology",
+    institution: "Yashwantrao Bhonsale Institute of Technology",
     year: "2023 - 2026",
     description:
-      "Focused on software engineering, algorithms, and web technologies. Graduated with Honors.",
+      "Focused on software engineering, algorithms, and web technologies. Expected Graduation with Honors.",
   },
   {
     degree: "Full Stack Web Development & IoT ",
@@ -190,9 +190,9 @@ const About = () => {
                   My approach combines technical expertise with creative
                   problem-solving. I believe that great software is not just
                   about code, but about understanding user needs and delivering
-                  solutions that make a difference. When I'm not coding, you can
-                  find me exploring new technologies, contributing to open
-                  source, or designing 3D assets.
+                  solutions that make a difference. When I&apos;m not coding,
+                  you can find me exploring new technologies, contributing to
+                  open source, or designing 3D assets.
                 </p>
               </div>
             </div>
