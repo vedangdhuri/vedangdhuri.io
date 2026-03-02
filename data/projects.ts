@@ -122,11 +122,11 @@ python manage.py runserver
   {
     title: "SafeCity Hub",
     shortDescription: "A Multi-Stakeholder Crime Reporting, Monitoring & Real-Time Urban Safety Management Platform.",
-    techStack: ["Full Stack", "Web Dev", "HTML", "CSS", "Bootstrap", "Python", "Django", "MySQL"],
+    techStack: ["Full Stack", "Web Dev", "HTML", "CSS", "Tailwind CSS", "Python", "Django", "PostgreSQL"],
     category: "professional",
     thumbnail: "/projects/safecity/safecityhub.webp",
     github: "https://github.com/vedangdhuri/SafeCity-Hub",
-    liveUrl: "",
+    liveUrl: "https://crime-analysis-platform.onrender.com",
     pagesInfoArr: [
       {
         title: "City Monitoring Hub",
@@ -137,49 +137,127 @@ python manage.py runserver
     readme: `
 # 🏙️ SafeCity Hub
 
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
-![MySQL](https://img.shields.io/badge/MySQL-005C84?style=for-the-badge&logo=mysql&logoColor=white)
-![Bootstrap](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ### A Multi-Stakeholder Crime Reporting, Monitoring & Real-Time Urban Safety Management Platform
 
+---
+
 ## 📖 Overview
-SafeCity Hub is a smart, integrated platform designed to improve urban safety by connecting citizens, police, and administrative authorities on a single digital system. It enables real-time crime reporting, incident monitoring, and data-driven decision-making to build safer, smarter cities.
+
+SafeCity Hub is a smart, integrated platform designed to improve urban safety by connecting citizens, police, and administrative authorities on a single digital system.
+It enables real-time crime reporting, incident monitoring, and data-driven decision-making to build safer, smarter cities.
+
+---
 
 ## 🚀 Key Features
-- **🧑‍🤝‍🧑 Citizen Portal**: Report crimes or safety concerns with location, images, or videos (anonymously or identified).
-- **👮 Police Dashboard**: Live monitoring of reported incidents, response assignment, and communication tools.
-- **🏛️ Admin Panel**: Analyze crime data, visualize heatmaps, and plan urban safety strategies.
+
+### 🧑🤝🧑 Citizen Portal
+
+- **Report Crimes**: Log safety concerns with exact locations and details.
+- **Flexible Login**: Access accounts securely with either a User ID or Registered Email.
+- **OTP Password Recovery**: Forgot your password? Instantly recover it via a secure 6-Digit Email OTP process with a glassmorphism UI.
+
+### 👮 Police Dashboard
+
+- **Live Monitoring**: Track incoming reported incidents in your specific jurisdiction in real-time.
+- **Status Updates**: Automatically update and inform citizens regarding the resolution status of their complaints directly to their email.
+- **Criminal Records**: Upload, manage, and attach images of known offenders securely.
+
+### 🏛️ Admin Panel
+
+- **Data Analytics**: Analyze crime data, visualize yearly trends on charts, and plan urban safety strategies.
+- **Station Management**: Create regional police station sub-accounts dynamically.
+
+---
 
 ## 🧩 System Architecture
-**Stakeholders Workflow:**
-1. A citizen reports an incident via web/app.
-2. The system logs data in the central database.
-3. Police receive real-time alerts and take action.
-4. Administrators access analytics for policy planning.
+
+**Primary Stakeholders:**
+
+- Citizens
+- Police / Law Enforcement
+- Municipal & Administrative Authorities
+
+**Workflow:**
+
+1. A citizen logs in/registers and reports an incident via the web portal.
+2. The system logs data securely to a cloud-ready PostreSQL database.
+3. Local police (matching the citizen's Area Code) receive real-time alerts and take action, emailing resolution statuses back to the citizen.
+4. Administrators access overarching analytics for macro policy planning.
+
+---
 
 ## ⚙️ Installation & Setup
-[Watch Installation Guide](https://youtu.be/MkLX85XU5rU?si=VH0IeGVYaUHZkIDk)
-*(**Note:** If creating a virtual environment in VS Code, choose Python version 3.6.2 for optimal compatibility.)*
 
-## ❗ Additional Security
-In the area police station, only the police of area code 001 can view their respective complaints. Inter-area data access is strictly restricted.
+### 1. Requirements Checklist
 
-## 🔐 Security & Privacy
-- **End-to-end Encrypted Communication**
-- **Role-Based Access Control** (Citizen, Police, Admin)
-- **Anonymous Reporting Support**
-- **Data Protection Compliant**
+- Python 3.10+
+- PostgreSQL Server
+- Git
 
-## 💡 Future Enhancements
-- AI-based crime prediction and pattern recognition
-- IoT integration (smart CCTV, panic buttons)
-- Chatbot for emergency help
-- Integration with government databases
+### 2. Clone the Repository
+
+\`\`\`bash
+git clone https://github.com/vedangdhuri/SafeCity-Hub.git
+cd SafeCity-Hub
+\`\`\`
+
+### 3. Environment Variable Setup (.env)
+
+Create a \`.env\` file at the root of your project directory to manage sensitive credentials:
+
+\`\`\`env
+# Example .env configuration
+SECRET_KEY=your_django_secret_key
+DEBUG=True
+DATABASE_URL=postgres://YOUR_USERNAME:YOUR_PASSWORD@127.0.0.1:5432/crime_analysis
+
+# Email Configurations for OTP
+SET_EMAIL_HOST_USER=your_email@gmail.com
+SET_EMAIL_HOST_PASSWORD=your_generated_app_password
+SET_DEFAULT_FROM_EMAIL=your_email@gmail.com
+\`\`\`
+
+_Note: Ensure your PostgreSQL has a database successfully created named \`crime_analysis\`._
+
+### 4. Setup Python Environment
+
+\`\`\`bash
+# Create the virtual environment
+python -m venv .venv
+
+# Activate (Windows)
+.venv\\Scripts\\activate
+
+# Install all dependencies (django, psycopg2, django-dotenv, etc.)
+pip install -r requirements.txt
+\`\`\`
+
+### 5. Email OTP Setup
+
+If using Gmail, go to **App Passwords** within your Google account and generate a 16-character sequence. Add this generated sequence to \`SET_EMAIL_HOST_PASSWORD\` in your \`.env\` file, along with your email address in \`SET_EMAIL_HOST_USER\` and \`SET_DEFAULT_FROM_EMAIL\`.
+
+### 6. Migrate & Boot Server
+
+\`\`\`bash
+python manage.py makemigrations
+python manage.py migrate
+python manage.py runserver
+\`\`\`
+
+Navigate to \`http://127.0.0.1:8000/\` to explore the application!
+
+---
+
+## ❗ Note on Access Control
+
+Role-Based Access Control (RBAC) securely limits data access. In the police portal, an officer from Station \`001\` can **only** view citizen complaints made within area code \`001\`.
+
+---
 
 ## 📜 License
-Licensed under the [MIT License](https://raw.githubusercontent.com/vedangdhuri/SafeCity-Hub/main/LICENSE).
+
+This project is licensed under the **[MIT License](./LICENSE)**.
     `
   },
   {
