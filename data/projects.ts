@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     title: "Portfolio Website",
     shortDescription: "Open-source Next.js portfolio template recognized and forked by developers worldwide, optimized for SEO/AEO and performance.",
-    techStack: ["Web Dev", "Frontend", "UI/UX"],
+    techStack: ["Web Dev", "Frontend", "UI/UX", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP Animations"],
     category: "personal",
     thumbnail: "/projects/portfolio_website/portfolio.webp",
     github: "https://github.com/vedangdhuri/vedangdhuri-io",
@@ -19,11 +19,6 @@ export const projects: Project[] = [
     readme: `
 # 🚀 Portfolio Website
 
-![Next.js](https://img.shields.io/badge/Next.js-black?style=for-the-badge&logo=next.js&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![Tailwind](https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white)
-![Framer](https://img.shields.io/badge/Framer_Motion-black?style=for-the-badge&logo=framer&logoColor=blue)
-
 This is a **Next.js** portfolio template recognized and forked by developers worldwide.
 
 ## ✨ Features
@@ -36,7 +31,7 @@ This is a **Next.js** portfolio template recognized and forked by developers wor
 - **Framework**: Next.js
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
-- **Animations**: Framer Motion
+- **Animations**: Framer Motion, GSAP Animations
 
 ## 🚀 Installation
 
@@ -66,11 +61,6 @@ npm run dev
     ],
     readme: `
 # 🕒 Opti-Time - AI Integrated Time Table Generator
-
-![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
-![Django](https://img.shields.io/badge/Django-092E20?style=for-the-badge&logo=django&logoColor=white)
-![PostgreSQL](https://img.shields.io/badge/PostgreSQL-316192?style=for-the-badge&logo=postgresql&logoColor=white)
-![AI](https://img.shields.io/badge/AI_Powered-FF9900?style=for-the-badge&logo=openai&logoColor=white)
 
 **Automated Class Timetable Generator**
 A robust, randomized heuristic-based system for automating complex academic scheduling. Built with Django, it easily handles classes, practical batches, and teacher assignments while strictly adhering to constraints.
@@ -263,7 +253,7 @@ This project is licensed under the **[MIT License](./LICENSE)**.
   {
     title: "Match Master Game",
     shortDescription: "A fast and scalable memory-matching game built with React and Vite. Designed as a lightweight, maintainable foundation for interactive web apps.",
-    techStack: ["Web Dev Game", "React", "Vite", "JavaScript"],
+    techStack: ["Web Dev Game", "React", "Vite", "JavaScript", "Tailwindcss"],
     category: "personal",
     thumbnail: "/projects/match_master_game/match-master-game.webp",
     github: "https://github.com/vedangdhuri/Match-Master-Game",
@@ -277,10 +267,6 @@ This project is licensed under the **[MIT License](./LICENSE)**.
     ],
     readme: `
 # 🎮 MATCH-MASTER-GAME
-
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
-![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
 ### Unleash Your Mind, Master the Memory Challenge
 
@@ -315,7 +301,7 @@ Licensed under the [MIT License](https://github.com/vedangdhuri/Match-Master-Gam
   {
     title: "AES Encryption and Decryption in Java",
     shortDescription: "A Java application that uses AES for secure text encryption and decryption, demonstrating symmetric key cryptography to protect sensitive information.",
-    techStack: ["Java", "Encryption", "Decryption"],
+    techStack: ["Java", "Encryption", "Decryption",],
     category: "personal",
     thumbnail: "/projects/aes_edcryption/aes-edcryption.webp",
     github: "https://github.com/vedangdhuri/AES-Encryption-Decryption-Using-Java",
@@ -330,8 +316,6 @@ Licensed under the [MIT License](https://github.com/vedangdhuri/Match-Master-Gam
     readme: `
 # 🔐 AES Encryption and Decryption in Java
 
-![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)
-![Security](https://img.shields.io/badge/Security-AES--128-green?style=for-the-badge)
 
 A simple yet powerful Java application that implements the Advanced Encryption Standard (AES) algorithm to perform secure text encryption and decryption. This project demonstrates the practical use of AES symmetric key cryptography for protecting sensitive information in Java.
 
@@ -383,7 +367,7 @@ Licensed under the [MIT License](https://raw.githubusercontent.com/vedangdhuri/A
   {
     title: "To Do List Using React",
     shortDescription: "A responsive To-Do List app built with React.js that helps users efficiently organize tasks with an intuitive interface for adding, editing, deleting, and marking tasks as completed.",
-    techStack: ["React", "JavaScript", "Vite", "Beginner level"],
+    techStack: ["React.js", "JavaScript", "Vite", "Beginner level"],
     category: "personal",
     thumbnail: "/projects/todolist/to_do_list_using_react.webp",
     github: "https://github.com/vedangdhuri/To-Do-List-Using-REACT",
@@ -397,10 +381,6 @@ Licensed under the [MIT License](https://raw.githubusercontent.com/vedangdhuri/A
     ],
     readme: `
 # ✅ TO-DO-LIST-USING-REACT
-
-![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
-![Vite](https://img.shields.io/badge/Vite-B73BFE?style=for-the-badge&logo=vite&logoColor=FFD62E)
-![JavaScript](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)
 
 ### Transform Tasks into Triumphs with Seamless Simplicity
 
@@ -452,7 +432,40 @@ Licensed under the [MIT License](https://github.com/vedangdhuri/To-Do-List-Using
         description: "The current weather conditions and forecast overview.",
         imgArr: ["/projects/weatherapp/weather-app.webp"]
       }
-    ]
+    ],
+    readme: `
+# ✅ WEATHER-APP
+
+### Predict Tomorrow’s Weather, Today’s Confidence
+
+## ✅ Overview
+Weather-App is a modern React-based project designed to streamline the development of dynamic weather applications. Built with Vite, it offers fast, efficient builds, hot module replacement, and integrated ESLint support to ensure high code quality. The project provides a solid foundation for creating maintainable, high-performance React apps with support for advanced features like TypeScript and React's compiler.
+
+## ✨ This project simplifies building real-time weather interfaces with a focus on speed, quality, and flexibility. The core features include:
+- **🚀 Fast Development Setup:** Leverages Vite for rapid builds and hot module replacement, reducing development time.
+- **🌐 Real-Time Data:** Integrates external APIs to fetch and display current weather conditions dynamically.
+- **🧹 Code Quality: Incorporates ESLint configurations to enforce modern JavaScript and React best practices.
+- **⚙️ Flexible Architecture: Supports TypeScript and React's compiler for scalable, maintainable codebases.
+- **🌟 Clear Structure: Organized project setup with centralized constants and modular components for easy customization.
+
+## ⚙️ Installation & Setup
+
+\`\`\`bash
+# Clone the repository
+git clone git clone https://github.com/vedangdhuri/Weather-App
+cd Weather-App
+
+# Install dependencies
+npm install
+
+# Start the dev server
+npm run dev
+\`\`\`
+*The app will automatically open at \`http://localhost:5173/\`*
+
+## 📜 License
+Licensed under the [MIT License](https://github.com/vedangdhuri/Weather-App/blob/main/LICENSE).
+    `
   },
   // {
   //   title: "Builtdesign Blogs",
