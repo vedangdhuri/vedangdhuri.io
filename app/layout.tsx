@@ -4,7 +4,7 @@ import "./globals.css";
 import { Navbar } from "@/components/pages/Navbar/Navbar";
 import { Footer } from "@/components/pages/Footer/Footer";
 import { StarBackground } from "@/components/pages/Background/Starbackground";
-// import TargetCursor from "@/components/ui/TargetCursor";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -31,6 +31,7 @@ export default function RootLayout({
         <Navbar />
         <main className="min-h-screen overflow-x-hidden">{children}</main>
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
