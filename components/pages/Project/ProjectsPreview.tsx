@@ -14,8 +14,8 @@ export default function ProjectsPreview() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const headingLineRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-  const buttonRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+  const scrollWrapperRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Heading reveal
@@ -62,45 +62,32 @@ export default function ProjectsPreview() {
       );
     }
 
-    // Cards staggered entrance
-    if (gridRef.current) {
-      const cards = gridRef.current.children;
-      gsap.fromTo(
-        cards,
-        { opacity: 0, y: 80, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 85%",
-            toggleActions: "restart none none reset",
-          },
-        },
-      );
-    }
+    // Horizontal Scroll for Projects
+    if (containerRef.current && scrollWrapperRef.current) {
+      const getScrollAmount = () => {
+        const wrapperWidth = scrollWrapperRef.current!.scrollWidth;
+        const windowWidth = document.documentElement.clientWidth;
+        // Scroll enough to bring the right padding into view, letting the last card center nicely
+        return -(wrapperWidth - windowWidth);
+      };
 
-    // Button entrance
-    if (buttonRef.current) {
-      gsap.fromTo(
-        buttonRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: buttonRef.current,
-            start: "top 90%",
-            toggleActions: "restart none none reset",
-          },
-        },
-      );
+      const pinTrigger = ScrollTrigger.create({
+        trigger: containerRef.current,
+        pin: true,
+        start: "center center",
+        end: () => `+=${scrollWrapperRef.current!.scrollWidth}`,
+        scrub: 1,
+        animation: gsap.to(scrollWrapperRef.current, {
+          x: getScrollAmount,
+          ease: "none",
+        }),
+        // Re-calculate on resize
+        invalidateOnRefresh: true,
+      });
+
+      return () => {
+        pinTrigger.kill();
+      };
     }
 
     return () => {
@@ -132,24 +119,31 @@ export default function ProjectsPreview() {
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12"
-        >
-          {featuredProjects.map((project) => (
-            <ProjectCard key={project.title} project={project} />
-          ))}
+        {/* Horizontal Projects Carousel */}
+        <div ref={containerRef} className="overflow-hidden w-full py-10 mt-10">
+          <div
+            ref={scrollWrapperRef}
+            className="flex flex-row items-stretch gap-8 w-max pl-6 pr-[10vw] md:pr-[20vw] lg:pr-[30vw]"
+          >
+            {featuredProjects.map((project) => (
+              <div
+                key={project.title}
+                className="w-[85vw] md:w-[60vw] lg:w-[40vw] flex-shrink-0 h-auto"
+              >
+                <ProjectCard project={project} />
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* View All Button */}
-        <div ref={buttonRef} className="flex justify-center opacity-0">
+        <div className="flex justify-center mt-12 mb-8">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-100 bg-neutral-800 border border-neutral-700 rounded-xl hover:bg-neutral-700 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 group cursor-target"
+            className="inline-flex items-center gap-2 px-8 py-4 text-lg font-medium text-neutral-100 bg-neutral-800 border border-neutral-700 rounded-xl hover:bg-neutral-700 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 group cursor-target focus:outline-none"
           >
             <svg
-              className="w-4 h-4"
+              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -161,7 +155,7 @@ export default function ProjectsPreview() {
                 d="M19 9l-7 7-7-7"
               />
             </svg>
-            View All
+            View All Missions
           </Link>
         </div>
       </div>

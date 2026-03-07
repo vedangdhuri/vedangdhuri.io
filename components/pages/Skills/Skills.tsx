@@ -86,13 +86,14 @@ const SkillCard = ({
         opacity: 1,
         y: 0,
         rotateX: 0,
-        duration: 0.7,
+        duration: 1,
         delay: index * 0.12,
-        ease: "power3.out",
+        ease: "none",
         scrollTrigger: {
           trigger: card,
-          start: "top 88%",
-          toggleActions: "restart none none reset",
+          start: "top 85%",
+          end: "top 40%",
+          scrub: 1,
         },
       },
     );
@@ -107,13 +108,14 @@ const SkillCard = ({
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 0.4,
-          stagger: 0.06,
-          ease: "back.out(1.7)",
+          duration: 1,
+          stagger: 0.2,
+          ease: "none",
           scrollTrigger: {
             trigger: card,
-            start: "top 80%",
-            toggleActions: "restart none none reset",
+            start: "top 70%",
+            end: "bottom 80%",
+            scrub: 1,
           },
         },
       );
@@ -180,22 +182,23 @@ const SkillsSection = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: headingRef.current,
-          start: "top 85%",
-          toggleActions: "restart none none reset",
+          start: "top 80%",
+          end: "top 30%",
+          scrub: 1,
         },
       });
 
       tl.fromTo(
         headingRef.current,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        { opacity: 1, y: 0, duration: 1, ease: "none" },
       );
 
       tl.fromTo(
         headingLineRef.current,
         { scaleX: 0 },
-        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
-        "-=0.3",
+        { scaleX: 1, duration: 1, ease: "none" },
+        "-=0.5",
       );
     }
 

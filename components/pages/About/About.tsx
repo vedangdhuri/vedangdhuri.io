@@ -37,9 +37,10 @@ const About = () => {
     if (headingRef.current && headingLineRef.current) {
       const headingTl = gsap.timeline({
         scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          toggleActions: "restart none none reset",
+          trigger: sectionRef.current,
+          start: "top 70%",
+          end: "top 20%",
+          scrub: 1,
         },
       });
 
@@ -67,12 +68,12 @@ const About = () => {
           opacity: 1,
           y: 0,
           duration: 0.6,
-          delay: 0.2,
-          ease: "power3.out",
+          ease: "none",
           scrollTrigger: {
-            trigger: subtitle,
-            start: "top 85%",
-            toggleActions: "restart none none reset",
+            trigger: sectionRef.current,
+            start: "top 60%",
+            end: "top 30%",
+            scrub: 1,
           },
         },
       );
@@ -88,13 +89,14 @@ const About = () => {
           opacity: 1,
           y: 0,
           clipPath: "inset(0 0 0% 0)",
-          duration: 0.9,
-          stagger: 0.3,
-          ease: "power3.out",
+          duration: 1,
+          stagger: 0.5,
+          ease: "none",
           scrollTrigger: {
             trigger: bioRef.current,
-            start: "top 80%",
-            toggleActions: "restart none none reset",
+            start: "top 75%",
+            end: "bottom 40%",
+            scrub: 1,
           },
         },
       );
@@ -108,12 +110,13 @@ const About = () => {
         {
           opacity: 1,
           x: 0,
-          duration: 0.7,
-          ease: "power3.out",
+          duration: 1,
+          ease: "none",
           scrollTrigger: {
             trigger: eduHeaderRef.current,
-            start: "top 85%",
-            toggleActions: "restart none none reset",
+            start: "top 80%",
+            end: "top 50%",
+            scrub: 1,
           },
         },
       );
@@ -129,13 +132,14 @@ const About = () => {
           opacity: 1,
           x: 0,
           rotateY: 0,
-          duration: 0.7,
-          stagger: 0.2,
-          ease: "power3.out",
+          duration: 1,
+          stagger: 0.5,
+          ease: "none",
           scrollTrigger: {
             trigger: eduCardsRef.current,
             start: "top 80%",
-            toggleActions: "restart none none reset",
+            end: "bottom 60%",
+            scrub: 1,
           },
         },
       );

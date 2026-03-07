@@ -40,22 +40,23 @@ const Contact = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: headingRef.current,
-          start: "top 85%",
-          toggleActions: "restart none none reset",
+          start: "top 95%",
+          end: "top 40%",
+          scrub: 1,
         },
       });
 
       tl.fromTo(
         headingRef.current,
         { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        { opacity: 1, y: 0, duration: 1, ease: "none" },
       );
 
       tl.fromTo(
         headingLineRef.current,
         { scaleX: 0 },
-        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
-        "-=0.3",
+        { scaleX: 1, duration: 1, ease: "none" },
+        "-=0.5",
       );
     }
 
@@ -67,12 +68,13 @@ const Contact = () => {
         {
           opacity: 1,
           x: 0,
-          duration: 0.8,
-          ease: "power3.out",
+          duration: 1,
+          ease: "none",
           scrollTrigger: {
             trigger: globeRef.current,
-            start: "top 80%",
-            toggleActions: "restart none none reset",
+            start: "top 85%",
+            end: "center 60%",
+            scrub: 1,
           },
         },
       );
@@ -87,12 +89,13 @@ const Contact = () => {
         {
           opacity: 1,
           x: 0,
-          duration: 0.8,
-          ease: "power3.out",
+          duration: 1,
+          ease: "none",
           scrollTrigger: {
             trigger: formEl,
-            start: "top 80%",
-            toggleActions: "restart none none reset",
+            start: "top 85%",
+            end: "center 60%",
+            scrub: 1,
           },
         },
       );
@@ -105,14 +108,14 @@ const Contact = () => {
         {
           opacity: 1,
           y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power3.out",
-          delay: 0.3,
+          duration: 1,
+          stagger: 0.3,
+          ease: "none",
           scrollTrigger: {
             trigger: formEl,
-            start: "top 80%",
-            toggleActions: "restart none none reset",
+            start: "top 75%",
+            end: "bottom 80%",
+            scrub: 1,
           },
         },
       );

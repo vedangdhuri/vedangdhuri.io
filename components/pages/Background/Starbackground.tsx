@@ -1,12 +1,9 @@
 "use client";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
 export const StarBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const [meteors, setMeteors] = useState<
-    { id: number; top: string; left: string }[]
-  >([]);
 
   useEffect(() => {
     const isMobile = window.innerWidth < 768;
@@ -15,21 +12,21 @@ export const StarBackground = () => {
     // Create 3 layers of stars for parallax depth
     const layers = [
       {
-        count: Math.floor(147 * starMultiplier),
+        count: Math.floor(100 * starMultiplier),
         speed: 200,
         size: "1px",
         opacity: 0.4,
         class: "stars-bg",
       }, // Far background (slowest)
       {
-        count: Math.floor(74 * starMultiplier),
+        count: Math.floor(50 * starMultiplier),
         speed: 120,
         size: "2px",
         opacity: 0.7,
         class: "stars-md",
       }, // Mid-ground
       {
-        count: Math.floor(37 * starMultiplier),
+        count: Math.floor(25 * starMultiplier),
         speed: 60,
         size: "3px",
         opacity: 1,
@@ -54,6 +51,7 @@ export const StarBackground = () => {
         star.style.height = layer.size;
         star.style.opacity = `${Math.random() * layer.opacity}`;
         star.style.boxShadow = `0 0 ${parseInt(layer.size) * 2}px rgba(255, 255, 255, ${layer.opacity})`;
+        star.style.willChange = "transform, opacity";
 
         // Random twinkle animation
         gsap.to(star, {
@@ -65,24 +63,21 @@ export const StarBackground = () => {
           delay: Math.random() * 5,
         });
 
-        // Continuous downward movement logic
+        // Continuous downward movement logic using GPU-accelerated transforms
         const remainingDistance = 100 - initialY;
         const duration = (remainingDistance / 100) * layer.speed;
 
         gsap.to(star, {
-          top: "100%",
+          y: `${remainingDistance}vh`,
           duration: duration,
           ease: "none",
           onComplete: () => {
-            star.style.top = "-5%";
+            gsap.set(star, { top: "-5%", y: 0 }); // reset to top, clear transform
             gsap.to(star, {
-              top: "100%",
+              y: "105vh",
               duration: layer.speed,
               repeat: -1,
               ease: "none",
-              onRepeat: () => {
-                gsap.set(star, { top: "-5%" });
-              },
             });
           },
         });
@@ -91,23 +86,30 @@ export const StarBackground = () => {
       }
     });
 
-    // Meteor generator
+    // Meteor generator using pure DOM to avoid React re-renders
     const meteorInterval = setInterval(() => {
+      if (!containerRef.current) return;
       const count = Math.random() > 0.7 ? 2 : 1;
       for (let i = 0; i < count; i++) {
-        const id = Date.now() + i;
-        const meteorData = {
-          id,
-          top: Math.random() * 50 + "%",
-          left: Math.random() * 100 + "%",
-        };
-
         setTimeout(() => {
-          setMeteors((prev) => [...prev, meteorData]);
+          const meteorWrapper = document.createElement("div");
+          meteorWrapper.className =
+            "absolute h-0.5 w-0.5 rounded-full bg-white shadow-[0_0_0_1px_#ffffff10] rotate-[215deg]";
+          meteorWrapper.style.top = Math.random() * 50 + "%";
+          meteorWrapper.style.left = Math.random() * 100 + "%";
+          meteorWrapper.style.animation = "meteor 5s linear forwards";
+          meteorWrapper.style.willChange = "transform, opacity";
 
-          // Smoothly remove specific meteor after animation completes
+          const meteorTail = document.createElement("div");
+          meteorTail.className =
+            "absolute top-1/2 -translate-y-1/2 right-full h-[1px] w-[100px] bg-gradient-to-r from-transparent to-white/80";
+          meteorWrapper.appendChild(meteorTail);
+
+          containerRef.current?.appendChild(meteorWrapper);
+
+          // Clean up the node
           setTimeout(() => {
-            setMeteors((prev) => prev.filter((m) => m.id !== id));
+            meteorWrapper.remove();
           }, 5500);
         }, i * 400);
       }
@@ -135,21 +137,6 @@ export const StarBackground = () => {
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] rounded-full bg-indigo-900/5 blur-[100px] opacity-20 z-0 animate-pulse-slow"
         style={{ animationDelay: "2s" }}
       />
-
-      {/* Meteors */}
-      {meteors.map((meteor) => (
-        <div
-          key={meteor.id}
-          className="absolute h-0.5 w-0.5 rounded-full bg-white shadow-[0_0_0_1px_#ffffff10] rotate-[215deg]"
-          style={{
-            top: meteor.top,
-            left: meteor.left,
-            animation: "meteor 5s linear forwards",
-          }}
-        >
-          <div className="absolute top-1/2 -translate-y-1/2 right-full h-[1px] w-[100px] bg-gradient-to-r from-transparent to-white/80" />
-        </div>
-      ))}
 
       <style jsx global>{`
         @keyframes meteor {

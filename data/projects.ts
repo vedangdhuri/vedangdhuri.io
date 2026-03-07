@@ -4,7 +4,7 @@ export const projects: Project[] = [
   {
     title: "Portfolio Website",
     shortDescription: "Open-source Next.js portfolio template recognized and forked by developers worldwide, optimized for SEO/AEO and performance.",
-    techStack: ["Web Dev", "Frontend", "UI/UX", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP Animations"],
+    techStack: ["Frontend", "UI/UX", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP Animations"],
     category: "personal",
     thumbnail: "/projects/portfolio_website/portfolio.webp",
     github: "https://github.com/vedangdhuri/vedangdhuri-io",
