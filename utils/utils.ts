@@ -8,7 +8,8 @@ export function cn(...inputs: ClassValue[]) {
 export const kebabCase = (str: string) =>
   str
     .replace(/([a-z])([A-Z])/g, "$1-$2")
-    .replace(/[\s_]+/g, "-")
+    .replace(/[^a-zA-Z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
     .toLowerCase();
 
 export const kebabArray = (arr: string[]) => arr.map((item) => kebabCase(item));

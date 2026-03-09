@@ -2,6 +2,131 @@ import { Project } from "@/types/project";
 
 export const projects: Project[] = [
   {
+    title: "RoastRoom - AI Arguments & Roasts Arena",
+    shortDescription: "A real-time multiplayer platform for intellectual clash and comedic battles, evaluated by an impartial GPT-4o AI judge.",
+    techStack: ["Next.js", "React", "Node.js", "Tailwind CSS", "MongoDB", "Socket.io", "OpenAI"],
+    category: "personal",
+    thumbnail: "/projects/roastroom/thumbnail.png",
+    github: "https://github.com/vedangdhuri/RoastRoom",
+    liveUrl: "https://roast-room.vercel.app/",
+    pagesInfoArr: [
+      {
+        title: "RoastRoom Gameplay",
+        description: "The digital arena interface where wit meets wisdom and arguments are live-scored by AI.",
+        imgArr: ["/projects/roastroom/thumbnail.png"]
+      }
+    ],
+    readme: `
+# 🎙️ RoastRoom - Win Arguments. Destroy Egos. Earn XP.
+
+### The ultimate digital arena powered by AI where wit meets wisdom.
+
+---
+
+## 🔥 What is RoastRoom?
+
+**RoastRoom** is a real-time platform designed for those who love high-stakes intellectual clashes and ruthless comedic battles. Outsmart your opponents in a fast-paced environment judged and evaluated in real-time by an impartial GPT-4o AI referee.
+
+---
+
+## 🎮 Game Modes
+
+- **⚔️ Debate Mode**: Focus on logic, evidence, and structured arguments. Perfect for testing your rhetorical skills and critical thinking.
+- **🔥 Roast Mode**: Unleash your inner comedian. Score points for creativity, humor, and sheer disrespect (kept within the rules, of course!).
+
+---
+
+## 🤖 The AI Judge
+
+Forget biased human voting. Every response in RoastRoom is analyzed in real-time by a sophisticated **GPT-4o judge**. Our AI evaluates battles based on:
+
+- **Logic**: The strength and coherence of your argument.
+- **Creativity**: How unique and unexpected your points are.
+- **Clarity**: How well you communicate your message.
+- **Humor**: (Roast Mode only) The "burn" factor and comedic timing.
+
+---
+
+## 🛡️ Architectural Overview
+
+RoastRoom pairs a sleek frontend with a powerful, high-availability engine orchestrating real-time socket sessions, AI interactions, and persistent player progression:
+
+- **Real-time Synchronization** handled via \`Socket.io\`, ensuring sub-100ms latency.
+- **AI Intelligence** orchestration querying \`OpenAI\` for high-granularity scoring.
+- **Player Lifecycle** with comprehensive XP, leveling systems, and global leaderboards.
+- **Automated Profanity Filtering** to keep the arena competitive but respectful.
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend Architecture**: Next.js 14 App Router, Zustand reactive global state, Framer Motion
+- **Styling**: Tailwind CSS with Glassmorphism aesthetic
+- **Backend Infrastructure**: Node.js, Express.js, Mongoose + MongoDB
+- **Low Latency Messaging**: Socket.io & WebSockets implementation
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
+
+\`\`\`bash
+git clone https://github.com/vedangdhuri/RoastRoom.git
+cd RoastRoom
+\`\`\`
+
+### 2. Setup the Server
+
+Navigate to the \`server\` directory:
+
+\`\`\`bash
+cd server
+\`\`\`
+
+Create a \`.env\` file in the root with:
+
+\`\`\`env
+PORT=5000
+MONGODB_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_signing_key
+OPENAI_API_KEY=your_openai_key
+FRONTEND_URL=http://localhost:3000
+\`\`\`
+
+Install dependencies and start development:
+
+\`\`\`bash
+npm install
+npm run dev
+\`\`\`
+
+### 3. Setup the Frontend
+
+Navigate to the \`frontend\` directory:
+
+\`\`\`bash
+cd ../frontend
+\`\`\`
+
+Install dependencies and run:
+
+\`\`\`bash
+npm install
+npm run dev
+\`\`\`
+
+---
+
+## 🌟 Match Lifecycle
+
+1. **Initialization**: Players join a lobby and set a topic.
+2. **Battling**: Real-time turns with countdown timers.
+3. **Scoring**: Every round is scored by the AI Service.
+4. **Finalization**: Winner declared, XP distributed, and match saved.
+`
+  },
+  {
     title: "Portfolio Website",
     shortDescription: "Open-source Next.js portfolio template recognized and forked by developers worldwide, optimized for SEO/AEO and performance.",
     techStack: ["Frontend", "UI/UX", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP Animations"],
