@@ -7,6 +7,8 @@ import { GraduationCap } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
+import { GSAP_CONSTANTS } from "@/utils/gsap-constants";
+
 export const education = [
   {
     degree: "Diploma in Computer Engineering",
@@ -36,36 +38,47 @@ const About = () => {
     const triggers: ScrollTrigger[] = [];
     const collect = (st: ScrollTrigger) => triggers.push(st);
 
-    // Heading animation with underline draw
-    if (headingRef.current && headingLineRef.current) {
-      const headingTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 70%",
-          end: "top 20%",
-          scrub: 1,
-          onToggle: collect,
-        },
-      });
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top 80%",
+        end: "top 20%",
+        scrub: 1,
+        onToggle: collect,
+      },
+    });
 
-      headingTl.fromTo(
+    // Cinematic Heading Reveal
+    if (headingRef.current && headingLineRef.current) {
+      tl.fromTo(
         headingRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        { opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" },
+        { 
+          opacity: 1, 
+          y: 0, 
+          clipPath: "inset(0% 0 0 0)", 
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
+          ease: "power2.out" 
+        }
       );
 
-      headingTl.fromTo(
+      tl.fromTo(
         headingLineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.6, ease: "power2.inOut" },
-        "-=0.3",
+        { scaleX: 0, opacity: 0 },
+        { 
+          scaleX: 1, 
+          opacity: 1, 
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
+        },
+        "-=0.4"
       );
     }
 
     // Subtitle animation
     const subtitle = sectionRef.current?.querySelector(".about-subtitle");
     if (subtitle) {
-      gsap.fromTo(
+      tl.fromTo(
         subtitle,
         { opacity: 0, y: 20 },
         {
@@ -73,14 +86,8 @@ const About = () => {
           y: 0,
           duration: 0.6,
           ease: "none",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top 60%",
-            end: "top 30%",
-            scrub: 1,
-            onToggle: collect,
-          },
         },
+        "-=0.3"
       );
     }
 
@@ -89,18 +96,18 @@ const About = () => {
       const paragraphs = bioRef.current.querySelectorAll("p");
       gsap.fromTo(
         paragraphs,
-        { opacity: 0, y: 40, clipPath: "inset(0 0 100% 0)" },
+        { opacity: 0, y: 30, clipPath: "inset(0 0 100% 0)" },
         {
           opacity: 1,
           y: 0,
           clipPath: "inset(0 0 0% 0)",
           duration: 1,
-          stagger: 0.5,
+          stagger: 0.3,
           ease: "none",
           scrollTrigger: {
             trigger: bioRef.current,
-            start: "top 75%",
-            end: "bottom 40%",
+            start: "top 85%",
+            end: "bottom 30%",
             scrub: 1,
             onToggle: collect,
           },
@@ -112,16 +119,17 @@ const About = () => {
     if (eduHeaderRef.current) {
       gsap.fromTo(
         eduHeaderRef.current,
-        { opacity: 0, x: 60 },
+        { opacity: 0, x: 40, clipPath: "inset(0 100% 0 0)" },
         {
           opacity: 1,
           x: 0,
+          clipPath: "inset(0 0% 0 0)",
           duration: 1,
           ease: "none",
           scrollTrigger: {
             trigger: eduHeaderRef.current,
-            start: "top 80%",
-            end: "top 50%",
+            start: "top 85%",
+            end: "top 40%",
             scrub: 1,
             onToggle: collect,
           },
@@ -134,18 +142,19 @@ const About = () => {
       const cards = eduCardsRef.current.children;
       gsap.fromTo(
         cards,
-        { opacity: 0, x: 80, rotateY: -10 },
+        { opacity: 0, y: 40, scale: 0.9, rotateX: -15 },
         {
           opacity: 1,
-          x: 0,
-          rotateY: 0,
+          y: 0,
+          scale: 1,
+          rotateX: 0,
           duration: 1,
-          stagger: 0.5,
+          stagger: 0.4,
           ease: "none",
           scrollTrigger: {
             trigger: eduCardsRef.current,
-            start: "top 80%",
-            end: "bottom 60%",
+            start: "top 90%",
+            end: "bottom 50%",
             scrub: 1,
             onToggle: collect,
           },
@@ -154,7 +163,6 @@ const About = () => {
     }
 
     return () => {
-      // Kill only this section's own triggers
       triggers.forEach((st) => st.kill());
     };
   }, []);
