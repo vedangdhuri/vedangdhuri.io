@@ -8,7 +8,8 @@ import { getDeviceTier } from "@/utils/useDeviceTier";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Code2, Paintbrush, Database, Layout, Cpu, Cloud } from "lucide-react";
-import { CometCard } from "@/components/ui/comet-card";
+// CometCard removed per design update
+// import { CometCard } from "@/components/ui/comet-card";
 import {
   FaReact,
   FaNodeJs,
@@ -148,8 +149,7 @@ const SkillCard = ({
     >
       <Card className="group relative overflow-hidden bg-indigo-950/20 backdrop-blur-sm border-white/10 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 z-100 hover:border-blue-500/30 h-full">
         <CardContent className="p-6 relative z-10 cursor-target h-full">
-          <CometCard>
-            <div className="flex flex-col h-full">
+          <div className="flex flex-col h-full">
               <div className="flex items-center gap-4 mb-6">
                 <div
                   className={`p-3 rounded-xl bg-white/5 ${color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
@@ -177,8 +177,7 @@ const SkillCard = ({
                   </Badge>
                 ))}
               </div>
-            </div>
-          </CometCard>
+          </div>
         </CardContent>
       </Card>
     </div>
