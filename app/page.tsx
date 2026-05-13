@@ -16,6 +16,7 @@ gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [isStarted, setIsStarted] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -23,18 +24,16 @@ export default function Home() {
     const hasVisited = sessionStorage.getItem("visited");
 
     if (hasVisited) {
-      const immediateTimer = setTimeout(() => setLoading(false), 0);
-      return () => clearTimeout(immediateTimer);
-    } else {
-      // Simulate loading time
-      const timer = setTimeout(() => {
-        setLoading(false);
-        sessionStorage.setItem("visited", "true");
-      }, 2000);
-
-      return () => clearTimeout(timer);
+      setLoading(false);
+      setIsStarted(true);
     }
   }, []);
+
+  const handleLoaderFinished = () => {
+    setLoading(false);
+    setIsStarted(true);
+    sessionStorage.setItem("visited", "true");
+  };
 
   // Initialize smooth scrolling with Lenis (skip on prefers-reduced-motion)
   useEffect(() => {
@@ -67,17 +66,13 @@ export default function Home() {
 
   return (
     <>
-      {loading && <Loader />}
+      {loading && <Loader onFinished={handleLoaderFinished} />}
       <div
         ref={containerRef}
-        className={`transition-opacity duration-1000 w-full overflow-hidden ${loading ? "opacity-0" : "opacity-100"}`}
+        className={`w-full overflow-hidden ${!isStarted ? "opacity-0" : "opacity-100"}`}
       >
-        {/*
-          We remove large margins/paddings here and handle spacing within components
-          to allow for continuous storytelling transitions.
-        */}
         <div id="home" className="relative z-10">
-          <Hero />
+          <Hero isStarted={isStarted} />
         </div>
         <div id="about" className="relative z-20">
           <About />
