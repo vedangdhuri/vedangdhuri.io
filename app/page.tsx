@@ -10,6 +10,7 @@ import ProjectsPreview from "@/components/pages/Project/ProjectsPreview";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { getDeviceTier } from "@/utils/useDeviceTier";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -35,8 +36,12 @@ export default function Home() {
     }
   }, []);
 
-  // Initialize smooth scrolling with Lenis
+  // Initialize smooth scrolling with Lenis (skip on prefers-reduced-motion)
   useEffect(() => {
+    const tier = getDeviceTier();
+    // Tier 2 = prefers-reduced-motion: skip Lenis entirely
+    if (tier === 2) return;
+
     const lenis = new Lenis({
       duration: 1.2,
       easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
@@ -51,7 +56,8 @@ export default function Home() {
     };
 
     gsap.ticker.add(raf);
-    gsap.ticker.lagSmoothing(0);
+    // 500ms lag smoothing prevents burning CPU when tab is hidden
+    gsap.ticker.lagSmoothing(500);
 
     return () => {
       gsap.ticker.remove(raf);
