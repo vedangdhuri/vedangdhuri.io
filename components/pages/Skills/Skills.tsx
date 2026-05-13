@@ -43,7 +43,7 @@ import { MdAutoAwesomeMotion } from "react-icons/md";
 import { RiAlibabaCloudLine } from "react-icons/ri";
 import { LucideIcon } from "lucide-react";
 
-import { GSAP_CONSTANTS } from "@/utils/gsap-constants";
+gsap.registerPlugin(ScrollTrigger);
 
 interface Skill {
   name: string;
@@ -56,6 +56,13 @@ interface SkillCardProps {
   skills: Skill[];
   color: string;
   index: number;
+}
+
+interface SkillCategory {
+  icon: LucideIcon;
+  title: string;
+  color: string;
+  skills: Skill[];
 }
 
 const SkillCard = ({
@@ -72,59 +79,61 @@ const SkillCard = ({
     const card = cardRef.current;
     if (!card) return;
     const tier = getDeviceTier();
-    
-    // Card entrance: Cinematic wipe + scale
+    const ownTriggers: ScrollTrigger[] = [];
+
+    // Card entrance
     gsap.fromTo(
       card,
-      { 
-        opacity: 0, 
-        y: 40, 
-        scale: 0.95, 
-        clipPath: "inset(100% 0 0 0)" 
-      },
+      { opacity: 0, y: 60, rotateX: -8 },
       {
         opacity: 1,
         y: 0,
-        scale: 1,
-        clipPath: "inset(0% 0 0 0)",
-        duration: GSAP_CONSTANTS.DURATION_MEDIUM,
-        delay: index * 0.1,
-        ease: GSAP_CONSTANTS.EASE_CINEMATIC,
+        rotateX: 0,
+        duration: 1,
+        delay: index * 0.12,
+        ease: "none",
         scrollTrigger: {
           trigger: card,
-          start: "top 90%",
+          start: "top 85%",
           end: "top 40%",
           scrub: tier >= 1 ? false : 1,
           once: tier >= 1,
+          onToggle: (self) => {
+            if (tier >= 1) ownTriggers.push(self);
+          },
         },
       },
     );
 
-    // Badge staggered reveal
+    // Badge pop-in
     if (badgesRef.current) {
       const badges = badgesRef.current.children;
       gsap.fromTo(
         badges,
-        { opacity: 0, scale: 0.8, y: 10 },
+        { opacity: 0, scale: 0.5, y: 15 },
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: GSAP_CONSTANTS.DURATION_MEDIUM,
-          stagger: GSAP_CONSTANTS.STAGGER_FAST,
-          ease: "back.out(1.5)",
+          duration: 1,
+          stagger: 0.2,
+          ease: "none",
           scrollTrigger: {
             trigger: card,
-            start: "top 75%",
+            start: "top 70%",
             end: "bottom 80%",
             scrub: tier >= 1 ? false : 1,
             once: tier >= 1,
+            onToggle: (self) => {
+              if (tier >= 1) ownTriggers.push(self);
+            },
           },
         },
       );
     }
 
     return () => {
+      // Kill only triggers created by THIS card, not global ones
       ScrollTrigger.getAll()
         .filter((st) => st.trigger === card)
         .forEach((st) => st.kill());
@@ -176,13 +185,6 @@ const SkillCard = ({
   );
 };
 
-interface SkillCategory {
-  icon: LucideIcon;
-  title: string;
-  color: string;
-  skills: Skill[];
-}
-
 const SkillsSection = () => {
   const headingRef = useRef<HTMLDivElement>(null);
   const headingLineRef = useRef<HTMLDivElement>(null);
@@ -193,39 +195,31 @@ const SkillsSection = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: headingRef.current,
-          start: "top 90%",
+          start: "top 80%",
           end: "top 30%",
           scrub: 1,
-          onToggle: (self) => { st = self; },
+          onToggle: (self) => {
+            st = self;
+          },
         },
       });
 
       tl.fromTo(
         headingRef.current,
-        { opacity: 0, y: 30, clipPath: "inset(100% 0 0 0)" },
-        { 
-          opacity: 1, 
-          y: 0, 
-          clipPath: "inset(0% 0 0 0)",
-          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
-          ease: "power2.out" 
-        },
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 1, ease: "none" },
       );
 
       tl.fromTo(
         headingLineRef.current,
-        { scaleX: 0, opacity: 0 },
-        { 
-          scaleX: 1, 
-          opacity: 1, 
-          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
-          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
-        },
-        "-=0.4",
+        { scaleX: 0 },
+        { scaleX: 1, duration: 1, ease: "none" },
+        "-=0.5",
       );
     }
 
     return () => {
+      // Only kill the heading's own trigger, not all global ScrollTriggers
       st?.kill();
     };
   }, []);
