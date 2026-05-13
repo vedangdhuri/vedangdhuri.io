@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React from "react";
+import { getDeviceTier } from "@/utils/useDeviceTier";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Code2, Paintbrush, Database, Layout, Cpu, Cloud } from "lucide-react";
@@ -77,8 +78,10 @@ const SkillCard = ({
   useEffect(() => {
     const card = cardRef.current;
     if (!card) return;
+    const tier = getDeviceTier();
+    const ownTriggers: ScrollTrigger[] = [];
 
-    // Card entrance with GSAP
+    // Card entrance
     gsap.fromTo(
       card,
       { opacity: 0, y: 60, rotateX: -8 },
@@ -93,12 +96,14 @@ const SkillCard = ({
           trigger: card,
           start: "top 85%",
           end: "top 40%",
-          scrub: 1,
+          scrub: tier >= 1 ? false : 1,
+          once: tier >= 1,
+          onToggle: (self) => { if (tier >= 1) ownTriggers.push(self); },
         },
       },
     );
 
-    // Badge pop-in when card enters viewport
+    // Badge pop-in
     if (badgesRef.current) {
       const badges = badgesRef.current.children;
       gsap.fromTo(
@@ -115,16 +120,19 @@ const SkillCard = ({
             trigger: card,
             start: "top 70%",
             end: "bottom 80%",
-            scrub: 1,
+            scrub: tier >= 1 ? false : 1,
+            once: tier >= 1,
+            onToggle: (self) => { if (tier >= 1) ownTriggers.push(self); },
           },
         },
       );
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => {
-        if (st.trigger === card) st.kill();
-      });
+      // Kill only triggers created by THIS card, not global ones
+      ScrollTrigger.getAll()
+        .filter((st) => st.trigger === card)
+        .forEach((st) => st.kill());
     };
   }, [index]);
 
@@ -178,6 +186,7 @@ const SkillsSection = () => {
   const headingLineRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    let st: ScrollTrigger | undefined;
     if (headingRef.current && headingLineRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -185,6 +194,7 @@ const SkillsSection = () => {
           start: "top 80%",
           end: "top 30%",
           scrub: 1,
+          onToggle: (self) => { st = self; },
         },
       });
 
@@ -203,7 +213,8 @@ const SkillsSection = () => {
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      // Only kill the heading's own trigger, not all global ScrollTriggers
+      st?.kill();
     };
   }, []);
 
