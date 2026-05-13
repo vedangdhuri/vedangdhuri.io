@@ -36,12 +36,12 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       onMouseMove={handleMouseMove}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className="group relative h-full flex flex-col bg-indigo-950/20 backdrop-blur-sm rounded-2xl border border-white/10 overflow-hidden transition-all duration-500 hover:border-blue-400 hover:shadow-2xl hover:shadow-blue-500/10"
+      className="group relative h-full flex flex-col bg-indigo-950/20 backdrop-blur-md rounded-2xl border border-white/10 overflow-hidden transition-all duration-700 hover:border-blue-400/50 hover:shadow-[0_0_40px_rgba(59,130,246,0.15)]"
       style={{
-        transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(${isHovered ? -4 : 0}px)`,
+        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(${isHovered ? -8 : 0}px)`,
         transition: isHovered
-          ? "transform 0.1s ease-out"
-          : "transform 0.5s ease-out",
+          ? "transform 0.1s ease-out, border-color 0.3s ease, box-shadow 0.3s ease"
+          : "transform 0.8s cubic-bezier(0.2, 0, 0.2, 1), border-color 0.5s ease, box-shadow 0.5s ease",
       }}
     >
       {/* Spotlight effect */}
