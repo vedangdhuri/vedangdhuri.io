@@ -7,6 +7,8 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useForm } from "react-hook-form";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
 import IconCloudDemo from "@/components/ui/globe";
+import { GSAP_CONSTANTS } from "@/utils/gsap-constants";
+import { useDeviceTier } from "@/utils/useDeviceTier";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -33,98 +35,121 @@ const Contact = () => {
   const headingLineRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
+  const tier = useDeviceTier();
 
   useEffect(() => {
-    // Heading
+    const isLowTier = tier > 0;
+
+    // Cinematic Heading Reveal
     if (headingRef.current && headingLineRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 95%",
-          end: "top 40%",
-          scrub: 1,
+          toggleActions: "play none none reverse",
         },
       });
 
       tl.fromTo(
         headingRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "none" },
+        { 
+          opacity: 0, 
+          y: 40,
+          clipPath: isLowTier ? "none" : "inset(100% 0% 0% 0%)"
+        },
+        { 
+          opacity: 1, 
+          y: 0, 
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
+        }
       );
 
       tl.fromTo(
         headingLineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 1, ease: "none" },
-        "-=0.5",
+        { scaleX: 0, opacity: 0 },
+        { 
+          scaleX: 1, 
+          opacity: 1,
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
+        },
+        "-=0.4"
       );
     }
 
-    // Globe slide in from left
+    // Globe Reveal (Blur + Fade)
     if (globeRef.current) {
       gsap.fromTo(
         globeRef.current,
-        { opacity: 0, x: -80 },
+        { 
+          opacity: 0, 
+          scale: 0.9,
+          filter: isLowTier ? "none" : "blur(20px)"
+        },
         {
           opacity: 1,
-          x: 0,
-          duration: 1,
-          ease: "none",
+          scale: 1,
+          filter: "blur(0px)",
+          duration: GSAP_CONSTANTS.DURATION_SLOW,
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC,
           scrollTrigger: {
             trigger: globeRef.current,
             start: "top 85%",
-            end: "center 60%",
-            scrub: 1,
+            toggleActions: "play none none reverse",
           },
-        },
+        }
       );
     }
 
-    // Form slide in from right with staggered fields
+    // Form Reveal with Staggered Fields
     if (formRef.current) {
       const formEl = formRef.current;
-      gsap.fromTo(
-        formEl,
-        { opacity: 0, x: 80 },
-        {
-          opacity: 1,
-          x: 0,
-          duration: 1,
-          ease: "none",
-          scrollTrigger: {
-            trigger: formEl,
-            start: "top 85%",
-            end: "center 60%",
-            scrub: 1,
-          },
+      const fields = formEl.querySelectorAll(".form-field");
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: formEl,
+          start: "top 80%",
+          toggleActions: "play none none reverse",
         },
+      });
+
+      tl.fromTo(
+        formEl,
+        { 
+          opacity: 0, 
+          y: 30,
+          clipPath: isLowTier ? "none" : "inset(0% 0% 100% 0%)"
+        },
+        { 
+          opacity: 1, 
+          y: 0, 
+          clipPath: "inset(0% 0% 0% 0%)",
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
+        }
       );
 
-      // Stagger individual form fields
-      const fields = formEl.querySelectorAll(".form-field");
-      gsap.fromTo(
+      tl.fromTo(
         fields,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 20 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          stagger: 0.3,
-          ease: "none",
-          scrollTrigger: {
-            trigger: formEl,
-            start: "top 75%",
-            end: "bottom 80%",
-            scrub: 1,
-          },
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM,
+          stagger: GSAP_CONSTANTS.STAGGER_MEDIUM,
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC,
         },
+        "-=0.4"
       );
     }
 
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
-  }, []);
+  }, [tier]);
 
   const onSubmit = async (data: FormData) => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
