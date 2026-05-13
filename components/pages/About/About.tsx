@@ -33,6 +33,9 @@ const About = () => {
   const eduCardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const triggers: ScrollTrigger[] = [];
+    const collect = (st: ScrollTrigger) => triggers.push(st);
+
     // Heading animation with underline draw
     if (headingRef.current && headingLineRef.current) {
       const headingTl = gsap.timeline({
@@ -41,6 +44,7 @@ const About = () => {
           start: "top 70%",
           end: "top 20%",
           scrub: 1,
+          onToggle: collect,
         },
       });
 
@@ -74,6 +78,7 @@ const About = () => {
             start: "top 60%",
             end: "top 30%",
             scrub: 1,
+            onToggle: collect,
           },
         },
       );
@@ -97,6 +102,7 @@ const About = () => {
             start: "top 75%",
             end: "bottom 40%",
             scrub: 1,
+            onToggle: collect,
           },
         },
       );
@@ -117,6 +123,7 @@ const About = () => {
             start: "top 80%",
             end: "top 50%",
             scrub: 1,
+            onToggle: collect,
           },
         },
       );
@@ -140,13 +147,15 @@ const About = () => {
             start: "top 80%",
             end: "bottom 60%",
             scrub: 1,
+            onToggle: collect,
           },
         },
       );
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      // Kill only this section's own triggers
+      triggers.forEach((st) => st.kill());
     };
   }, []);
 
