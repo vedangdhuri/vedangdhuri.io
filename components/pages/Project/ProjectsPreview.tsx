@@ -14,10 +14,11 @@ export default function ProjectsPreview() {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const headingLineRef = useRef<HTMLDivElement>(null);
   const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const containerRef = useRef<HTMLDivElement>(null);
-  const scrollWrapperRef = useRef<HTMLDivElement>(null);
+  const cardsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const triggers: ScrollTrigger[] = [];
+
     // Heading reveal
     if (headingRef.current && headingLineRef.current) {
       const tl = gsap.timeline({
@@ -25,6 +26,7 @@ export default function ProjectsPreview() {
           trigger: headingRef.current,
           start: "top 85%",
           toggleActions: "restart none none reset",
+          onToggle: (self) => triggers.push(self),
         },
       });
 
@@ -57,46 +59,42 @@ export default function ProjectsPreview() {
             trigger: subtitleRef.current,
             start: "top 85%",
             toggleActions: "restart none none reset",
+            onToggle: (self) => triggers.push(self),
           },
         },
       );
     }
 
-    // Horizontal Scroll for Projects
-    if (containerRef.current && scrollWrapperRef.current) {
-      const getScrollAmount = () => {
-        const wrapperWidth = scrollWrapperRef.current!.scrollWidth;
-        const windowWidth = document.documentElement.clientWidth;
-        // Scroll enough to bring the right padding into view, letting the last card center nicely
-        return -(wrapperWidth - windowWidth);
-      };
-
-      const pinTrigger = ScrollTrigger.create({
-        trigger: containerRef.current,
-        pin: true,
-        start: "center center",
-        end: () => `+=${scrollWrapperRef.current!.scrollWidth}`,
-        scrub: 1,
-        animation: gsap.to(scrollWrapperRef.current, {
-          x: getScrollAmount,
-          ease: "none",
-        }),
-        // Re-calculate on resize
-        invalidateOnRefresh: true,
-      });
-
-      return () => {
-        pinTrigger.kill();
-      };
+    // Staggered card entrance (no scroll pinning/horizontal movement)
+    if (cardsRef.current) {
+      const cards = cardsRef.current.children;
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 60, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.15,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: cardsRef.current,
+            start: "top 80%",
+            toggleActions: "restart none none reset",
+            onToggle: (self) => triggers.push(self),
+          },
+        },
+      );
     }
 
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      triggers.forEach((st) => st.kill());
     };
   }, []);
 
   return (
-    <section id="projects" className="py-20 px-6">
+    <section id="projects" className="py-24 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16 space-y-4">
@@ -119,43 +117,49 @@ export default function ProjectsPreview() {
           </p>
         </div>
 
-        {/* Horizontal Projects Carousel */}
-        <div ref={containerRef} className="overflow-hidden w-full py-10 mt-10">
-          <div
-            ref={scrollWrapperRef}
-            className="flex flex-row items-stretch gap-8 w-max pl-6 pr-[10vw] md:pr-[20vw] lg:pr-[30vw]"
-          >
-            {featuredProjects.map((project) => (
-              <div
-                key={project.title}
-                className="w-[85vw] md:w-[60vw] lg:w-[40vw] flex-shrink-0 h-auto"
-              >
-                <ProjectCard project={project} />
-              </div>
-            ))}
-          </div>
+        {/* Featured Projects — Impressive Staggered Grid */}
+        <div
+          ref={cardsRef}
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+        >
+          {featuredProjects.map((project, index) => (
+            <div
+              key={project.title}
+              className={`${
+                index === 0
+                  ? "md:col-span-2 lg:col-span-2"
+                  : ""
+              }`}
+            >
+              <ProjectCard project={project} />
+            </div>
+          ))}
         </div>
 
         {/* View All Button */}
-        <div className="flex justify-center mt-12 mb-8">
+        <div className="flex justify-center mt-16">
           <Link
             href="/projects"
-            className="inline-flex items-center gap-2 px-8 py-4 text-lg font-medium text-neutral-100 bg-neutral-800 border border-neutral-700 rounded-xl hover:bg-neutral-700 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.15)] transition-all duration-300 group cursor-target focus:outline-none"
+            className="group relative inline-flex items-center gap-3 px-8 py-4 text-lg font-medium text-neutral-100 bg-white/[0.03] border border-white/10 rounded-2xl hover:bg-white/[0.06] hover:border-blue-500/30 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500 overflow-hidden cursor-target focus:outline-none"
           >
-            <svg
-              className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
-            View All Missions
+            {/* Shimmer effect */}
+            <span className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-700" />
+            <span className="relative flex items-center gap-2">
+              View All Missions
+              <svg
+                className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </span>
           </Link>
         </div>
       </div>
