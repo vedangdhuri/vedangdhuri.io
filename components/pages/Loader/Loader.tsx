@@ -1,12 +1,9 @@
 "use client";
 
-import { GSAP_CONSTANTS } from "@/utils/gsap-constants";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
 
-interface LoaderProps {
-  onFinished?: () => void;
-}
-
-const Loader = ({ onFinished }: LoaderProps) => {
+const Loader = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
@@ -30,8 +27,8 @@ const Loader = ({ onFinished }: LoaderProps) => {
         opacity: 1,
         y: 0,
         rotateX: 0,
-        duration: GSAP_CONSTANTS.DURATION_MEDIUM,
-        stagger: GSAP_CONSTANTS.STAGGER_FAST,
+        duration: 0.6,
+        stagger: 0.05,
         ease: "back.out(1.7)",
       },
     );
@@ -40,42 +37,30 @@ const Loader = ({ onFinished }: LoaderProps) => {
     tl.fromTo(
       lineEl,
       { scaleX: 0 },
-      { 
-        scaleX: 1, 
-        duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
-        ease: GSAP_CONSTANTS.EASE_CINEMATIC 
-      },
-      "-=0.4",
+      { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
+      "-=0.2",
     );
 
     // Phase 3: Subtitle fades in
     tl.fromTo(
       subtitleEl,
       { opacity: 0, y: 10 },
-      { 
-        opacity: 1, 
-        y: 0, 
-        duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
-        ease: GSAP_CONSTANTS.EASE_CINEMATIC 
-      },
-      "-=0.3",
+      { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
+      "-=0.2",
     );
 
     // Phase 4: Hold, then wipe entire loader up
     tl.to(container, {
       yPercent: -100,
-      duration: GSAP_CONSTANTS.DURATION_SLOW,
-      ease: GSAP_CONSTANTS.EASE_INOUT_CINEMATIC,
-      delay: 0.5,
-      onComplete: () => {
-        if (onFinished) onFinished();
-      }
+      duration: 0.8,
+      ease: "power4.inOut",
+      delay: 0.3,
     });
 
     return () => {
       tl.kill();
     };
-  }, [onFinished]);
+  }, []);
 
   const name = "VEDANG DHURI";
 
