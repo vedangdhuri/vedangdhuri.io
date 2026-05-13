@@ -43,3 +43,8 @@ next-env.d.ts
 index.js
 test.tree
 data.json
+.agents/*
+graphify-out/*
+graphify-out
+GEMINI.md
+.gemini/*
