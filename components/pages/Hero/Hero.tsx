@@ -13,7 +13,13 @@ import { useMagneticEffect } from "@/utils/useMagneticEffect";
 import SpaceProfileCard from "@/components/ui/SpaceProfileCard/SpaceProfileCard";
 import { useDeviceTier } from "@/utils/useDeviceTier";
 
-const Hero = () => {
+import { GSAP_CONSTANTS } from "@/utils/gsap-constants";
+
+interface HeroProps {
+  isStarted?: boolean;
+}
+
+const Hero = ({ isStarted = false }: HeroProps) => {
   const words = [
     "Computer Engineer",
     "UI/UX Designer",
@@ -30,6 +36,7 @@ const Hero = () => {
   const contentWrapperRef = useRef<HTMLDivElement>(null);
   const profileRef = useRef<HTMLDivElement>(null);
   const orbitRef = useRef<HTMLDivElement>(null);
+  const sweepRef = useRef<HTMLDivElement>(null);
 
   const magneticBtn1 = useMagneticEffect<HTMLAnchorElement>({ strength: 0.3 });
   const magneticBtn2 = useMagneticEffect<HTMLAnchorElement>({ strength: 0.3 });
@@ -46,10 +53,33 @@ const Hero = () => {
     }>
   >([]);
 
+  // Parallax Effect
   useEffect(() => {
+    if (tier === 2 || !isStarted) return;
+
+    const xSetter = gsap.quickSetter(contentWrapperRef.current, "x", "px");
+    const ySetter = gsap.quickSetter(contentWrapperRef.current, "y", "px");
+    const rSetter = gsap.quickSetter(contentWrapperRef.current, "rotateY", "deg");
+
+    const handleMouseMove = (e: MouseEvent) => {
+      const { clientX, clientY } = e;
+      const xPos = (clientX / window.innerWidth - 0.5) * 30;
+      const yPos = (clientY / window.innerHeight - 0.5) * 30;
+      
+      xSetter(xPos);
+      ySetter(yPos);
+      rSetter(xPos * 0.1);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [tier, isStarted]);
+
+  useEffect(() => {
+    if (!isStarted) return;
+
     // Skip dust particles on low-end / mobile devices
-    if (tier >= 1) return;
-    const timeoutId = setTimeout(() => {
+    if (tier < 1) {
       setDustParticles(
         [...Array(20)].map(() => ({
           left: Math.random() * 100,
@@ -59,16 +89,31 @@ const Hero = () => {
           xStart: Math.random() * 20 - 10,
         })),
       );
-    }, 0);
+    }
 
-    const tl = gsap.timeline({ delay: 2.2 });
+    const tl = gsap.timeline();
 
-    // Subtitle entrance
+    // Phase 0: Atmospheric Sweep
+    if (sweepRef.current) {
+      tl.fromTo(sweepRef.current, 
+        { xPercent: -100, skewX: -20 },
+        { xPercent: 200, duration: 1.5, ease: "power2.inOut" }
+      );
+    }
+
+    // Phase 1: Subtitle entrance
     if (subtitleRef.current) {
       tl.fromTo(
         subtitleRef.current,
-        { opacity: 0, x: -60 },
-        { opacity: 1, x: 0, duration: 0.8, ease: "power3.out" },
+        { opacity: 0, x: -60, filter: "blur(10px)" },
+        { 
+          opacity: 1, 
+          x: 0, 
+          filter: "blur(0px)",
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
+        },
+        "-=1.0"
       );
     }
 
@@ -77,16 +122,17 @@ const Hero = () => {
       const chars = headingRef.current.querySelectorAll(".hero-char");
       tl.fromTo(
         chars,
-        { opacity: 0, y: 60, rotateX: -90 },
+        { opacity: 0, y: 60, rotateX: -90, filter: "blur(10px)" },
         {
           opacity: 1,
           y: 0,
           rotateX: 0,
-          duration: 0.6,
-          stagger: 0.04,
-          ease: "back.out(1.7)",
+          filter: "blur(0px)",
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM,
+          stagger: GSAP_CONSTANTS.STAGGER_FAST,
+          ease: "back.out(1.2)",
         },
-        "-=0.3",
+        "-=0.6",
       );
     }
 
@@ -99,10 +145,10 @@ const Hero = () => {
           opacity: 1,
           y: 0,
           filter: "blur(0px)",
-          duration: 0.6,
-          ease: "power3.out",
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM,
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC,
         },
-        "-=0.2",
+        "-=0.4",
       );
     }
 
@@ -111,8 +157,14 @@ const Hero = () => {
       tl.fromTo(
         ctaRef.current.children,
         { opacity: 0, y: 40 },
-        { opacity: 1, y: 0, duration: 0.6, stagger: 0.15, ease: "power3.out" },
-        "-=0.3",
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
+          stagger: GSAP_CONSTANTS.STAGGER_MEDIUM, 
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
+        },
+        "-=0.4",
       );
     }
 
@@ -120,15 +172,16 @@ const Hero = () => {
     if (profileRef.current) {
       tl.fromTo(
         profileRef.current,
-        { opacity: 0, scale: 0.85, rotateY: -15 },
+        { opacity: 0, scale: 0.8, rotateY: -20, filter: "blur(15px)" },
         {
           opacity: 1,
           scale: 1,
           rotateY: 0,
-          duration: 1,
-          ease: "power3.out",
+          filter: "blur(0px)",
+          duration: GSAP_CONSTANTS.DURATION_SLOW,
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC,
         },
-        "-=0.8",
+        "-=1.2",
       );
     }
 
@@ -137,14 +190,20 @@ const Hero = () => {
       tl.fromTo(
         scrollRef.current,
         { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-        "-=0.3",
+        { 
+          opacity: 1, 
+          y: 0, 
+          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
+          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
+        },
+        "-=0.5",
       );
     }
 
     // ScrollTrigger storytelling effect (Fade out and pin)
+    let st: ScrollTrigger | null = null;
     if (heroSectionRef.current && contentWrapperRef.current) {
-      const st = ScrollTrigger.create({
+      st = ScrollTrigger.create({
         trigger: heroSectionRef.current,
         start: "top top",
         end: "+=100%",
@@ -154,22 +213,17 @@ const Hero = () => {
           opacity: 0,
           scale: 0.8,
           y: -100,
+          filter: "blur(20px)",
           ease: "none",
         }),
       });
-
-      return () => {
-        tl.kill();
-        st.kill();
-        clearTimeout(timeoutId);
-      };
     }
 
     return () => {
       tl.kill();
-      clearTimeout(timeoutId);
+      if (st) st.kill();
     };
-  }, []);
+  }, [isStarted, tier]);
 
   return (
     <section
@@ -182,6 +236,12 @@ const Hero = () => {
         ref={contentWrapperRef}
         className="absolute inset-0 flex items-center justify-center"
       >
+        {/* Atmospheric Reveal Sweep */}
+        <div 
+          ref={sweepRef}
+          className="absolute inset-0 z-50 bg-white/10 pointer-events-none translate-x-[-100%]"
+        />
+
         {/* Nebula / Aurora background glow — heavy blur omitted on low-end */}
         {tier === 0 && (
           <div className="absolute inset-0 pointer-events-none">
