@@ -1,7 +1,11 @@
 "use client";
 
-import { GSAP_CONSTANTS } from "@/utils/gsap-constants";
-import { useDeviceTier } from "@/utils/useDeviceTier";
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import Link from "next/link";
+import ProjectCard from "./ProjectCard";
+import { projects } from "@/data/projects";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -12,103 +16,60 @@ export default function ProjectsPreview() {
   const subtitleRef = useRef<HTMLParagraphElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const scrollWrapperRef = useRef<HTMLDivElement>(null);
-  const tier = useDeviceTier();
 
   useEffect(() => {
-    const isLowTier = tier > 0;
-
-    // Cinematic Heading Reveal
+    // Heading reveal
     if (headingRef.current && headingLineRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 85%",
-          toggleActions: "play none none reverse",
+          toggleActions: "restart none none reset",
         },
       });
 
       tl.fromTo(
         headingRef.current,
-        { 
-          opacity: 0, 
-          y: 40,
-          clipPath: isLowTier ? "none" : "inset(100% 0% 0% 0%)"
-        },
-        { 
-          opacity: 1, 
-          y: 0, 
-          clipPath: "inset(0% 0% 0% 0%)",
-          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
-          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
-        }
+        { opacity: 0, y: 50 },
+        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
       );
 
       tl.fromTo(
         headingLineRef.current,
-        { scaleX: 0, opacity: 0 },
-        { 
-          scaleX: 1, 
-          opacity: 1,
-          duration: GSAP_CONSTANTS.DURATION_MEDIUM, 
-          ease: GSAP_CONSTANTS.EASE_CINEMATIC 
-        },
-        "-=0.4"
+        { scaleX: 0 },
+        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
+        "-=0.3",
       );
     }
 
-    // Subtitle Reveal
+    // Subtitle
     if (subtitleRef.current) {
       gsap.fromTo(
         subtitleRef.current,
-        { opacity: 0, y: 20, filter: isLowTier ? "none" : "blur(10px)" },
+        { opacity: 0, y: 20 },
         {
           opacity: 1,
           y: 0,
-          filter: "blur(0px)",
-          duration: GSAP_CONSTANTS.DURATION_MEDIUM,
-          ease: GSAP_CONSTANTS.EASE_CINEMATIC,
+          duration: 0.6,
+          delay: 0.2,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: subtitleRef.current,
             start: "top 85%",
-            toggleActions: "play none none reverse",
+            toggleActions: "restart none none reset",
           },
-        }
+        },
       );
     }
 
-    // Horizontal Scroll for Projects with Entry Animation
+    // Horizontal Scroll for Projects
     if (containerRef.current && scrollWrapperRef.current) {
       const getScrollAmount = () => {
         const wrapperWidth = scrollWrapperRef.current!.scrollWidth;
         const windowWidth = document.documentElement.clientWidth;
+        // Scroll enough to bring the right padding into view, letting the last card center nicely
         return -(wrapperWidth - windowWidth);
       };
-
-      // Entrance animation for cards
-      const cards = scrollWrapperRef.current.querySelectorAll(".project-card-wrapper");
-      gsap.fromTo(
-        cards,
-        { 
-          opacity: 0, 
-          x: 50, 
-          scale: 0.95,
-          clipPath: isLowTier ? "none" : "inset(0% 100% 0% 0%)"
-        },
-        {
-          opacity: 1,
-          x: 0,
-          scale: 1,
-          clipPath: "inset(0% 0% 0% 0%)",
-          duration: GSAP_CONSTANTS.DURATION_MEDIUM,
-          stagger: GSAP_CONSTANTS.STAGGER_MEDIUM,
-          ease: GSAP_CONSTANTS.EASE_CINEMATIC,
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 75%",
-            toggleActions: "play none none reverse",
-          }
-        }
-      );
 
       const pinTrigger = ScrollTrigger.create({
         trigger: containerRef.current,
@@ -120,6 +81,7 @@ export default function ProjectsPreview() {
           x: getScrollAmount,
           ease: "none",
         }),
+        // Re-calculate on resize
         invalidateOnRefresh: true,
       });
 
@@ -131,7 +93,7 @@ export default function ProjectsPreview() {
     return () => {
       ScrollTrigger.getAll().forEach((st) => st.kill());
     };
-  }, [tier]);
+  }, []);
 
   return (
     <section id="projects" className="py-20 px-6">
@@ -166,7 +128,7 @@ export default function ProjectsPreview() {
             {featuredProjects.map((project) => (
               <div
                 key={project.title}
-                className="project-card-wrapper w-[85vw] md:w-[60vw] lg:w-[40vw] flex-shrink-0 h-auto"
+                className="w-[85vw] md:w-[60vw] lg:w-[40vw] flex-shrink-0 h-auto"
               >
                 <ProjectCard project={project} />
               </div>
