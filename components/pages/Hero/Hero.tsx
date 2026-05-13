@@ -11,6 +11,7 @@ import avtarUrl from "../../../public/img/main_image.png";
 import { FlipWords } from "../../ui/FlipWords";
 import { useMagneticEffect } from "@/utils/useMagneticEffect";
 import SpaceProfileCard from "@/components/ui/SpaceProfileCard/SpaceProfileCard";
+import { useDeviceTier } from "@/utils/useDeviceTier";
 
 const Hero = () => {
   const words = [
@@ -33,6 +34,8 @@ const Hero = () => {
   const magneticBtn1 = useMagneticEffect<HTMLAnchorElement>({ strength: 0.3 });
   const magneticBtn2 = useMagneticEffect<HTMLAnchorElement>({ strength: 0.3 });
 
+  const tier = useDeviceTier();
+
   const [dustParticles, setDustParticles] = useState<
     Array<{
       left: number;
@@ -44,6 +47,8 @@ const Hero = () => {
   >([]);
 
   useEffect(() => {
+    // Skip dust particles on low-end / mobile devices
+    if (tier >= 1) return;
     const timeoutId = setTimeout(() => {
       setDustParticles(
         [...Array(20)].map(() => ({
@@ -177,12 +182,13 @@ const Hero = () => {
         ref={contentWrapperRef}
         className="absolute inset-0 flex items-center justify-center"
       >
-        {/* Nebula / Aurora background glow */}
-        <div className="absolute inset-0 pointer-events-none">
-          <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-blue-600/8 blur-[120px] animate-nebula-drift" />
-          <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-indigo-500/6 blur-[100px] animate-nebula-drift-reverse" />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[600px] rounded-full bg-purple-600/4 blur-[150px]" />
-        </div>
+        {/* Nebula / Aurora background glow — heavy blur omitted on low-end */}
+        {tier === 0 && (
+          <div className="absolute inset-0 pointer-events-none">
+            <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px] rounded-full bg-blue-600/8 blur-[80px] animate-nebula-drift" />
+            <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full bg-indigo-500/6 blur-[60px] animate-nebula-drift-reverse" />
+          </div>
+        )}
 
         {/* Cosmic dust particles */}
         <div className="absolute inset-0 pointer-events-none overflow-hidden">
@@ -297,15 +303,12 @@ const Hero = () => {
               ref={orbitRef}
               className="absolute inset-0 flex items-center justify-center pointer-events-none"
             >
-              {/* Inner orbit */}
+              {/* Static rings — always visible */}
               <div className="absolute w-[420px] h-[420px] rounded-full border border-blue-500/10 animate-orbit-spin" />
-              {/* Middle orbit */}
               <div className="absolute w-[520px] h-[520px] rounded-full border border-indigo-400/8 animate-orbit-spin-reverse" />
-              {/* Outer orbit 1*/}
-              <div className="absolute w-[620px] h-[620px] rounded-full border border-purple-400/5 animate-orbit-spin-slow" />
-              {/* Outer orbit 2*/}
-              <div className="absolute w-[720px] h-[720px] rounded-full border border-purple-400/5 animate-orbit-spin-slow" />
 
+              {/* Orbiting tech icons — only animate on full tier */}
+              {tier === 0 && (<>
               {/* Orbiting Tech: React */}
               <motion.div
                 animate={{ rotate: 360 }}
@@ -397,6 +400,7 @@ const Hero = () => {
                   </motion.div>
                 </div>
               </motion.div>
+              </>)}
             </div>
 
             {/* Profile glow ring */}
@@ -404,7 +408,8 @@ const Hero = () => {
 
             <SpaceProfileCard avatarUrl={avtarUrl.src} />
 
-            {/* Floating space elements */}
+            {/* Floating space elements — skip on low-end */}
+            {tier === 0 && <>
             <motion.div
               animate={{
                 y: [0, -20, 0],
@@ -487,6 +492,7 @@ const Hero = () => {
             >
               <span className="text-lg">⭐</span>
             </motion.div>
+            </>}
           </div>
         </div>
 
