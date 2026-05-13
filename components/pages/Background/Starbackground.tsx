@@ -1,13 +1,21 @@
 "use client";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
+import { getDeviceTier } from "@/utils/useDeviceTier";
 
 export const StarBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const tier = getDeviceTier();
+
+    // Tier 2 = prefers-reduced-motion → skip all animations
+    if (tier === 2) return;
+
     const isMobile = window.innerWidth < 768;
-    const starMultiplier = isMobile ? 0.6 : 1; // Decrease by 40% on mobile
+
+    // Star counts per tier
+    const starMultiplier = tier === 1 ? 0.25 : isMobile ? 0.6 : 1;
 
     // Create 3 layers of stars for parallax depth
     const layers = [
@@ -17,22 +25,25 @@ export const StarBackground = () => {
         size: "1px",
         opacity: 0.4,
         class: "stars-bg",
-      }, // Far background (slowest)
+      },
       {
         count: Math.floor(50 * starMultiplier),
         speed: 120,
         size: "2px",
         opacity: 0.7,
         class: "stars-md",
-      }, // Mid-ground
+      },
       {
         count: Math.floor(25 * starMultiplier),
         speed: 60,
         size: "3px",
         opacity: 1,
         class: "stars-fg",
-      }, // Foreground (fastest)
+      },
     ];
+
+    // Collect all star elements so we can batch-animate them
+    const allStars: HTMLElement[] = [];
 
     layers.forEach((layer) => {
       const layerDiv = document.createElement("div");
@@ -42,7 +53,7 @@ export const StarBackground = () => {
       for (let i = 0; i < layer.count; i++) {
         const star = document.createElement("div");
         const x = Math.random() * 100;
-        const initialY = Math.random() * 100; // Start at random Y
+        const initialY = Math.random() * 100;
 
         star.className = "absolute rounded-full bg-white";
         star.style.left = `${x}%`;
@@ -51,19 +62,12 @@ export const StarBackground = () => {
         star.style.height = layer.size;
         star.style.opacity = `${Math.random() * layer.opacity}`;
         star.style.boxShadow = `0 0 ${parseInt(layer.size) * 2}px rgba(255, 255, 255, ${layer.opacity})`;
+        // Only promote elements that will actually animate
         star.style.willChange = "transform, opacity";
 
-        // Random twinkle animation
-        gsap.to(star, {
-          opacity: 0.2,
-          duration: Math.random() * 2 + 1,
-          repeat: -1,
-          yoyo: true,
-          ease: "sine.inOut",
-          delay: Math.random() * 5,
-        });
+        allStars.push(star);
 
-        // Continuous downward movement logic using GPU-accelerated transforms
+        // Continuous downward movement (GPU-accelerated transform)
         const remainingDistance = 100 - initialY;
         const duration = (remainingDistance / 100) * layer.speed;
 
@@ -72,7 +76,7 @@ export const StarBackground = () => {
           duration: duration,
           ease: "none",
           onComplete: () => {
-            gsap.set(star, { top: "-5%", y: 0 }); // reset to top, clear transform
+            gsap.set(star, { top: "-5%", y: 0 });
             gsap.to(star, {
               y: "105vh",
               duration: layer.speed,
@@ -86,7 +90,29 @@ export const StarBackground = () => {
       }
     });
 
-    // Meteor generator using pure DOM to avoid React re-renders
+    // Batch all twinkle animations into a single timeline with stagger
+    // This is far cheaper than N individual gsap.to() calls
+    if (allStars.length > 0) {
+      gsap.to(allStars, {
+        opacity: 0.15,
+        duration: 2,
+        repeat: -1,
+        yoyo: true,
+        ease: "sine.inOut",
+        stagger: {
+          each: 0.08,
+          from: "random",
+        },
+      });
+    }
+
+    // Meteors — skip entirely on Tier 1 (mobile/low-end)
+    if (tier === 1) {
+      return () => {
+        if (containerRef.current) containerRef.current.innerHTML = "";
+      };
+    }
+
     const meteorInterval = setInterval(() => {
       if (!containerRef.current) return;
       const count = Math.random() > 0.7 ? 2 : 1;
@@ -107,13 +133,12 @@ export const StarBackground = () => {
 
           containerRef.current?.appendChild(meteorWrapper);
 
-          // Clean up the node
           setTimeout(() => {
             meteorWrapper.remove();
           }, 5500);
         }, i * 400);
       }
-    }, 1500);
+    }, 3000); // Increased from 1500ms to 3000ms
 
     return () => {
       clearInterval(meteorInterval);
@@ -131,12 +156,8 @@ export const StarBackground = () => {
 
       <div className="absolute inset-0 bg-gradient-to-b from-black/0 via-black/0 to-black/80 z-10" />
 
-      {/* Central Galaxy Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-blue-900/5 blur-[120px] opacity-30 z-0 animate-pulse-slow" />
-      <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[40vw] h-[40vw] rounded-full bg-indigo-900/5 blur-[100px] opacity-20 z-0 animate-pulse-slow"
-        style={{ animationDelay: "2s" }}
-      />
+      {/* Central Galaxy Glow — lighter blur, no animation on this static element */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[60vw] h-[60vw] rounded-full bg-blue-900/5 blur-[80px] opacity-20 z-0" />
 
       <style jsx global>{`
         @keyframes meteor {
