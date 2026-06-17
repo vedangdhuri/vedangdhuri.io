@@ -85,23 +85,19 @@ const SkillCard = ({
     // Card entrance
     gsap.fromTo(
       card,
-      { opacity: 0, y: 60, rotateX: -8 },
+      { opacity: 0, y: 40, rotateX: -4 },
       {
         opacity: 1,
         y: 0,
         rotateX: 0,
-        duration: 1,
-        delay: index * 0.12,
-        ease: "none",
+        duration: 0.8,
+        delay: index * 0.1,
+        ease: "power3.out",
         scrollTrigger: {
           trigger: card,
           start: "top 85%",
-          end: "top 40%",
-          scrub: tier >= 1 ? false : 1,
-          once: tier >= 1,
-          onToggle: (self) => {
-            if (tier >= 1) ownTriggers.push(self);
-          },
+          toggleActions: "play none none none",
+          once: true,
         },
       },
     );
@@ -111,23 +107,19 @@ const SkillCard = ({
       const badges = badgesRef.current.children;
       gsap.fromTo(
         badges,
-        { opacity: 0, scale: 0.5, y: 15 },
+        { opacity: 0, scale: 0.8, y: 10 },
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 1,
-          stagger: 0.2,
-          ease: "none",
+          duration: 0.5,
+          stagger: 0.05,
+          ease: "back.out(1.5)",
           scrollTrigger: {
             trigger: card,
-            start: "top 70%",
-            end: "bottom 80%",
-            scrub: tier >= 1 ? false : 1,
-            once: tier >= 1,
-            onToggle: (self) => {
-              if (tier >= 1) ownTriggers.push(self);
-            },
+            start: "top 80%",
+            toggleActions: "play none none none",
+            once: true,
           },
         },
       );
@@ -195,8 +187,8 @@ const SkillsSection = () => {
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 80%",
-          end: "top 30%",
-          scrub: 1,
+          toggleActions: "play none none none",
+          once: true,
           onToggle: (self) => {
             st = self;
           },
@@ -205,15 +197,15 @@ const SkillsSection = () => {
 
       tl.fromTo(
         headingRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "none" },
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
       );
 
       tl.fromTo(
         headingLineRef.current,
         { scaleX: 0 },
-        { scaleX: 1, duration: 1, ease: "none" },
-        "-=0.5",
+        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
+        "-=0.2",
       );
     }
 
