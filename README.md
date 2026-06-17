@@ -148,6 +148,8 @@ vedangdhuri-io/
 │   ├── layout.tsx           # Root layout (Navbar, Footer, StarBackground)
 │   ├── page.tsx             # Home page (Hero, About, Skills, Projects, Contact, GitHub)
 │   ├── not-found.tsx        # 404 page
+│   ├── resume/              # Dedicated resume page
+│   │   └── page.tsx         # Resume page with download & open buttons
 │   └── projects/            # Projects routes
 │       ├── page.tsx         # Main projects listing page
 │       └── [id]/            # Individual project details
@@ -179,7 +181,8 @@ vedangdhuri-io/
 │   └── utils.ts             # Core helper functions (cn, etc.)
 ├── public/                  # Static assets
 │   ├── font/                # Custom typography (Poppins, Bastliga)
-│   └── img/                 # Screenshots and project thumbnails
+│   ├── img/                 # Screenshots and project thumbnails
+│   └── Resume/              # PDF and PNG assets of the resume
 ├── types/
 │   └── project.ts           # Project-related TypeScript interfaces
 └── utils/                   # Shared utilities and custom hooks
