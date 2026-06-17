@@ -130,15 +130,18 @@ export const Footer = () => {
   return (
     <footer
       ref={footerRef}
-      className="mx-auto py-90 px-4 relative border-t border-white/10 mt-12 pt-8 flex flex-wrap items-center justify-between bg-black/40 backdrop-blur-sm"
+      className="w-full relative border-t border-white/10 mt-12 bg-black/40 backdrop-blur-sm py-16 px-6 md:px-12 flex flex-col items-center gap-10 overflow-hidden"
     >
+      {/* Subtle top border glow */}
+      <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
+
       {/* Name */}
       <div
         ref={nameRef}
-        className="absolute left-1/2 -translate-x-1/2 flex mt-15 w-full justify-center opacity-0"
+        className="w-full text-center opacity-0 z-10"
       >
-        <a href="#home">
-          <h2 className="font-medium tracking-tight transition delay-100 ease-in-out text-5xl md:text-6xl hover:text-blue-400">
+        <a href="#home" className="inline-block">
+          <h2 className="font-bold tracking-wider transition-colors duration-300 text-4xl sm:text-5xl md:text-6xl text-white hover:text-blue-400">
             VEDANG DHURI
           </h2>
         </a>
@@ -147,12 +150,12 @@ export const Footer = () => {
       {/* Social icons */}
       <div
         ref={socialsRef}
-        className="absolute left-1/2 -translate-x-1/2 flex mt-60 space-x-5 bg-blue lg:space-x-8 xl:space-x-8 2xl:space-x-8"
+        className="flex flex-wrap justify-center gap-4 sm:gap-6 z-10"
       >
         {socialLinks.map((item) => (
           <motion.a
             key={item.href}
-            className="transition delay-100 ease-in-out border text-black bg-white/90 p-3 rounded-xl hover:bg-black/10 hover:border hover:border-white hover:text-white"
+            className="transition-all duration-300 border border-white/10 text-white bg-white/5 p-3 rounded-xl hover:bg-white hover:text-black hover:border-white hover:shadow-[0_0_15px_rgba(255,255,255,0.15)]"
             href={item.href}
             target="_blank"
             whileHover={{
@@ -167,26 +170,32 @@ export const Footer = () => {
         ))}
       </div>
 
-      {/* Copyright */}
-      <div className="absolute left-1/2 -translate-x-1/2 flex mt-100">
-        <p className="text-sm text-muted-foreground">
-          {" "}
+      {/* Bottom Row: Copyright and Back to Top */}
+      {/* Bottom Row: Copyright and Back to Top */}
+      <div className="w-full max-w-6xl grid grid-cols-1 sm:grid-cols-3 items-center gap-4 pt-6 border-t border-white/5 z-10">
+        {/* Spacer for centering copyright on larger screens */}
+        <div className="hidden sm:block" />
+
+        {/* Copyright */}
+        <p className="text-sm text-neutral-500 text-center">
           &copy; {new Date().getFullYear()} Vedang Dhuri. All rights reserved.
         </p>
-      </div>
 
-      <div className="ml-auto">
-        <motion.a
-          href="#home"
-          className="absolute right-6 top-2/3 -translate-y-1/2 p-3 rounded-full bg-blue-400/10 transition-colors items-end justify-center"
-          whileHover={{
-            scale: 1.2,
-            backgroundColor: "rgba(96, 165, 250, 0.2)",
-          }}
-          whileTap={{ scale: 0.9 }}
-        >
-          <ArrowUp size={20} />
-        </motion.a>
+        {/* Back to top */}
+        <div className="flex justify-center sm:justify-end">
+          <motion.a
+            href="#home"
+            className="p-3 rounded-full bg-blue-400/10 border border-blue-400/20 text-blue-400 hover:text-white transition-all duration-300 flex items-center justify-center"
+            whileHover={{
+              scale: 1.15,
+              backgroundColor: "rgba(96, 165, 250, 0.2)",
+              borderColor: "rgba(96, 165, 250, 0.4)",
+            }}
+            whileTap={{ scale: 0.9 }}
+          >
+            <ArrowUp size={20} />
+          </motion.a>
+        </div>
       </div>
     </footer>
   );
