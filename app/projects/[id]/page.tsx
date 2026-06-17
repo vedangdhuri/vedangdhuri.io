@@ -98,7 +98,7 @@ export default async function ProjectPage({
             ))}
           </div>
 
-          <div className="flex gap-4">
+          <div className="flex flex-wrap gap-3 sm:gap-4">
             <a
               href={project.github}
               target="_blank"
