@@ -75,7 +75,7 @@ const Loader = () => {
       {/* Name */}
       <div
         ref={nameRef}
-        className="relative flex items-center gap-[2px] text-4xl md:text-6xl font-bold tracking-[0.2em] text-white"
+        className="relative flex items-center justify-center gap-[2px] text-2xl sm:text-4xl md:text-6xl font-bold tracking-[0.15em] sm:tracking-[0.2em] text-white w-full px-4 text-center flex-wrap"
         style={{ perspective: "600px" }}
       >
         {name.split("").map((char, i) => (
