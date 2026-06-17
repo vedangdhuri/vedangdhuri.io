@@ -40,23 +40,23 @@ const Contact = () => {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: headingRef.current,
-          start: "top 95%",
-          end: "top 40%",
-          scrub: 1,
+          start: "top 85%",
+          toggleActions: "play none none none",
+          once: true,
         },
       });
 
       tl.fromTo(
         headingRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 1, ease: "none" },
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
       );
 
       tl.fromTo(
         headingLineRef.current,
         { scaleX: 0 },
-        { scaleX: 1, duration: 1, ease: "none" },
-        "-=0.5",
+        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
+        "-=0.2",
       );
     }
 
@@ -64,17 +64,17 @@ const Contact = () => {
     if (globeRef.current) {
       gsap.fromTo(
         globeRef.current,
-        { opacity: 0, x: -80 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
-          x: 0,
-          duration: 1,
-          ease: "none",
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: globeRef.current,
             start: "top 85%",
-            end: "center 60%",
-            scrub: 1,
+            toggleActions: "play none none none",
+            once: true,
           },
         },
       );
@@ -85,17 +85,17 @@ const Contact = () => {
       const formEl = formRef.current;
       gsap.fromTo(
         formEl,
-        { opacity: 0, x: 80 },
+        { opacity: 0, y: 30 },
         {
           opacity: 1,
-          x: 0,
-          duration: 1,
-          ease: "none",
+          y: 0,
+          duration: 0.8,
+          ease: "power3.out",
           scrollTrigger: {
             trigger: formEl,
             start: "top 85%",
-            end: "center 60%",
-            scrub: 1,
+            toggleActions: "play none none none",
+            once: true,
           },
         },
       );
@@ -104,18 +104,18 @@ const Contact = () => {
       const fields = formEl.querySelectorAll(".form-field");
       gsap.fromTo(
         fields,
-        { opacity: 0, y: 30 },
+        { opacity: 0, y: 15 },
         {
           opacity: 1,
           y: 0,
-          duration: 1,
-          stagger: 0.3,
-          ease: "none",
+          duration: 0.5,
+          stagger: 0.1,
+          ease: "power2.out",
           scrollTrigger: {
             trigger: formEl,
-            start: "top 75%",
-            end: "bottom 80%",
-            scrub: 1,
+            start: "top 80%",
+            toggleActions: "play none none none",
+            once: true,
           },
         },
       );
@@ -209,7 +209,7 @@ const Contact = () => {
           {/* Contact Form */}
           <div
             ref={formRef}
-            className="p-8 rounded-2xl border border-white/10 bg-indigo-950/20 backdrop-blur-sm z-1 opacity-0 hover:border-blue-400/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500"
+            className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-indigo-950/20 backdrop-blur-sm z-1 opacity-0 hover:border-blue-400/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500"
           >
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
