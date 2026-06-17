@@ -1,12 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/pages/Navbar/Navbar";
 import { Footer } from "@/components/pages/Footer/Footer";
 import { StarBackground } from "@/components/pages/Background/Starbackground";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/next";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+});
+
+const outfit = Outfit({
+  subsets: ["latin"],
+  variable: "--font-outfit",
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-jetbrains-mono",
+});
 
 export const metadata: Metadata = {
   title: "Vedang Dhuri | Portfolio",
@@ -24,9 +37,8 @@ export default function RootLayout({
         <link rel="icon" href="/img/top_icon.png" />
       </head>
       <body
-        className={`${inter.className} bg-black text-white overflow-x-hidden`}
+        className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} font-sans bg-black text-white overflow-x-hidden`}
       >
-        {/* <TargetCursor /> */}
         <StarBackground />
         <Navbar />
         <main className="min-h-screen overflow-x-hidden">{children}</main>
