@@ -37,24 +37,24 @@ const About = () => {
       const headingTl = gsap.timeline({
         scrollTrigger: {
           trigger: sectionRef.current,
-          start: "top 70%",
-          end: "top 20%",
-          scrub: 1,
+          start: "top 75%",
+          toggleActions: "play none none none",
+          once: true,
           onToggle: (self) => triggers.push(self),
         },
       });
 
       headingTl.fromTo(
         headingRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        { opacity: 0, y: 30 },
+        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
       );
 
       headingTl.fromTo(
         headingLineRef.current,
         { scaleX: 0 },
-        { scaleX: 1, duration: 0.6, ease: "power2.inOut" },
-        "-=0.3",
+        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
+        "-=0.2",
       );
     }
 
