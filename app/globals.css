@@ -494,6 +494,62 @@ body::-webkit-scrollbar {
   }
 }
 
+/* === Scroll Reveal Animation System === */
+/* GPU-accelerated, driven by CSS custom properties from useScrollReveal hook */
+
+.scroll-reveal {
+  opacity: 0;
+  will-change: transform, opacity;
+  transition-property: transform, opacity;
+  transition-duration: var(--reveal-duration, 800ms);
+  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out-expo */
+  transition-delay: var(--reveal-delay, 0ms);
+}
+
+.scroll-reveal--up {
+  transform: translate3d(0, var(--reveal-distance, 60px), 0);
+}
+
+.scroll-reveal--down {
+  transform: translate3d(0, calc(-1 * var(--reveal-distance, 60px)), 0);
+}
+
+.scroll-reveal--left {
+  transform: translate3d(var(--reveal-distance, 60px), 0, 0);
+}
+
+.scroll-reveal--right {
+  transform: translate3d(calc(-1 * var(--reveal-distance, 60px)), 0, 0);
+}
+
+.scroll-reveal--scale {
+  transform: scale(0.9);
+}
+
+.scroll-reveal--none {
+  transform: none;
+}
+
+.scroll-reveal--visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+
+/* Smooth section divider fade */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.3) 30%,
+    rgba(59, 130, 246, 0.4) 50%,
+    rgba(99, 102, 241, 0.3) 70%,
+    transparent 100%
+  );
+  margin: 0 auto;
+  max-width: 600px;
+}
+
 /* === Accessibility: Reduced Motion === */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -504,4 +560,34 @@ body::-webkit-scrollbar {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
+}
+
+/* === HeroVisual Styles from PersonalBlog === */
+.text-shiny {
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(
+    120deg,
+    #171717 30%,
+    #888 50%,
+    #171717 70%
+  );
+  background-size: 200% auto;
+  animation: text-shiny 4s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark .text-shiny {
+  background-image: linear-gradient(
+    120deg,
+    #ffffff 30%,
+    #666 50%,
+    #ffffff 70%
+  );
+}
+
+@keyframes text-shiny {
+  from { background-position: 200% center; }
+  to { background-position: -200% center; }
 }

@@ -1,7 +1,7 @@
 "use client";
 import About from "@/components/pages/About/About";
 import Contact from "@/components/pages/Contact/Contact";
-import Hero from "@/components/pages/Hero/Hero";
+import HeroVisual from "@/components/pages/Hero/HeroVisual";
 import SkillsSection from "@/components/pages/Skills/Skills";
 import Loader from "@/components/pages/Loader/Loader";
 import { useEffect, useState, useRef } from "react";
@@ -70,28 +70,33 @@ export default function Home() {
       {loading && <Loader />}
       <div
         ref={containerRef}
-        className={`transition-opacity duration-1000 w-full overflow-hidden ${loading ? "opacity-0" : "opacity-100"}`}
+        className={`transition-opacity duration-1000 w-full overflow-hidden ${loading ? "opacity-0" : "opacity-100"} z-100`}
       >
         {/*
           We remove large margins/paddings here and handle spacing within components
           to allow for continuous storytelling transitions.
         */}
         <div id="home" className="relative z-10">
-          <Hero />
+          <HeroVisual />
         </div>
+        <div className="section-divider" />
         <div id="about" className="relative z-20">
           <About />
         </div>
+        <div className="section-divider" />
         <div id="skills" className="relative z-30">
           <SkillsSection />
         </div>
-        <div id="projects" className="relative z-40 bg-black">
+        <div className="section-divider" />
+        <div id="projects" className="relative z-40">
           <ProjectsPreview />
         </div>
+        <div className="section-divider" />
         <div id="contact" className="relative z-50">
           <Contact />
         </div>
-        <div id="github" className="relative z-[60]">
+        <div className="section-divider" />
+        <div id="github" className="relative z-60">
           <GitHubGraph />
         </div>
       </div>
