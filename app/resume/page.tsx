@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 
 export default function ResumePage() {
   return (
-    <main className="min-h-screen bg-black text-neutral-100 flex flex-col items-center py-20 px-4 font-sans">
+    <main className="min-h-screen text-neutral-100 flex flex-col items-center py-20 px-4 font-sans">
       {/* Top Navigation Controls */}
       <div className="w-full max-w-4xl flex items-center justify-between mb-8 px-2">
         {/* Back Button */}
