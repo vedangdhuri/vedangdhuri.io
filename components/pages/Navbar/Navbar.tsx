@@ -21,7 +21,7 @@ const navItems = [
   { logo: <FaHome size={16} />, href: "/", text: "Home" },
   { logo: <FaUser size={16} />, href: "/#about", text: "About" },
   { logo: <FaCode size={16} />, href: "/#skills", text: "Skills" },
-  { logo: <FaLaptopCode size={16} />, href: "/projects", text: "Projects" },
+  { logo: <FaLaptopCode size={16} />, href: "/#projects", text: "Projects" },
   { logo: <FaEnvelope size={16} />, href: "/#contact", text: "Contact" },
   { logo: <FaGithub size={16} />, href: "/#github", text: "Github" },
 ];
@@ -31,6 +31,30 @@ export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
   const navRef = useRef<HTMLElement>(null);
+
+  const handleLinkClick = (
+    e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    href: string
+  ) => {
+    if (pathname === "/") {
+      if (href.startsWith("/#")) {
+        e.preventDefault();
+        const targetId = href.replace("/#", "");
+        const elem = document.getElementById(targetId);
+        if (elem) {
+          elem.scrollIntoView({ behavior: "smooth" });
+        }
+        setActiveLink(href);
+        return;
+      } else if (href === "/") {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: "smooth" });
+        setActiveLink(href);
+        return;
+      }
+    }
+    setActiveLink(href);
+  };
 
   useEffect(() => {
     const storedTheme = localStorage.getItem("theme");
@@ -48,7 +72,7 @@ export const Navbar = () => {
     if (navRef.current) {
       gsap.fromTo(
         navRef.current,
-        { y: 100, xPercent: -50, opacity: 0 },
+        { y: -100, xPercent: -50, opacity: 0 },
         {
           y: 0,
           xPercent: -50,
@@ -63,9 +87,6 @@ export const Navbar = () => {
 
   useEffect(() => {
     if (pathname === "/projects") {
-      if (activeLink !== "/projects") {
-        setActiveLink("/projects");
-      }
       return;
     }
 
@@ -87,8 +108,12 @@ export const Navbar = () => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
           if (entry.target.id === "home") setActiveLink("/");
-          else if (entry.target.id === "projects") setActiveLink("/projects");
-          else setActiveLink(`/#${entry.target.id}`);
+          else if (entry.target.id === "about") setActiveLink("/#about");
+          else if (entry.target.id === "skills") setActiveLink("/#skills");
+          else if (entry.target.id === "projects") setActiveLink("/#projects");
+          else if (entry.target.id === "contact") setActiveLink("/#contact");
+          else if (entry.target.id === "github") setActiveLink("/#github");
+          // else setActiveLink(`/#${entry.target.id}`);
         }
       });
     }, observerOptions);
@@ -114,27 +139,12 @@ export const Navbar = () => {
             <Link
               key={key}
               href={item.href}
-              onClick={() => setActiveLink(item.href)}
+              onClick={(e) => handleLinkClick(e, item.href)}
               className={cn(
                 "relative flex items-center gap-2 text-[0.8rem] px-4 py-2 rounded-full transition-all duration-300",
-                activeLink === item.href
-                  ? "text-black"
-                  : "text-white hover:text-blue-300",
+                "text-white hover:text-blue-300"
               )}
             >
-              {/* Sliding active indicator */}
-              {activeLink === item.href && (
-                <motion.div
-                  layoutId="navbar-active"
-                  className="absolute inset-0 bg-blue-400 rounded-full shadow-[0_0_15px_rgba(96,165,250,0.4)]"
-                  transition={{
-                    type: "spring",
-                    stiffness: 350,
-                    damping: 30,
-                  }}
-                />
-              )}
-
               {/* Icon & Text */}
               <motion.span
                 className="relative z-10 flex items-center gap-2"
@@ -197,29 +207,15 @@ export const Navbar = () => {
                   <Link
                     key={key}
                     href={item.href}
-                    onClick={() => {
-                      setActiveLink(item.href);
+                    onClick={(e) => {
+                      handleLinkClick(e, item.href);
                       setIsOpen(false);
                     }}
                     className={cn(
                       "relative flex items-center gap-4 text-[0.8rem] px-4 py-3 rounded-xl transition-all duration-300 w-full overflow-hidden",
-                      activeLink === item.href
-                        ? "text-black"
-                        : "text-white hover:text-blue-300 hover:bg-white/5",
+                      "text-white hover:text-blue-300 hover:bg-white/5"
                     )}
                   >
-                    {activeLink === item.href && (
-                      <motion.div
-                        layoutId="mobile-navbar-active"
-                        className="absolute inset-0 bg-blue-400 rounded-xl"
-                        transition={{
-                          type: "spring",
-                          stiffness: 350,
-                          damping: 30,
-                        }}
-                      />
-                    )}
-
                     <span className="relative z-10 flex items-center gap-4 w-full">
                       <span className="flex-shrink-0">{item.logo}</span>
                       <span className="font-semibold">{item.text}</span>
