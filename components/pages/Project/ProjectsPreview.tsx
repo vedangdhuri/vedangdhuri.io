@@ -1,55 +1,52 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { projects } from "@/data/projects";
 import { kebabCase } from "@/utils/utils";
-
-gsap.registerPlugin(ScrollTrigger);
+import { useScrollReveal } from "@/utils/useScrollReveal";
 
 /* ------------------------------------------------------------------ */
 /*  Starfield Background                                               */
 /* ------------------------------------------------------------------ */
-const Starfield = () => {
-  const [stars, setStars] = useState<
-    Array<{ left: number; top: number; size: number; opacity: number; duration: number; delay: number }>
-  >([]);
+// const Starfield = () => {
+//   const [stars, setStars] = useState<
+//     Array<{ left: number; top: number; size: number; opacity: number; duration: number; delay: number }>
+//   >([]);
 
-  useEffect(() => {
-    setStars(
-      [...Array(60)].map(() => ({
-        left: Math.random() * 100,
-        top: Math.random() * 100,
-        size: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
-        duration: Math.random() * 3 + 2,
-        delay: Math.random() * 4,
-      }))
-    );
-  }, []);
+//   useEffect(() => {
+//     setStars(
+//       [...Array(60)].map(() => ({
+//         left: Math.random() * 100,
+//         top: Math.random() * 100,
+//         size: Math.random() * 2 + 1,
+//         opacity: Math.random() * 0.5 + 0.2,
+//         duration: Math.random() * 3 + 2,
+//         delay: Math.random() * 4,
+//       }))
+//     );
+//   }, []);
 
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {stars.map((star, i) => (
-        <div
-          key={`star-${i}`}
-          className="absolute rounded-full bg-white animate-pulse"
-          style={{
-            left: `${star.left}%`,
-            top: `${star.top}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            opacity: star.opacity,
-            animationDuration: `${star.duration}s`,
-            animationDelay: `${star.delay}s`,
-          }}
-        />
-      ))}
-    </div>
-  );
-};
+//   return (
+//     <div className="absolute inset-0 overflow-hidden pointer-events-none">
+//       {stars.map((star, i) => (
+//         <div
+//           key={`star-${i}`}
+//           className="absolute rounded-full bg-white animate-pulse"
+//           style={{
+//             left: `${star.left}%`,
+//             top: `${star.top}%`,
+//             width: `${star.size}px`,
+//             height: `${star.size}px`,
+//             opacity: star.opacity,
+//             animationDuration: `${star.duration}s`,
+//             animationDelay: `${star.delay}s`,
+//           }}
+//         />
+//       ))}
+//     </div>
+//   );
+// };
 
 /* ------------------------------------------------------------------ */
 /*  Featured Project Card (Hero-style, full width)                     */
@@ -102,6 +99,18 @@ const FeaturedProjectCard = ({
             background: `radial-gradient(600px circle at ${mousePos.x}% ${mousePos.y}%, rgba(6,182,212,0.07), transparent 60%)`,
           }}
         />
+
+        {/* Terminal Header Overlay */}
+        <div className="absolute top-0 left-0 right-0 z-20 flex items-center justify-between px-5 py-3 border-b border-white/5 bg-black/40 backdrop-blur-xs">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono text-gray-400 tracking-wider font-bold uppercase">{">"}_ featured_mission</span>
+          </div>
+          <div className="flex gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-red-500/40 group-hover:bg-red-500/70 transition-colors duration-300" />
+            <span className="w-2 h-2 rounded-full bg-yellow-500/40 group-hover:bg-yellow-500/70 transition-colors duration-300" />
+            <span className="w-2 h-2 rounded-full bg-green-500/40 group-hover:bg-green-500/70 transition-colors duration-300" />
+          </div>
+        </div>
 
         {/* Scan-line sweep */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -212,22 +221,22 @@ const MissionCard = ({
       >
         {/* Mission header bar */}
         <div className="flex items-center justify-between px-4 py-2.5 border-b border-white/[0.06] bg-white/[0.02]">
-          <span className="text-[11px] font-mono text-gray-500 tracking-wider uppercase">
-            Mission-{String(index + 1).padStart(3, "0")}
+          <span className="text-[11px] font-mono text-gray-500 tracking-wider uppercase flex items-center gap-1.5">
+            <span className="text-cyan-400 font-bold">{">"}_</span>
+            mission_{String(index + 1).padStart(3, "0")}
           </span>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-3">
             {project.liveUrl && (
               <span className="inline-flex items-center gap-1 text-[10px] font-mono text-green-400">
                 <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse" />
                 LIVE
               </span>
             )}
-            <span className="inline-flex items-center gap-1 text-[10px] font-mono text-gray-500">
-              <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 16 16">
-                <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z" />
-              </svg>
-              CODE
-            </span>
+            <div className="flex gap-1.5">
+              <span className="w-1.5 h-1.5 rounded-full bg-red-500/40 group-hover:bg-red-500/70 transition-colors duration-300" />
+              <span className="w-1.5 h-1.5 rounded-full bg-yellow-500/40 group-hover:bg-yellow-500/70 transition-colors duration-300" />
+              <span className="w-1.5 h-1.5 rounded-full bg-green-500/40 group-hover:bg-green-500/70 transition-colors duration-300" />
+            </div>
           </div>
         </div>
 
@@ -323,108 +332,21 @@ export default function ProjectsPreview() {
   const featuredProject = projects[0];
   const gridProjects = projects.slice(1, 5);
 
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
-  const featuredRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const triggers: ScrollTrigger[] = [];
-
-    // Heading reveal
-    if (headingRef.current) {
-      gsap.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 50 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 85%",
-            toggleActions: "restart none none reset",
-            onToggle: (self) => triggers.push(self),
-          },
-        }
-      );
-    }
-
-    // Subtitle
-    if (subtitleRef.current) {
-      gsap.fromTo(
-        subtitleRef.current,
-        { opacity: 0, y: 20 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.6,
-          delay: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: subtitleRef.current,
-            start: "top 85%",
-            toggleActions: "restart none none reset",
-            onToggle: (self) => triggers.push(self),
-          },
-        }
-      );
-    }
-
-    // Featured card
-    if (featuredRef.current) {
-      gsap.fromTo(
-        featuredRef.current,
-        { opacity: 0, y: 60, scale: 0.97 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.9,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: featuredRef.current,
-            start: "top 82%",
-            toggleActions: "restart none none reset",
-            onToggle: (self) => triggers.push(self),
-          },
-        }
-      );
-    }
-
-    // Grid cards stagger
-    if (gridRef.current) {
-      const cards = gridRef.current.children;
-      gsap.fromTo(
-        cards,
-        { opacity: 0, y: 50, scale: 0.96 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.7,
-          stagger: 0.12,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 82%",
-            toggleActions: "restart none none reset",
-            onToggle: (self) => triggers.push(self),
-          },
-        }
-      );
-    }
-
-    return () => {
-      triggers.forEach((st) => st.kill());
-    };
-  }, []);
+  const headingRef = useScrollReveal<HTMLHeadingElement>({ direction: "up", delay: 0, distance: 50 });
+  const subtitleRef = useScrollReveal<HTMLParagraphElement>({ direction: "up", delay: 100, distance: 20 });
+  const featuredRef = useScrollReveal<HTMLDivElement>({ direction: "scale", delay: 100 });
+  const gridRef = useScrollReveal<HTMLDivElement>({
+    direction: "up",
+    delay: 0,
+    distance: 50,
+    staggerChildren: true,
+    staggerDelay: 120,
+  });
 
   return (
     <section id="projects" className="relative py-16 sm:py-20 md:py-28 px-4 sm:px-6 overflow-hidden">
       {/* Starfield background */}
-      <Starfield />
+      {/* <Starfield /> */}
 
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
@@ -442,14 +364,14 @@ export default function ProjectsPreview() {
 
           <h2
             ref={headingRef}
-            className="text-5xl md:text-6xl font-bold text-neutral-100 tracking-tight opacity-0"
+            className="text-5xl md:text-6xl font-bold text-neutral-100 tracking-tight"
           >
             Projects
           </h2>
 
           <p
             ref={subtitleRef}
-            className="text-base font-mono text-gray-500 max-w-xl opacity-0"
+            className="text-base font-mono text-gray-500 max-w-xl"
           >
             <span className="text-cyan-500/60">{">"}</span> Completed
             deployments and active operations —{" "}

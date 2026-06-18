@@ -1,31 +1,8 @@
-/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
 import { useTheme } from "next-themes";
-import {
-  Cloud,
-  fetchSimpleIcons,
-  renderSimpleIcon,
-  type SimpleIcon,
-} from "react-icon-cloud";
-
-/* ----------------------------------
-   Types
------------------------------------ */
-
-type IconCloudProps = {
-  iconSlugs?: string[];
-  imageArray?: string[];
-};
-
-type SimpleIconsResponse = {
-  simpleIcons: Record<string, SimpleIcon>;
-};
-
-/* ----------------------------------
-   Cloud Config
------------------------------------ */
+import { Cloud, fetchSimpleIcons, renderSimpleIcon } from "react-icon-cloud";
 
 export const cloudProps = {
   containerProps: {
@@ -42,25 +19,18 @@ export const cloudProps = {
     depth: 1,
     wheelZoom: false,
     imageScale: 2,
-    activeCursor: "default",
+    activeCursor: "default" as const,
     tooltip: "native" as const,
     initial: [0.1, -0.1] as [number, number],
     clickToFront: 500,
     tooltipDelay: 0,
-    outlineColour: "#000",
+    outlineColour: "#00000000",
     maxSpeed: 0.04,
     minSpeed: 0.02,
   },
 };
 
-/* ----------------------------------
-   Icon Renderer
------------------------------------ */
-
-export const renderCustomIcon = (
-  icon: SimpleIcon,
-  theme: "light" | "dark"
-) => {
+export const renderCustomIcon = (icon: any, theme: string) => {
   const bgHex = theme === "light" ? "#f3f2ef" : "#080510";
   const fallbackHex = theme === "light" ? "#6e6e73" : "#ffffff";
   const minContrastRatio = theme === "dark" ? 2 : 1.2;
@@ -75,59 +45,68 @@ export const renderCustomIcon = (
       href: undefined,
       target: undefined,
       rel: undefined,
-      onClick: (e) => e.preventDefault(),
+      onClick: (e: any) => e.preventDefault(),
     },
   });
 };
 
-/* ----------------------------------
-   Component
------------------------------------ */
+interface IconCloudProps {
+  iconSlugs?: string[];
+  imageArray?: string[];
+}
 
 export default function IconCloud({
   iconSlugs = [],
-  imageArray = [],
+  imageArray,
 }: IconCloudProps) {
-  const [data, setData] = useState<SimpleIconsResponse | null>(null);
+  const [data, setData] = useState<any>(null);
+  const [mounted, setMounted] = useState(false);
   const { theme } = useTheme();
 
   useEffect(() => {
-    if (!iconSlugs.length) return;
-
-    fetchSimpleIcons({ slugs: iconSlugs }).then(
-      setData as (value: SimpleIconsResponse) => void
-    );
+    setMounted(true);
+    if (iconSlugs.length > 0) {
+      fetchSimpleIcons({ slugs: iconSlugs }).then(setData);
+    }
   }, [iconSlugs]);
 
   const renderedIcons = useMemo(() => {
     if (!data) return null;
 
-    const resolvedTheme =
-      theme === "light" || theme === "dark" ? theme : "dark";
-
-    return Object.values(data.simpleIcons).map((icon) =>
-      renderCustomIcon(icon, resolvedTheme)
+    return Object.values(data.simpleIcons).map((icon: any) =>
+      renderCustomIcon(icon, theme || "dark")
     );
   }, [data, theme]);
 
-  return (
-    <Cloud {...cloudProps}>
-        {renderedIcons}
+  if (!mounted) {
+    return (
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "100%",
+          height: "300px",
+        }}
+      />
+    );
+  }
 
-        {imageArray.map((image, index) => (
-          <a
-            key={index}
-            href="#"
-            onClick={(e) => e.preventDefault()}
-          >
-            <img
-              src={image}
-              alt="Custom icon"
-              width={42}
-              height={42}
-            />
-          </a>
-        ))}
+  return (
+    // @ts-ignore
+    <Cloud {...cloudProps}>
+      <>
+        {renderedIcons}
+        {imageArray &&
+          imageArray.length > 0 &&
+          imageArray.map((image, index) => {
+            return (
+              <a key={index} href="#" onClick={(e) => e.preventDefault()}>
+                <img height="42" width="42" alt="A globe icon" src={image} />
+              </a>
+            );
+          })}
+      </>
     </Cloud>
   );
 }

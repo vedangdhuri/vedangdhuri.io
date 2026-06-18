@@ -6,7 +6,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useForm } from "react-hook-form";
 import { Send, CheckCircle, AlertCircle } from "lucide-react";
-import IconCloudDemo from "@/components/ui/globe";
+import { DeveloperDashboard } from "./DeveloperDashboard";
+import { useScrollReveal } from "@/utils/useScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -31,11 +32,15 @@ const Contact = () => {
 
   const headingRef = useRef<HTMLDivElement>(null);
   const headingLineRef = useRef<HTMLDivElement>(null);
-  const globeRef = useRef<HTMLDivElement>(null);
-  const formRef = useRef<HTMLDivElement>(null);
+
+  // Scroll reveal hooks
+  const globeRef = useScrollReveal<HTMLDivElement>({ direction: "left", delay: 100, distance: 50 });
+  const formRef = useScrollReveal<HTMLDivElement>({ direction: "right", delay: 200, distance: 50 });
 
   useEffect(() => {
-    // Heading
+    const triggers: ScrollTrigger[] = [];
+
+    // Heading with underline draw
     if (headingRef.current && headingLineRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
@@ -43,6 +48,7 @@ const Contact = () => {
           start: "top 85%",
           toggleActions: "play none none none",
           once: true,
+          onToggle: (self) => triggers.push(self),
         },
       });
 
@@ -60,69 +66,8 @@ const Contact = () => {
       );
     }
 
-    // Globe slide in from left
-    if (globeRef.current) {
-      gsap.fromTo(
-        globeRef.current,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: globeRef.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-        },
-      );
-    }
-
-    // Form slide in from right with staggered fields
-    if (formRef.current) {
-      const formEl = formRef.current;
-      gsap.fromTo(
-        formEl,
-        { opacity: 0, y: 30 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: formEl,
-            start: "top 85%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-        },
-      );
-
-      // Stagger individual form fields
-      const fields = formEl.querySelectorAll(".form-field");
-      gsap.fromTo(
-        fields,
-        { opacity: 0, y: 15 },
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.5,
-          stagger: 0.1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: formEl,
-            start: "top 80%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-        },
-      );
-    }
-
     return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
+      triggers.forEach((st) => st.kill());
     };
   }, []);
 
@@ -200,18 +145,30 @@ const Contact = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto z-50">
           {/* Contact Info & Globe */}
-          <div ref={globeRef} className="space-y-8 opacity-0">
-            <IconCloudDemo />
+          <div ref={globeRef} className="space-y-8">
+            <DeveloperDashboard />
           </div>
 
           {/* Contact Form */}
           <div
             ref={formRef}
-            className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-indigo-950/20 backdrop-blur-sm z-1 opacity-0 hover:border-blue-400/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500"
+            className="rounded-2xl border border-white/10 bg-indigo-950/20 backdrop-blur-sm z-1 hover:border-blue-400/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500 overflow-hidden"
           >
-            <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
+            {/* Terminal Header */}
+            <div className="flex items-center justify-between px-5 py-3.5 border-b border-white/5 bg-white/[0.02]">
+              <div className="flex items-center gap-2">
+                <span className="text-[10px] font-mono text-gray-500 tracking-wider font-bold uppercase">{">"}_ send_message</span>
+              </div>
+              <div className="flex gap-1.5">
+                <span className="w-2 h-2 rounded-full bg-red-500/40 hover:bg-red-500/70 transition-colors duration-300" />
+                <span className="w-2 h-2 rounded-full bg-yellow-500/40 hover:bg-yellow-500/70 transition-colors duration-300" />
+                <span className="w-2 h-2 rounded-full bg-green-500/40 hover:bg-green-500/70 transition-colors duration-300" />
+              </div>
+            </div>
+            <div className="p-6 sm:p-8">
+              <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="space-y-2 form-field">
@@ -329,6 +286,7 @@ const Contact = () => {
                 </motion.div>
               )}
             </form>
+            </div>
           </div>
         </div>
       </div>

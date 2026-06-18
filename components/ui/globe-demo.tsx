@@ -1,7 +1,9 @@
+"use client";
+
 import IconCloud from "./icon-cloud";
 
-const slugs: string[] = [
-  "typescript",
+const slugs = [
+"typescript",
   "javascript",
   "python",
   "c",
@@ -36,21 +38,14 @@ const slugs: string[] = [
   "kalilinux",
   "arduino",
   "vite",
-  // "dart",
-  // "prisma",
-  // "nginx",
-  // "testinglibrary",
-  // "jest",
-  // "cypress",
-  // "docker",
-  // "jira",
-  // "sonarqube",
 ];
 
-export default function IconCloudDemo() {
+export function GlobeDemo() {
   return (
-    <div className="relative flex size-full max-w-lg items-center justify-center overflow-hidden rounded-lg bg-transparent px-4 sm:px-20 pb-8 sm:pb-20 pt-8">
+    <div className="relative flex h-full w-full max-w-lg items-center justify-center overflow-hidden rounded-lg px-20 pb-20 pt-8 bg-transparent mx-auto">
       <IconCloud iconSlugs={slugs} />
     </div>
   );
 }
+
+export default GlobeDemo;

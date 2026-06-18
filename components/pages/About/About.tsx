@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { GraduationCap, User, Calendar, MapPin } from "lucide-react";
+import { useScrollReveal } from "@/utils/useScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -29,10 +30,15 @@ const About = () => {
   const headingRef = useRef<HTMLHeadingElement>(null);
   const headingLineRef = useRef<HTMLDivElement>(null);
 
+  // Scroll reveal refs
+  const bioRef = useScrollReveal<HTMLDivElement>({ direction: "left", delay: 100, distance: 50 });
+  const eduRef = useScrollReveal<HTMLDivElement>({ direction: "right", delay: 200, distance: 50 });
+  const chipsRef = useScrollReveal<HTMLDivElement>({ direction: "up", delay: 300, distance: 30 });
+
   useEffect(() => {
     const triggers: ScrollTrigger[] = [];
 
-    // Heading animation with underline draw — kept as a nice entrance
+    // Heading animation with underline draw
     if (headingRef.current && headingLineRef.current) {
       const headingTl = gsap.timeline({
         scrollTrigger: {
@@ -64,8 +70,8 @@ const About = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 text-white z-50">
-      <div className="container mx-auto px-6">
+    <section ref={sectionRef} id="about" className="py-24 text-white z-1">
+      <div className="container mx-auto px-6 z-1">
         {/* Section Header */}
         <div className="text-center mb-20">
           <h2
@@ -86,9 +92,9 @@ const About = () => {
         </div>
 
         {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-6xl mx-auto z-1">
           {/* Biography — takes 3 cols */}
-          <div className="lg:col-span-3">
+          <div ref={bioRef} className="lg:col-span-3 z-1">
             <div className="relative">
               {/* Decorative accent */}
               <div className="absolute -left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 via-blue-500/30 to-transparent hidden lg:block" />
@@ -123,7 +129,7 @@ const About = () => {
                 </div>
 
                 {/* Quick info chips */}
-                <div className="flex flex-wrap gap-3 mt-8">
+                <div ref={chipsRef} className="flex flex-wrap gap-3 mt-8">
                   <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 text-sm text-gray-400">
                     <MapPin className="w-3.5 h-3.5 text-blue-400" />
                     Maharashtra, India
@@ -138,7 +144,7 @@ const About = () => {
           </div>
 
           {/* Education — takes 2 cols */}
-          <div className="lg:col-span-2 z-50">
+          <div ref={eduRef} className="lg:col-span-2 z-1">
             <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
               <div className="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
                 <GraduationCap className="w-5 h-5 text-indigo-400" />
