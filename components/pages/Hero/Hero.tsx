@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDownRight, Zap, Code2 } from "lucide-react";
+import { ArrowDownRight, Zap, Code2, X } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { useDeviceTier } from "@/utils/useDeviceTier";
 
@@ -164,7 +164,7 @@ const Hero = () => {
     <section
       id="home"
       ref={heroRef}
-      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center z-10"
+      className="relative min-h-screen w-full overflow-hidden flex items-center justify-center"
     >
       {/* Nebula / Aurora background glow */}
       {tier === 0 && (

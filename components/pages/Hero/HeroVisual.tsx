@@ -1,33 +1,29 @@
 "use client";
-import React, { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import {
   Instagram,
   Github,
   Linkedin,
   ArrowDownRight,
   Zap,
-  Bot,
   Code2,
 } from "lucide-react";
-import { cn } from "@/utils/cn"; // assuming utils/cn or similar based on previous porting
 import Link from "next/link";
 import gsap from "gsap";
-import { ProfileCard } from "@/components/ui/profile-card";
 import { Spotlight } from "@/components/ui/spotlight-new";
 
 const personal = {
   name: "Vedang Dhuri",
-  avatar: "/public/img/main_image.png", // Fallback avatar since we don't have Vedang's specifically
+  avatar: "/public/img/main_image.png",
   socialLinks: [
     { platform: "GitHub", url: "https://github.com/vedangdhuri" },
-    { platform: "LinkedIn", url: "https://www.linkedin.com/in/vedang-dhuri" },
+    { platform: "LinkedIn", url: "https://www.linkedin.com/in/vedang-dhuri-b03280348" },
     { platform: "Instagram", url: "https://www.instagram.com/vedang.dhuri.69" },
   ],
 };
 
-export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
-  const [showProfile, setShowProfile] = useState(false);
+export function HeroVisual() {
   const githubRef = useRef(null);
   const linkedinRef = useRef(null);
   const instagramRef = useRef(null);
@@ -36,8 +32,6 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
   const botRef = useRef(null);
 
   useEffect(() => {
-    // We changed the check here so the animation runs on mount, as Hero is usually the first thing seen.
-    // In PersonalBlog it waited for an exit animation, but here we probably want it to just run.
     const ctx = gsap.context(() => {
       // Reveal + Loop for GitHub
       gsap.fromTo(
@@ -155,7 +149,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
 
       <main className="relative flex-1 flex flex-col justify-center pt-40 pb-20 z-10">
         <div className="flex relative gap-4 px-6 md:items-center w-full flex-col justify-center">
-          {/* Line 1: AI & DATA */}
+          {/* Line 1: FULL STACK */}
           <div className="md:flex gap-8 items-center relative">
             <motion.p
               initial={{ opacity: 0, x: -20 }}
@@ -163,7 +157,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
               transition={{ duration: 0.8, delay: 0.2 }}
               className="text-[10px] md:text-xs text-white/40 text-start md:text-right leading-relaxed max-w-[200px] md:max-w-[220px] font-medium uppercase tracking-[0.2em]"
             >
-              Hi, I'm {personal.name}. I build creative digital experiences with
+              Hi, I&apos;m {personal.name}. I build creative digital experiences with
               code.
             </motion.p>
             <div className="relative">
@@ -193,7 +187,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
             </div>
           </div>
 
-          {/* Line 2: SOFT [ICON] WARE */}
+          {/* Line 2: DEVELOPER */}
           <div className="md:flex gap-8 items-center relative">
             <div className="relative">
               <div
@@ -254,7 +248,7 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
             </div>
           </div>
 
-          {/* Line 3: EN [ICON] GINEER */}
+          {/* Line 3: & DESIGNER */}
           <div className="md:flex gap-8 items-center relative">
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
@@ -304,48 +298,6 @@ export function HeroVisual({ isExiting = false }: { isExiting?: boolean }) {
             </Link>
           </div>
         </div>
-
-        {/* Award/Badge Vertical - MOVED TO LEFT */}
-        {/* <div
-          className="absolute left-0 top-1/2 z-50 hidden md:flex items-center transform -translate-y-1/2 group/container"
-          onMouseEnter={() => setShowProfile(true)}
-          onMouseLeave={() => setShowProfile(false)}
-        >
-          <div className="relative z-50">
-            <motion.div
-              whileHover={{ x: 10 }}
-              className="bg-white text-black py-10 px-4 text-[10px] font-black uppercase tracking-[0.5em] shadow-2xl rounded-r-3xl border-r border-y border-zinc-200 cursor-pointer"
-            >
-              <span className="rotate-0 [writing-mode:vertical-rl]">
-                AVAILABLE FOR OPPORTUNITY
-              </span>
-            </motion.div>
-          </div>
-
-          <AnimatePresence>
-            {showProfile && (
-              <motion.div
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                exit={{ x: -20, opacity: 0 }}
-                transition={{ type: "spring", damping: 30, stiffness: 300 }}
-                className="pl-4 pointer-events-auto"
-                style={{ width: 'max-content' }}
-              >
-                <ProfileCard
-                  name={personal.name}
-                  title="Software Engineer"
-                  description={`${personal.name} is a dedicated Software Engineer focused on building scalable, intelligent systems and robust software architectures. He specializes in bridging technical innovation with high-performance execution to deliver meaningful and impactful digital solutions.`}
-                  imageUrl={personal.avatar}
-                  githubUrl={personal.socialLinks.find(s => s.platform === 'GitHub')?.url}
-                  linkedinUrl={personal.socialLinks.find(s => s.platform === 'LinkedIn')?.url}
-                  instagramUrl={personal.socialLinks.find(s => s.platform === 'Instagram')?.url}
-                  className="!max-w-4xl scale-[0.8] origin-left"
-                />
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div> */}
       </main>
     </motion.div>
   );

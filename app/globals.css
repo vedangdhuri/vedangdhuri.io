@@ -494,62 +494,6 @@ body::-webkit-scrollbar {
   }
 }
 
-/* === Scroll Reveal Animation System === */
-/* GPU-accelerated, driven by CSS custom properties from useScrollReveal hook */
-
-.scroll-reveal {
-  opacity: 0;
-  will-change: transform, opacity;
-  transition-property: transform, opacity;
-  transition-duration: var(--reveal-duration, 800ms);
-  transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1); /* ease-out-expo */
-  transition-delay: var(--reveal-delay, 0ms);
-}
-
-.scroll-reveal--up {
-  transform: translate3d(0, var(--reveal-distance, 60px), 0);
-}
-
-.scroll-reveal--down {
-  transform: translate3d(0, calc(-1 * var(--reveal-distance, 60px)), 0);
-}
-
-.scroll-reveal--left {
-  transform: translate3d(var(--reveal-distance, 60px), 0, 0);
-}
-
-.scroll-reveal--right {
-  transform: translate3d(calc(-1 * var(--reveal-distance, 60px)), 0, 0);
-}
-
-.scroll-reveal--scale {
-  transform: scale(0.9);
-}
-
-.scroll-reveal--none {
-  transform: none;
-}
-
-.scroll-reveal--visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0) scale(1);
-}
-
-/* Smooth section divider fade */
-.section-divider {
-  height: 1px;
-  background: linear-gradient(
-    90deg,
-    transparent 0%,
-    rgba(99, 102, 241, 0.3) 30%,
-    rgba(59, 130, 246, 0.4) 50%,
-    rgba(99, 102, 241, 0.3) 70%,
-    transparent 100%
-  );
-  margin: 0 auto;
-  max-width: 600px;
-}
-
 /* === Accessibility: Reduced Motion === */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -562,7 +506,7 @@ body::-webkit-scrollbar {
   }
 }
 
-/* === HeroVisual Styles from PersonalBlog === */
+/* === HeroVisual Styles === */
 .text-shiny {
   background-clip: text;
   color: transparent;
@@ -590,4 +534,79 @@ body::-webkit-scrollbar {
 @keyframes text-shiny {
   from { background-position: 200% center; }
   to { background-position: -200% center; }
+}
+
+/* Smooth section divider fade */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(99, 102, 241, 0.3) 30%,
+    rgba(59, 130, 246, 0.4) 50%,
+    rgba(99, 102, 241, 0.3) 70%,
+    transparent 100%
+  );
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+/* === Project Card Glass & Glow Utilities === */
+
+@utility glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.12),
+    0 2px 8px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.gradient-glow-border {
+  position: relative;
+}
+
+.gradient-glow-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(129, 140, 248, 0.0) 0%,
+    rgba(129, 140, 248, 0.0) 100%
+  );
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+  transition: background 0.7s ease;
+}
+
+.gradient-glow-border:hover::before {
+  background: linear-gradient(
+    135deg,
+    rgba(129, 140, 248, 0.4) 0%,
+    rgba(167, 139, 250, 0.3) 50%,
+    rgba(129, 140, 248, 0.4) 100%
+  );
+}
+
+/* === Projects Section: Mobile Fallback ===================================== */
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

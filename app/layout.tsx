@@ -1,12 +1,10 @@
 import type { Metadata } from "next";
 import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
-import "@/utils/gsapBypasser";
 import "./globals.css";
 import { Navbar } from "@/components/pages/Navbar/Navbar";
 import { Footer } from "@/components/pages/Footer/Footer";
 import { StarBackground } from "@/components/pages/Background/Starbackground";
 import { Analytics } from "@vercel/analytics/next";
-import DotField from "@/components/pages/Background/DotField";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -36,31 +34,14 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-
+        <link rel="icon" href="/img/top_icon.png" />
       </head>
       <body
         className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} font-sans bg-black text-white overflow-x-hidden`}
       >
-        {/* <StarBackground /> */}
-        {/* <DotField
-          className="fixed inset-0 pointer-events-none z-0 bg-[#020008] opacity-60"
-          dotRadius={1.5}
-          dotSpacing={14}
-          bulgeStrength={67}
-          glowRadius={160}
-          sparkle={false}
-          waveAmplitude={0}
-          cursorRadius={500}
-          cursorForce={0.1}
-          bulgeOnly
-          gradientFrom="#559ef7"
-          gradientTo="#97b2cf"
-          glowColor="#120F17"
-        /> */}
+        <StarBackground />
         <Navbar />
-        <main className="relative z-10 min-h-screen overflow-x-hidden">
-          {children}
-        </main>
+        <main className="min-h-screen overflow-x-hidden">{children}</main>
         <Footer />
         <Analytics />
       </body>

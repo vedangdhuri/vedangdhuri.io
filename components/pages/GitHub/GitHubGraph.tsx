@@ -1,38 +1,26 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { useScrollReveal } from "@/utils/useScrollReveal";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function GitHubGraph() {
   const headingRef = useRef<HTMLDivElement>(null);
   const headingLineRef = useRef<HTMLDivElement>(null);
-
-  // Scroll reveal refs
-  const graphRef = useScrollReveal<HTMLDivElement>({ direction: "up", delay: 100, distance: 50 });
-  const statsRef = useScrollReveal<HTMLDivElement>({
-    direction: "up",
-    delay: 0,
-    distance: 40,
-    staggerChildren: true,
-    staggerDelay: 120,
-  });
+  const graphRef = useRef<HTMLDivElement>(null);
+  const statsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const triggers: ScrollTrigger[] = [];
-
     // Heading
     if (headingRef.current && headingLineRef.current) {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: headingRef.current,
           start: "top 85%",
-          toggleActions: "play none none none",
-          once: true,
-          onToggle: (self) => triggers.push(self),
+          toggleActions: "restart none none reset",
         },
       });
 
@@ -50,8 +38,50 @@ export default function GitHubGraph() {
       );
     }
 
+    // Graph entrance
+    if (graphRef.current) {
+      gsap.fromTo(
+        graphRef.current,
+        { opacity: 0, y: 60, scale: 0.95 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: graphRef.current,
+            start: "top 85%",
+            toggleActions: "restart none none reset",
+          },
+        },
+      );
+    }
+
+    // Stats entrance
+    if (statsRef.current) {
+      const cards = statsRef.current.children;
+      gsap.fromTo(
+        cards,
+        { opacity: 0, y: 40, scale: 0.9 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.6,
+          stagger: 0.12,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: statsRef.current,
+            start: "top 85%",
+            toggleActions: "restart none none reset",
+          },
+        },
+      );
+    }
+
     return () => {
-      triggers.forEach((st) => st.kill());
+      ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
 
@@ -78,7 +108,7 @@ export default function GitHubGraph() {
         {/* Contribution Graph */}
         <div
           ref={graphRef}
-          className="relative rounded-2xl border border-neutral-800 bg-[#0d1117] p-6 md:p-8 overflow-hidden hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)] transition-all duration-500"
+          className="relative rounded-2xl border border-neutral-800 bg-[#0d1117] p-6 md:p-8 overflow-hidden hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)] transition-all duration-500 opacity-0"
         >
           {/* Subtle glow */}
           <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-green-400/50 to-transparent" />
@@ -133,7 +163,7 @@ export default function GitHubGraph() {
             href="https://github.com/vedangdhuri"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300"
+            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300 opacity-0"
           >
             <img
               src="https://github-readme-stats-vd.vercel.app/api?username=vedangdhuri&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=3fb950&icon_color=3fb950&text_color=c9d1d9&count_private=true"
@@ -147,10 +177,10 @@ export default function GitHubGraph() {
             href="https://github.com/vedangdhuri"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300"
+            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300 opacity-0"
           >
             <img
-              src="https://github-readme-streak-stats.herokuapp.com?user=vedangdhuri&theme=github-dark-blue&hide_border=true&background=0d1117&ring=3fb950&fire=3fb950&currStreakLabel=3fb950"
+              src="https://streak-stats.demolab.com?user=vedangdhuri&theme=github-dark-blue&hide_border=true&background=0d1117&ring=3fb950&fire=3fb950&currStreakLabel=3fb950"
               alt="GitHub Streak"
               className="w-full h-auto"
               loading="lazy"
@@ -161,7 +191,7 @@ export default function GitHubGraph() {
             href="https://github.com/vedangdhuri"
             target="_blank"
             rel="noopener noreferrer"
-            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300"
+            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300 opacity-0"
           >
             <img
               src="https://github-readme-stats-vd.vercel.app/api/top-langs/?username=vedangdhuri&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=3fb950&text_color=c9d1d9"

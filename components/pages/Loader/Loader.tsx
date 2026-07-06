@@ -3,7 +3,12 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 
-const Loader = () => {
+interface LoaderProps {
+  onComplete?: () => void;
+  onExitStart?: () => void;
+}
+
+const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const nameRef = useRef<HTMLDivElement>(null);
   const lineRef = useRef<HTMLDivElement>(null);
@@ -55,12 +60,18 @@ const Loader = () => {
       duration: 0.8,
       ease: "power4.inOut",
       delay: 0.3,
+      onStart: () => {
+        onExitStart?.();
+      },
+      onComplete: () => {
+        onComplete?.();
+      },
     });
 
     return () => {
       tl.kill();
     };
-  }, []);
+  }, [onComplete, onExitStart]);
 
   const name = "VEDANG DHURI";
 

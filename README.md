@@ -35,14 +35,6 @@ It is designed not just as a static portfolio, but as a <strong>scalable fronten
 that can be extended into full-stack applications.
 </p>
 
-<h3>🔄 Recent Updates</h3>
-<ul>
-  <li><strong>Refactored Hero Section</strong>: Replaced legacy Hero grid with a sleek, modern, shiny <code>HeroVisual</code> component showing <strong>FULL STACK DEVELOPER & DESIGNER</strong>.</li>
-  <li><strong>Smoother Navigation & Anchors</strong>: Intercepted anchor tags in <code>Navbar</code> to perform seamless, fluid scrolling to sections rather than page jumps.</li>
-  <li><strong>Clean Navbar Style</strong>: Removed active background pills and active text colors to keep the navigation bar clean, dark, and minimal.</li>
-  <li><strong>Resume Integration</strong>: Fixed pathing and loading triggers for the Resume PDF download/viewing page.</li>
-</ul>
-
 <p>
 The project emphasizes:
 </p>

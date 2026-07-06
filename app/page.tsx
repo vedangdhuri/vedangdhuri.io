@@ -11,30 +11,41 @@ import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { getDeviceTier } from "@/utils/useDeviceTier";
+import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function Home() {
   const [loading, setLoading] = useState(true);
+  const [isExiting, setIsExiting] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Check if user has visited before in this session
+    // If already visited this session, skip loader entirely
     const hasVisited = sessionStorage.getItem("visited");
-
     if (hasVisited) {
-      const immediateTimer = setTimeout(() => setLoading(false), 0);
-      return () => clearTimeout(immediateTimer);
-    } else {
-      // Simulate loading time
-      const timer = setTimeout(() => {
-        setLoading(false);
-        sessionStorage.setItem("visited", "true");
-      }, 2000);
-
-      return () => clearTimeout(timer);
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setLoading(false);
+      setIsExiting(true);
     }
   }, []);
+
+  const handleExitStart = () => {
+    setIsExiting(true);
+  };
+
+  const handleLoadingComplete = () => {
+    setLoading(false);
+    window.scrollTo({ top: 0, behavior: "instant" });
+    sessionStorage.setItem("visited", "true");
+
+    // Dispatch custom event to notify Navbar that website content is fully shown
+    window.dispatchEvent(new Event("portfolio-loaded"));
+
+    setTimeout(() => {
+      ScrollTrigger.refresh();
+    }, 100);
+  };
 
   // Initialize smooth scrolling with Lenis (skip on prefers-reduced-motion)
   useEffect(() => {
@@ -67,10 +78,22 @@ export default function Home() {
 
   return (
     <>
-      {loading && <Loader />}
-      <div
+      {loading && (
+        <Loader
+          onComplete={handleLoadingComplete}
+          onExitStart={handleExitStart}
+        />
+      )}
+      <motion.div
         ref={containerRef}
-        className={`transition-opacity duration-1000 w-full overflow-hidden ${loading ? "opacity-0" : "opacity-100"} z-100`}
+        initial={{ opacity: 0, y: 30 }}
+        animate={isExiting ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+        transition={{
+          duration: 1.4,
+          ease: [0.16, 1, 0.3, 1],
+          opacity: { duration: 0.8 },
+        }}
+        className="w-full overflow-hidden"
       >
         {/*
           We remove large margins/paddings here and handle spacing within components
@@ -80,26 +103,26 @@ export default function Home() {
           <HeroVisual />
         </div>
         <div className="section-divider" />
-        <div id="about" className="relative z-20">
+        <div id="about" className="relative z-10">
           <About />
         </div>
         <div className="section-divider" />
-        <div id="skills" className="relative z-30">
+        <div id="skills" className="relative z-10">
           <SkillsSection />
         </div>
         <div className="section-divider" />
-        <div id="projects" className="relative z-40">
+        <div id="projects" className="relative z-10">
           <ProjectsPreview />
         </div>
         <div className="section-divider" />
-        <div id="contact" className="relative z-50">
+        <div id="contact" className="relative z-10">
           <Contact />
         </div>
         <div className="section-divider" />
-        <div id="github" className="relative z-60">
+        <div id="github" className="relative z-10">
           <GitHubGraph />
         </div>
-      </div>
+      </motion.div>
     </>
   );
 }
