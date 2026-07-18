@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
@@ -8,48 +9,6 @@ import { projects } from "@/data/projects";
 import { kebabCase } from "@/utils/utils";
 
 gsap.registerPlugin(ScrollTrigger);
-
-/* ------------------------------------------------------------------ */
-/*  Starfield Background                                               */
-/* ------------------------------------------------------------------ */
-const Starfield = () => {
-  const [stars, setStars] = useState<
-    Array<{ left: number; top: number; size: number; opacity: number; duration: number; delay: number }>
-  >([]);
-
-  useEffect(() => {
-    setStars(
-      [...Array(60)].map(() => ({
-        left: Math.random() * 100,
-        top: Math.random() * 100,
-        size: Math.random() * 2 + 1,
-        opacity: Math.random() * 0.5 + 0.2,
-        duration: Math.random() * 3 + 2,
-        delay: Math.random() * 4,
-      }))
-    );
-  }, []);
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {stars.map((star, i) => (
-        <div
-          key={`star-${i}`}
-          className="absolute rounded-full bg-white animate-pulse"
-          style={{
-            left: `${star.left}%`,
-            top: `${star.top}%`,
-            width: `${star.size}px`,
-            height: `${star.size}px`,
-            opacity: star.opacity,
-            animationDuration: `${star.duration}s`,
-            animationDelay: `${star.delay}s`,
-          }}
-        />
-      ))}
-    </div>
-  );
-};
 
 /* ------------------------------------------------------------------ */
 /*  Featured Project Card (Hero-style, full width)                     */
@@ -423,8 +382,6 @@ export default function ProjectsPreview() {
 
   return (
     <section id="projects" className="relative py-16 sm:py-20 md:py-28 px-4 sm:px-6 overflow-hidden">
-      {/* Starfield background */}
-      <Starfield />
 
       {/* Ambient glow */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[100px] pointer-events-none" />
