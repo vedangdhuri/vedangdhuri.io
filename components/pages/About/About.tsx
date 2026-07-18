@@ -1,11 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { GraduationCap, User, Calendar, MapPin } from "lucide-react";
-
-gsap.registerPlugin(ScrollTrigger);
+import anime from "animejs";
 
 export const education = [
   {
@@ -16,7 +12,7 @@ export const education = [
       "Focused on software engineering, algorithms, and web technologies. Expected Graduation with Honors.",
   },
   {
-    degree: "Full Stack Web Development & IoT ",
+    degree: "Full Stack Web Development & IoT",
     institution: "Softmusk Info Pvt Ltd",
     year: "2025",
     description:
@@ -26,157 +22,164 @@ export const education = [
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const headingLineRef = useRef<HTMLDivElement>(null);
+  const textRef = useRef<HTMLDivElement>(null);
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const bgShapesRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const triggers: ScrollTrigger[] = [];
+    let hasAnimated = false;
+    let bgAnimation: anime.AnimeInstance | null = null;
 
-    // Heading animation with underline draw — kept as a nice entrance
-    if (headingRef.current && headingLineRef.current) {
-      const headingTl = gsap.timeline({
-        scrollTrigger: {
-          trigger: sectionRef.current,
-          start: "top 75%",
-          toggleActions: "play none none none",
-          once: true,
-          onToggle: (self) => triggers.push(self),
-        },
+    // Background shapes continuous fluid animation
+    if (bgShapesRef.current) {
+      const shapes = bgShapesRef.current.querySelectorAll(".anime-shape");
+      bgAnimation = anime({
+        targets: shapes,
+        translateX: () => anime.random(-40, 40),
+        translateY: () => anime.random(-40, 40),
+        scale: () => anime.random(8, 12) / 10,
+        rotate: () => anime.random(-15, 15),
+        duration: () => anime.random(4000, 7000),
+        easing: "easeInOutSine",
+        direction: "alternate",
+        loop: true,
       });
+    }
 
-      headingTl.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power3.out" },
-      );
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting && !hasAnimated) {
+            hasAnimated = true;
 
-      headingTl.fromTo(
-        headingLineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
-        "-=0.2",
-      );
+            // Kinetic typography entrance for biography
+            if (textRef.current) {
+              const textElements = textRef.current.querySelectorAll(".reveal-text");
+              anime({
+                targets: textElements,
+                translateY: [40, 0],
+                opacity: [0, 1],
+                duration: 1000,
+                delay: anime.stagger(150),
+                easing: "easeOutExpo",
+              });
+            }
+
+            // Timeline kinetic entrance
+            if (timelineRef.current) {
+              const timelineLine = timelineRef.current.querySelector(".timeline-line");
+              const timelineItems = timelineRef.current.querySelectorAll(".timeline-item");
+              
+              const tl = anime.timeline({
+                easing: "easeOutQuart",
+              });
+
+              tl.add({
+                targets: timelineLine,
+                scaleY: [0, 1],
+                opacity: [0, 1],
+                duration: 800,
+              }).add({
+                targets: timelineItems,
+                translateX: [30, 0],
+                opacity: [0, 1],
+                duration: 800,
+                delay: anime.stagger(200),
+              }, "-=400");
+            }
+          }
+        });
+      },
+      { threshold: 0.2 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
     }
 
     return () => {
-      triggers.forEach((st) => st.kill());
+      observer.disconnect();
+      if (bgAnimation) bgAnimation.pause();
     };
   }, []);
 
   return (
-    <section ref={sectionRef} id="about" className="py-24 text-white z-50">
-      <div className="container mx-auto px-6">
-        {/* Section Header */}
-        <div className="text-center mb-20">
-          <h2
-            ref={headingRef}
-            className="text-4xl md:text-5xl font-bold mb-4 opacity-0"
-          >
-            About Me
-          </h2>
-          <div
-            ref={headingLineRef}
-            className="mx-auto h-[3px] w-20 bg-gradient-to-r from-transparent via-blue-400 to-transparent origin-center mb-4"
-            style={{ transform: "scaleX(0)" }}
-          />
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
-            My journey, education, and professional experience in the world of
-            technology.
-          </p>
-        </div>
+    <section ref={sectionRef} id="about" className="relative py-32 text-white overflow-hidden ">
+      {/* Abstract Animated Background */}
+      <div ref={bgShapesRef} className="absolute inset-0 pointer-events-none opacity-20">
+        <div className="anime-shape absolute top-[20%] left-[10%] w-64 h-64 rounded-full border-[1px] border-indigo-500/20 mix-blend-screen blur-[1px]" />
+        <div className="anime-shape absolute bottom-[20%] right-[10%] w-96 h-96 rounded-full border-[1px] border-violet-500/20 mix-blend-screen blur-[1px]" />
+        <div className="anime-shape absolute top-[40%] left-[60%] w-[40rem] h-[1px] bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent -rotate-45" />
+        <div className="anime-shape absolute top-[60%] right-[60%] w-[30rem] h-[1px] bg-gradient-to-r from-transparent via-violet-500/30 to-transparent rotate-45" />
+      </div>
 
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 max-w-6xl mx-auto">
-          {/* Biography — takes 3 cols */}
-          <div className="lg:col-span-3">
+      <div className="container mx-auto px-6 max-w-7xl relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-8">
+          
+          {/* Biography - 7 Columns */}
+          <div ref={textRef} className="lg:col-span-7 flex flex-col justify-center">
+            <h2 className="reveal-text text-sm uppercase tracking-[0.2em] text-indigo-400 mb-8 font-mono">
+              About
+            </h2>
+            <div className="space-y-8">
+              <p className="reveal-text text-3xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.2] tracking-tight text-white/95">
+                I build immersive digital experiences where{" "}
+                <span className="text-indigo-400 font-serif italic">engineering</span>{" "}
+                meets{" "}
+                <span className="text-violet-400 font-serif italic">design</span>.
+              </p>
+              <p className="reveal-text text-lg text-white/60 leading-relaxed max-w-2xl font-light">
+                As a Full Stack Developer, I specialize in crafting scalable web applications
+                using modern technologies. My approach is rooted in the belief that great
+                software isn't just functional—it's an experience. I merge deep technical
+                expertise with an obsessive attention to aesthetic detail.
+              </p>
+              <div className="reveal-text flex items-center gap-6 pt-4 text-sm font-mono text-white/40">
+                <span>MAHARASHTRA, IN</span>
+                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
+                <span>2+ YEARS EXP</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Education Timeline - 4 Columns */}
+          <div ref={timelineRef} className="lg:col-span-4 lg:col-start-9 relative">
+             <h2 className="reveal-text text-sm uppercase tracking-[0.2em] text-indigo-400 mb-12 font-mono opacity-0">
+              Timeline
+            </h2>
+            
             <div className="relative">
-              {/* Decorative accent */}
-              <div className="absolute -left-4 top-0 bottom-0 w-[2px] bg-gradient-to-b from-blue-500 via-blue-500/30 to-transparent hidden lg:block" />
+              {/* Sleek Line */}
+              <div className="timeline-line absolute left-0 top-2 bottom-0 w-[1px] bg-gradient-to-b from-indigo-500/50 via-violet-500/20 to-transparent origin-top opacity-0" />
 
-              <div className="lg:pl-8">
-                <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                  <div className="p-2 rounded-lg bg-blue-500/10 border border-blue-500/20">
-                    <User className="w-5 h-5 text-blue-400" />
-                  </div>
-                  <div>
-                    <span className="text-blue-500 text-sm font-mono block">01.</span>
-                    Biography
-                  </div>
-                </h3>
+              <div className="space-y-12 pl-8">
+                {education.map((edu, index) => (
+                  <div key={index} className="timeline-item opacity-0 relative group cursor-default">
+                    {/* Glowing Dot */}
+                    <div className="absolute -left-[36.5px] top-2 w-[8px] h-[8px] rounded-full bg-black border border-indigo-500 group-hover:bg-indigo-500 transition-colors duration-500">
+                      <div className="absolute inset-0 rounded-full bg-indigo-500 blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                    </div>
 
-                <div className="space-y-5">
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    I am a passionate Full Stack Developer with a keen eye for
-                    design and a drive for creating immersive digital experiences.
-                    With a strong foundation in computer science and years of
-                    hands-on experience, I specialize in building scalable web
-                    applications using modern technologies.
-                  </p>
-                  <p className="text-gray-300 text-lg leading-relaxed">
-                    My approach combines technical expertise with creative
-                    problem-solving. I believe that great software is not just
-                    about code, but about understanding user needs and delivering
-                    solutions that make a difference. When I&apos;m not coding,
-                    you can find me exploring new technologies, contributing to
-                    open source, or designing 3D assets.
-                  </p>
-                </div>
-
-                {/* Quick info chips */}
-                <div className="flex flex-wrap gap-3 mt-8">
-                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 text-sm text-gray-400">
-                    <MapPin className="w-3.5 h-3.5 text-blue-400" />
-                    Maharashtra, India
+                    <div className="space-y-2 transition-transform duration-500 group-hover:translate-x-2">
+                      <p className="text-xs font-mono tracking-widest text-indigo-400/80">
+                        {edu.year}
+                      </p>
+                      <h4 className="text-xl font-semibold text-white tracking-tight">
+                        {edu.degree}
+                      </h4>
+                      <p className="text-sm text-white/50 font-light pb-2">
+                        {edu.institution}
+                      </p>
+                      <p className="text-sm text-white/40 leading-relaxed font-light">
+                        {edu.description}
+                      </p>
+                    </div>
                   </div>
-                  <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/10 text-sm text-gray-400">
-                    <Calendar className="w-3.5 h-3.5 text-blue-400" />
-                    2+ Years Experience
-                  </div>
-                </div>
+                ))}
               </div>
             </div>
           </div>
 
-          {/* Education — takes 2 cols */}
-          <div className="lg:col-span-2 z-50">
-            <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-              <div className="p-2 rounded-lg bg-indigo-500/10 border border-indigo-500/20">
-                <GraduationCap className="w-5 h-5 text-indigo-400" />
-              </div>
-              <div>
-                <span className="text-blue-500 text-sm font-mono block">02.</span>
-                Education
-              </div>
-            </h3>
-
-            <div className="space-y-6 relative">
-              {/* Timeline line */}
-              <div className="absolute left-[19px] top-6 bottom-6 w-[2px] bg-gradient-to-b from-indigo-500/40 via-blue-500/20 to-transparent" />
-
-              {education.map((edu, index) => (
-                <div
-                  key={index}
-                  className="group relative pl-12"
-                >
-                  {/* Timeline dot */}
-                  <div className="absolute left-3 top-3 w-3 h-3 rounded-full bg-indigo-500 border-2 border-black group-hover:scale-125 group-hover:shadow-[0_0_12px_rgba(129,140,248,0.5)] transition-all duration-300" />
-
-                  <div className="bg-indigo-950/20 backdrop-blur-sm p-5 rounded-xl border border-white/10 hover:border-indigo-500/30 transition-all duration-500 hover:shadow-[0_0_20px_rgba(99,102,241,0.1)] hover:-translate-y-0.5">
-                    <h4 className="text-base font-bold text-white mb-1">
-                      {edu.degree}
-                    </h4>
-                    <p className="text-blue-400 font-medium text-sm">
-                      {edu.institution}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1 mb-3 font-mono">
-                      {edu.year}
-                    </p>
-                    <p className="text-gray-400 text-sm leading-relaxed">{edu.description}</p>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>
