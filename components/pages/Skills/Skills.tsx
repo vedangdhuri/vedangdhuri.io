@@ -7,9 +7,8 @@ import React from "react";
 import { getDeviceTier } from "@/utils/useDeviceTier";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import GlobeDemo from "@/components/ui/globe-demo";
 import { Code2, Paintbrush, Database, Layout, Cpu, Cloud } from "lucide-react";
-// CometCard removed per design update
-// import { CometCard } from "@/components/ui/comet-card";
 import {
   FaReact,
   FaNodeJs,
@@ -39,8 +38,7 @@ import {
 } from "react-icons/si";
 import { TbBrandVscode } from "react-icons/tb";
 import { BsFileEarmarkCode, BsGrid1X2 } from "react-icons/bs";
-import { MdAnimation } from "react-icons/md";
-import { MdAutoAwesomeMotion } from "react-icons/md";
+import { MdAnimation, MdAutoAwesomeMotion } from "react-icons/md";
 import { RiAlibabaCloudLine } from "react-icons/ri";
 import { LucideIcon } from "lucide-react";
 
@@ -57,6 +55,7 @@ interface SkillCardProps {
   skills: Skill[];
   color: string;
   index: number;
+  className?: string;
 }
 
 interface SkillCategory {
@@ -72,6 +71,7 @@ const SkillCard = ({
   skills,
   color,
   index,
+  className,
 }: SkillCardProps) => {
   const cardRef = useRef<HTMLDivElement>(null);
   const badgesRef = useRef<HTMLDivElement>(null);
@@ -79,8 +79,6 @@ const SkillCard = ({
   useEffect(() => {
     const card = cardRef.current;
     if (!card) return;
-    const tier = getDeviceTier();
-    const ownTriggers: ScrollTrigger[] = [];
 
     // Card entrance
     gsap.fromTo(
@@ -136,39 +134,54 @@ const SkillCard = ({
   return (
     <div
       ref={cardRef}
-      className="h-full"
+      className={`h-full ${className || ""}`}
       style={{ opacity: 0, perspective: "600px" }}
     >
-      <Card className="group relative overflow-hidden bg-indigo-950/20 backdrop-blur-sm border-white/10 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 z-100 hover:border-blue-500/30 h-full">
+      <Card className="group relative overflow-hidden bg-indigo-950/20 backdrop-blur-sm border-white/10 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 z-10 hover:border-blue-500/30 h-full">
+        {/* Shimmer effect overlay from seraprogrammer-portfolio */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.05)] to-transparent group-hover:via-[rgba(100,100,255,0.15)] animate-shimmer pointer-events-none" />
+        
+        {/* Terminal Header */}
+        <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-white/[0.02]">
+          <div className="flex items-center gap-2">
+            <span className="text-[10px] font-mono text-gray-500 tracking-wider font-bold uppercase">{">"}_ {title.toLowerCase().replace(/\s+/g, "_")}</span>
+          </div>
+          <div className="flex gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-red-500/40 group-hover:bg-red-500/70 transition-colors duration-300" />
+            <span className="w-2 h-2 rounded-full bg-yellow-500/40 group-hover:bg-yellow-500/70 transition-colors duration-300" />
+            <span className="w-2 h-2 rounded-full bg-green-500/40 group-hover:bg-green-500/70 transition-colors duration-300" />
+          </div>
+        </div>
+        
         <CardContent className="p-6 relative z-10 cursor-target h-full">
           <div className="flex flex-col h-full">
-              <div className="flex items-center gap-4 mb-6">
-                <div
-                  className={`p-3 rounded-xl bg-white/5 ${color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
-                >
-                  <Icon className="w-8 h-8" />
-                </div>
-                <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
-                  {title}
-                </h3>
-              </div>
+            <div className="flex items-center gap-4 mb-6">
               <div
-                ref={badgesRef}
-                className="flex flex-wrap gap-2 flex-1 content-start"
+                className={`p-3 rounded-xl bg-white/5 ${color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
               >
-                {skills.map((skill, idx) => (
-                  <Badge
-                    key={idx}
-                    variant="outline"
-                    className="group/badge relative bg-white/5 hover:bg-white/10 text-gray-100 border-white/10 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 h-fit"
-                  >
-                    <span className="transform group-hover/badge:scale-110 group-hover/badge:rotate-12 transition-transform duration-300">
-                      {skill.icon}
-                    </span>
-                    <span className="font-medium">{skill.name}</span>
-                  </Badge>
-                ))}
+                <Icon className="w-8 h-8" />
               </div>
+              <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+                {title}
+              </h3>
+            </div>
+            <div
+              ref={badgesRef}
+              className="flex flex-wrap gap-2 flex-1 content-start"
+            >
+              {skills.map((skill, idx) => (
+                <Badge
+                  key={idx}
+                  variant="outline"
+                  className="group/badge relative bg-white/5 hover:bg-white/10 text-gray-100 border-white/10 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 h-fit"
+                >
+                  <span className="transform group-hover/badge:scale-110 group-hover/badge:rotate-12 transition-transform duration-300">
+                    {skill.icon}
+                  </span>
+                  <span className="font-medium">{skill.name}</span>
+                </Badge>
+              ))}
+            </div>
           </div>
         </CardContent>
       </Card>
@@ -226,7 +239,6 @@ const SkillsSection = () => {
           name: "Next.js",
           icon: <SiNextdotjs className="w-4 h-4 text-white" />,
         },
-
         {
           name: "Tailwind CSS",
           icon: <SiTailwindcss className="w-4 h-4 text-[#38B2AC]" />,
@@ -303,14 +315,14 @@ const SkillsSection = () => {
     },
     {
       icon: Cloud,
-      title: "Cloud ",
+      title: "Cloud",
       color: "text-orange-400",
       skills: [
         { name: "AWS", icon: <FaAws className="w-4 h-4 text-[#FF9900]" /> },
         { name: "Vercel", icon: <SiVercel className="w-4 h-4 text-white" /> },
-        { name: "Render ", icon: <SiRender className="w-4 h-4 text-white" /> },
+        { name: "Render", icon: <SiRender className="w-4 h-4 text-white" /> },
         {
-          name: "Netlify  ",
+          name: "Netlify",
           icon: <SiNetlify className="w-4 h-4 text-[#05bdba]" />,
         },
       ],
@@ -378,6 +390,13 @@ const SkillsSection = () => {
           levels.
         </p>
       </div>
+
+      {/* 3D Icon Globe Demo */}
+      <div className="flex justify-center items-center mb-16">
+        <GlobeDemo />
+      </div>
+
+      {/* Symmetrical 3-Column Skills Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {skillCategories.map((category, index) => (
           <SkillCard
@@ -387,9 +406,11 @@ const SkillsSection = () => {
             title={category.title}
             skills={category.skills}
             color={category.color}
+            className="col-span-1"
           />
         ))}
       </div>
+
       <style>{`
         @keyframes shimmer {
           0% {
@@ -400,23 +421,7 @@ const SkillsSection = () => {
           }
         }
         .animate-shimmer {
-          animation: shimmer 2s infinite;
-        }
-        @keyframes border-rotate {
-          from {
-            --border-angle: 0deg;
-          }
-          to {
-            --border-angle: 360deg;
-          }
-        }
-        .animate-border-rotate {
-          animation: border-rotate 3s linear infinite;
-        }
-        @property --border-angle {
-          syntax: "<angle>";
-          initial-value: 0deg;
-          inherits: false;
+          animation: shimmer 2.5s infinite linear;
         }
         .bg-grid-pattern {
           background-image: linear-gradient(
