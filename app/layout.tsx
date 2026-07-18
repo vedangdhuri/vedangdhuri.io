@@ -3,7 +3,7 @@ import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/pages/Navbar/Navbar";
 import { Footer } from "@/components/pages/Footer/Footer";
-import { StarBackground } from "@/components/pages/Background/Starbackground";
+// import { StarBackground } from "@/components/pages/Background/Starbackground";
 import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({
@@ -39,7 +39,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} font-sans bg-black text-white overflow-x-hidden`}
       >
-        <StarBackground />
+        {/* <StarBackground /> */}
         <Navbar />
         <main className="min-h-screen overflow-x-hidden">{children}</main>
         <Footer />
