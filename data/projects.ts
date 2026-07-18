@@ -131,14 +131,14 @@ npm run dev
     shortDescription: "Open-source Next.js portfolio template recognized and forked by developers worldwide, optimized for SEO/AEO and performance.",
     techStack: ["Frontend", "UI/UX", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP Animations"],
     category: "personal",
-    thumbnail: "/projects/portfolio_website/portfolio.webp",
+    thumbnail: "/projects/portfolio_website/portfolio.png",
     github: "https://github.com/vedangdhuri/vedangdhuri-io",
     liveUrl: "https://vedangdhuri-io.vercel.app",
     pagesInfoArr: [
       {
         title: "Project Overview",
         description: "A comprehensive look at the main interface and features.",
-        imgArr: ["/projects/portfolio_website/portfolio.webp"]
+        imgArr: ["/projects/portfolio_website/portfolio.png"]
       }
     ],
     readme: `
