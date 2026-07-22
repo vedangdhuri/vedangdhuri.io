@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Outfit, JetBrains_Mono } from "next/font/google";
+import { Inter, Outfit, JetBrains_Mono, Bricolage_Grotesque } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/pages/Navbar/Navbar";
 import { Footer } from "@/components/pages/Footer/Footer";
@@ -14,6 +14,11 @@ const inter = Inter({
 const outfit = Outfit({
   subsets: ["latin"],
   variable: "--font-outfit",
+});
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ["latin"],
+  variable: "--font-bricolage",
 });
 
 const jetbrainsMono = JetBrains_Mono({
@@ -37,7 +42,7 @@ export default function RootLayout({
         <link rel="icon" href="/img/top_icon.png" />
       </head>
       <body
-        className={`${inter.variable} ${outfit.variable} ${jetbrainsMono.variable} font-sans bg-black text-white overflow-x-hidden`}
+        className={`${inter.variable} ${outfit.variable} ${bricolage.variable} ${jetbrainsMono.variable} font-sans bg-black text-white overflow-x-hidden`}
       >
         {/* <StarBackground /> */}
         <Navbar />

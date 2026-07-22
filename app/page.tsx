@@ -7,6 +7,7 @@ import Loader from "@/components/pages/Loader/Loader";
 import { useEffect, useState, useRef } from "react";
 import GitHubGraph from "@/components/pages/GitHub/GitHubGraph";
 import ProjectsPreview from "@/components/pages/Project/ProjectsPreview";
+import CursorGrid from "@/components/ui/CursorGrid";
 import Lenis from "lenis";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -102,26 +103,33 @@ export default function Home() {
         <div id="home" className="relative z-10">
           <HeroVisual />
         </div>
-        <div className="section-divider" />
-        <div id="about" className="relative z-10">
-          <About />
-        </div>
-        <div className="section-divider" />
-        <div id="skills" className="relative z-10">
-          <SkillsSection />
-        </div>
-        <div className="section-divider" />
-        <div id="projects" className="relative z-10">
-          <ProjectsPreview />
-        </div>
-        <div className="section-divider" />
-        <div id="contact" className="relative z-10">
-          <Contact />
-        </div>
-        <div className="section-divider" />
-        <div id="github" className="relative z-10">
-          <GitHubGraph />
-        </div>
+        <CursorGrid
+          color="#00E5FF"
+          maxOpacity={0.5}
+          fadeDuration={1000}
+          className="w-full"
+        >
+          <div className="section-divider" />
+          <div id="about" className="relative z-10">
+            <About />
+          </div>
+          <div className="section-divider" />
+          <div id="skills" className="relative z-10">
+            <SkillsSection />
+          </div>
+          <div className="section-divider" />
+          <div id="projects" className="relative z-10">
+            <ProjectsPreview />
+          </div>
+          <div className="section-divider" />
+          <div id="contact" className="relative z-10">
+            <Contact />
+          </div>
+          <div className="section-divider" />
+          <div id="github" className="relative z-10">
+            <GitHubGraph />
+          </div>
+        </CursorGrid>
       </motion.div>
     </>
   );
