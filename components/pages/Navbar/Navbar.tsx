@@ -6,24 +6,24 @@ import { motion, AnimatePresence, useMotionValue, useSpring } from "framer-motio
 import gsap from "gsap";
 
 import {
-  FaLaptopCode,
-  FaHome,
-  FaUser,
-  FaEnvelope,
-  FaCode,
-  FaGithub,
-  FaBars,
-  FaTimes,
-} from "react-icons/fa";
+  Home,
+  User,
+  Code,
+  Laptop,
+  Mail,
+  Github,
+  Menu,
+  X,
+} from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { logo: <FaHome size={22} />, href: "/", text: "Home" },
-  { logo: <FaUser size={22} />, href: "/#about", text: "About" },
-  { logo: <FaCode size={22} />, href: "/#skills", text: "Skills" },
-  { logo: <FaLaptopCode size={22} />, href: "/projects", text: "Projects" },
-  { logo: <FaEnvelope size={22} />, href: "/#contact", text: "Contact" },
-  { logo: <FaGithub size={22} />, href: "/#github", text: "Github" },
+  { logo: <Home size={20} />, href: "/", text: "Home" },
+  { logo: <User size={20} />, href: "/#about", text: "About" },
+  { logo: <Code size={20} />, href: "/#skills", text: "Skills" },
+  { logo: <Laptop size={20} />, href: "/projects", text: "Projects" },
+  { logo: <Mail size={20} />, href: "/#contact", text: "Contact" },
+  { logo: <Github size={20} />, href: "/#github", text: "Github" },
 ];
 
 const MagneticItem = ({
@@ -66,14 +66,14 @@ const MagneticItem = ({
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
-      className="relative flex items-center justify-center p-3 sm:p-4 rounded-2xl group cursor-pointer"
+      className="relative flex items-center justify-center p-3 sm:p-4 rounded-full group cursor-pointer"
       whileHover={{ scale: 1.15 }}
       whileTap={{ scale: 0.95 }}
     >
       {isActive && (
         <motion.div
           layoutId="navbar-active-bubble"
-          className="absolute inset-0 bg-white/10 rounded-2xl border border-white/20 shadow-[inset_0_1px_1px_rgba(255,255,255,0.2)] backdrop-blur-md"
+          className="absolute inset-0 bg-[#00E5FF]/10 rounded-full border border-[#00E5FF]/30 shadow-[inset_0_1px_1px_rgba(0,229,255,0.2)] backdrop-blur-md"
           transition={{ type: "spring", stiffness: 350, damping: 25 }}
         />
       )}
@@ -81,15 +81,15 @@ const MagneticItem = ({
       <motion.div
         style={{ x: mouseXSpring, y: mouseYSpring }}
         className={cn(
-          "relative z-10 flex items-center justify-center transition-colors duration-300",
-          isActive ? "text-white" : "text-gray-400 group-hover:text-blue-300 drop-shadow-md"
+          "relative z-10 flex items-center justify-center transition-colors duration-200",
+          isActive ? "text-[#00E5FF]" : "text-white/60 group-hover:text-white drop-shadow-md"
         )}
       >
         {children}
       </motion.div>
 
       {/* Tooltip */}
-      <div className="absolute top-[120%] opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-indigo-950/90 text-white text-xs font-semibold py-1 px-3 rounded-lg border border-white/10 pointer-events-none whitespace-nowrap shadow-[0_10px_20px_rgba(0,0,0,0.3)]">
+      <div className="absolute top-[120%] opacity-0 group-hover:opacity-100 transition-opacity duration-200 bg-[#0A0A0A] text-white text-xs font-semibold py-1.5 px-3 rounded-[4px] border border-white/20 pointer-events-none whitespace-nowrap shadow-[0_10px_20px_rgba(0,0,0,0.3)]">
         {text}
       </div>
     </motion.div>
@@ -180,7 +180,7 @@ export const Navbar = () => {
       {/* Desktop Antigravity Dock */}
       <nav
         ref={navRef}
-        className="hidden md:flex w-max z-[99] fixed left-1/2 top-0 -translate-x-1/2 items-center gap-1 p-2 rounded-[2rem] bg-indigo-950/20 backdrop-blur-xl border border-white/10 shadow-[0_20px_40px_rgba(0,0,0,0.2),inset_0_0_0_1px_rgba(255,255,255,0.05)]"
+        className="hidden md:flex w-max z-[99] fixed left-1/2 top-0 -translate-x-1/2 items-center gap-1 p-2 rounded-full bg-[#0A0A0A]/40 backdrop-blur-sm border border-white/20 shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25),0_0_8px_0_rgba(0,229,255,0.3)]"
         style={{ opacity: 0 }}
       >
         <div className="flex gap-2 relative z-10">
@@ -200,17 +200,17 @@ export const Navbar = () => {
         </div>
         
         {/* Deep ambient glow behind the dock */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/10 via-purple-500/10 to-blue-500/10 rounded-[2rem] blur-xl -z-10" />
+        <div className="absolute inset-0 bg-[#00E5FF]/20 rounded-full blur-xl -z-10" />
       </nav>
 
       {/* Mobile Menu Button */}
       <div className="md:hidden fixed top-6 right-6 z-[9999]">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="p-4 rounded-2xl bg-indigo-950/40 backdrop-blur-xl border border-white/10 text-white shadow-[0_10px_20px_rgba(0,0,0,0.2)] focus:outline-none hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-300 flex items-center justify-center"
+          className="p-3 rounded-[20px] bg-[#0A0A0A]/60 backdrop-blur-sm border border-white/20 text-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25),0_0_8px_0_rgba(0,229,255,0.3)] focus:outline-none hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
           aria-label="Toggle Menu"
         >
-          {isOpen ? <FaTimes size={20} /> : <FaBars size={20} />}
+          {isOpen ? <X size={24} /> : <Menu size={24} />}
         </button>
       </div>
 
@@ -221,10 +221,10 @@ export const Navbar = () => {
             {/* Backdrop Overlay */}
             <motion.div
               initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-              animate={{ opacity: 1, backdropFilter: "blur(8px)" }}
+              animate={{ opacity: 1, backdropFilter: "blur(4px)" }}
               exit={{ opacity: 0, backdropFilter: "blur(0px)" }}
               onClick={() => setIsOpen(false)}
-              className="md:hidden fixed inset-0 bg-black/60 z-[9997]"
+              className="md:hidden fixed inset-0 bg-[#0A0A0A]/60 z-[9997]"
             />
 
             {/* Menu Panel Card (Antigravity Style) */}
@@ -234,11 +234,11 @@ export const Navbar = () => {
               exit={{ opacity: 0, y: -40, rotateX: 10, scale: 0.95 }}
               transition={{ duration: 0.4, type: "spring", bounce: 0.2 }}
               style={{ transformPerspective: 800 }}
-              className="md:hidden fixed top-6 right-6 left-6 z-[9998] bg-indigo-950/70 backdrop-blur-2xl border border-white/10 rounded-[2rem] p-6 shadow-[0_30px_60px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.1)] flex flex-col gap-6"
+              className="md:hidden fixed top-6 right-6 left-6 z-[9998] bg-[#0A0A0A]/80 backdrop-blur-md border border-white/20 rounded-[20px] p-6 shadow-[0_30px_60px_rgba(0,0,0,0.4)] flex flex-col gap-6"
             >
               {/* Header */}
               <div className="flex justify-between items-center pb-4 border-b border-white/10">
-                <span className="text-white font-bold text-xl tracking-wider uppercase text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-400">
+                <span className="text-white font-bold text-lg tracking-[1.2px] uppercase">
                   Navigation
                 </span>
                 <div className="w-12 h-12" /> {/* Spacer for close button */}
@@ -255,16 +255,16 @@ export const Navbar = () => {
                       setIsOpen(false);
                     }}
                     className={cn(
-                      "group relative flex items-center gap-5 text-base px-5 py-4 rounded-2xl transition-all duration-300 w-full overflow-hidden",
+                      "group relative flex items-center gap-5 text-base px-5 py-4 rounded-[4px] transition-all duration-200 w-full overflow-hidden cursor-pointer",
                       activeLink === item.href
-                        ? "text-white"
-                        : "text-gray-300 hover:text-white hover:bg-white/5"
+                        ? "text-[#00E5FF]"
+                        : "text-white/60 hover:text-white hover:bg-white/5"
                     )}
                   >
                     {activeLink === item.href && (
                       <motion.div
                         layoutId="mobile-navbar-active"
-                        className="absolute inset-0 bg-white/10 border border-white/20 rounded-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.1)]"
+                        className="absolute inset-0 bg-[#00E5FF]/10 border border-[#00E5FF]/20 rounded-[4px]"
                         transition={{
                           type: "spring",
                           stiffness: 300,
@@ -275,8 +275,8 @@ export const Navbar = () => {
 
                     <span className="relative z-10 flex items-center gap-5 w-full">
                       <span className={cn(
-                        "flex-shrink-0 transition-transform duration-300 group-hover:scale-110",
-                        activeLink === item.href ? "text-blue-400" : ""
+                        "flex-shrink-0 transition-transform duration-200 group-hover:scale-110",
+                        activeLink === item.href ? "text-[#00E5FF]" : ""
                       )}>{item.logo}</span>
                       <span className="font-semibold tracking-wide">{item.text}</span>
                     </span>
