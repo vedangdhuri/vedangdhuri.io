@@ -5,8 +5,7 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useForm } from "react-hook-form";
-import { Send, CheckCircle, AlertCircle } from "lucide-react";
-import IconCloudDemo from "@/components/ui/globe";
+import { Send, CheckCircle, AlertCircle, Mail, MapPin, Github, Linkedin, Twitter } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -202,14 +201,56 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info & Globe */}
-          <div ref={globeRef} className="space-y-8 opacity-0">
-            <IconCloudDemo />
+          <div ref={globeRef} className="flex flex-col justify-between opacity-0">
+            <div>
+              <h3 className="text-2xl font-bold mb-6 text-white">Let&apos;s Connect</h3>
+              <p className="text-gray-400 mb-8 leading-relaxed">
+                I&apos;m always open to discussing product design work or partnership opportunities. Whether you have a question or just want to say hi, I&apos;ll try my best to get back to you!
+              </p>
+              
+              <div className="flex flex-col gap-6 mb-10">
+                <a href="mailto:vedangdhuri.work@gmail.com" className="flex items-center gap-4 group cursor-pointer w-max">
+                  <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-colors duration-200">
+                    <Mail size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400 font-medium">Email</p>
+                    <p className="text-white font-medium group-hover:text-[#00E5FF] transition-colors duration-200">vedangdhuri.work@gmail.com</p>
+                  </div>
+                </a>
+                
+                <div className="flex items-center gap-4 group w-max">
+                  <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-colors duration-200">
+                    <MapPin size={20} />
+                  </div>
+                  <div>
+                    <p className="text-sm text-gray-400 font-medium">Location</p>
+                    <p className="text-white font-medium group-hover:text-[#00E5FF] transition-colors duration-200">Maharashtra, India</p>
+                  </div>
+                </div>
+              </div>
+              
+              {/* Social Links */}
+              <div className="flex gap-4">
+                <a href="#" className="w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                  <Github size={20} />
+                </a>
+                <a href="#" className="w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                  <Linkedin size={20} />
+                </a>
+                <a href="#" className="w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                  <Twitter size={20} />
+                </a>
+              </div>
+            </div>
+            
+
           </div>
 
           {/* Contact Form */}
           <div
             ref={formRef}
-            className="p-6 sm:p-8 rounded-2xl border border-white/10 bg-indigo-950/20 backdrop-blur-sm z-1 opacity-0 hover:border-blue-400/50 hover:shadow-[0_0_30px_rgba(59,130,246,0.1)] transition-all duration-500"
+            className="p-6 sm:p-8 rounded-[20px] border border-white/20 bg-[#0A0A0A]/40 backdrop-blur-md z-1 opacity-0 hover:border-[#00E5FF]/50 hover:shadow-[0_0_30px_rgba(0,229,255,0.15)] transition-all duration-300"
           >
             <h3 className="text-2xl font-bold mb-6">Send a Message</h3>
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
@@ -224,7 +265,7 @@ const Contact = () => {
                   <input
                     id="name"
                     {...register("name", { required: "Name is required" })}
-                    className={`w-full bg-black/50 border ${errors.name ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
+                    className={`w-full bg-[#0A0A0A]/60 border ${errors.name ? "border-red-500" : "border-white/10"} rounded-[4px] px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300`}
                     placeholder="John Doe"
                   />
                   {errors.name && (
@@ -250,7 +291,7 @@ const Contact = () => {
                         message: "Invalid email address",
                       },
                     })}
-                    className={`w-full bg-black/50 border ${errors.email ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
+                    className={`w-full bg-[#0A0A0A]/60 border ${errors.email ? "border-red-500" : "border-white/10"} rounded-[4px] px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300`}
                     placeholder="john@example.com"
                   />
                   {errors.email && (
@@ -271,7 +312,7 @@ const Contact = () => {
                 <input
                   id="subject"
                   {...register("subject", { required: "Subject is required" })}
-                  className={`w-full bg-black/50 border ${errors.subject ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300`}
+                  className={`w-full bg-[#0A0A0A]/60 border ${errors.subject ? "border-red-500" : "border-white/10"} rounded-[4px] px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300`}
                   placeholder="Project Inquiry"
                 />
                 {errors.subject && (
@@ -292,7 +333,7 @@ const Contact = () => {
                   id="message"
                   rows={5}
                   {...register("message", { required: "Message is required" })}
-                  className={`w-full bg-black/50 border ${errors.message ? "border-red-500" : "border-white/10"} rounded-lg px-4 py-3 text-white focus:outline-none focus:border-blue-500 focus:shadow-[0_0_15px_rgba(59,130,246,0.2)] transition-all duration-300 resize-none`}
+                  className={`w-full bg-[#0A0A0A]/60 border ${errors.message ? "border-red-500" : "border-white/10"} rounded-[4px] px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300 resize-none`}
                   placeholder="Tell me about your project..."
                 />
                 {errors.message && (
@@ -305,7 +346,7 @@ const Contact = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:shadow-[0_0_25px_rgba(59,130,246,0.4)] active:scale-[0.98] btn-pulse"
+                className="w-full bg-[#00E5FF] hover:bg-[#00E5FF]/80 text-black font-semibold py-3 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:shadow-[0_0_25px_rgba(0,229,255,0.4)] active:scale-[0.98] btn-pulse"
               >
                 {isSubmitting ? (
                   <span className="animate-pulse">Sending...</span>
@@ -320,7 +361,7 @@ const Contact = () => {
                 <motion.div
                   initial={{ opacity: 0, y: 10 }}
                   animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-green-500/20 border border-green-500/50 rounded-lg flex items-center gap-3 text-green-400"
+                  className="p-4 bg-[#00E5FF]/10 border border-[#00E5FF]/30 rounded-[4px] flex items-center gap-3 text-[#00E5FF]"
                 >
                   <CheckCircle size={20} />
                   <span>
