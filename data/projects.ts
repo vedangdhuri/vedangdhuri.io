@@ -6,7 +6,7 @@ export const projects: Project[] = [
     shortDescription: "A real-time multiplayer platform for intellectual clash and comedic battles, evaluated by an impartial GPT-4o AI judge.",
     techStack: ["Next.js", "React", "Node.js", "Tailwind CSS", "MongoDB", "Socket.io", "OpenAI"],
     category: "personal",
-    thumbnail: "/projects/roastroom/thumbnail.png",
+    thumbnail: "/illustrations/projects/roastroom-nexus.png",
     github: "https://github.com/vedangdhuri/RoastRoom",
     liveUrl: "https://roast-room.vercel.app/",
     pagesInfoArr: [
@@ -131,7 +131,7 @@ npm run dev
     shortDescription: "Open-source Next.js portfolio template recognized and forked by developers worldwide, optimized for SEO/AEO and performance.",
     techStack: ["Frontend", "UI/UX", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP Animations"],
     category: "personal",
-    thumbnail: "/projects/portfolio_website/portfolio.png",
+    thumbnail: "/illustrations/projects/portfolio-nexus.png",
     github: "https://github.com/vedangdhuri/vedangdhuri-io",
     liveUrl: "https://vedangdhuri-io.vercel.app",
     pagesInfoArr: [
@@ -174,7 +174,7 @@ npm run dev
     shortDescription: "Django timetabling engine solving university scheduling with constraint handling, batch management, and optimized faculty allocation.",
     techStack: ["Python", "Django", "HTML", "CSS", "Bootstrap", "AI", "ML", "PostgreSQL"],
     category: "personal",
-    thumbnail: "/projects/optitime/opti_time.webp",
+    thumbnail: "/illustrations/projects/opti-time-nexus.png",
     github: "https://github.com/vedangdhuri/Opti-Time-69",
     liveUrl: "https://opti-time-69-1.onrender.com/",
     pagesInfoArr: [
@@ -239,7 +239,7 @@ python manage.py runserver
     shortDescription: "A Multi-Stakeholder Crime Reporting, Monitoring & Real-Time Urban Safety Management Platform.",
     techStack: ["Full Stack", "Web Dev", "HTML", "CSS", "Tailwind CSS", "Python", "Django", "PostgreSQL"],
     category: "professional",
-    thumbnail: "/projects/safecity/safecityhub.webp",
+    thumbnail: "/illustrations/projects/safe-city-nexus.png",
     github: "https://github.com/vedangdhuri/SafeCity-Hub",
     liveUrl: "https://crime-analysis-platform.onrender.com",
     pagesInfoArr: [
@@ -380,7 +380,7 @@ This project is licensed under the **[MIT License](./LICENSE)**.
     shortDescription: "A fast and scalable memory-matching game built with React and Vite. Designed as a lightweight, maintainable foundation for interactive web apps.",
     techStack: ["Web Dev Game", "React", "Vite", "JavaScript", "Tailwindcss"],
     category: "personal",
-    thumbnail: "/projects/match_master_game/match-master-game.webp",
+    thumbnail: "/illustrations/projects/match-master-nexus.png",
     github: "https://github.com/vedangdhuri/Match-Master-Game",
     liveUrl: "https://match-master-game.vercel.app",
     pagesInfoArr: [

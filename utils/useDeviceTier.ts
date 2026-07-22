@@ -32,6 +32,7 @@ export function useDeviceTier(): DeviceTier {
   const [tier, setTier] = useState<DeviceTier>(0);
 
   useEffect(() => {
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setTier(detectTier());
   }, []);
 
