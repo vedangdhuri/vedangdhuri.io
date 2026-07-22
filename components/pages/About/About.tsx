@@ -131,14 +131,9 @@ const About = () => {
               <p className="reveal-text text-lg text-white/60 leading-relaxed max-w-2xl font-light">
                 As a Full Stack Developer, I specialize in crafting scalable web applications
                 using modern technologies. My approach is rooted in the belief that great
-                software isn't just functional—it's an experience. I merge deep technical
+                software isn&apos;t just functional&mdash;it&apos;s an experience. I merge deep technical
                 expertise with an obsessive attention to aesthetic detail.
               </p>
-              <div className="reveal-text flex items-center gap-6 pt-4 text-sm font-mono text-white/40">
-                <span>MAHARASHTRA, IN</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-indigo-500" />
-                <span>2+ YEARS EXP</span>
-              </div>
             </div>
           </div>
 
