@@ -4,229 +4,213 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { ExternalLink } from "lucide-react";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function GitHubGraph() {
+  const sectionRef = useRef<HTMLElement>(null);
   const headingRef = useRef<HTMLDivElement>(null);
   const headingLineRef = useRef<HTMLDivElement>(null);
-  const graphRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Heading
-    if (headingRef.current && headingLineRef.current) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          toggleActions: "restart none none reset",
-        },
-      });
-
-      tl.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 50 },
-        { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-      );
-
-      tl.fromTo(
-        headingLineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
-        "-=0.3",
-      );
-    }
-
-    // Graph entrance
-    if (graphRef.current) {
-      gsap.fromTo(
-        graphRef.current,
-        { opacity: 0, y: 60, scale: 0.95 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.8,
-          ease: "power3.out",
+    const ctx = gsap.context(() => {
+      // Heading Entrance
+      if (headingRef.current && headingLineRef.current) {
+        const tl = gsap.timeline({
           scrollTrigger: {
-            trigger: graphRef.current,
+            trigger: headingRef.current,
             start: "top 85%",
-            toggleActions: "restart none none reset",
+            toggleActions: "play none none none",
+            once: true,
           },
-        },
-      );
-    }
+        });
 
-    // Stats entrance
-    if (statsRef.current) {
-      const cards = statsRef.current.children;
-      gsap.fromTo(
-        cards,
-        { opacity: 0, y: 40, scale: 0.9 },
-        {
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          duration: 0.6,
-          stagger: 0.12,
-          ease: "back.out(1.7)",
-          scrollTrigger: {
-            trigger: statsRef.current,
-            start: "top 85%",
-            toggleActions: "restart none none reset",
+        tl.fromTo(
+          headingRef.current,
+          { opacity: 0, y: 30 },
+          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
+        );
+
+        tl.fromTo(
+          headingLineRef.current,
+          { scaleX: 0 },
+          { scaleX: 1, duration: 0.6, ease: "power2.inOut" },
+          "-=0.4",
+        );
+      }
+
+      // Bento Grid Stagger Entrance
+      if (gridRef.current) {
+        const cards = gsap.utils.toArray(".bento-item");
+        gsap.fromTo(
+          cards,
+          { opacity: 0, y: 40, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            stagger: 0.1,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: gridRef.current,
+              start: "top 85%",
+              toggleActions: "play none none none",
+              once: true,
+            },
           },
-        },
-      );
-    }
+        );
+      }
+    }, sectionRef);
 
-    return () => {
-      ScrollTrigger.getAll().forEach((st) => st.kill());
-    };
+    return () => ctx.revert();
   }, []);
 
   return (
-    <section className="py-20 px-6">
-      <div className="max-w-5xl mx-auto">
+    <section ref={sectionRef} className="py-24 px-4 sm:px-6 relative z-10">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-12 space-y-4">
+        <div className="text-center mb-16 space-y-4">
+          <p className="text-[11px] font-mono tracking-[3px] uppercase text-[#3fb950]/80 mb-2">
+            {"// metrics"}
+          </p>
           <div ref={headingRef} className="opacity-0">
-            <h2 className="text-3xl md:text-4xl font-bold text-neutral-100 tracking-tight">
+            <h2 className="text-3xl md:text-4xl font-bold font-mono text-neutral-100 tracking-tight">
               GitHub Activity
             </h2>
           </div>
           <div
             ref={headingLineRef}
-            className="mx-auto h-[3px] w-20 bg-gradient-to-r from-transparent via-green-400 to-transparent origin-center"
+            className="mx-auto h-[2px] w-20 bg-gradient-to-r from-transparent via-[#3fb950] to-transparent origin-center"
             style={{ transform: "scaleX(0)" }}
           />
-          <p className="text-neutral-400 max-w-xl mx-auto text-lg">
-            My open source contributions and coding activity
+          <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base leading-relaxed mt-4">
+            A real-time overview of my open-source contributions, repositories, and coding consistency.
           </p>
         </div>
 
-        {/* Contribution Graph */}
+        {/* Bento Grid */}
         <div
-          ref={graphRef}
-          className="relative rounded-2xl border border-neutral-800 bg-[#0d1117] p-6 md:p-8 overflow-hidden hover:border-green-500/30 hover:shadow-[0_0_30px_rgba(34,197,94,0.08)] transition-all duration-500 opacity-0"
+          ref={gridRef}
+          className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6"
         >
-          {/* Subtle glow */}
-          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-green-400/50 to-transparent" />
-
-          {/* Square Contribution Heatmap */}
-          <div className="w-full overflow-x-auto mb-6">
-            <img
-              src="https://ghchart.rshah.org/3fb950/vedangdhuri"
-              alt="Vedang Dhuri's GitHub Contribution Heatmap"
-              className="w-full min-w-[700px] h-auto rounded-lg"
-              style={{
-                filter:
-                  "invert(1) hue-rotate(180deg) brightness(0.85) contrast(1.2)",
-              }}
-              loading="lazy"
-            />
-          </div>
-
-          {/* Label */}
-          <div className="flex items-center justify-between mb-8 text-xs text-neutral-500">
-            <span>Less</span>
-            <div className="flex gap-1">
-              <div className="w-3 h-3 rounded-sm bg-[#161b22] border border-neutral-700" />
-              <div className="w-3 h-3 rounded-sm bg-[#0e4429]" />
-              <div className="w-3 h-3 rounded-sm bg-[#006d32]" />
-              <div className="w-3 h-3 rounded-sm bg-[#26a641]" />
-              <div className="w-3 h-3 rounded-sm bg-[#39d353]" />
+          {/* 1. Main Heatmap (Full Width) */}
+          <div className="bento-item opacity-0 md:col-span-12 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-6 md:p-8 overflow-hidden hover:border-[#3fb950]/30 transition-all duration-500 shadow-2xl">
+            {/* Subtle Glow */}
+            <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#3fb950]/10 blur-[100px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-sm font-mono tracking-widest uppercase text-white/60 flex items-center gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#3fb950] animate-pulse" />
+                Contribution Heatmap
+              </h3>
+              <a href="https://github.com/vedangdhuri" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-[#3fb950] transition-colors">
+                <ExternalLink className="w-4 h-4" />
+              </a>
             </div>
-            <span>More</span>
-          </div>
 
-          {/* Divider */}
-          <div className="h-[1px] w-full bg-gradient-to-r from-transparent via-neutral-700 to-transparent mb-6" />
-
-          {/* Activity Line Graph */}
-          <div className="w-full overflow-x-auto">
-            <img
-              src="https://github-readme-activity-graph.vercel.app/graph?username=vedangdhuri&theme=github-dark&hide_border=true&bg_color=0d1117&color=3fb950&line=3fb950&point=ffffff&area=true&area_color=238636"
-              alt="Vedang Dhuri's GitHub Activity Graph"
-              className="w-full h-auto rounded-lg"
-              loading="lazy"
-            />
-          </div>
-        </div>
-
-        {/* GitHub Stats */}
-        <div
-          ref={statsRef}
-          className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-8"
-        >
-          <a
-            href="https://github.com/vedangdhuri"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300 opacity-0"
-          >
-            <img
-              src="https://github-readme-stats-vd.vercel.app/api?username=vedangdhuri&show_icons=true&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=3fb950&icon_color=3fb950&text_color=c9d1d9&count_private=true"
-              alt="GitHub Stats"
-              className="w-full h-auto"
-              loading="lazy"
-            />
-          </a>
-
-          <a
-            href="https://github.com/vedangdhuri"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300 opacity-0"
-          >
-            <img
-              src="https://streak-stats.demolab.com?user=vedangdhuri&theme=github-dark-blue&hide_border=true&background=0d1117&ring=3fb950&fire=3fb950&currStreakLabel=3fb950"
-              alt="GitHub Streak"
-              className="w-full h-auto"
-              loading="lazy"
-            />
-          </a>
-
-          <a
-            href="https://github.com/vedangdhuri"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group rounded-xl border border-neutral-800 bg-[#0d1117] p-5 text-center hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.08)] transition-all duration-300 opacity-0"
-          >
-            <img
-              src="https://github-readme-stats-vd.vercel.app/api/top-langs/?username=vedangdhuri&layout=compact&theme=github_dark&hide_border=true&bg_color=0d1117&title_color=3fb950&text_color=c9d1d9"
-              alt="Top Languages"
-              className="w-full h-auto"
-              loading="lazy"
-            />
-          </a>
-        </div>
-
-        {/* Profile Link */}
-        <div className="flex justify-center mt-8">
-          <a
-            href="https://github.com/vedangdhuri"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 px-6 py-3 text-sm font-medium text-neutral-100 bg-neutral-800 border border-neutral-700 rounded-xl hover:bg-neutral-700 hover:border-green-500/30 hover:shadow-[0_0_20px_rgba(34,197,94,0.15)] transition-all duration-300"
-          >
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-            </svg>
-            View Full Profile
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+            <div className="w-full overflow-x-auto overflow-y-hidden pb-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10">
+              <img
+                src="https://ghchart.rshah.org/3fb950/vedangdhuri"
+                alt="Vedang Dhuri's GitHub Contribution Heatmap"
+                className="w-full min-w-[700px] h-auto rounded-md opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  filter: "invert(1) hue-rotate(180deg) brightness(0.85) contrast(1.2)",
+                }}
+                loading="lazy"
               />
-            </svg>
+            </div>
+
+            <div className="flex items-center justify-end mt-2 text-[10px] font-mono text-white/40 uppercase tracking-widest gap-2">
+              <span>Less</span>
+              <div className="flex gap-1.5">
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-white/5 border border-white/10" />
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-[#0e4429]" />
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-[#006d32]" />
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-[#26a641]" />
+                <div className="w-2.5 h-2.5 rounded-[2px] bg-[#39d353]" />
+              </div>
+              <span>More</span>
+            </div>
+          </div>
+
+          {/* 2. GitHub Stats Card */}
+          <a
+            href="https://github.com/vedangdhuri"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bento-item opacity-0 md:col-span-4 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-5 md:p-6 flex flex-col justify-center items-center hover:border-[#3fb950]/30 hover:bg-white/[0.03] transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(63,185,80,0.1)]"
+          >
+            <img
+              src="https://github-readme-stats-vd.vercel.app/api?username=vedangdhuri&show_icons=true&theme=transparent&hide_border=true&title_color=3fb950&icon_color=3fb950&text_color=c9d1d9&count_private=true"
+              alt="GitHub Stats"
+              className="w-full max-w-[350px] h-auto transform group-hover:scale-[1.02] transition-transform duration-500"
+              loading="lazy"
+            />
+          </a>
+
+          {/* 3. Top Languages Card */}
+          <a
+            href="https://github.com/vedangdhuri"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bento-item opacity-0 md:col-span-4 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-5 md:p-6 flex flex-col justify-center items-center hover:border-[#3fb950]/30 hover:bg-white/[0.03] transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(63,185,80,0.1)]"
+          >
+            <img
+              src="https://github-readme-stats-vd.vercel.app/api/top-langs/?username=vedangdhuri&layout=compact&theme=transparent&hide_border=true&title_color=3fb950&text_color=c9d1d9"
+              alt="Top Languages"
+              className="w-full max-w-[350px] h-auto transform group-hover:scale-[1.02] transition-transform duration-500"
+              loading="lazy"
+            />
+          </a>
+
+          {/* 4. GitHub Streak Card */}
+          <a
+            href="https://github.com/vedangdhuri"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bento-item opacity-0 md:col-span-4 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-5 md:p-6 flex flex-col justify-center items-center hover:border-[#3fb950]/30 hover:bg-white/[0.03] transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(63,185,80,0.1)]"
+          >
+            <img
+              src="https://streak-stats.demolab.com?user=vedangdhuri&theme=github-dark-blue&hide_border=true&background=transparent&ring=3fb950&fire=3fb950&currStreakLabel=3fb950"
+              alt="GitHub Streak"
+              className="w-full max-w-[350px] h-auto transform group-hover:scale-[1.02] transition-transform duration-500"
+              loading="lazy"
+            />
+          </a>
+
+          {/* 5. Activity Line Graph (Full Width) */}
+          <div className="bento-item opacity-0 md:col-span-12 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-6 md:p-8 overflow-hidden hover:border-[#3fb950]/30 transition-all duration-500 shadow-2xl mt-2">
+            {/* Subtle Glow */}
+            <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#3fb950]/10 blur-[100px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+            
+            <h3 className="text-sm font-mono tracking-widest uppercase text-white/60 mb-6">
+              Contribution History
+            </h3>
+            
+            <div className="w-full overflow-x-auto overflow-y-hidden pb-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10">
+              <img
+                src="https://github-readme-activity-graph.vercel.app/graph?username=vedangdhuri&theme=github-dark&hide_border=true&bg_color=transparent&color=3fb950&line=3fb950&point=ffffff&area=true&area_color=238636"
+                alt="Vedang Dhuri's GitHub Activity Graph"
+                className="w-full min-w-[700px] h-auto rounded-lg opacity-90 group-hover:opacity-100 transition-opacity duration-300"
+                loading="lazy"
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Profile Link / CTA */}
+        <div className="flex justify-center mt-12 md:mt-16">
+          <a
+            href="https://github.com/vedangdhuri"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group inline-flex items-center gap-2 text-xs font-mono tracking-[2px] uppercase text-white/40 hover:text-[#3fb950] transition-colors duration-200 border border-white/10 hover:border-[#3fb950]/30 px-6 py-3 rounded-full cursor-pointer bg-white/[0.02] backdrop-blur-sm hover:bg-[#3fb950]/5"
+          >
+            Explore Repositories
+            <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </a>
         </div>
       </div>
