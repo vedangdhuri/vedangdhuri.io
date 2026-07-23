@@ -14,6 +14,7 @@ import {
   Github,
   Menu,
   X,
+  Award,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -22,6 +23,7 @@ const navItems = [
   { logo: <User size={20} />, href: "/#about", text: "About" },
   { logo: <Code size={20} />, href: "/#skills", text: "Skills" },
   { logo: <Laptop size={20} />, href: "/projects", text: "Projects" },
+  { logo: <Award size={20} />, href: "/#certifications", text: "Certifications" },
   { logo: <Mail size={20} />, href: "/#contact", text: "Contact" },
   { logo: <Github size={20} />, href: "/#github", text: "Github" },
 ];
@@ -148,32 +150,53 @@ export const Navbar = () => {
       "about",
       "skills",
       "projects",
+      "certifications",
       "contact",
       "github",
     ];
-    const observerOptions = {
-      root: null,
-      rootMargin: "-20% 0px -80% 0px",
-      threshold: 0,
+
+    let observer: IntersectionObserver;
+
+    const initObserver = () => {
+      if (observer) observer.disconnect();
+
+      const isMobile = window.innerWidth < 768;
+      const isTablet = window.innerWidth < 1024;
+      
+      let rootMargin = "-20% 0px -80% 0px";
+      if (isMobile) rootMargin = "-10% 0px -70% 0px";
+      else if (isTablet) rootMargin = "-15% 0px -75% 0px";
+
+      const observerOptions = {
+        root: null,
+        rootMargin,
+        threshold: 0,
+      };
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            if (entry.target.id === "home") setActiveLink("/");
+            else if (entry.target.id === "projects") setActiveLink("/projects");
+            else setActiveLink(`/#${entry.target.id}`);
+          }
+        });
+      }, observerOptions);
+
+      sections.forEach((section) => {
+        const element = document.getElementById(section);
+        if (element) observer.observe(element);
+      });
     };
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          if (entry.target.id === "home") setActiveLink("/");
-          else if (entry.target.id === "projects") setActiveLink("/projects");
-          else setActiveLink(`/#${entry.target.id}`);
-        }
-      });
-    }, observerOptions);
+    initObserver();
+    window.addEventListener("resize", initObserver);
 
-    sections.forEach((section) => {
-      const element = document.getElementById(section);
-      if (element) observer.observe(element);
-    });
-
-    return () => observer.disconnect();
-  }, [pathname]);
+    return () => {
+      if (observer) observer.disconnect();
+      window.removeEventListener("resize", initObserver);
+    };
+  }, [pathname, activeLink]);
 
   return (
     <>
