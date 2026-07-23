@@ -7,6 +7,7 @@ import Loader from "@/components/pages/Loader/Loader";
 import { useEffect, useState, useRef } from "react";
 import GitHubGraph from "@/components/pages/GitHub/GitHubGraph";
 import ProjectsPreview from "@/components/pages/Project/ProjectsPreview";
+import CertificationsSection from "@/components/pages/Certifications/Certifications";
 import CursorGrid from "@/components/ui/CursorGrid";
 import Lenis from "lenis";
 import gsap from "gsap";
@@ -22,13 +23,7 @@ export default function Home() {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // If already visited this session, skip loader entirely
-    const hasVisited = sessionStorage.getItem("visited");
-    if (hasVisited) {
-      // eslint-disable-next-line react-hooks/set-state-in-effect
-      setLoading(false);
-      setIsExiting(true);
-    }
+    // The loader will now play on every page refresh.
   }, []);
 
   const handleExitStart = () => {
@@ -38,7 +33,6 @@ export default function Home() {
   const handleLoadingComplete = () => {
     setLoading(false);
     window.scrollTo({ top: 0, behavior: "instant" });
-    sessionStorage.setItem("visited", "true");
 
     // Dispatch custom event to notify Navbar that website content is fully shown
     window.dispatchEvent(new Event("portfolio-loaded"));
@@ -120,6 +114,10 @@ export default function Home() {
           <div className="section-divider" />
           <div id="projects" className="relative z-10">
             <ProjectsPreview />
+          </div>
+          <div className="section-divider" />
+          <div id="certifications" className="relative z-10">
+            <CertificationsSection />
           </div>
           <div className="section-divider" />
           <div id="contact" className="relative z-10">
