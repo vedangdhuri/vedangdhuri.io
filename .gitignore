@@ -46,3 +46,10 @@ data.json
 .agents/*
 graphify-out/*
 graphify-out
+.agents
+.agent
+.antigravitycli
+skills-lock.json
+.codex
+.inpeccable
+.vscode
