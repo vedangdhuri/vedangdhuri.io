@@ -1,120 +1,70 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { AppleHelloEnglishEffect } from "@/components/ui/apple-hello-effect";
 
 interface LoaderProps {
   onComplete?: () => void;
   onExitStart?: () => void;
+  duration?: number;
 }
 
-const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const nameRef = useRef<HTMLDivElement>(null);
-  const lineRef = useRef<HTMLDivElement>(null);
-  const subtitleRef = useRef<HTMLDivElement>(null);
+const Loader = ({ onComplete, onExitStart, duration }: LoaderProps) => {
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    const nameEl = nameRef.current;
-    const lineEl = lineRef.current;
-    const subtitleEl = subtitleRef.current;
-    if (!container || !nameEl || !lineEl || !subtitleEl) return;
-
-    const tl = gsap.timeline();
-
-    // Phase 1: Letter-by-letter name reveal
-    const chars = nameEl.querySelectorAll(".loader-char");
-    tl.fromTo(
-      chars,
-      { opacity: 0, y: 40, rotateX: -90 },
-      {
-        opacity: 1,
-        y: 0,
-        rotateX: 0,
-        duration: 0.6,
-        stagger: 0.05,
-        ease: "back.out(1.7)",
-      },
-    );
-
-    // Phase 2: Horizontal line expands from center
-    tl.fromTo(
-      lineEl,
-      { scaleX: 0 },
-      { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
-      "-=0.2",
-    );
-
-    // Phase 3: Subtitle fades in
-    tl.fromTo(
-      subtitleEl,
-      { opacity: 0, y: 10 },
-      { opacity: 1, y: 0, duration: 0.4, ease: "power2.out" },
-      "-=0.2",
-    );
-
-    // Phase 4: Hold, then wipe entire loader up
-    tl.to(container, {
-      yPercent: -100,
-      duration: 0.8,
-      ease: "power4.inOut",
-      delay: 0.3,
-      onStart: () => {
-        onExitStart?.();
-      },
-      onComplete: () => {
+  const handleAnimationComplete = () => {
+    // Small pause at the end for impact before exiting
+    setTimeout(() => {
+      setIsLoading(false);
+      onExitStart?.();
+      setTimeout(() => {
         onComplete?.();
-      },
-    });
-
-    return () => {
-      tl.kill();
-    };
-  }, [onComplete, onExitStart]);
-
-  const name = "VEDANG DHURI";
+      }, 1200); // Increased slightly for smoother overlap
+    }, 300);
+  };
 
   return (
-    <div
-      ref={containerRef}
-      className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black"
-    >
-      {/* Subtle radial gradient background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.08)_0%,transparent_70%)]" />
-
-      {/* Name */}
-      <div
-        ref={nameRef}
-        className="relative flex items-center justify-center gap-[2px] text-2xl sm:text-4xl md:text-6xl font-bold tracking-[0.15em] sm:tracking-[0.2em] text-white w-full px-4 text-center flex-wrap"
-        style={{ perspective: "600px" }}
-      >
-        {name.split("").map((char, i) => (
-          <span
-            key={i}
-            className="loader-char inline-block"
-            style={{ transformOrigin: "center bottom" }}
+    <AnimatePresence mode="wait">
+      {isLoading && (
+        <motion.div
+          initial={{ y: 0 }}
+          exit={{
+            y: "-100%",
+            transition: {
+              duration: 1.2,
+              ease: [0.7, 0, 0.3, 1],
+            },
+          }}
+          className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-black overflow-hidden will-change-transform"
+        >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{
+              opacity: 0,
+              y: -40,
+              transition: { duration: 0.6, ease: [0.33, 1, 0.68, 1] },
+            }}
+            className="relative flex flex-col items-center justify-center w-full max-w-[400px] will-change-transform"
           >
-            {char === " " ? "\u00A0" : char}
-          </span>
-        ))}
-      </div>
+            <AppleHelloEnglishEffect
+              speed={1.2}
+              onAnimationComplete={handleAnimationComplete}
+              className="text-white h-16 sm:h-20 md:h-24 will-change-transform"
+            />
+          </motion.div>
 
-      {/* Horizontal line */}
-      <div
-        ref={lineRef}
-        className="mt-6 h-[2px] w-32 md:w-48 bg-gradient-to-r from-transparent via-blue-400 to-transparent origin-center"
-        style={{ transform: "scaleX(0)" }}
-      />
-
-      {/* Subtitle */}
-      <div
-        ref={subtitleRef}
-        className="mt-4 text-sm md:text-base text-gray-500 tracking-[0.4em] uppercase opacity-0"
-      >
-        Portfolio
-      </div>
-    </div>
+          {/* Subtle aesthetic dot */}
+          <motion.div
+            animate={{ opacity: [0.2, 0.5, 0.2] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            exit={{ opacity: 0, transition: { duration: 0.3 } }}
+            className="absolute bottom-12 w-1.5 h-1.5 rounded-full bg-white/10"
+          />
+        </motion.div>
+      )}
+    </AnimatePresence>
   );
 };
 
