@@ -48,9 +48,6 @@ export default function GitHubGraph() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <p className="text-[11px] font-mono tracking-[3px] uppercase text-[#3fb950]/80 mb-2">
-            {"// metrics"}
-          </p>
           <SectionHeading 
             title="GitHub Activity"
             subtitle="A real-time overview of my open-source contributions, repositories, and coding consistency."
