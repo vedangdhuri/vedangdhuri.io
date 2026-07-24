@@ -3,45 +3,84 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import Image from "next/image";
 import SectionHeading from "@/components/ui/SectionHeading";
-import { Camera, Gamepad2, Compass } from "lucide-react";
+import Image from "next/image";
+import { 
+  Camera, 
+  Gamepad2, 
+  Plane, 
+  Sparkles, 
+  MapPin, 
+  Briefcase, 
+  GraduationCap, 
+  Award,
+  Zap,
+  Cpu,
+  ShieldCheck,
+  Code2,
+  BrainCircuit,
+  Layers
+} from "lucide-react";
 import main_image from "@/public/img/main_image.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export const education = [
+export const journeyTimeline = [
   {
-    degree: "Diploma in Computer Engineering",
-    institution: "Yashwantrao Bhonsale Institute of Technology",
-    year: "2023 - 2026",
+    type: "experience",
+    title: "Software Development Intern",
+    organization: "Softmusk Solutions Pvt. Ltd.",
+    location: "Sawantwadi, India",
+    period: "Jun 2025 – Aug 2025",
+    icon: Briefcase,
     description:
-      "Focused on software engineering, algorithms, and web technologies. Expected Graduation with Honors.",
+      "Completed a 3-month internship applying Django, REST APIs, and full-stack integration to real-world software systems. Collaborated across teams to integrate backend services with responsive frontend components.",
+    skills: ["Django", "REST APIs", "Python", "Full Stack Integration"],
   },
   {
-    degree: "Full Stack Web Development & IoT",
-    institution: "Softmusk Info Pvt Ltd",
-    year: "2025",
+    type: "education",
+    title: "Diploma in Computer Engineering",
+    organization: "Yashwantrao Bhonsale Institute of Technology (YBIT)",
+    location: "Sawantwadi (MSBTE)",
+    period: "2023 – 2026",
+    icon: GraduationCap,
     description:
-      "Intensive 12-week program covering modern web stack including MERN and IoT development.",
+      "Specializing in core software engineering, data structures, algorithm design, IoT systems, and applied cryptography. Active open-source developer with 20+ public repositories.",
+    skills: ["Software Engineering", "Algorithms", "IoT", "Applied Cryptography"],
+  },
+  {
+    type: "education",
+    title: "Secondary School Certificate (SSC)",
+    organization: "Rani Parvati Devi High School",
+    location: "Sawantwadi (MSBTE Board)",
+    period: "2022 – 2023",
+    icon: Award,
+    description:
+      "Completed secondary education with a strong foundation in mathematics, logic, and computer fundamentals.",
+    skills: ["Mathematics", "Computer Basics", "Problem Solving"],
   },
 ];
 
-// const quickFacts = [
-//   { label: "Years Experience", value: 3, suffix: "+" },
-//   { label: "Projects Completed", value: 20, suffix: "+" },
-//   { label: "Lines of Code", value: 50, suffix: "k+" },
-// ];
+const coreCompetencies = [
+  { name: "Real-Time WebSockets", icon: Zap, desc: "Socket.io & Live Systems" },
+  { name: "AI & GPT Integration", icon: BrainCircuit, desc: "LLM Scoring & API Workflows" },
+  { name: "Full Stack (MERN & Next.js)", icon: Layers, desc: "Scalable React Applications" },
+  { name: "Django & Python Backend", icon: Code2, desc: "RESTful APIs & RBAC Architecture" },
+  { name: "Applied Cryptography", icon: ShieldCheck, desc: "AES Encryption & Data Security" },
+  { name: "IoT & Embedded Hardware", icon: Cpu, desc: "Arduino & Sensor Integration" },
+];
 
 const hobbies = [
-  { title: "Photography", icon: Camera, desc: "Capturing visual moments & stories" },
-  { title: "Gaming", icon: Gamepad2, desc: "Immersive worlds & strategic gameplay" },
-  { title: "Travelling & Exploring", icon: Compass, desc: "Discovering new places & cultures" },
+  { title: "Photography", icon: Camera, desc: "Capturing visual stories & moments" },
+  { title: "Gaming", icon: Gamepad2, desc: "Exploring virtual worlds & mechanics" },
+  { title: "Travelling", icon: Plane, desc: "Discovering new places & cultures" },
+  { title: "Tech Exploration", icon: Sparkles, desc: "Testing cutting-edge tech & tools" },
 ];
 
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
+  const competenciesRef = useRef<HTMLDivElement>(null);
   const timelineRef = useRef<HTMLDivElement>(null);
   const hobbiesRef = useRef<HTMLDivElement>(null);
 
@@ -67,32 +106,7 @@ const About = () => {
           { opacity: 0, y: 30 },
           { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power3.out" },
           "-=0.6"
-        )
-        .fromTo(
-          ".quick-fact",
-          { opacity: 0, y: 20 },
-          { opacity: 1, y: 0, duration: 0.6, stagger: 0.1, ease: "power2.out" },
-          "-=0.4"
         );
-
-        // Counter Animation for Quick Facts
-        gsap.utils.toArray<HTMLElement>(".fact-number").forEach((el) => {
-          const targetValue = parseInt(el.getAttribute("data-value") || "0", 10);
-          gsap.fromTo(el, 
-            { innerHTML: 0 },
-            { 
-              innerHTML: targetValue,
-              duration: 2,
-              ease: "power3.out",
-              snap: { innerHTML: 1 },
-              scrollTrigger: {
-                trigger: introRef.current,
-                start: "top 80%",
-                once: true,
-              }
-            }
-          );
-        });
 
         // Floating animation for avatar
         gsap.to(".avatar-container", {
@@ -104,7 +118,28 @@ const About = () => {
         });
       }
 
-      // 2. Timeline Animation
+      // 2. Competencies Grid Entrance
+      if (competenciesRef.current) {
+        gsap.fromTo(
+          ".competency-card",
+          { opacity: 0, y: 25, scale: 0.95 },
+          {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.6,
+            stagger: 0.08,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: competenciesRef.current,
+              start: "top 85%",
+              once: true,
+            }
+          }
+        );
+      }
+
+      // 3. Timeline Animation
       if (timelineRef.current) {
         // Draw the center line
         gsap.fromTo(
@@ -128,12 +163,12 @@ const About = () => {
           const isLeft = i % 2 === 0;
           gsap.fromTo(
             item,
-            { opacity: 0, x: isLeft ? -50 : 50 },
+            { opacity: 0, x: isLeft ? -40 : 40 },
             {
               opacity: 1,
               x: 0,
               duration: 0.8,
-              ease: "back.out(1.2)",
+              ease: "power3.out",
               scrollTrigger: {
                 trigger: item,
                 start: "top 85%",
@@ -144,7 +179,7 @@ const About = () => {
         });
       }
 
-      // 3. Hobbies Animation
+      // 4. Hobbies Animation
       if (hobbiesRef.current) {
         gsap.fromTo(
           ".hobby-card",
@@ -175,62 +210,84 @@ const About = () => {
         
         <SectionHeading title="About Me" alignment="center" className="mb-20" />
 
-        {/* Part 1: Intro & Quick Facts */}
-        <div ref={introRef} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-32 items-center">
-          {/* Avatar/Visual */}
+        {/* Part 1: Intro & Bio */}
+        <div ref={introRef} className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-28 items-center">
+          {/* Avatar Visual */}
           <div className="lg:col-span-5 flex justify-center">
             <div className="avatar-container relative w-64 h-64 md:w-80 md:h-80">
-              {/* Glowing background blob */}
+              {/* Glowing background aura */}
               <div className="absolute inset-0 bg-[#00E5FF] rounded-full blur-[80px] opacity-20"></div>
               
-              {/* Avatar placeholder / glassmorphic card */}
-              <div className="relative w-full h-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex flex-col items-center justify-center p-8 group">
-                <div className="w-full h-full rounded-2xl bg-black/40 border border-white/5 flex items-center justify-center relative overflow-hidden transition-all duration-500 group-hover:bg-black/20">
+              {/* Avatar Glassmorphic Frame */}
+              <div className="relative w-full h-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex flex-col items-center justify-center p-4 group">
+                <div className="w-full h-full rounded-2xl bg-black/40 border border-white/5 relative overflow-hidden transition-all duration-500 group-hover:bg-black/20">
                    <Image src={main_image} alt="Vedang Dhuri" fill className="object-cover" priority />
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Philosophy & Stats */}
-          <div className="lg:col-span-7 flex flex-col space-y-10">
-            <div className="space-y-6">
-              <h3 className="philosophy-text text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
-                Building immersive digital experiences where <br className="hidden md:block" />
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-500">
-                  Engineering meets Design.
-                </span>
-              </h3>
-              <p className="philosophy-text text-lg md:text-xl text-neutral-400 font-light leading-relaxed max-w-2xl">
-                As a Full Stack Developer, I specialize in crafting scalable web applications using modern technologies. My approach is rooted in the belief that great software isn&apos;t just functional&mdash;it&apos;s an experience. I merge deep technical expertise with an obsessive attention to aesthetic detail.
-              </p>
+          {/* Philosophy & Summary */}
+          <div className="lg:col-span-7 flex flex-col space-y-6">
+            <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20 text-[#00E5FF] text-xs font-mono w-fit">
+              <MapPin className="w-3.5 h-3.5" />
+              <span>Sawantwadi, Maharashtra, India</span>
             </div>
 
-            {/* Quick Facts */}
-            {/* <div className="grid grid-cols-3 gap-4 md:gap-8 pt-6 border-t border-white/10">
-              {quickFacts.map((fact, index) => (
-                <div key={index} className="quick-fact flex flex-col space-y-2">
-                  <div className="flex items-baseline space-x-1">
-                    <span 
-                      className="fact-number text-4xl md:text-5xl font-bold text-white" 
-                      data-value={fact.value}
-                    >
-                      0
-                    </span>
-                    <span className="text-2xl font-bold text-[#00E5FF]">{fact.suffix}</span>
-                  </div>
-                  <span className="text-sm md:text-base text-neutral-500 font-medium uppercase tracking-wider">{fact.label}</span>
-                </div>
-              ))}
-            </div> */}
+            <h3 className="philosophy-text text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
+              Engineering Scalable Systems &{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-500">
+                Real-Time AI Experiences.
+              </span>
+            </h3>
+
+            <p className="philosophy-text text-lg md:text-xl text-neutral-300 font-light leading-relaxed max-w-2xl">
+              I am a Full Stack Developer specializing in the <strong className="text-white font-medium">MERN stack, Next.js, and Django</strong>. My focus lies in constructing high-performance backend architectures, real-time WebSocket systems, and AI-integrated applications like <span className="text-[#00E5FF]">RoastRoom</span> and <span className="text-[#00E5FF]">SafeCity Hub</span>.
+            </p>
+
+            <p className="philosophy-text text-base text-neutral-400 font-light leading-relaxed max-w-2xl">
+              Having completed a 3-month Software Development Internship at <strong className="text-white font-medium">Softmusk Solutions</strong> and authored <strong className="text-white font-medium">20+ public open-source repositories</strong>, I bridge deep technical execution with refined UI/UX design.
+            </p>
           </div>
         </div>
 
-        {/* Part 2: Narrative Timeline */}
+        {/* Part 2: Core Competencies Grid */}
+        <div ref={competenciesRef} className="mb-32">
+          <div className="text-center mb-12">
+            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Core Expertise</h3>
+            <p className="text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
+              Key domains and technologies highlighted from my software engineering background.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-6xl mx-auto">
+            {coreCompetencies.map((comp, idx) => {
+              const Icon = comp.icon;
+              return (
+                <div 
+                  key={idx} 
+                  className="competency-card p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00E5FF]/40 backdrop-blur-sm transition-all duration-300 group flex items-start space-x-4"
+                >
+                  <div className="p-3 rounded-xl bg-black/50 border border-white/10 text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-all duration-300 shrink-0">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div className="space-y-1">
+                    <h4 className="text-lg font-bold text-white group-hover:text-[#00E5FF] transition-colors">{comp.name}</h4>
+                    <p className="text-xs md:text-sm text-neutral-400 font-light">{comp.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Part 3: Professional Journey & Education Timeline */}
         <div ref={timelineRef} className="mb-32 relative">
            <div className="text-center mb-16">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">My Journey</h3>
-              <p className="text-neutral-400 max-w-2xl mx-auto">The path I&apos;ve taken to get to where I am today.</p>
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Experience & Education</h3>
+              <p className="text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
+                My academic path and hands-on industry background.
+              </p>
            </div>
 
            <div className="relative max-w-4xl mx-auto">
@@ -244,28 +301,47 @@ const About = () => {
                 <div className="timeline-center-line absolute top-0 left-0 w-full bg-gradient-to-b from-[#00E5FF] via-blue-500 to-transparent origin-top h-full" />
              </div>
 
-             <div className="space-y-12 md:space-y-24">
-                {education.map((item, index) => {
+             <div className="space-y-12 md:space-y-16">
+                {journeyTimeline.map((item, index) => {
                   const isLeft = index % 2 === 0;
+                  const Icon = item.icon;
                   return (
                     <div key={index} className={`timeline-node relative flex flex-col md:flex-row ${isLeft ? 'md:justify-start' : 'md:justify-end'} items-center w-full`}>
                       
-                      {/* Timeline Dot */}
-                      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-black border-2 border-[#00E5FF] z-10">
-                        <div className="absolute inset-0 bg-[#00E5FF] rounded-full blur-[4px] opacity-60"></div>
+                      {/* Timeline Node Icon */}
+                      <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-black border-2 border-[#00E5FF] z-10 flex items-center justify-center text-[#00E5FF]">
+                        <Icon className="w-4 h-4" />
                       </div>
 
                       {/* Content Card */}
                       <div className={`w-full pl-16 md:pl-0 md:w-[45%] ${isLeft ? 'md:pr-12 md:text-right' : 'md:pl-12 md:text-left'}`}>
-                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300">
-                          <span className="inline-block px-3 py-1 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] text-xs font-bold tracking-wider mb-4">
-                            {item.year}
-                          </span>
-                          <h4 className="text-xl font-bold text-white mb-2">{item.degree}</h4>
-                          <h5 className="text-sm font-medium text-neutral-300 mb-4">{item.institution}</h5>
-                          <p className="text-sm text-neutral-400 leading-relaxed">
+                        <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 space-y-3">
+                          
+                          <div className={`flex items-center space-x-2 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
+                            <span className="px-3 py-1 rounded-full bg-[#00E5FF]/10 text-[#00E5FF] text-xs font-mono font-bold tracking-wider">
+                              {item.period}
+                            </span>
+                          </div>
+
+                          <div>
+                            <h4 className="text-xl font-bold text-white">{item.title}</h4>
+                            <h5 className="text-sm font-medium text-neutral-300">{item.organization}</h5>
+                            <p className="text-xs text-neutral-500 font-mono mt-0.5">{item.location}</p>
+                          </div>
+
+                          <p className="text-sm text-neutral-400 leading-relaxed font-light">
                             {item.description}
                           </p>
+
+                          {/* Skill Tags */}
+                          <div className={`flex flex-wrap gap-1.5 pt-2 ${isLeft ? 'md:justify-end' : 'md:justify-start'}`}>
+                            {item.skills.map((skill, sIdx) => (
+                              <span key={sIdx} className="px-2 py-0.5 rounded bg-white/5 border border-white/10 text-[11px] font-mono text-neutral-300">
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+
                         </div>
                       </div>
 
@@ -276,19 +352,21 @@ const About = () => {
            </div>
         </div>
 
-        {/* Part 3: Hobbies / Interests */}
+        {/* Part 4: Personal Interests / Hobbies */}
         <div ref={hobbiesRef} className="max-w-5xl mx-auto">
-          <div className="text-center mb-16">
-              <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">Beyond the Code</h3>
-              <p className="text-neutral-400 max-w-2xl mx-auto">When I&apos;m not building applications, here&apos;s what keeps me inspired.</p>
+          <div className="text-center mb-14">
+              <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Beyond the Code</h3>
+              <p className="text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
+                What keeps me inspired and creative outside software development.
+              </p>
            </div>
 
-           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
              {hobbies.map((hobby, index) => {
                const Icon = hobby.icon;
                return (
                  <div key={index} className="hobby-card group relative p-6 rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-pointer">
-                   {/* Hover Gradient Background */}
+                   {/* Hover Gradient */}
                    <div className="absolute inset-0 bg-gradient-to-br from-[#00E5FF]/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                    
                    <div className="relative z-10 flex flex-col items-center text-center space-y-4">
