@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
 import { useEffect, useRef } from "react";
@@ -24,8 +25,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const descRef = useRef<HTMLParagraphElement>(null);
   const tagsRef = useRef<HTMLDivElement>(null);
   const actionsRef = useRef<HTMLDivElement>(null);
-  const galleryRef = useRef<HTMLDivElement>(null);
-  const gallerySectionRef = useRef<HTMLElement>(null);
+
   const readmeRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -112,54 +112,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         );
       }
 
-      // --- Horizontal gallery scroll-scrub ---
-      if (
-        galleryRef.current &&
-        gallerySectionRef.current &&
-        project.pagesInfoArr &&
-        project.pagesInfoArr.length > 0
-      ) {
-        // Collect all images
-        const allImages = project.pagesInfoArr.flatMap((p) => p.imgArr);
-        if (allImages.length > 1) {
-          const scrollWidth =
-            galleryRef.current.scrollWidth - galleryRef.current.clientWidth;
 
-          if (scrollWidth > 0) {
-            const st = ScrollTrigger.create({
-              trigger: gallerySectionRef.current,
-              start: "top 70%",
-              end: "bottom 30%",
-              scrub: 1,
-              onUpdate: (self) => {
-                if (galleryRef.current) {
-                  galleryRef.current.scrollLeft =
-                    self.progress * scrollWidth;
-                }
-              },
-            });
-            triggers.push(st);
-          }
-        }
-
-        // Gallery section reveal
-        gsap.fromTo(
-          gallerySectionRef.current,
-          { opacity: 0, y: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            ease: "expo.out",
-            scrollTrigger: {
-              trigger: gallerySectionRef.current,
-              start: "top 85%",
-              toggleActions: "play none none reverse",
-              onToggle: (self) => triggers.push(self),
-            },
-          }
-        );
-      }
 
       // --- README section reveal ---
       if (readmeRef.current) {
@@ -200,15 +153,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
     </span>
   ));
 
-  // Collect all gallery images
-  const allGalleryImages =
-    project.pagesInfoArr?.flatMap((page) =>
-      page.imgArr.map((img) => ({
-        img,
-        title: page.title,
-        description: page.description,
-      }))
-    ) ?? [];
+
 
   return (
     <div ref={containerRef} className="relative">
@@ -305,48 +250,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           </div>
         </header>
 
-        {/* Screenshot Gallery */}
-        {allGalleryImages.length > 0 && (
-          <section
-            ref={gallerySectionRef}
-            className="mb-20 opacity-0"
-          >
-            <h2 className="text-sm font-mono tracking-widest uppercase text-white/50 mb-6">
-              Screenshots
-            </h2>
 
-            <div
-              ref={galleryRef}
-              className="flex gap-4 overflow-x-auto pb-4 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10 snap-x snap-mandatory"
-              style={{ scrollBehavior: "auto" }}
-            >
-              {allGalleryImages.map((item, idx) => (
-                <div
-                  key={idx}
-                  className="flex-shrink-0 w-[85vw] max-w-[600px] snap-start group/gallery"
-                >
-                  <div className="relative rounded-xl overflow-hidden border border-white/[0.06] bg-white/[0.02]">
-                    <img
-                      src={item.img}
-                      alt={item.title}
-                      className="w-full h-auto object-cover transition-transform duration-500 group-hover/gallery:scale-[1.02]"
-                      loading="lazy"
-                    />
-                    {/* Info overlay */}
-                    <div className="absolute bottom-0 inset-x-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
-                      <p className="text-sm font-medium text-white">
-                        {item.title}
-                      </p>
-                      <p className="text-xs text-neutral-400 mt-1 line-clamp-1">
-                        {item.description}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </section>
-        )}
 
         {/* README Section */}
         {project.readme ? (
