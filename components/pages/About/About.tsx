@@ -48,17 +48,6 @@ export const journeyTimeline = [
       "Specializing in core software engineering, data structures, algorithm design, IoT systems, and applied cryptography. Active open-source developer with 20+ public repositories.",
     skills: ["Software Engineering", "Algorithms", "IoT", "Applied Cryptography"],
   },
-  {
-    type: "education",
-    title: "Secondary School Certificate (SSC)",
-    organization: "Rani Parvati Devi High School",
-    location: "Sawantwadi (MSBTE Board)",
-    period: "2022 – 2023",
-    icon: Award,
-    description:
-      "Completed secondary education with a strong foundation in mathematics, logic, and computer fundamentals.",
-    skills: ["Mathematics", "Computer Basics", "Problem Solving"],
-  },
 ];
 
 const coreCompetencies = [
