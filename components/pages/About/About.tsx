@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import anime from "animejs";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 export const education = [
   {
@@ -118,9 +119,9 @@ const About = () => {
           
           {/* Biography - 7 Columns */}
           <div ref={textRef} className="lg:col-span-7 flex flex-col justify-center">
-            <h2 className="reveal-text text-sm uppercase tracking-[0.2em] text-indigo-400 mb-8 font-mono">
-              About
-            </h2>
+            <div className="mb-4">
+              <SectionHeading title="About Me" alignment="left" className="!mb-4" />
+            </div>
             <div className="space-y-8">
               <p className="reveal-text text-3xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.2] tracking-tight text-white/95">
                 I build immersive digital experiences where{" "}

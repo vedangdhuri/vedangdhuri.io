@@ -8,6 +8,7 @@ import { SplitText } from "gsap/SplitText";
 import { courseLinks } from "@/data/course_links";
 import { getDeviceTier } from "@/utils/useDeviceTier";
 import { ExternalLink, Award, BookOpen, Zap } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -139,9 +140,6 @@ function MarqueeRow({ certs, direction, rowRef }: MarqueeRowProps) {
 // ─── Main section ─────────────────────────────────────────────────────────────
 export default function CertificationsSection() {
   const sectionRef   = useRef<HTMLElement>(null);
-  const headingRef   = useRef<HTMLDivElement>(null);
-  const h2Ref        = useRef<HTMLHeadingElement>(null);
-  const lineRef      = useRef<HTMLDivElement>(null);
   const statsRef     = useRef<HTMLDivElement>(null);
   const counterRefs  = useRef<(HTMLSpanElement | null)[]>([]);
   const row1Ref      = useRef<HTMLDivElement>(null);
@@ -154,48 +152,6 @@ export default function CertificationsSection() {
     if (isReducedMotion) return;
 
     const ctx = gsap.context(() => {
-
-      // ── 1. SplitText heading ─────────────────────────────────────────────
-      const h2 = h2Ref.current;
-      if (h2) {
-        const split = SplitText.create(h2, {
-          type: "words,chars",
-          mask: "chars",
-        });
-
-        const headingTl = gsap.timeline({
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 82%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-        });
-
-        headingTl
-          .fromTo(
-            headingRef.current,
-            { opacity: 0 },
-            { opacity: 1, duration: 0.01 },
-          )
-          .fromTo(
-            split.chars,
-            { yPercent: 110, opacity: 0 },
-            {
-              yPercent: 0,
-              opacity: 1,
-              duration: 0.65,
-              ease: "power3.out",
-              stagger: 0.025,
-            },
-          )
-          .fromTo(
-            lineRef.current,
-            { scaleX: 0 },
-            { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
-            "-=0.3",
-          );
-      }
 
       // ── 2. Stats count-up ────────────────────────────────────────────────
       if (statsRef.current) {
@@ -307,26 +263,22 @@ export default function CertificationsSection() {
       <div className="container mx-auto px-4 pt-16">
 
         {/* Section heading */}
-        <div ref={headingRef} className="text-center mb-12 opacity-0">
+        <div className="text-center mb-12">
           <p className="text-[11px] font-mono tracking-[3px] uppercase text-[#00E5FF]/60 mb-3">
             {"// credentials"}
           </p>
-          <h2
-            ref={h2Ref}
-            className="text-3xl md:text-4xl font-bold mb-4 tracking-tight"
-          >
-            Certifications &amp; Achievements
-          </h2>
-          <div
-            ref={lineRef}
-            className="mx-auto h-px w-20 bg-gradient-to-r from-transparent via-[#00E5FF] to-transparent origin-center mb-5"
-            style={{ transform: "scaleX(0)" }}
+          <SectionHeading 
+            title="Certifications & Achievements"
+            subtitle={
+              <>
+                Verified credentials earned through the{" "}
+                <span className="text-[#00E5FF]/80">Google Cloud Skills Boost</span>{" "}
+                platform{" — "}spanning AI, data engineering, cloud infrastructure, and security.
+              </>
+            }
+            alignment="center"
+            className="!mb-0"
           />
-          <p className="text-white/40 text-sm max-w-xl mx-auto leading-relaxed">
-            Verified credentials earned through the{" "}
-            <span className="text-[#00E5FF]/80">Google Cloud Skills Boost</span>{" "}
-            platform{" — "}spanning AI, data engineering, cloud infrastructure, and security.
-          </p>
         </div>
 
         {/* Stats bar */}

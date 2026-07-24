@@ -7,6 +7,7 @@ import Link from "next/link";
 import { projects } from "@/data/projects";
 import { kebabCase } from "@/utils/utils";
 import { ArrowUpRight } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -129,8 +130,6 @@ export default function ProjectsPreview() {
   // Take exactly 5 projects for our custom Bento Box layout
   const displayProjects = projects.slice(0, 5);
 
-  const headingRef = useRef<HTMLHeadingElement>(null);
-  const subtitleRef = useRef<HTMLParagraphElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
   const btnRef = useRef<HTMLAnchorElement>(null);
 
@@ -158,8 +157,6 @@ export default function ProjectsPreview() {
       );
     };
 
-    if (headingRef.current) createAnimation(headingRef.current, 40);
-    if (subtitleRef.current) createAnimation(subtitleRef.current, 30, 0.1);
     if (gridRef.current) {
       const cards = gsap.utils.toArray(".bento-card", gridRef.current) as Element[];
       createAnimation(cards, 60, 0, 0.1);
@@ -194,20 +191,12 @@ export default function ProjectsPreview() {
       <div className="max-w-7xl mx-auto relative z-10">
         
         {/* Header */}
-        <div className="mb-16 md:mb-24 flex flex-col items-center text-center space-y-5">
-          <h2
-            ref={headingRef}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight opacity-0"
-          >
-            Selected Works
-          </h2>
-          <p
-            ref={subtitleRef}
-            className="text-base md:text-lg text-neutral-400 max-w-2xl opacity-0 leading-relaxed"
-          >
-            A collection of robust, scalable applications and experiences crafted with modern web technologies and a focus on premium design.
-          </p>
-        </div>
+        <SectionHeading 
+          title="Selected Works"
+          subtitle="A collection of robust, scalable applications and experiences crafted with modern web technologies and a focus on premium design."
+          alignment="center"
+          className="mb-16 md:mb-24"
+        />
 
         {/* Bento Box Grid */}
         <div

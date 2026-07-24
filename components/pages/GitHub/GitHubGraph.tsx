@@ -5,41 +5,16 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ExternalLink } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export default function GitHubGraph() {
   const sectionRef = useRef<HTMLElement>(null);
-  const headingRef = useRef<HTMLDivElement>(null);
-  const headingLineRef = useRef<HTMLDivElement>(null);
   const gridRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Heading Entrance
-      if (headingRef.current && headingLineRef.current) {
-        const tl = gsap.timeline({
-          scrollTrigger: {
-            trigger: headingRef.current,
-            start: "top 85%",
-            toggleActions: "play none none none",
-            once: true,
-          },
-        });
-
-        tl.fromTo(
-          headingRef.current,
-          { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, ease: "power3.out" },
-        );
-
-        tl.fromTo(
-          headingLineRef.current,
-          { scaleX: 0 },
-          { scaleX: 1, duration: 0.6, ease: "power2.inOut" },
-          "-=0.4",
-        );
-      }
 
       // Bento Grid Stagger Entrance
       if (gridRef.current) {
@@ -72,23 +47,16 @@ export default function GitHubGraph() {
     <section ref={sectionRef} className="py-24 px-4 sm:px-6 relative z-10">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16 space-y-4">
+        <div className="text-center mb-16">
           <p className="text-[11px] font-mono tracking-[3px] uppercase text-[#3fb950]/80 mb-2">
             {"// metrics"}
           </p>
-          <div ref={headingRef} className="opacity-0">
-            <h2 className="text-3xl md:text-4xl font-bold font-mono text-neutral-100 tracking-tight">
-              GitHub Activity
-            </h2>
-          </div>
-          <div
-            ref={headingLineRef}
-            className="mx-auto h-[2px] w-20 bg-gradient-to-r from-transparent via-[#3fb950] to-transparent origin-center"
-            style={{ transform: "scaleX(0)" }}
+          <SectionHeading 
+            title="GitHub Activity"
+            subtitle="A real-time overview of my open-source contributions, repositories, and coding consistency."
+            alignment="center"
+            className="!mb-0"
           />
-          <p className="text-white/50 max-w-xl mx-auto text-sm md:text-base leading-relaxed mt-4">
-            A real-time overview of my open-source contributions, repositories, and coding consistency.
-          </p>
         </div>
 
         {/* Bento Grid */}

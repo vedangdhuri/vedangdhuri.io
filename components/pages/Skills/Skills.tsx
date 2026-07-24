@@ -4,10 +4,10 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import React from "react";
-import { getDeviceTier } from "@/utils/useDeviceTier";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import GlobeDemo from "@/components/ui/globe-demo";
+import SectionHeading from "@/components/ui/SectionHeading";
 import { Code2, Paintbrush, Database, Layout, Cpu, Cloud } from "lucide-react";
 import {
   FaReact,
@@ -190,44 +190,6 @@ const SkillCard = ({
 };
 
 const SkillsSection = () => {
-  const headingRef = useRef<HTMLDivElement>(null);
-  const headingLineRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    let st: ScrollTrigger | undefined;
-    if (headingRef.current && headingLineRef.current) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 80%",
-          toggleActions: "play none none none",
-          once: true,
-          onToggle: (self) => {
-            st = self;
-          },
-        },
-      });
-
-      tl.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-      );
-
-      tl.fromTo(
-        headingLineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
-        "-=0.2",
-      );
-    }
-
-    return () => {
-      // Only kill the heading's own trigger, not all global ScrollTriggers
-      st?.kill();
-    };
-  }, []);
-
   const skillCategories: SkillCategory[] = [
     {
       icon: Code2,
@@ -376,20 +338,11 @@ const SkillsSection = () => {
 
   return (
     <section id="skills" className="container mx-auto px-4 py-11 relative z-10">
-      <div ref={headingRef} className="text-center mb-16 opacity-0">
-        <h2 className="text-3xl md:text-4xl font-bold mb-4">
-          Skills & Expertise
-        </h2>
-        <div
-          ref={headingLineRef}
-          className="mx-auto h-[3px] w-20 bg-gradient-to-r from-transparent via-blue-400 to-transparent origin-center mb-4"
-          style={{ transform: "scaleX(0)" }}
-        />
-        <p className="text-gray-400 max-w-2xl mx-auto">
-          A comprehensive overview of my technical skills and proficiency
-          levels.
-        </p>
-      </div>
+      <SectionHeading 
+        title="Skills & Expertise"
+        subtitle="A comprehensive overview of my technical skills and proficiency levels."
+        alignment="center"
+      />
 
       {/* 3D Icon Globe Demo */}
       <div className="flex justify-center items-center mb-16">

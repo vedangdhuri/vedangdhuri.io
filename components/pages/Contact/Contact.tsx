@@ -6,6 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useForm } from "react-hook-form";
 import { Send, CheckCircle, AlertCircle, Mail, MapPin, Github, Linkedin, Twitter } from "lucide-react";
+import SectionHeading from "@/components/ui/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -28,36 +29,10 @@ const Contact = () => {
     "idle" | "success" | "error"
   >("idle");
 
-  const headingRef = useRef<HTMLDivElement>(null);
-  const headingLineRef = useRef<HTMLDivElement>(null);
   const globeRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // Heading
-    if (headingRef.current && headingLineRef.current) {
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: headingRef.current,
-          start: "top 85%",
-          toggleActions: "play none none none",
-          once: true,
-        },
-      });
-
-      tl.fromTo(
-        headingRef.current,
-        { opacity: 0, y: 30 },
-        { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-      );
-
-      tl.fromTo(
-        headingLineRef.current,
-        { scaleX: 0 },
-        { scaleX: 1, duration: 0.5, ease: "power2.inOut" },
-        "-=0.2",
-      );
-    }
 
     // Globe slide in from left
     if (globeRef.current) {
@@ -182,22 +157,11 @@ const Contact = () => {
   return (
     <section id="contact" className="py-20 text-white z-1">
       <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <div ref={headingRef} className="opacity-0">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Get In Touch
-            </h2>
-          </div>
-          <div
-            ref={headingLineRef}
-            className="mx-auto h-[3px] w-20 bg-gradient-to-r from-transparent via-blue-400 to-transparent origin-center mb-4"
-            style={{ transform: "scaleX(0)" }}
-          />
-          <p className="text-gray-400 max-w-2xl mx-auto">
-            Have a project in mind or just want to say hi? {"I'd"} love to hear
-            from you.
-          </p>
-        </div>
+        <SectionHeading 
+          title="Get In Touch"
+          subtitle="Have a project in mind or just want to say hi? I'd love to hear from you."
+          alignment="center"
+        />
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info & Globe */}
