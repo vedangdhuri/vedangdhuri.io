@@ -264,9 +264,6 @@ export default function CertificationsSection() {
 
         {/* Section heading */}
         <div className="text-center mb-12">
-          <p className="text-[11px] font-mono tracking-[3px] uppercase text-[#00E5FF]/60 mb-3">
-            {"// credentials"}
-          </p>
           <SectionHeading 
             title="Certifications & Achievements"
             subtitle={
