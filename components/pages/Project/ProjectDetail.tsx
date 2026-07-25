@@ -29,6 +29,9 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
   const readmeRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
+    // Force window scroll to top when visiting individual project detail page
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
     const ctx = gsap.context(() => {
       const triggers: ScrollTrigger[] = [];
 

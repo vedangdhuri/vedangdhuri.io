@@ -24,6 +24,9 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
   const counterRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    // Force window scroll to top when visiting /projects
+    window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
     const ctx = gsap.context(() => {
       const triggers: ScrollTrigger[] = [];
 
