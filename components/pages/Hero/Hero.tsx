@@ -45,6 +45,7 @@ const Hero = () => {
   const badgeRef = useRef<HTMLDivElement>(null);
   const bottomRef = useRef<HTMLDivElement>(null);
   const collabRef = useRef<HTMLDivElement>(null);
+  const mobileHeroRef = useRef<HTMLDivElement>(null);
 
   const tier = useDeviceTier();
 
@@ -155,6 +156,24 @@ const Hero = () => {
       );
     }
 
+    // Mobile Cyber-Kinetic Stack entrance animation
+    if (mobileHeroRef.current) {
+      const mobileElements = mobileHeroRef.current.children;
+      tl.fromTo(
+        mobileElements,
+        { opacity: 0, y: 35, scale: 0.96 },
+        {
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          duration: 0.7,
+          stagger: 0.12,
+          ease: "power3.out",
+        },
+        "-=1.2",
+      );
+    }
+
     return () => {
       tl.kill();
     };
@@ -219,11 +238,132 @@ const Hero = () => {
       </div> */}
 
       {/* ============================================================ */}
-      {/*  MAIN GRID LAYOUT                                            */}
+      {/*  MOBILE CYBER-KINETIC CARD STACK (< 768px)                   */}
+      {/* ============================================================ */}
+      <div
+        ref={mobileHeroRef}
+        className="flex md:hidden flex-col justify-between w-full min-h-[88vh] px-5 py-12 z-10 gap-6"
+      >
+        {/* Top Status Bar */}
+        <div className="flex items-center justify-between w-full border-b border-white/10 pb-4 opacity-0">
+          <div className="flex items-center gap-2">
+            <span className="relative flex h-2.5 w-2.5">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#00E5FF] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#00E5FF]" />
+            </span>
+            <span className="text-[10px] font-mono tracking-[0.2em] uppercase text-white/70 font-medium">
+              Available for Opportunity
+            </span>
+          </div>
+          <span className="text-[10px] font-mono tracking-[0.1em] text-white/40">
+            IN — {new Date().getFullYear()}
+          </span>
+        </div>
+
+        {/* Cyber-Kinetic Stacked Cards */}
+        <div className="flex flex-col gap-4 my-auto">
+          {/* Card 1: Identity & Intro */}
+          <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md flex flex-col gap-2 relative overflow-hidden shadow-xl opacity-0">
+            <div className="absolute top-0 right-0 w-24 h-24 bg-[#00E5FF]/10 rounded-full blur-2xl pointer-events-none" />
+            <span className="text-[11px] font-mono uppercase tracking-[0.2em] text-[#00E5FF] font-semibold">
+              Creative Technologist
+            </span>
+            <h1 className="text-2xl font-bold tracking-tight text-white">
+              Hi, I&apos;m <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-[#00E5FF]">Vedang Dhuri</span>.
+            </h1>
+            <p className="text-xs text-white/60 font-mono leading-relaxed mt-1">
+              Building high-impact digital experiences with clean code and modern design.
+            </p>
+          </div>
+
+          {/* Card 2: Massive Stacked Title with Neon Badges */}
+          <div className="p-6 rounded-2xl bg-gradient-to-br from-white/[0.06] to-white/[0.01] border border-white/15 backdrop-blur-lg flex flex-col items-center justify-center text-center relative overflow-hidden shadow-2xl opacity-0">
+            <div className="absolute -bottom-10 -left-10 w-36 h-36 bg-indigo-500/15 rounded-full blur-3xl pointer-events-none" />
+            <span className="text-4xl xs:text-5xl font-black tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-r from-blue-400 via-[#00E5FF] to-indigo-400 select-none">
+              FULL STACK
+            </span>
+            <div className="flex items-center gap-2 my-2.5">
+              <span className="h-[1px] w-8 bg-gradient-to-r from-transparent to-white/30" />
+              <motion.div
+                animate={{ rotate: [0, 15, -15, 0], scale: [1, 1.15, 1] }}
+                transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Zap className="w-5 h-5 text-[#00E5FF] fill-[#00E5FF]/20" />
+              </motion.div>
+              <span className="text-xl font-bold tracking-widest text-white font-mono uppercase">
+                DEVELOPER
+              </span>
+              <motion.div
+                animate={{ y: [0, -5, 0] }}
+                transition={{ duration: 2.5, repeat: Infinity, ease: "easeInOut" }}
+              >
+                <Code2 className="w-5 h-5 text-indigo-400" />
+              </motion.div>
+              <span className="h-[1px] w-8 bg-gradient-to-l from-transparent to-white/30" />
+            </div>
+            <span className="text-2xl xs:text-3xl font-extrabold tracking-tight text-white/80 select-none">
+              &amp; DESIGNER
+            </span>
+          </div>
+
+          {/* Card 3: Interactive Skill Pills */}
+          <div className="flex flex-wrap gap-2 items-center justify-center opacity-0">
+            {["#Next.js", "#TypeScript", "#UI/UX", "#GSAP", "#Tailwind", "#Framer"].map((skill) => (
+              <span
+                key={skill}
+                className="px-3 py-1 rounded-full text-[11px] font-mono tracking-wider bg-white/5 border border-white/10 text-white/70 shadow-sm"
+              >
+                {skill}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        {/* Touch-Optimized CTAs & Socials (min-h-[44px]) */}
+        <div className="flex flex-col gap-4 mt-auto pt-4 border-t border-white/10 opacity-0">
+          <div className="flex items-center gap-3">
+            <motion.a
+              href="#projects"
+              className="flex-1 min-h-[48px] rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 text-white font-medium text-xs font-mono uppercase tracking-[0.15em] flex items-center justify-center gap-2 shadow-lg shadow-blue-500/20 active:scale-[0.98] transition-transform"
+              whileTap={{ scale: 0.96 }}
+            >
+              Explore Works
+              <ArrowDownRight className="w-4 h-4" />
+            </motion.a>
+            <motion.a
+              href="/resume"
+              className="min-h-[48px] px-5 rounded-xl bg-white/5 border border-white/15 text-white/90 font-medium text-xs font-mono uppercase tracking-[0.15em] flex items-center justify-center active:scale-[0.98] transition-transform hover:bg-white/10"
+              whileTap={{ scale: 0.96 }}
+            >
+              Resume
+            </motion.a>
+          </div>
+
+          {/* Touch Social Bar */}
+          <div className="flex items-center justify-center gap-4 pt-1">
+            {heroSocials.map((social) => (
+              <motion.a
+                key={`mobile-${social.label}`}
+                href={social.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-12 h-12 rounded-full border border-white/15 bg-white/5 flex items-center justify-center text-white/80 active:bg-white/20 active:border-white/40 transition-colors shadow-md"
+                whileTap={{ scale: 0.9 }}
+                aria-label={social.label}
+              >
+                {social.icon}
+              </motion.a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ============================================================ */}
+      {/*  MAIN GRID LAYOUT (DESKTOP >= 768px ONLY)                    */}
       {/* ============================================================ */}
       <div
         ref={gridRef}
-        className="relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-0"
+        className="hidden md:flex relative z-10 w-full max-w-[1400px] mx-auto px-6 md:px-12 lg:px-16 py-20 md:py-0"
       >
         {/* Grid structure */}
         <div className="flex flex-col gap-0">
