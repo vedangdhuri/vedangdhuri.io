@@ -236,10 +236,8 @@ const Hero = () => {
             >
               <p className="text-sm md:text-base text-white/60 uppercase tracking-[0.15em] leading-relaxed font-mono">
                 Hi, I&apos;m{" "}
-                <span className="text-white font-semibold">
-                  Vedang Dhuri
-                </span>
-                . I build creative digital experiences with code.
+                <span className="text-white font-semibold">Vedang Dhuri</span>.
+                I build creative digital experiences with code.
               </p>
             </div>
 
