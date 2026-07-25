@@ -17,13 +17,22 @@ import { motion } from "framer-motion";
 
 gsap.registerPlugin(ScrollTrigger);
 
+// Track if website has already loaded during this browser session
+let hasLoadedBefore = false;
+
 export default function Home() {
-  const [loading, setLoading] = useState(true);
-  const [isExiting, setIsExiting] = useState(false);
+  const [loading, setLoading] = useState(!hasLoadedBefore);
+  const [isExiting, setIsExiting] = useState(hasLoadedBefore);
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    // The loader will now play on every page refresh.
+    if (hasLoadedBefore) {
+      // Ensure Navbar and ScrollTrigger know page is already active on client navigation
+      window.dispatchEvent(new Event("portfolio-loaded"));
+      setTimeout(() => {
+        ScrollTrigger.refresh();
+      }, 100);
+    }
   }, []);
 
   const handleExitStart = () => {
@@ -31,6 +40,7 @@ export default function Home() {
   };
 
   const handleLoadingComplete = () => {
+    hasLoadedBefore = true;
     setLoading(false);
     window.scrollTo({ top: 0, behavior: "instant" });
 
