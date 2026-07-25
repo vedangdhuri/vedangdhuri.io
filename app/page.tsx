@@ -25,12 +25,26 @@ export default function Home() {
   const [isExiting, setIsExiting] = useState(hasLoadedBefore);
   const containerRef = useRef<HTMLDivElement>(null);
 
+  const scrollToHashTarget = () => {
+    const hash = window.location.hash;
+    if (hash) {
+      const targetId = hash.replace("#", "");
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        setTimeout(() => {
+          targetElement.scrollIntoView({ behavior: "smooth" });
+        }, 150);
+      }
+    }
+  };
+
   useEffect(() => {
     if (hasLoadedBefore) {
       // Ensure Navbar and ScrollTrigger know page is already active on client navigation
       window.dispatchEvent(new Event("portfolio-loaded"));
       setTimeout(() => {
         ScrollTrigger.refresh();
+        scrollToHashTarget();
       }, 100);
     }
   }, []);
@@ -42,7 +56,13 @@ export default function Home() {
   const handleLoadingComplete = () => {
     hasLoadedBefore = true;
     setLoading(false);
-    window.scrollTo({ top: 0, behavior: "instant" });
+
+    const hash = window.location.hash;
+    if (!hash || hash === "#home") {
+      window.scrollTo({ top: 0, behavior: "instant" });
+    } else {
+      scrollToHashTarget();
+    }
 
     // Dispatch custom event to notify Navbar that website content is fully shown
     window.dispatchEvent(new Event("portfolio-loaded"));

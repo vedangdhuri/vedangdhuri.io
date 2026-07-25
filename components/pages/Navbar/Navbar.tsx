@@ -198,6 +198,17 @@ export const Navbar = () => {
     };
   }, [pathname, activeLink]);
 
+  const handleNavClick = (href: string) => {
+    setActiveLink(href);
+    if (pathname === "/" && href.startsWith("/#")) {
+      const targetId = href.replace("/#", "");
+      const element = document.getElementById(targetId);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    }
+  };
+
   return (
     <>
       {/* Desktop Antigravity Dock */}
@@ -213,7 +224,7 @@ export const Navbar = () => {
                 <MagneticItem
                   isActive={activeLink === item.href}
                   text={item.text}
-                  onClick={() => setActiveLink(item.href)}
+                  onClick={() => handleNavClick(item.href)}
                 >
                   {item.logo}
                 </MagneticItem>
