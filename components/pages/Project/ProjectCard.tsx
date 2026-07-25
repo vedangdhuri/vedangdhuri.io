@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import Link from "next/link";
 import { Project } from "@/types/project";
 import { kebabCase } from "@/utils/utils";
@@ -14,46 +14,51 @@ interface ProjectCardProps {
 
 export default function ProjectCard({ project, className = "" }: ProjectCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!cardRef.current) return;
     const rect = cardRef.current.getBoundingClientRect();
-    const x = (e.clientX - rect.left) / rect.width;
-    const y = (e.clientY - rect.top) / rect.height;
-    const tiltX = (y - 0.5) * -10;
-    const tiltY = (x - 0.5) * 10;
-    setTilt({ x: tiltX, y: tiltY });
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xPct = x / rect.width - 0.5;
+    const yPct = y / rect.height - 0.5;
+    
+    // Tilt calculations (-8deg to 8deg)
+    const rotateX = (yPct * -16).toFixed(2);
+    const rotateY = (xPct * 16).toFixed(2);
+
+    cardRef.current.style.setProperty("--x", `${x}px`);
+    cardRef.current.style.setProperty("--y", `${y}px`);
+    cardRef.current.style.setProperty("--rx", `${rotateX}deg`);
+    cardRef.current.style.setProperty("--ry", `${rotateY}deg`);
+    cardRef.current.style.setProperty("--opacity", "1");
   };
 
-  const handleMouseEnter = () => setIsHovered(true);
   const handleMouseLeave = () => {
-    setIsHovered(false);
-    setTilt({ x: 0, y: 0 });
+    if (!cardRef.current) return;
+    cardRef.current.style.setProperty("--rx", "0deg");
+    cardRef.current.style.setProperty("--ry", "0deg");
+    cardRef.current.style.setProperty("--opacity", "0");
   };
 
   return (
     <article
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      className={`project-card group relative h-full flex flex-col rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-xl overflow-hidden transition-all duration-500 hover:border-[#00E5FF]/25 hover:shadow-[0_0_40px_rgba(0,229,255,0.06)] cursor-pointer ${className}`}
+      className={`project-card group relative h-full flex flex-col rounded-2xl border border-white/[0.06] bg-white/[0.02] backdrop-blur-xl overflow-hidden cursor-pointer transition-all duration-500 hover:border-[#00E5FF]/30 hover:shadow-[0_10px_30px_-10px_rgba(0,229,255,0.15)] ${className}`}
       style={{
-        transform: `perspective(800px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg) translateY(${isHovered ? -6 : 0}px)`,
-        transition: isHovered
-          ? "transform 0.1s ease-out"
-          : "transform 0.5s ease-out",
+        transform: "perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0)",
+        transition: "transform 0.15s ease-out, border-color 0.4s ease, box-shadow 0.4s ease",
+        transformStyle: "preserve-3d",
       }}
     >
-      {/* Spotlight follow effect */}
+      {/* React Bits Dynamic Mouse Spotlight */}
       <div
-        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-30"
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 z-30"
         style={{
-          background: isHovered
-            ? `radial-gradient(400px circle at ${50 + tilt.y * 4}% ${50 + tilt.x * -4}%, rgba(0,229,255,0.06), transparent 60%)`
-            : "none",
+          opacity: "var(--opacity, 0)",
+          background: "radial-gradient(500px circle at var(--x, 50%) var(--y, 50%), rgba(0, 229, 255, 0.1), transparent 60%)",
         }}
       />
 
