@@ -30,68 +30,88 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
     const ctx = gsap.context(() => {
       const triggers: ScrollTrigger[] = [];
 
-      // --- Hero entrance timeline (plays on mount, not scroll-triggered) ---
-      const heroTl = gsap.timeline({ defaults: { ease: "expo.out" } });
+      // --- Ambient breathing pulse background loop ---
+      gsap.to(".ambient-glow-1", {
+        opacity: 0.08,
+        scale: 1.1,
+        duration: 4,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+      });
+      gsap.to(".ambient-glow-2", {
+        opacity: 0.06,
+        scale: 1.15,
+        duration: 5,
+        ease: "sine.inOut",
+        repeat: -1,
+        yoyo: true,
+        delay: 1,
+      });
+
+      // --- Hero entrance timeline (plays on mount with Premium Motion easing) ---
+      const heroTl = gsap.timeline({
+        defaults: { ease: "cubic-bezier(0.16, 1, 0.3, 1)" },
+      });
 
       // Back button
       if (backRef.current) {
         heroTl.fromTo(
           backRef.current,
-          { opacity: 0, x: -20 },
-          { opacity: 1, x: 0, duration: 0.6 }
+          { opacity: 0, x: -25 },
+          { opacity: 1, x: 0, duration: 0.7 }
         );
       }
 
-      // Character-by-character title reveal
+      // 3D character-by-character title reveal with depth
       if (titleRef.current) {
         const chars = titleRef.current.querySelectorAll(".char");
         heroTl.fromTo(
           chars,
-          { opacity: 0, y: 50, rotateX: -60 },
+          { opacity: 0, y: 60, rotateX: -70, transformOrigin: "50% 100%" },
           {
             opacity: 1,
             y: 0,
             rotateX: 0,
-            duration: 0.8,
-            stagger: 0.03,
-            ease: "back.out(1.4)",
+            duration: 0.85,
+            stagger: 0.035,
+            ease: "back.out(1.5)",
           },
-          "-=0.3"
+          "-=0.4"
         );
       }
 
-      // Accent line
+      // Accent line expansion
       if (accentRef.current) {
         heroTl.fromTo(
           accentRef.current,
           { scaleX: 0 },
           { scaleX: 1, duration: 0.8, ease: "power3.inOut" },
-          "-=0.4"
+          "-=0.5"
         );
       }
 
-      // Subtitle
+      // Subtitle fade-up
       if (subtitleRef.current) {
         heroTl.fromTo(
           subtitleRef.current,
-          { opacity: 0, y: 20 },
+          { opacity: 0, y: 25 },
           { opacity: 1, y: 0, duration: 0.7 },
           "-=0.5"
         );
       }
 
-      // Project counter
+      // Project counter ticker
       if (counterRef.current) {
         const target = projects.length;
         heroTl.fromTo(
           counterRef.current,
-          { opacity: 0, y: 10 },
+          { opacity: 0, y: 15 },
           {
             opacity: 1,
             y: 0,
             duration: 0.5,
             onStart: () => {
-              // Count-up animation
               let current = 0;
               const increment = Math.ceil(target / 15);
               const timer = setInterval(() => {
@@ -100,14 +120,14 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
                   counterRef.current.textContent = `${current} Projects`;
                 }
                 if (current >= target) clearInterval(timer);
-              }, 50);
+              }, 45);
             },
           },
           "-=0.3"
         );
       }
 
-      // --- Grid cards: ScrollTrigger stagger reveal ---
+      // --- Grid cards: GSAP 3D Cascade Wave Reveal ---
       if (gridRef.current) {
         const cards = gsap.utils.toArray<Element>(
           ".project-card",
@@ -116,14 +136,19 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
 
         gsap.fromTo(
           cards,
-          { opacity: 0, y: 60, scale: 0.97 },
+          { opacity: 0, y: 70, rotateX: 12, scale: 0.95 },
           {
             opacity: 1,
             y: 0,
+            rotateX: 0,
             scale: 1,
-            duration: 0.8,
-            stagger: 0.1,
-            ease: "expo.out",
+            duration: 0.85,
+            stagger: {
+              amount: 0.4,
+              from: "start",
+              ease: "power2.out",
+            },
+            ease: "cubic-bezier(0.16, 1, 0.3, 1)",
             scrollTrigger: {
               trigger: gridRef.current,
               start: "top 85%",
@@ -157,8 +182,8 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
   return (
     <div ref={containerRef} className="relative">
       {/* Ambient background glows */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#00E5FF]/[0.03] rounded-full blur-[120px] pointer-events-none" />
-      <div className="absolute top-[400px] right-0 w-[400px] h-[300px] bg-[#0A3BFF]/[0.03] rounded-full blur-[100px] pointer-events-none" />
+      <div className="ambient-glow-1 absolute top-0 left-1/2 -translate-x-1/2 w-[700px] h-[400px] bg-[#00E5FF]/[0.03] rounded-full blur-[120px] pointer-events-none" />
+      <div className="ambient-glow-2 absolute top-[400px] right-0 w-[400px] h-[300px] bg-[#0A3BFF]/[0.03] rounded-full blur-[100px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 pt-28 pb-20 relative z-10">
         {/* Back to Home */}
