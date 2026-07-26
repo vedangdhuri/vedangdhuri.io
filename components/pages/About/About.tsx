@@ -398,7 +398,7 @@ const About = () => {
 
             <h3 className="philosophy-text text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
               Engineering Scalable Systems &{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] via-cyan-400 to-blue-500">
+              <span className="text-transparent bg-clip-text bg-gradient-to-t from-[#00E5FF] via-cyan-400 to-blue-500">
                 Immersive Digital Experiences.
               </span>
             </h3>
