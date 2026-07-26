@@ -283,15 +283,15 @@ const CursorGrid = ({
     };
 
     const onPointerMove = (e: PointerEvent) => {
-      if (typeof window !== 'undefined' && window.innerWidth < 768) return;
+      if (typeof window !== "undefined" && window.innerWidth < 768) return;
       const [x, y] = toLocal(e);
       energize(x, y);
       wake();
     };
 
     const onPointerDown = (e: PointerEvent) => {
+      if (typeof window !== "undefined" && window.innerWidth < 768) return;
       if (!propsRef.current.clickPulse) return;
-      if (typeof window !== 'undefined' && window.innerWidth < 768) return;
       const [x, y] = toLocal(e);
       pulses.push({ x, y, t0: performance.now() });
       wake();
