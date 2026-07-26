@@ -28,8 +28,8 @@ const Magnet: React.FC<MagnetProps> = ({
 
   useEffect(() => {
     if (disabled) {
-      setPosition({ x: 0, y: 0 });
-      return;
+      const timer = setTimeout(() => setPosition({ x: 0, y: 0 }), 0);
+      return () => clearTimeout(timer);
     }
 
     const handleMouseMove = (e: MouseEvent) => {
