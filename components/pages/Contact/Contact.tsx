@@ -34,14 +34,14 @@ const Contact = () => {
 
   useEffect(() => {
 
-    // Globe slide in from left
+    // Globe slide in from left with orbital float on complete
     if (globeRef.current) {
       gsap.fromTo(
         globeRef.current,
-        { opacity: 0, y: 30 },
+        { opacity: 0, x: -40 },
         {
           opacity: 1,
-          y: 0,
+          x: 0,
           duration: 0.8,
           ease: "power3.out",
           scrollTrigger: {
@@ -49,6 +49,22 @@ const Contact = () => {
             start: "top 85%",
             toggleActions: "play none none none",
             once: true,
+          },
+          onComplete: () => {
+            const icons = globeRef.current?.querySelectorAll(".contact-icon-float");
+            if (icons && icons.length > 0) {
+              gsap.to(icons, {
+                y: -6,
+                duration: 2.5,
+                ease: "sine.inOut",
+                yoyo: true,
+                repeat: -1,
+                stagger: {
+                  each: 0.4,
+                  from: "random",
+                },
+              });
+            }
           },
         },
       );
@@ -174,7 +190,7 @@ const Contact = () => {
               
               <div className="flex flex-col gap-6 mb-10">
                 <a href="mailto:vedangdhuri.work@gmail.com" className="flex items-center gap-4 group cursor-pointer w-max">
-                  <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-colors duration-200">
+                  <div className="contact-icon-float w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-colors duration-200 shadow-[0_0_15px_rgba(0,229,255,0.15)]">
                     <Mail size={20} />
                   </div>
                   <div>
@@ -184,7 +200,7 @@ const Contact = () => {
                 </a>
                 
                 <div className="flex items-center gap-4 group w-max">
-                  <div className="w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-colors duration-200">
+                  <div className="contact-icon-float w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-colors duration-200 shadow-[0_0_15px_rgba(0,229,255,0.15)]">
                     <MapPin size={20} />
                   </div>
                   <div>
@@ -196,13 +212,13 @@ const Contact = () => {
               
               {/* Social Links */}
               <div className="flex gap-4">
-                <a href="#" className="w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                <a href="#" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
                   <Github size={20} />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                <a href="#" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
                   <Linkedin size={20} />
                 </a>
-                <a href="#" className="w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]">
+                <a href="#" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
                   <Twitter size={20} />
                 </a>
               </div>
@@ -229,7 +245,7 @@ const Contact = () => {
                   <input
                     id="name"
                     {...register("name", { required: "Name is required" })}
-                    className={`w-full bg-[#0A0A0A]/60 border ${errors.name ? "border-red-500" : "border-white/10"} rounded-[4px] px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300`}
+                    className={`w-full bg-[#0A0A0A]/60 border ${errors.name ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_20px_rgba(0,229,255,0.25)] transition-all duration-300`}
                     placeholder="John Doe"
                   />
                   {errors.name && (
@@ -255,7 +271,7 @@ const Contact = () => {
                         message: "Invalid email address",
                       },
                     })}
-                    className={`w-full bg-[#0A0A0A]/60 border ${errors.email ? "border-red-500" : "border-white/10"} rounded-[4px] px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300`}
+                    className={`w-full bg-[#0A0A0A]/60 border ${errors.email ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_20px_rgba(0,229,255,0.25)] transition-all duration-300`}
                     placeholder="john@example.com"
                   />
                   {errors.email && (
@@ -276,7 +292,7 @@ const Contact = () => {
                 <input
                   id="subject"
                   {...register("subject", { required: "Subject is required" })}
-                  className={`w-full bg-[#0A0A0A]/60 border ${errors.subject ? "border-red-500" : "border-white/10"} rounded-[4px] px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300`}
+                  className={`w-full bg-[#0A0A0A]/60 border ${errors.subject ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_20px_rgba(0,229,255,0.25)] transition-all duration-300`}
                   placeholder="Project Inquiry"
                 />
                 {errors.subject && (
@@ -297,7 +313,7 @@ const Contact = () => {
                   id="message"
                   rows={5}
                   {...register("message", { required: "Message is required" })}
-                  className={`w-full bg-[#0A0A0A]/60 border ${errors.message ? "border-red-500" : "border-white/10"} rounded-[4px] px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_15px_rgba(0,229,255,0.2)] transition-all duration-300 resize-none`}
+                  className={`w-full bg-[#0A0A0A]/60 border ${errors.message ? "border-red-500" : "border-white/10"} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#00E5FF] focus:shadow-[0_0_20px_rgba(0,229,255,0.25)] transition-all duration-300 resize-none`}
                   placeholder="Tell me about your project..."
                 />
                 {errors.message && (
@@ -307,10 +323,13 @@ const Contact = () => {
                 )}
               </div>
 
-              <button
+              <motion.button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-[#00E5FF] hover:bg-[#00E5FF]/80 text-black font-semibold py-3 rounded-[4px] transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:shadow-[0_0_25px_rgba(0,229,255,0.4)] active:scale-[0.98] btn-pulse"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.97 }}
+                transition={{ type: "spring", stiffness: 400, damping: 25 }}
+                className="w-full bg-[#00E5FF] hover:bg-[#00E5FF]/80 text-black font-semibold py-3.5 rounded-xl transition-all duration-300 flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed hover:shadow-[0_0_25px_rgba(0,229,255,0.4)] cursor-pointer"
               >
                 {isSubmitting ? (
                   <span className="animate-pulse">Sending...</span>
@@ -319,7 +338,7 @@ const Contact = () => {
                     Send Message <Send size={18} />
                   </>
                 )}
-              </button>
+              </motion.button>
 
               {submitStatus === "success" && (
                 <motion.div
