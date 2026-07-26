@@ -13,7 +13,6 @@ import {
   MapPin,
   Briefcase,
   GraduationCap,
-  Award,
   Zap,
   Cpu,
   ShieldCheck,
@@ -107,6 +106,83 @@ const hobbies = [
   },
 ];
 
+interface HobbyCardProps {
+  hobby: {
+    title: string;
+    icon: React.ElementType;
+    desc: string;
+  };
+}
+
+const HobbyCard = ({ hobby }: HobbyCardProps) => {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const Icon = hobby.icon;
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    const xPct = x / rect.width - 0.5;
+    const yPct = y / rect.height - 0.5;
+
+    const rotateX = (yPct * -16).toFixed(2);
+    const rotateY = (xPct * 16).toFixed(2);
+
+    cardRef.current.style.setProperty("--x", `${x}px`);
+    cardRef.current.style.setProperty("--y", `${y}px`);
+    cardRef.current.style.setProperty("--rx", `${rotateX}deg`);
+    cardRef.current.style.setProperty("--ry", `${rotateY}deg`);
+    cardRef.current.style.setProperty("--opacity", "1");
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.setProperty("--rx", "0deg");
+    cardRef.current.style.setProperty("--ry", "0deg");
+    cardRef.current.style.setProperty("--opacity", "0");
+  };
+
+  return (
+    <div
+      ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      className="hobby-card group relative p-6 rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-pointer transition-all duration-500 hover:border-[#00E5FF]/40 hover:shadow-[0_10px_30px_-10px_rgba(0,229,255,0.15)]"
+      style={{
+        transform: "perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0)",
+        transition: "transform 0.15s ease-out, border-color 0.4s ease, box-shadow 0.4s ease",
+        transformStyle: "preserve-3d",
+      }}
+    >
+      {/* Dynamic Mouse Spotlight overlay */}
+      <div
+        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 z-30"
+        style={{
+          opacity: "var(--opacity, 0)",
+          background:
+            "radial-gradient(350px circle at var(--x, 0px) var(--y, 0px), rgba(0, 229, 255, 0.15), transparent 40%)",
+        }}
+      />
+
+      {/* Hover Gradient */}
+      <div className="absolute inset-0 bg-gradient-to-br from-[#00E5FF]/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
+
+      <div className="relative z-10 flex flex-col items-center text-center space-y-4">
+        <div className="w-12 h-12 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-neutral-400 group-hover:text-[#00E5FF] group-hover:scale-110 group-hover:border-[#00E5FF]/40 transition-all duration-300 shadow-lg">
+          <Icon className="w-6 h-6" />
+        </div>
+        <div>
+          <h4 className="text-lg font-bold text-white mb-1 group-hover:text-[#00E5FF] transition-colors duration-300">
+            {hobby.title}
+          </h4>
+          <p className="text-sm text-neutral-400">{hobby.desc}</p>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const About = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const introRef = useRef<HTMLDivElement>(null);
@@ -176,7 +252,7 @@ const About = () => {
 
       // 3. Timeline Animation
       if (timelineRef.current) {
-        // Draw the center line
+        // Draw the center line with scrub
         gsap.fromTo(
           ".timeline-center-line",
           { scaleY: 0 },
@@ -192,25 +268,59 @@ const About = () => {
           },
         );
 
-        // Timeline items snap in
+        // Timeline items snap in and ignite
         const timelineItems = gsap.utils.toArray<HTMLElement>(".timeline-node");
         timelineItems.forEach((item, i) => {
           const isLeft = i % 2 === 0;
-          gsap.fromTo(
+          const iconEl = item.querySelector(".timeline-node-icon");
+          const cardEl = item.querySelector(".timeline-node-card");
+
+          const tl = gsap.timeline({
+            scrollTrigger: {
+              trigger: item,
+              start: "top 85%",
+              once: true,
+            },
+          });
+
+          tl.fromTo(
             item,
-            { opacity: 0, x: isLeft ? -40 : 40 },
+            { opacity: 0, x: isLeft ? -45 : 45 },
             {
               opacity: 1,
               x: 0,
               duration: 0.8,
-              ease: "power3.out",
-              scrollTrigger: {
-                trigger: item,
-                start: "top 85%",
-                once: true,
-              },
+              ease: "back.out(1.5)",
             },
           );
+
+          if (iconEl) {
+            tl.fromTo(
+              iconEl,
+              { scale: 0.7, boxShadow: "0 0 0px rgba(0, 229, 255, 0)" },
+              {
+                scale: 1,
+                boxShadow: "0 0 20px rgba(0, 229, 255, 0.8)",
+                duration: 0.5,
+                ease: "power2.out",
+              },
+              "-=0.5",
+            );
+          }
+
+          if (cardEl) {
+            tl.fromTo(
+              cardEl,
+              { borderColor: "rgba(255, 255, 255, 0.1)" },
+              {
+                borderColor: "rgba(0, 229, 255, 0.5)",
+                duration: 0.6,
+                yoyo: true,
+                repeat: 1,
+              },
+              "-=0.6",
+            );
+          }
         });
       }
 
@@ -364,12 +474,16 @@ const About = () => {
           <div className="relative max-w-4xl mx-auto">
             {/* Center Line Desktop */}
             <div className="hidden md:block absolute left-1/2 top-0 bottom-0 w-[2px] -translate-x-1/2 bg-white/5">
-              <div className="timeline-center-line absolute top-0 left-0 w-full bg-gradient-to-b from-[#00E5FF] via-blue-500 to-transparent origin-top h-full" />
+              <div className="timeline-center-line absolute top-0 left-0 w-full bg-gradient-to-b from-[#00E5FF] via-blue-500 to-transparent origin-top h-full shadow-[0_0_15px_rgba(0,229,255,0.8)]">
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-8 bg-[#00E5FF] blur-sm rounded-full" />
+              </div>
             </div>
 
             {/* Center Line Mobile */}
             <div className="md:hidden absolute left-6 top-0 bottom-0 w-[2px] bg-white/5">
-              <div className="timeline-center-line absolute top-0 left-0 w-full bg-gradient-to-b from-[#00E5FF] via-blue-500 to-transparent origin-top h-full" />
+              <div className="timeline-center-line absolute top-0 left-0 w-full bg-gradient-to-b from-[#00E5FF] via-blue-500 to-transparent origin-top h-full shadow-[0_0_15px_rgba(0,229,255,0.8)]">
+                <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3 h-8 bg-[#00E5FF] blur-sm rounded-full" />
+              </div>
             </div>
 
             <div className="space-y-12 md:space-y-16">
@@ -382,7 +496,7 @@ const About = () => {
                     className={`timeline-node relative flex flex-col md:flex-row ${isLeft ? "md:justify-start" : "md:justify-end"} items-center w-full`}
                   >
                     {/* Timeline Node Icon */}
-                    <div className="absolute left-6 md:left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-black border-2 border-[#00E5FF] z-10 flex items-center justify-center text-[#00E5FF]">
+                    <div className="timeline-node-icon absolute left-6 md:left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-black border-2 border-[#00E5FF] z-10 flex items-center justify-center text-[#00E5FF] transition-shadow duration-500">
                       <Icon className="w-4 h-4" />
                     </div>
 
@@ -390,7 +504,7 @@ const About = () => {
                     <div
                       className={`w-full pl-16 md:pl-0 md:w-[45%] ${isLeft ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"}`}
                     >
-                      <div className="p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors duration-300 space-y-3">
+                      <div className="timeline-node-card p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-[#00E5FF]/40 hover:shadow-[0_0_25px_rgba(0,229,255,0.15)] transition-all duration-300 space-y-3">
                         <div
                           className={`flex items-center space-x-2 ${isLeft ? "md:justify-end" : "md:justify-start"}`}
                         >
@@ -449,30 +563,9 @@ const About = () => {
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {hobbies.map((hobby, index) => {
-              const Icon = hobby.icon;
-              return (
-                <div
-                  key={index}
-                  className="hobby-card group relative p-6 rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-pointer"
-                >
-                  {/* Hover Gradient */}
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#00E5FF]/20 to-blue-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-
-                  <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-                    <div className="w-12 h-12 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-neutral-400 group-hover:text-[#00E5FF] group-hover:scale-110 transition-all duration-300">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <div>
-                      <h4 className="text-lg font-bold text-white mb-1 group-hover:text-[#00E5FF] transition-colors duration-300">
-                        {hobby.title}
-                      </h4>
-                      <p className="text-sm text-neutral-400">{hobby.desc}</p>
-                    </div>
-                  </div>
-                </div>
-              );
-            })}
+            {hobbies.map((hobby, index) => (
+              <HobbyCard key={index} hobby={hobby} />
+            ))}
           </div>
         </div>
       </div>
