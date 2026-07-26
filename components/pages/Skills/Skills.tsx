@@ -76,18 +76,34 @@ const SkillCard = ({
   const cardRef = useRef<HTMLDivElement>(null);
   const badgesRef = useRef<HTMLDivElement>(null);
 
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!cardRef.current) return;
+    const rect = cardRef.current.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    cardRef.current.style.setProperty("--x", `${x}px`);
+    cardRef.current.style.setProperty("--y", `${y}px`);
+    cardRef.current.style.setProperty("--opacity", "1");
+  };
+
+  const handleMouseLeave = () => {
+    if (!cardRef.current) return;
+    cardRef.current.style.setProperty("--opacity", "0");
+  };
+
   useEffect(() => {
     const card = cardRef.current;
     if (!card) return;
 
-    // Card entrance
+    // 3D Perspective Fold Entrance
     gsap.fromTo(
       card,
-      { opacity: 0, y: 40, rotateX: -4 },
+      { opacity: 0, y: 50, rotateX: -15, scale: 0.94 },
       {
         opacity: 1,
         y: 0,
         rotateX: 0,
+        scale: 1,
         duration: 0.8,
         delay: index * 0.1,
         ease: "power3.out",
@@ -100,19 +116,19 @@ const SkillCard = ({
       },
     );
 
-    // Badge pop-in
+    // Staggered Spring Badges pop-in
     if (badgesRef.current) {
       const badges = badgesRef.current.children;
       gsap.fromTo(
         badges,
-        { opacity: 0, scale: 0.8, y: 10 },
+        { opacity: 0, scale: 0.7, y: 15 },
         {
           opacity: 1,
           scale: 1,
           y: 0,
-          duration: 0.5,
+          duration: 0.6,
           stagger: 0.05,
-          ease: "back.out(1.5)",
+          ease: "back.out(1.7)",
           scrollTrigger: {
             trigger: card,
             start: "top 80%",
@@ -124,7 +140,6 @@ const SkillCard = ({
     }
 
     return () => {
-      // Kill only triggers created by THIS card, not global ones
       ScrollTrigger.getAll()
         .filter((st) => st.trigger === card)
         .forEach((st) => st.kill());
@@ -134,15 +149,27 @@ const SkillCard = ({
   return (
     <div
       ref={cardRef}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
       className={`h-full ${className || ""}`}
-      style={{ opacity: 0, perspective: "600px" }}
+      style={{ opacity: 0, perspective: "800px" }}
     >
-      <Card className="group relative overflow-hidden bg-indigo-950/20 backdrop-blur-sm border-white/10 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 z-10 hover:border-blue-500/30 h-full">
-        {/* Shimmer effect overlay from seraprogrammer-portfolio */}
-        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(100,100,255,0.05)] to-transparent group-hover:via-[rgba(100,100,255,0.15)] animate-shimmer pointer-events-none" />
+      <Card className="group relative overflow-hidden bg-indigo-950/20 backdrop-blur-sm border-white/10 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-[#00E5FF]/15 z-10 hover:border-[#00E5FF]/40 h-full">
+        {/* Dynamic Interactive Cursor Spotlight Glow */}
+        <div
+          className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-500 z-30"
+          style={{
+            opacity: "var(--opacity, 0)",
+            background:
+              "radial-gradient(350px circle at var(--x, 0px) var(--y, 0px), rgba(0, 229, 255, 0.15), transparent 40%)",
+          }}
+        />
+
+        {/* Shimmer effect overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,229,255,0.05)] to-transparent group-hover:via-[rgba(0,229,255,0.15)] animate-shimmer pointer-events-none" />
         
         {/* Terminal Header */}
-        <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-white/[0.02]">
+        <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-white/[0.02] relative z-10">
           <div className="flex items-center gap-2">
             <span className="text-[10px] font-mono text-gray-500 tracking-wider font-bold uppercase">{">"}_ {title.toLowerCase().replace(/\s+/g, "_")}</span>
           </div>
@@ -157,11 +184,11 @@ const SkillCard = ({
           <div className="flex flex-col h-full">
             <div className="flex items-center gap-4 mb-6">
               <div
-                className={`p-3 rounded-xl bg-white/5 ${color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300`}
+                className={`p-3 rounded-xl bg-white/5 ${color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-md group-hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]`}
               >
                 <Icon className="w-8 h-8" />
               </div>
-              <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+              <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:to-[#00E5FF] transition-all duration-300">
                 {title}
               </h3>
             </div>
@@ -173,7 +200,7 @@ const SkillCard = ({
                 <Badge
                   key={idx}
                   variant="outline"
-                  className="group/badge relative bg-white/5 hover:bg-white/10 text-gray-100 border-white/10 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/20 hover:-translate-y-0.5 h-fit"
+                  className="group/badge relative bg-white/5 hover:bg-white/10 text-gray-100 border-white/10 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00E5FF]/20 hover:-translate-y-0.5 hover:border-[#00E5FF]/40 h-fit"
                 >
                   <span className="transform group-hover/badge:scale-110 group-hover/badge:rotate-12 transition-transform duration-300">
                     {skill.icon}
