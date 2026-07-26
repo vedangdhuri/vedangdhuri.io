@@ -3,7 +3,6 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import gsap from "gsap";
-import { AppleHelloEnglishEffect } from "@/components/ui/apple-hello-effect";
 import { getDeviceTier } from "@/utils/useDeviceTier";
 
 interface LoaderProps {
@@ -14,7 +13,7 @@ interface LoaderProps {
 
 const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
   const [isLoading, setIsLoading] = useState(true);
-  const [bootStage, setBootStage] = useState<"counter" | "greeting">("counter");
+  const [bootStage, setBootStage] = useState<"counter" | "reveal">("counter");
   
   const counterRef = useRef<HTMLDivElement>(null);
   const progressBarRef = useRef<HTMLDivElement>(null);
@@ -32,18 +31,14 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
     }, 1100);
   }, [onComplete, onExitStart]);
 
-  const handleGreetingComplete = useCallback(() => {
+  const handleRevealComplete = useCallback(() => {
     if (hasExitedRef.current) return;
-
+    hasExitedRef.current = true;
+    setIsLoading(false);
+    onExitStart?.();
     setTimeout(() => {
-      if (hasExitedRef.current) return;
-      hasExitedRef.current = true;
-      setIsLoading(false);
-      onExitStart?.();
-      setTimeout(() => {
-        onComplete?.();
-      }, 1100);
-    }, 350);
+      onComplete?.();
+    }, 1100);
   }, [onComplete, onExitStart]);
 
   // Stage 1: Digital numeric boot counter driven by GSAP
@@ -68,18 +63,18 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
           if (v < 25) {
             statusRef.current.textContent = "[ SYS.INIT // BOOTING KERNEL ]";
           } else if (v < 60) {
-            statusRef.current.textContent = "[ NEURAL.ASSETS // LOADING ]";
+            statusRef.current.textContent = "[ COMPILING FULL STACK ARCHITECTURE ]";
           } else if (v < 90) {
-            statusRef.current.textContent = "[ INTERFACE.SYNC // OPTIMIZING ]";
+            statusRef.current.textContent = "[ SYNCING 3D VISUAL ENGINES ]";
           } else {
-            statusRef.current.textContent = "[ NEXUS.READY // WELCOME ]";
+            statusRef.current.textContent = "[ NEXUS.READY // LAUNCHING PORTFOLIO ]";
           }
         }
       },
       onComplete: () => {
         setTimeout(() => {
           if (!hasExitedRef.current) {
-            setBootStage("greeting");
+            setBootStage("reveal");
           }
         }, 250);
       },
@@ -90,15 +85,15 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
     };
   }, []);
 
-  // Safety fallback in case SVG completion callback is delayed or tab is inactive
+  // Stage 2: Hold identity reveal on screen before exiting
   useEffect(() => {
-    if (bootStage === "greeting") {
+    if (bootStage === "reveal") {
       const timer = setTimeout(() => {
-        handleGreetingComplete();
-      }, 2400);
+        handleRevealComplete();
+      }, 2000);
       return () => clearTimeout(timer);
     }
-  }, [bootStage, handleGreetingComplete]);
+  }, [bootStage, handleRevealComplete]);
 
   return (
     <AnimatePresence mode="wait">
@@ -114,6 +109,9 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
           }}
           className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#0A0A0A] overflow-hidden will-change-transform select-none"
         >
+          {/* Subtle Cyber Grid Background */}
+          <div className="absolute inset-0 bg-[linear-gradient(to_right,#00E5FF08_1px,transparent_1px),linear-gradient(to_bottom,#00E5FF08_1px,transparent_1px)] bg-[size:32px_32px] pointer-events-none" />
+
           {/* Ambient Cyber Atmosphere Glows */}
           <div className="absolute -top-40 -left-40 w-96 h-96 bg-[#00E5FF]/10 rounded-full blur-[120px] pointer-events-none" />
           <div className="absolute -bottom-40 -right-40 w-96 h-96 bg-[#0A3BFF]/15 rounded-full blur-[120px] pointer-events-none" />
@@ -123,7 +121,7 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
             <span>[ NEXUS_CORE // v2.0.26 ]</span>
           </div>
           <div className="absolute top-6 right-6 hidden md:flex items-center gap-2 font-mono text-[11px] text-[#00E5FF]/50 tracking-wider">
-            <span>SYS.MONITOR // ACTIVE</span>
+            <span>SYS.MONITOR // OPTIMAL</span>
           </div>
           <div className="absolute bottom-6 left-6 flex items-center gap-2 font-mono text-[11px] text-[#00E5FF]/70 tracking-widest uppercase">
             <span className="w-2 h-2 rounded-full bg-[#00E5FF] animate-pulse shadow-[0_0_8px_#00E5FF]" />
@@ -142,7 +140,7 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
           </button>
 
           {/* Main Visual Stage */}
-          <div className="relative flex flex-col items-center justify-center w-full max-w-[480px] px-6 min-h-[220px]">
+          <div className="relative flex flex-col items-center justify-center w-full max-w-[540px] px-6 min-h-[260px]">
             <AnimatePresence mode="wait">
               {bootStage === "counter" ? (
                 <motion.div
@@ -156,6 +154,14 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
                   }}
                   className="flex flex-col items-center justify-center w-full text-center z-10"
                 >
+                  {/* Futuristic Orbital Ring Spinner */}
+                  <div className="relative mb-8 flex items-center justify-center">
+                    <div className="absolute w-28 h-28 rounded-full border border-dashed border-[#00E5FF]/30 animate-[spin_12s_linear_infinite]" />
+                    <div className="absolute w-20 h-20 rounded-full border border-dotted border-[#0A3BFF]/50 animate-[spin_8s_linear_infinite_reverse]" />
+                    <div className="absolute w-12 h-12 rounded-full border border-[#00E5FF]/20 animate-ping" />
+                    <div className="w-4 h-4 rounded-full bg-[#00E5FF] shadow-[0_0_20px_#00E5FF]" />
+                  </div>
+
                   <div
                     ref={counterRef}
                     className="font-mono text-6xl sm:text-7xl md:text-8xl font-extralight tracking-tighter text-white drop-shadow-[0_0_30px_rgba(0,229,255,0.3)]"
@@ -177,8 +183,8 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
                 </motion.div>
               ) : (
                 <motion.div
-                  key="greeting"
-                  initial={{ opacity: 0, scale: 0.95, y: 10 }}
+                  key="reveal"
+                  initial={{ opacity: 0, scale: 0.95, y: 15 }}
                   animate={{ opacity: 1, scale: 1, y: 0 }}
                   exit={{
                     opacity: 0,
@@ -186,22 +192,46 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
                     transition: { duration: 0.4, ease: [0.33, 1, 0.68, 1] },
                   }}
                   transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-                  className="relative flex flex-col items-center justify-center w-full z-10"
+                  className="relative flex flex-col items-center justify-center w-full z-10 text-center"
                 >
-                  <AppleHelloEnglishEffect
-                    speed={1.3}
-                    onAnimationComplete={handleGreetingComplete}
-                    className="text-white h-16 sm:h-20 md:h-24 will-change-transform drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
-                  />
+                  {/* Status Badge */}
                   <motion.div
+                    initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                    className="font-mono text-xs sm:text-sm tracking-[0.3em] text-[#00E5FF] uppercase px-5 py-2 rounded-full border border-[#00E5FF]/40 bg-[#00E5FF]/10 shadow-[0_0_25px_rgba(0,229,255,0.25)] backdrop-blur-md mb-6 flex items-center gap-2"
+                  >
+                    <span className="w-2 h-2 rounded-full bg-[#00E5FF] animate-ping" />
+                    <span>NEXUS CORE OS // ONLINE</span>
+                  </motion.div>
+
+                  {/* Main Name Reveal */}
+                  <motion.h1
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    transition={{ delay: 0.15, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    className="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight text-white uppercase font-display drop-shadow-[0_0_40px_rgba(0,229,255,0.35)]"
+                  >
+                    VEDANG DHURI
+                  </motion.h1>
+
+                  {/* Role / Subtitle Reveal */}
+                  <motion.p
                     initial={{ opacity: 0, y: 15 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.25, duration: 0.6 }}
-                    className="mt-8 font-mono text-[11px] sm:text-xs tracking-[0.25em] text-[#00E5FF] uppercase bg-[#00E5FF]/5 px-5 py-2 rounded-full border border-[#00E5FF]/30 shadow-[0_0_25px_rgba(0,229,255,0.15)] backdrop-blur-md flex items-center gap-2"
+                    transition={{ delay: 0.35, duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                    className="font-mono text-xs sm:text-sm md:text-base tracking-[0.25em] text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] via-cyan-300 to-[#0A3BFF] uppercase mt-3 font-medium"
                   >
-                    <span className="w-1.5 h-1.5 rounded-full bg-[#00E5FF] animate-ping" />
-                    <span>[ AUTONOMOUS PORTFOLIO OS ]</span>
-                  </motion.div>
+                    FULL STACK DEVELOPER & DESIGNER
+                  </motion.p>
+
+                  {/* Laser Beam Separator */}
+                  <motion.div
+                    initial={{ width: 0, opacity: 0 }}
+                    animate={{ width: "140px", opacity: 1 }}
+                    transition={{ delay: 0.5, duration: 0.6 }}
+                    className="h-0.5 bg-gradient-to-r from-transparent via-[#00E5FF] to-transparent shadow-[0_0_15px_#00E5FF] mt-8"
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
@@ -216,4 +246,3 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
 };
 
 export default Loader;
-
