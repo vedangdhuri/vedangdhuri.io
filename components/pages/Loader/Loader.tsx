@@ -41,10 +41,10 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
     }, 1100);
   }, [onComplete, onExitStart]);
 
-  // Stage 1: Digital numeric boot counter driven by GSAP (1.4s + 0.1s pause)
+  // Stage 1: Digital numeric boot counter driven by GSAP (3.0s duration)
   useEffect(() => {
     const tier = getDeviceTier();
-    const counterDuration = tier === 2 ? 0.5 : 1.4;
+    const counterDuration = tier === 2 ? 1.0 : 3.0;
     const valObj = { val: 0 };
 
     const tween = gsap.to(valObj, {
@@ -76,7 +76,7 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
           if (!hasExitedRef.current) {
             setBootStage("reveal");
           }
-        }, 100);
+        }, 150);
       },
     });
 
@@ -85,12 +85,12 @@ const Loader = ({ onComplete, onExitStart }: LoaderProps) => {
     };
   }, []);
 
-  // Stage 2: Hold identity reveal on screen for 1.5s before exit wipe (1.4s + 0.1s + 1.5s = 3.0s total intro)
+  // Stage 2: Hold identity reveal on screen for 1.8s before exit wipe
   useEffect(() => {
     if (bootStage === "reveal") {
       const timer = setTimeout(() => {
         handleRevealComplete();
-      }, 1500);
+      }, 1800);
       return () => clearTimeout(timer);
     }
   }, [bootStage, handleRevealComplete]);
