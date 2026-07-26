@@ -55,7 +55,11 @@ export const journeyTimeline = [
 ];
 
 const coreCompetencies = [
-  { name: "Real-Time WebSockets", icon: Zap, desc: "Socket.io & Live Systems" },
+  {
+    name: "Real-Time WebSockets",
+    icon: Zap,
+    desc: "Socket.io & Live Systems",
+  },
   {
     name: "AI & GPT Integration",
     icon: BrainCircuit,
@@ -150,8 +154,10 @@ const HobbyCard = ({ hobby }: HobbyCardProps) => {
       onMouseLeave={handleMouseLeave}
       className="hobby-card group relative p-6 rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-pointer transition-all duration-500 hover:border-[#00E5FF]/40 hover:shadow-[0_10px_30px_-10px_rgba(0,229,255,0.15)]"
       style={{
-        transform: "perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0)",
-        transition: "transform 0.15s ease-out, border-color 0.4s ease, box-shadow 0.4s ease",
+        transform:
+          "perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0)",
+        transition:
+          "transform 0.15s ease-out, border-color 0.4s ease, box-shadow 0.4s ease",
         transformStyle: "preserve-3d",
       }}
     >
@@ -392,34 +398,43 @@ const About = () => {
 
             <h3 className="philosophy-text text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
               Engineering Scalable Systems &{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] to-blue-500">
-                Real-Time AI Experiences.
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00E5FF] via-cyan-400 to-blue-500">
+                Immersive Digital Experiences.
               </span>
             </h3>
 
             <p className="philosophy-text text-lg md:text-xl text-neutral-300 font-light leading-relaxed max-w-2xl">
-              I am a Full Stack Developer specializing in the{" "}
-              <strong className="text-white font-medium">
-                MERN stack, Next.js, and Django
-              </strong>
-              . My focus lies in constructing high-performance backend
-              architectures, real-time WebSocket systems, and AI-integrated
-              applications like{" "}
-              <span className="text-[#00E5FF]">RoastRoom</span> and{" "}
-              <span className="text-[#00E5FF]">SafeCity Hub</span>.
+              I am a passionate <strong className="text-white font-medium">Full Stack Developer</strong> with a keen eye for design and a commitment to creating immersive digital experiences. With a strong foundation in Computer Science, I specialize in building scalable web applications using <strong className="text-white font-medium">Next.js, the MERN stack, and Django</strong>.
             </p>
+
+            <div className="philosophy-text p-5 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md relative overflow-hidden group hover:border-[#00E5FF]/40 transition-all duration-300">
+              <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#00E5FF] to-blue-600 rounded-l-2xl"></div>
+              <p className="text-base md:text-lg text-neutral-200 font-light leading-relaxed italic">
+                &ldquo;My approach combines technical expertise with creative problem-solving. Great software is not just about writing code; it&rsquo;s about understanding user needs and delivering solutions that truly make a difference.&rdquo;
+              </p>
+              <div className="mt-3 flex items-center gap-2 text-xs font-mono text-[#00E5FF]">
+                <Sparkles className="w-3.5 h-3.5" />
+                <span>Core Philosophy</span>
+              </div>
+            </div>
 
             <p className="philosophy-text text-base text-neutral-400 font-light leading-relaxed max-w-2xl">
               Having completed a 3-month Software Development Internship at{" "}
-              <strong className="text-white font-medium">
-                Softmusk Solutions
-              </strong>{" "}
-              and authored{" "}
-              <strong className="text-white font-medium">
-                20+ public open-source repositories
-              </strong>
-              , I bridge deep technical execution with refined UI/UX design.
+              <strong className="text-white font-medium">Softmusk Solutions</strong>{" "}
+              and authored <strong className="text-white font-medium">20+ public open-source repositories</strong> (including platforms like <span className="text-[#00E5FF] font-medium">RoastRoom</span> and <span className="text-[#00E5FF] font-medium">SafeCity Hub</span>), I bridge deep engineering execution with refined UI/UX. When I&apos;m not coding, you can find me exploring new technologies, contributing to open-source projects, or designing 3D assets.
             </p>
+
+            <div className="philosophy-text flex flex-wrap gap-2.5 pt-1">
+              <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
+                <Code2 className="w-3.5 h-3.5 text-[#00E5FF]" /> Full Stack Architect
+              </span>
+              <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
+                <Sparkles className="w-3.5 h-3.5 text-[#00E5FF]" /> Creative Problem Solving
+              </span>
+              <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
+                <BrainCircuit className="w-3.5 h-3.5 text-[#00E5FF]" /> 3D Assets & Open Source
+              </span>
+            </div>
           </div>
         </div>
 
