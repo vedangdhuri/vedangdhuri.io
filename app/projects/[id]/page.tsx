@@ -42,5 +42,30 @@ export default async function ProjectPage({
     notFound();
   }
 
-  return <ProjectDetail project={project} />;
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vedangdhuri.xyz";
+  const projectUrl = `${siteUrl}/projects/${id}`;
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: project.title,
+    description: project.shortDescription,
+    url: projectUrl,
+    applicationCategory: "DeveloperApplication",
+    operatingSystem: "All",
+    author: {
+      "@type": "Person",
+      name: "Vedang Dhuri",
+      url: siteUrl,
+    },
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <ProjectDetail project={project} />
+    </>
+  );
 }
