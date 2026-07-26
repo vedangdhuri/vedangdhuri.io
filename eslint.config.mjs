@@ -12,6 +12,13 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    // Third-party tool/agent directories:
+    ".agents/**",
+    ".claude/**",
+    ".codex/**",
+    ".antigravitycli/**",
+    ".impeccable/**",
+    "graphify-out/**",
   ]),
 ]);
 
