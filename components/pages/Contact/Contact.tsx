@@ -117,10 +117,9 @@ const Contact = () => {
   }, []);
 
   const onSubmit = async (data: FormData) => {
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-
     try {
-      const res = await fetch(process.env.NEXT_PUBLIC_DISCORD_WEBHOOK_URL!, {
+      setSubmitStatus("idle");
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -157,7 +156,7 @@ const Contact = () => {
         }),
       });
       if (!res.ok) {
-        throw new Error("Webhook failed");
+        throw new Error("Message could not be sent");
       }
 
       setSubmitStatus("success");
@@ -165,7 +164,7 @@ const Contact = () => {
 
       setTimeout(() => setSubmitStatus("idle"), 5000);
     } catch (error) {
-      console.error("Discord Webhook Error:", error);
+      console.error("Contact form error:", error);
       setSubmitStatus("error");
     }
   };
@@ -223,8 +222,6 @@ const Contact = () => {
                 </a>
               </div>
             </div>
-            
-
           </div>
 
           {/* Contact Form */}
@@ -350,6 +347,17 @@ const Contact = () => {
                   <span>
                     Message sent successfully! {"I'll"} get back to you soon.
                   </span>
+                </motion.div>
+              )}
+              {submitStatus === "error" && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  role="alert"
+                  className="p-4 bg-red-500/10 border border-red-500/30 rounded-[4px] flex items-center gap-3 text-red-300"
+                >
+                  <AlertCircle size={20} />
+                  <span>Your message could not be sent. Please try again or email me directly.</span>
                 </motion.div>
               )}
             </form>
