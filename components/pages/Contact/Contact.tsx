@@ -211,13 +211,13 @@ const Contact = () => {
               
               {/* Social Links */}
               <div className="flex gap-4">
-                <a href="#" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
+                <a href="https://github.com/vedangdhuri" target="_blank" rel="noopener noreferrer" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
                   <Github size={20} />
                 </a>
-                <a href="#" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
+                <a href="https://www.linkedin.com/in/vedang-dhuri" target="_blank" rel="noopener noreferrer" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
                   <Linkedin size={20} />
                 </a>
-                <a href="#" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
+                <a href="https://twitter.com/vedangdhuri" target="_blank" rel="noopener noreferrer" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
                   <Twitter size={20} />
                 </a>
               </div>
