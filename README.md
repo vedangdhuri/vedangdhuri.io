@@ -1,229 +1,119 @@
-<h1 align="center">NEXT.js Portfolio</h1>
-<h3 align="center">Empowering Innovation, Elevating Digital Experiences Daily</h3>
-
 <div align="center">
-  <img src="https://img.shields.io/github/last-commit/vedangdhuri/vedangdhuri.github.io?style=flat&logo=git&logoColor=white&color=0080ff" />
-  <img src="https://img.shields.io/github/languages/top/vedangdhuri/vedangdhuri.github.io?style=flat&color=0080ff" />
-  <img src="https://img.shields.io/github/languages/count/vedangdhuri/vedangdhuri.github.io?style=flat&color=0080ff" />
-  <a href="https://vedangdhuri-io.vercel.app">
-    <img src="https://img.shields.io/badge/Visit_Site-Live_Portfolio-0080ff?style=flat" />
-  </a>
+  <h1 align="center">vedangdhuri.io</h1>
+  <p align="center">
+    <strong>Empowering Innovation, Elevating Digital Experiences Daily</strong>
+  </p>
+  <p align="center">
+    A modern, performance-focused personal portfolio built with Next.js App Router, TypeScript, GSAP, and Three.js.
+  </p>
+  
+  <p align="center">
+    <a href="https://vedangdhuri-io.vercel.app">
+      <img src="https://img.shields.io/badge/Live_Site-vedangdhuri--io.vercel.app-000000?style=for-the-badge&logo=vercel&logoColor=white" alt="Live Site" />
+    </a>
+    <img src="https://img.shields.io/github/last-commit/vedangdhuri/vedangdhuri.github.io?style=for-the-badge&logo=git&logoColor=white&color=0080ff" alt="Last Commit" />
+    <img src="https://img.shields.io/github/languages/top/vedangdhuri/vedangdhuri.github.io?style=for-the-badge&color=0080ff" alt="Top Language" />
+    <img src="https://img.shields.io/github/languages/count/vedangdhuri/vedangdhuri.github.io?style=for-the-badge&color=0080ff" alt="Language Count" />
+  </p>
+  
+  <p align="center">
+    <img src="https://img.shields.io/badge/Next.js-000000?style=flat-square&logo=next.js&logoColor=white" alt="Next.js" />
+    <img src="https://img.shields.io/badge/React-20232A?style=flat-square&logo=react&logoColor=61DAFB" alt="React" />
+    <img src="https://img.shields.io/badge/TypeScript-3178C6?style=flat-square&logo=typescript&logoColor=white" alt="TypeScript" />
+    <img src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=flat-square&logo=tailwind-css&logoColor=white" alt="Tailwind CSS" />
+    <img src="https://img.shields.io/badge/Framer_Motion-0055FF?style=flat-square&logo=framer&logoColor=white" alt="Framer Motion" />
+    <img src="https://img.shields.io/badge/GSAP-88CE02?style=flat-square&logo=greensock&logoColor=white" alt="GSAP" />
+    <img src="https://img.shields.io/badge/Three.js-000000?style=flat-square&logo=threedotjs&logoColor=white" alt="Three.js" />
+  </p>
 </div>
 
 <hr/>
 
-<h2 align="center">🧩 Built With</h2>
+## 📌 Overview
 
-<div align="center">
-  <img src="https://img.shields.io/badge/Next.js-black?logo=next.js&logoColor=white" />
-  <img src="https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB" />
-  <img src="https://img.shields.io/badge/TypeScript-3178C6?logo=typescript&logoColor=white" />
-  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=000" />
-  <img src="https://img.shields.io/badge/npm-CB3837?logo=npm&logoColor=white" />
-  <img src="https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white" />
-  <img src="https://img.shields.io/badge/React_Hook_Form-EC5990?logo=reacthookform&logoColor=white" />
-</div>
+**vedangdhuri-io** is a scalable, component-driven frontend architecture designed to showcase projects, skills, and experience. Built with the **Next.js App Router** and **TypeScript**, it goes beyond a static portfolio by integrating advanced UI animations, 3D effects, and strict type safety.
 
-<hr/>
+This repository serves as:
+- A personal developer portfolio
+- A starter template for high-performance Next.js applications
+- A reference for complex component-driven UI architecture
 
-<h2>📌 Overview</h2>
+## ✨ Features
 
-<p>
-<strong>vedangdhuri-io</strong> is a modern, performance-focused personal portfolio built using 
-<strong>Next.js App Router</strong> and <strong>TypeScript</strong>.  
-It is designed not just as a static portfolio, but as a <strong>scalable frontend architecture</strong> 
-that can be extended into full-stack applications.
-</p>
+- 🚀 **Next.js App Router Architecture:** Utilizes the modern `app/` directory with layouts, dynamic routes, and robust error handling.
+- 🎨 **Advanced UI Animations:** Smooth transitions and interactive elements powered by **Framer Motion** and **GSAP**.
+- 🌌 **3D & Interactive Visuals:** Engaging 3D components, star backgrounds, and interactive icon clouds using **Three.js** and **React Three Fiber**.
+- 🧩 **Reusable Component System:** Modular UI primitives (cards, badges, animated text) ready to be extended.
+- 🛡️ **Strict Type Safety:** Strongly typed props and models to ensure a bug-free developer experience.
+- ⚡ **Performance-First:** Optimized assets, fonts, and efficient rendering strategies for lightning-fast load times.
 
-<p>
-The project emphasizes:
-</p>
+## ⚙️ Installation & Setup
 
-<ul>
-  <li>Clean separation of concerns</li>
-  <li>Reusable, animation-ready UI components</li>
-  <li>Type safety across data, components, and utilities</li>
-  <li>High visual impact without sacrificing performance</li>
-</ul>
+### Prerequisites
+- **Node.js** (v18 or higher)
+- **npm**, **yarn**, or **pnpm**
 
-<p>
-This repository can be used as:
-</p>
+### Quick Start
 
-<ul>
-  <li>A personal developer portfolio</li>
-  <li>A starter template for Next.js App Router projects</li>
-  <li>A reference for component-driven UI architecture</li>
-</ul>
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/vedangdhuri/vedangdhuri-io.git
+   cd vedangdhuri-io
+   ```
 
-<hr/>
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
 
-<h2>🎯 Why This Project Exists</h2>
+3. **Start the development server**
+   ```bash
+   npm run dev
+   ```
 
-<p>
-Most portfolios fail in one of two ways:
-</p>
+4. **Open your browser**
+   Navigate to [http://localhost:3000](http://localhost:3000) to view the application.
 
-<ul>
-  <li>They look good but are impossible to scale or maintain</li>
-  <li>They are technically solid but visually boring</li>
-</ul>
+## 🧭 Project Structure
 
-<p>
-<strong>vedangdhuri-io</strong> intentionally solves both problems by combining:
-</p>
-
-<ul>
-  <li><strong>Structured project architecture</strong> – predictable, maintainable folder layout</li>
-  <li><strong>Interactive UI patterns</strong> – animations, 3D effects, and motion design</li>
-  <li><strong>Type-safe development</strong> – fewer runtime bugs, better DX</li>
-  <li><strong>Production-ready defaults</strong> – ESLint, optimized assets, and clean builds</li>
-</ul>
-
-<hr/>
-
-<h2>✨ Key Features</h2>
-
-<ul>
-  <li>
-    <strong>Next.js App Router Architecture</strong><br/>
-    Uses the modern <code>app/</code> directory with layouts, routes, and error handling.
-  </li>
-
-  <li>
-    <strong>Reusable Component System</strong><br/>
-    UI elements are abstracted into composable components for scalability.
-  </li>
-
-  <li>
-    <strong>Advanced UI Animations</strong><br/>
-    Includes animated text, icon clouds, cursor effects, 3D cards, and background effects.
-  </li>
-
-  <li>
-    <strong>Centralized Data Management</strong><br/>
-    Project data is stored in structured TypeScript files, making content updates simple.
-  </li>
-
-  <li>
-    <strong>Strict Type Safety</strong><br/>
-    Strongly typed props, data models, and utility functions reduce bugs and refactor risk.
-  </li>
-
-  <li>
-    <strong>Performance-First Approach</strong><br/>
-    Optimized fonts, assets, and components ensure fast load times.
-  </li>
-</ul>
-
-<hr/>
-
-<h2>⚙️ Installation & Setup</h2>
-
-<h4>1️⃣ Clone the repository</h4>
-<pre><code>git clone https://github.com/vedangdhuri/vedangdhuri-io.git
-cd vedangdhuri-io</code></pre>
-
-<h4>2️⃣ Install dependencies</h4>
-<pre><code>npm install</code></pre>
-
-<h4>3️⃣ Start the development server</h4>
-<pre><code>npm run dev</code></pre>
-
-<h4>4️⃣ Open in your browser</h4>
-<pre><code>http://localhost:3000</code></pre>
-
-<hr/>
-
-<h2>🧭 Project Structure</h2>
-
-<p>
-The project follows a <strong>feature-based component architecture</strong>, separating pages, UI primitives, and shared utilities.
-</p>
-
-<pre><code>
+```text
 vedangdhuri-io/
-├── app/                     # Next.js App Router
-│   ├── globals.css          # Global styles & animation keyframes
-│   ├── layout.tsx           # Root layout (Navbar, Footer, StarBackground)
-│   ├── page.tsx             # Home page (Hero, About, Skills, Projects, Contact, GitHub)
-│   ├── not-found.tsx        # 404 page
-│   ├── resume/              # Dedicated resume page
-│   │   └── page.tsx         # Resume page with download & open buttons
-│   └── projects/            # Projects routes
-│       ├── page.tsx         # Main projects listing page
-│       └── [id]/            # Individual project details
-│           └── page.tsx     # Dynamic project page with README rendering
+├── app/                     # Next.js App Router (pages, layouts, globals)
 ├── components/
-│   ├── pages/               # Page-level section components
-│   │   ├── About/           # About section components
-│   │   ├── Background/      # Star background with comets & nebula
-│   │   ├── Contact/         # Contact form & social links
-│   │   ├── Footer/          # Animated footer with social icons
-│   │   ├── GitHub/          # GitHub contribution graph
-│   │   ├── Hero/            # Hero section with orbital system
-│   │   ├── Loader/          # Page loader animation
-│   │   ├── Navbar/          # Floating bottom navigation bar
-│   │   ├── Project/         # Project cards, grid & preview components
-│   │   └── Skills/          # Skills section with category cards
-│   └── ui/                  # Reusable UI primitives
-│       ├── SpaceProfileCard/ # Circular planet-style profile avatar
-│       ├── badge.tsx         # Standard badge component
-│       ├── card.tsx          # Base card component
-│       ├── comet-card.tsx    # Card with comet trail effect
-│       ├── FlipWords.tsx     # Word cycling animation
-│       ├── globe.tsx         # 3D globe component
-│       ├── icon-cloud.tsx    # Interactive icon cloud
-│       └── sparkles-text.tsx # Sparkle text effect
-├── data/
-│   └── projects.ts          # Centralized project data and README content
-├── lib/
-│   └── utils.ts             # Core helper functions (cn, etc.)
-├── public/                  # Static assets
-│   ├── font/                # Custom typography (Poppins, Bastliga)
-│   ├── img/                 # Screenshots and project thumbnails
-│   └── Resume/              # PDF and PNG assets of the resume
-├── types/
-│   └── project.ts           # Project-related TypeScript interfaces
-└── utils/                   # Shared utilities and custom hooks
-    ├── useGsapReveal.ts     # Hook for GSap-based reveal animations
-    ├── useMagneticEffect.ts # Hook for magnetic interaction effects
-    └── utils.ts             # Miscellaneous utility functions
-</code></pre>
+│   ├── pages/               # Page-specific sections (Hero, About, Projects, etc.)
+│   └── ui/                  # Reusable UI primitives (Cards, Badges, 3D elements)
+├── data/                    # Centralized data structures (projects.ts)
+├── lib/                     # Core helper functions
+├── public/                  # Static assets (fonts, images, resume)
+├── types/                   # TypeScript interfaces and models
+└── utils/                   # Shared utilities and custom hooks (GSAP, Magnetic effects)
+```
 
-<hr/>
+## 🛠️ Customization Guide
 
-<h2>🚀 Customization Guide</h2>
+Make this portfolio your own:
+- **Projects & Content:** Edit `data/projects.ts` to update the portfolio items.
+- **Page Sections:** Modify components inside `components/pages` (e.g., Hero, About, Skills).
+- **UI Elements:** Extend or customize primitives inside `components/ui`.
+- **Assets:** Replace images, fonts, and the resume in the `public/` directory.
 
-<ul>
-  <li>Edit <code>data/projects.ts</code> to add or update portfolio projects</li>
-  <li>Modify page sections inside <code>components/pages</code></li>
-  <li>Extend UI components inside <code>components/ui</code></li>
-  <li>Update fonts and images in the <code>public/</code> directory</li>
-</ul>
+## 🚀 Future Roadmap
 
-<hr/>
+- [ ] Dark/Light theme persistence
+- [ ] MDX-based blog system
+- [ ] CMS or API-driven project data integration
+- [ ] Comprehensive unit and component testing suite
 
-<h2>📈 Future Improvements</h2>
+## 🤝 Contributing
 
-<ul>
-  <li>Dark/light theme persistence</li>
-  <li>MDX-based blog system</li>
-  <li>CMS or API-driven project data</li>
-  <li>Unit and component testing</li>
-</ul>
+While this is a personal portfolio, suggestions, bug reports, and optimizations are welcome! Feel free to open an issue or submit a pull request.
 
-<hr/>
+## 📜 License
 
-<h2>📜 License</h2>
+This project is licensed under the [MIT License](https://github.com/vedangdhuri/vedangdhuri.io/blob/master/LICENSE) - see the [LICENSE](LICENSE) file for details.
 
-<p>
-This project is licensed under the 
-<a href="https://github.com/vedangdhuri/vedangdhuri.io/blob/main/LICENSE" target="_blank">
-MIT License
-</a>.
-</p>
+---
 
-<p>
-You are free to use, modify, and distribute this project with proper attribution.
-</p>
+<div align="center">
+  <sub>Built with ❤️ by <a href="https://github.com/vedangdhuri">Vedang Dhuri</a></sub>
+</div>
