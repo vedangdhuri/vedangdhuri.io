@@ -78,15 +78,52 @@ This repository serves as:
 
 ```text
 vedangdhuri-io/
-├── app/                     # Next.js App Router (pages, layouts, globals)
+├── app/                     # Next.js App Router
+│   ├── globals.css          # Global styles & animation keyframes
+│   ├── layout.tsx           # Root layout (Navbar, Footer, StarBackground)
+│   ├── page.tsx             # Home page (Hero, About, Skills, Projects, Contact, GitHub)
+│   ├── not-found.tsx        # 404 page
+│   ├── resume/              # Dedicated resume page
+│   │   └── page.tsx         # Resume page with download & open buttons
+│   └── projects/            # Projects routes
+│       ├── page.tsx         # Main projects listing page
+│       └── [id]/            # Individual project details
+│           └── page.tsx     # Dynamic project page with README rendering
 ├── components/
-│   ├── pages/               # Page-specific sections (Hero, About, Projects, etc.)
-│   └── ui/                  # Reusable UI primitives (Cards, Badges, 3D elements)
-├── data/                    # Centralized data structures (projects.ts)
-├── lib/                     # Core helper functions
-├── public/                  # Static assets (fonts, images, resume)
-├── types/                   # TypeScript interfaces and models
-└── utils/                   # Shared utilities and custom hooks (GSAP, Magnetic effects)
+│   ├── pages/               # Page-level section components
+│   │   ├── About/           # About section components
+│   │   ├── Background/      # Star background with comets & nebula
+│   │   ├── Contact/         # Contact form & social links
+│   │   ├── Footer/          # Animated footer with social icons
+│   │   ├── GitHub/          # GitHub contribution graph
+│   │   ├── Hero/            # Hero section with orbital system
+│   │   ├── Loader/          # Page loader animation
+│   │   ├── Navbar/          # Floating bottom navigation bar
+│   │   ├── Project/         # Project cards, grid & preview components
+│   │   └── Skills/          # Skills section with category cards
+│   └── ui/                  # Reusable UI primitives
+│       ├── SpaceProfileCard/ # Circular planet-style profile avatar
+│       ├── badge.tsx         # Standard badge component
+│       ├── card.tsx          # Base card component
+│       ├── comet-card.tsx    # Card with comet trail effect
+│       ├── FlipWords.tsx     # Word cycling animation
+│       ├── globe.tsx         # 3D globe component
+│       ├── icon-cloud.tsx    # Interactive icon cloud
+│       └── sparkles-text.tsx # Sparkle text effect
+├── data/
+│   └── projects.ts          # Centralized project data and README content
+├── lib/
+│   └── utils.ts             # Core helper functions (cn, etc.)
+├── public/                  # Static assets
+│   ├── font/                # Custom typography (Poppins, Bastliga)
+│   ├── img/                 # Screenshots and project thumbnails
+│   └── Resume/              # PDF and PNG assets of the resume
+├── types/
+│   └── project.ts           # Project-related TypeScript interfaces
+└── utils/                   # Shared utilities and custom hooks
+    ├── useGsapReveal.ts     # Hook for GSap-based reveal animations
+    ├── useMagneticEffect.ts # Hook for magnetic interaction effects
+    └── utils.ts             # Miscellaneous utility functions
 ```
 
 ## 🛠️ Customization Guide

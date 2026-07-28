@@ -29,3 +29,20 @@ Pull requests should explain the user-visible change, list validation performed 
 ## Design Reference
 
 The Nexus Core visual specification is available at [`public/design/DESIGN.md`](public/design/DESIGN.md). Use it when creating or updating page visuals, static illustrations, typography, color, surface, and interaction treatments. Store project-owned generated assets under `public/illustrations/`; do not replace them with stock imagery.
+
+## Commit Rules
+
+1. **Atomic Commits**: Each commit should represent a single logical change. Do not bundle unrelated changes (e.g., bug fixes + feature implementations + documentation updates) into one commit. Keep commits small and focused.
+
+2. **Commit Message Format**: Follow the [Conventional Commits specification](https://www.conventionalcommits.org/).
+
+3. **Be Specific with Scope**:
+   - Always use the correct scope based on the changes made.
+   - For example, if you are making changes to the Hero section, use `feat(hero):` instead of `feat:`.
+   - If you are making changes to the About section, use `feat(about):` instead of `feat:`.
+   - If you are making changes to the Projects section, use `feat(projects):` instead of `feat:`.
+   - If you are making changes to the Contact section, use `feat(contact):` instead of `feat:`.
+   - If you are making changes to the Skills section, use `feat(skills):` instead of `feat:`.
+   - If you are making changes to the Resume section, use `feat(resume):` instead of `feat:`.
+   - If you are making changes to the Footer section, use `feat(footer):` instead of `feat:`.
+   - If you are making changes to the Navbar section, use `feat(navbar):` instead of `feat:`.
