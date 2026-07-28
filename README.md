@@ -141,13 +141,6 @@ Make this portfolio your own:
 - [ ] CMS or API-driven project data integration
 - [ ] Comprehensive unit and component testing suite
 
-## 📝 Git Commit Rules
-
-This project follows the [Conventional Commits](https://www.conventionalcommits.org/) specification for a clean, readable history.
-
-- **Atomic Commits:** Each commit represents a single logical change. Unrelated changes are kept separate.
-- **Specific Scopes:** Use scopes that match the feature or section modified (e.g., `feat(hero):`, `fix(resume):`, `docs(readme):`).
-- **Format Example:** `feat(projects): add hover interaction to cards`
 
 ## 🤝 Contributing
 
