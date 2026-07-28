@@ -141,7 +141,6 @@ Make this portfolio your own:
 - [ ] CMS or API-driven project data integration
 - [ ] Comprehensive unit and component testing suite
 
-
 ## 🤝 Contributing
 
 While this is a personal portfolio, suggestions, bug reports, and optimizations are welcome! Feel free to open an issue or submit a pull request.
