@@ -85,7 +85,7 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: "YOUR_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN",
+    google: `${process.env.NEXT_PUBLIC_GOOGLE_SEARCH_CONSOLE_VERIFICATION_TOKEN}`,
   },
 };
 
