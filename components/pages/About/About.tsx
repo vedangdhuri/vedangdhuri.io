@@ -50,6 +50,29 @@ export const journeyTimeline = [
       "Algorithms",
       "IoT",
       "Applied Cryptography",
+      "Computer Networking",
+      "Embedded Systems",
+    ],
+  },
+  {
+    type: "education",
+    title: "Bachelor of Technology in Computer Science and Engineering (AIML)",
+    organization: "Parul University",
+    location: "Vadodara, Gujarat, India",
+    period: "2026 – 2029",
+    icon: GraduationCap,
+    description:
+      "Pursuing a Bachelor of Technology in Computer Science and Engineering with Artificial Intelligence & Machine Learning, with a focus on software development, data structures, algorithms, web technologies, and emerging technologies.",
+    skills: [
+      "Software Development",
+      "Data Structures & Algorithms",
+      "Web Development",
+      "Database Management",
+      "Artificial Intelligence",
+      "Machine Learning",
+      "Deep Learning",
+      "Computer Vision",
+      "Natural Language Processing",
     ],
   },
 ];
@@ -404,13 +427,26 @@ const About = () => {
             </h3>
 
             <p className="philosophy-text text-lg md:text-xl text-neutral-300 font-light leading-relaxed max-w-2xl">
-              I am a passionate <strong className="text-white font-medium">Full Stack Developer</strong> with a keen eye for design and a commitment to creating immersive digital experiences. With a strong foundation in Computer Science, I specialize in building scalable web applications using <strong className="text-white font-medium">Next.js, the MERN stack, and Django</strong>.
+              I am a passionate{" "}
+              <strong className="text-white font-medium">
+                Full Stack Developer
+              </strong>{" "}
+              with a keen eye for design and a commitment to creating immersive
+              digital experiences. With a strong foundation in Computer Science,
+              I specialize in building scalable web applications using{" "}
+              <strong className="text-white font-medium">
+                Next.js, the MERN stack, and Django
+              </strong>
+              .
             </p>
 
             <div className="philosophy-text p-5 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md relative overflow-hidden group hover:border-[#00E5FF]/40 transition-all duration-300">
               <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#00E5FF] to-blue-600 rounded-l-2xl"></div>
               <p className="text-base md:text-lg text-neutral-200 font-light leading-relaxed italic">
-                &ldquo;My approach combines technical expertise with creative problem-solving. Great software is not just about writing code; it&rsquo;s about understanding user needs and delivering solutions that truly make a difference.&rdquo;
+                &ldquo;My approach combines technical expertise with creative
+                problem-solving. Great software is not just about writing code;
+                it&rsquo;s about understanding user needs and delivering
+                solutions that truly make a difference.&rdquo;
               </p>
               <div className="mt-3 flex items-center gap-2 text-xs font-mono text-[#00E5FF]">
                 <Sparkles className="w-3.5 h-3.5" />
@@ -420,19 +456,33 @@ const About = () => {
 
             <p className="philosophy-text text-base text-neutral-400 font-light leading-relaxed max-w-2xl">
               Having completed a 3-month Software Development Internship at{" "}
-              <strong className="text-white font-medium">Softmusk Solutions</strong>{" "}
-              and authored <strong className="text-white font-medium">20+ public open-source repositories</strong> (including platforms like <span className="text-[#00E5FF] font-medium">RoastRoom</span> and <span className="text-[#00E5FF] font-medium">SafeCity Hub</span>), I bridge deep engineering execution with refined UI/UX. When I&apos;m not coding, you can find me exploring new technologies, contributing to open-source projects, or designing 3D assets.
+              <strong className="text-white font-medium">
+                Softmusk Solutions
+              </strong>{" "}
+              and authored{" "}
+              <strong className="text-white font-medium">
+                20+ public open-source repositories
+              </strong>{" "}
+              (including platforms like{" "}
+              <span className="text-[#00E5FF] font-medium">RoastRoom</span> and{" "}
+              <span className="text-[#00E5FF] font-medium">SafeCity Hub</span>),
+              I bridge deep engineering execution with refined UI/UX. When
+              I&apos;m not coding, you can find me exploring new technologies,
+              contributing to open-source projects, or designing 3D assets.
             </p>
 
             <div className="philosophy-text flex flex-wrap gap-2.5 pt-1">
               <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
-                <Code2 className="w-3.5 h-3.5 text-[#00E5FF]" /> Full Stack Architect
+                <Code2 className="w-3.5 h-3.5 text-[#00E5FF]" /> Full Stack
+                Architect
               </span>
               <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
-                <Sparkles className="w-3.5 h-3.5 text-[#00E5FF]" /> Creative Problem Solving
+                <Sparkles className="w-3.5 h-3.5 text-[#00E5FF]" /> Creative
+                Problem Solving
               </span>
               <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
-                <BrainCircuit className="w-3.5 h-3.5 text-[#00E5FF]" /> 3D Assets & Open Source
+                <BrainCircuit className="w-3.5 h-3.5 text-[#00E5FF]" /> 3D
+                Assets & Open Source
               </span>
             </div>
           </div>

@@ -3,6 +3,7 @@ import { Inter, Outfit, JetBrains_Mono, Bricolage_Grotesque } from "next/font/go
 import "./globals.css";
 import { Navbar } from "@/components/pages/Navbar/Navbar";
 import { Footer } from "@/components/pages/Footer/Footer";
+import { AnimatedCursor } from "@/components/ui/AnimatedCursor";
 // import { StarBackground } from "@/components/pages/Background/Starbackground";
 import { Analytics } from "@vercel/analytics/next";
 import { GoogleAnalytics } from "@next/third-parties/google";
@@ -134,6 +135,7 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${outfit.variable} ${bricolage.variable} ${jetbrainsMono.variable} font-sans bg-black text-white overflow-x-hidden`}
       >
+        <AnimatedCursor />
         {/* <StarBackground /> */}
         <Navbar />
         <main className="min-h-screen overflow-x-hidden">{children}</main>

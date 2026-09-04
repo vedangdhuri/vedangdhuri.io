@@ -1,0 +1,4959 @@
+{
+  "nodes": [
+    {
+      "id": "app_api_contact_route",
+      "label": "route.ts",
+      "type": "code",
+      "source": "app/api/contact/route.ts",
+      "community": 15,
+      "community_name": "Contact Form & Links",
+      "degree": 1
+    },
+    {
+      "id": "app_api_contact_route_post",
+      "label": "POST()",
+      "type": "code",
+      "source": "app/api/contact/route.ts",
+      "community": 15,
+      "community_name": "Contact Form & Links",
+      "degree": 1
+    },
+    {
+      "id": "app_layout",
+      "label": "layout.tsx",
+      "type": "code",
+      "source": "app/layout.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 13
+    },
+    {
+      "id": "app_layout_inter",
+      "label": "inter",
+      "type": "code",
+      "source": "app/layout.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "app_layout_outfit",
+      "label": "outfit",
+      "type": "code",
+      "source": "app/layout.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "app_layout_bricolage",
+      "label": "bricolage",
+      "type": "code",
+      "source": "app/layout.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "app_layout_jetbrainsmono",
+      "label": "jetbrainsMono",
+      "type": "code",
+      "source": "app/layout.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "app_layout_metadata",
+      "label": "metadata",
+      "type": "code",
+      "source": "app/layout.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "app_layout_jsonld",
+      "label": "jsonLd",
+      "type": "code",
+      "source": "app/layout.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "app_layout_rootlayout",
+      "label": "RootLayout()",
+      "type": "code",
+      "source": "app/layout.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "app_not_found",
+      "label": "not-found.tsx",
+      "type": "code",
+      "source": "app/not-found.tsx",
+      "community": 16,
+      "community_name": "Not Found",
+      "degree": 1
+    },
+    {
+      "id": "app_not_found_notfound",
+      "label": "NotFound()",
+      "type": "code",
+      "source": "app/not-found.tsx",
+      "community": 16,
+      "community_name": "Not Found",
+      "degree": 1
+    },
+    {
+      "id": "app_page",
+      "label": "app/page.tsx",
+      "type": "code",
+      "source": "app/page.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 15
+    },
+    {
+      "id": "app_page_home",
+      "label": "Home()",
+      "type": "code",
+      "source": "app/page.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 3
+    },
+    {
+      "id": "app_projects_id_page",
+      "label": "[id]/page.tsx",
+      "type": "code",
+      "source": "app/projects/[id]/page.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 8
+    },
+    {
+      "id": "app_projects_id_page_generatestaticparams",
+      "label": "generateStaticParams()",
+      "type": "code",
+      "source": "app/projects/[id]/page.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "app_projects_id_page_generatemetadata",
+      "label": "generateMetadata()",
+      "type": "code",
+      "source": "app/projects/[id]/page.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "app_projects_id_page_projectpage",
+      "label": "ProjectPage()",
+      "type": "code",
+      "source": "app/projects/[id]/page.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "app_projects_page",
+      "label": "projects/page.tsx",
+      "type": "code",
+      "source": "app/projects/page.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 5
+    },
+    {
+      "id": "app_projects_page_metadata",
+      "label": "metadata",
+      "type": "code",
+      "source": "app/projects/page.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "app_projects_page_projectspage",
+      "label": "ProjectsPage()",
+      "type": "code",
+      "source": "app/projects/page.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "app_resume_page",
+      "label": "resume/page.tsx",
+      "type": "code",
+      "source": "app/resume/page.tsx",
+      "community": 12,
+      "community_name": "Resume Page & PDF Assets",
+      "degree": 2
+    },
+    {
+      "id": "app_resume_page_metadata",
+      "label": "metadata",
+      "type": "code",
+      "source": "app/resume/page.tsx",
+      "community": 12,
+      "community_name": "Resume Page & PDF Assets",
+      "degree": 1
+    },
+    {
+      "id": "app_resume_page_resumepage",
+      "label": "ResumePage()",
+      "type": "code",
+      "source": "app/resume/page.tsx",
+      "community": 12,
+      "community_name": "Resume Page & PDF Assets",
+      "degree": 1
+    },
+    {
+      "id": "app_robots",
+      "label": "robots.ts",
+      "type": "code",
+      "source": "app/robots.ts",
+      "community": 17,
+      "community_name": "Robots",
+      "degree": 1
+    },
+    {
+      "id": "app_robots_robots",
+      "label": "robots()",
+      "type": "code",
+      "source": "app/robots.ts",
+      "community": 17,
+      "community_name": "Robots",
+      "degree": 1
+    },
+    {
+      "id": "app_sitemap",
+      "label": "sitemap.ts",
+      "type": "code",
+      "source": "app/sitemap.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 5
+    },
+    {
+      "id": "app_sitemap_sitemap",
+      "label": "sitemap()",
+      "type": "code",
+      "source": "app/sitemap.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "components",
+      "label": "components.json",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 8
+    },
+    {
+      "id": "components_schema",
+      "label": "$schema",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_style",
+      "label": "style",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_rsc",
+      "label": "rsc",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_tsx",
+      "label": "tsx",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_tailwind",
+      "label": "tailwind",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 6
+    },
+    {
+      "id": "components_tailwind_config",
+      "label": "config",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_tailwind_css",
+      "label": "css",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_tailwind_basecolor",
+      "label": "baseColor",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_tailwind_cssvariables",
+      "label": "cssVariables",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_tailwind_prefix",
+      "label": "prefix",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_iconlibrary",
+      "label": "iconLibrary",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_aliases",
+      "label": "aliases",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 6
+    },
+    {
+      "id": "components_aliases_components",
+      "label": "components",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_aliases_utils",
+      "label": "utils",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_aliases_ui",
+      "label": "ui",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_aliases_lib",
+      "label": "lib",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_aliases_hooks",
+      "label": "hooks",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_registries",
+      "label": "registries",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 4
+    },
+    {
+      "id": "components_registries_react_bits",
+      "label": "@react-bits",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_registries_aceternity",
+      "label": "@aceternity",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_registries_magicui",
+      "label": "@magicui",
+      "type": "code",
+      "source": "components.json",
+      "community": 6,
+      "community_name": "Components",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_about_about",
+      "label": "About.tsx",
+      "type": "code",
+      "source": "components/pages/About/About.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 8
+    },
+    {
+      "id": "components_pages_about_about_journeytimeline",
+      "label": "journeyTimeline",
+      "type": "code",
+      "source": "components/pages/About/About.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_about_about_corecompetencies",
+      "label": "coreCompetencies",
+      "type": "code",
+      "source": "components/pages/About/About.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_about_about_hobbies",
+      "label": "hobbies",
+      "type": "code",
+      "source": "components/pages/About/About.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_about_about_hobbycardprops",
+      "label": "HobbyCardProps",
+      "type": "code",
+      "source": "components/pages/About/About.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_about_about_hobbycard",
+      "label": "HobbyCard()",
+      "type": "code",
+      "source": "components/pages/About/About.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_about_about_about",
+      "label": "About()",
+      "type": "code",
+      "source": "components/pages/About/About.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_background_starbackground",
+      "label": "Starbackground.tsx",
+      "type": "code",
+      "source": "components/pages/Background/Starbackground.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 3
+    },
+    {
+      "id": "components_pages_background_starbackground_starbackground",
+      "label": "StarBackground()",
+      "type": "code",
+      "source": "components/pages/Background/Starbackground.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_certifications_certifications",
+      "label": "Certifications.tsx",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 16
+    },
+    {
+      "id": "components_pages_certifications_certifications_statitem",
+      "label": "StatItem",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_certifications_certifications_stats",
+      "label": "STATS",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_certifications_certifications_row_1",
+      "label": "ROW_1",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_certifications_certifications_row_2",
+      "label": "ROW_2",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_certifications_certifications_marqueestrip",
+      "label": "MarqueeStrip()",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_certifications_certifications_badgecardprops",
+      "label": "BadgeCardProps",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_certifications_certifications_badgecard",
+      "label": "BadgeCard()",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_certifications_certifications_marqueerowprops",
+      "label": "MarqueeRowProps",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_certifications_certifications_marqueerow",
+      "label": "MarqueeRow()",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_certifications_certifications_certificationssection",
+      "label": "CertificationsSection()",
+      "type": "code",
+      "source": "components/pages/Certifications/Certifications.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 4
+    },
+    {
+      "id": "components_pages_contact_contact",
+      "label": "Contact.tsx",
+      "type": "code",
+      "source": "components/pages/Contact/Contact.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 4
+    },
+    {
+      "id": "components_pages_contact_contact_formdata",
+      "label": "FormData",
+      "type": "code",
+      "source": "components/pages/Contact/Contact.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_contact_contact_contact",
+      "label": "Contact()",
+      "type": "code",
+      "source": "components/pages/Contact/Contact.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_footer_footer",
+      "label": "Footer.tsx",
+      "type": "code",
+      "source": "components/pages/Footer/Footer.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 11
+    },
+    {
+      "id": "components_pages_footer_footer_sociallinks",
+      "label": "socialLinks",
+      "type": "code",
+      "source": "components/pages/Footer/Footer.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_footer_footer_navlinks",
+      "label": "navLinks",
+      "type": "code",
+      "source": "components/pages/Footer/Footer.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_footer_footer_footer",
+      "label": "Footer()",
+      "type": "code",
+      "source": "components/pages/Footer/Footer.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_github_githubgraph",
+      "label": "GitHubGraph.tsx",
+      "type": "code",
+      "source": "components/pages/GitHub/GitHubGraph.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 3
+    },
+    {
+      "id": "components_pages_github_githubgraph_githubgraph",
+      "label": "GitHubGraph()",
+      "type": "code",
+      "source": "components/pages/GitHub/GitHubGraph.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_hero_hero",
+      "label": "Hero.tsx",
+      "type": "code",
+      "source": "components/pages/Hero/Hero.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 4
+    },
+    {
+      "id": "components_pages_hero_hero_herosocials",
+      "label": "heroSocials",
+      "type": "code",
+      "source": "components/pages/Hero/Hero.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_hero_hero_hero",
+      "label": "Hero()",
+      "type": "code",
+      "source": "components/pages/Hero/Hero.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_hero_herovisual",
+      "label": "HeroVisual.tsx",
+      "type": "code",
+      "source": "components/pages/Hero/HeroVisual.tsx",
+      "community": 10,
+      "community_name": "Hero Section & Visual FX",
+      "degree": 5
+    },
+    {
+      "id": "components_pages_hero_herovisual_personal",
+      "label": "personal",
+      "type": "code",
+      "source": "components/pages/Hero/HeroVisual.tsx",
+      "community": 10,
+      "community_name": "Hero Section & Visual FX",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_hero_herovisual_herovisual",
+      "label": "HeroVisual()",
+      "type": "code",
+      "source": "components/pages/Hero/HeroVisual.tsx",
+      "community": 10,
+      "community_name": "Hero Section & Visual FX",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_loader_loader",
+      "label": "Loader.tsx",
+      "type": "code",
+      "source": "components/pages/Loader/Loader.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 5
+    },
+    {
+      "id": "components_pages_loader_loader_loaderprops",
+      "label": "LoaderProps",
+      "type": "code",
+      "source": "components/pages/Loader/Loader.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_loader_loader_loader",
+      "label": "Loader()",
+      "type": "code",
+      "source": "components/pages/Loader/Loader.tsx",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_navbar_navbar",
+      "label": "Navbar.tsx",
+      "type": "code",
+      "source": "components/pages/Navbar/Navbar.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 6
+    },
+    {
+      "id": "components_pages_navbar_navbar_navitems",
+      "label": "navItems",
+      "type": "code",
+      "source": "components/pages/Navbar/Navbar.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_navbar_navbar_magneticitem",
+      "label": "MagneticItem()",
+      "type": "code",
+      "source": "components/pages/Navbar/Navbar.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_navbar_navbar_navbar",
+      "label": "Navbar()",
+      "type": "code",
+      "source": "components/pages/Navbar/Navbar.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 3
+    },
+    {
+      "id": "components_pages_project_projectcard",
+      "label": "ProjectCard.tsx",
+      "type": "code",
+      "source": "components/pages/Project/ProjectCard.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 8
+    },
+    {
+      "id": "components_pages_project_projectcard_projectcardprops",
+      "label": "ProjectCardProps",
+      "type": "code",
+      "source": "components/pages/Project/ProjectCard.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_project_projectcard_projectcard",
+      "label": "ProjectCard()",
+      "type": "code",
+      "source": "components/pages/Project/ProjectCard.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_project_projectdetail",
+      "label": "ProjectDetail.tsx",
+      "type": "code",
+      "source": "components/pages/Project/ProjectDetail.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 6
+    },
+    {
+      "id": "components_pages_project_projectdetail_projectdetailprops",
+      "label": "ProjectDetailProps",
+      "type": "code",
+      "source": "components/pages/Project/ProjectDetail.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_project_projectdetail_projectdetail",
+      "label": "ProjectDetail()",
+      "type": "code",
+      "source": "components/pages/Project/ProjectDetail.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_project_projectspreview",
+      "label": "ProjectsPreview.tsx",
+      "type": "code",
+      "source": "components/pages/Project/ProjectsPreview.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 8
+    },
+    {
+      "id": "components_pages_project_projectspreview_projectcard",
+      "label": "ProjectCard()",
+      "type": "code",
+      "source": "components/pages/Project/ProjectsPreview.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_project_projectspreview_projectspreview",
+      "label": "ProjectsPreview()",
+      "type": "code",
+      "source": "components/pages/Project/ProjectsPreview.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_project_projectsshowcase",
+      "label": "ProjectsShowcase.tsx",
+      "type": "code",
+      "source": "components/pages/Project/ProjectsShowcase.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 6
+    },
+    {
+      "id": "components_pages_project_projectsshowcase_projectsshowcaseprops",
+      "label": "ProjectsShowcaseProps",
+      "type": "code",
+      "source": "components/pages/Project/ProjectsShowcase.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "components_pages_project_projectsshowcase_projectsshowcase",
+      "label": "ProjectsShowcase()",
+      "type": "code",
+      "source": "components/pages/Project/ProjectsShowcase.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_skills_skills",
+      "label": "Skills.tsx",
+      "type": "code",
+      "source": "components/pages/Skills/Skills.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 14
+    },
+    {
+      "id": "components_pages_skills_skills_skill",
+      "label": "Skill",
+      "type": "code",
+      "source": "components/pages/Skills/Skills.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_skills_skills_skillcardprops",
+      "label": "SkillCardProps",
+      "type": "code",
+      "source": "components/pages/Skills/Skills.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_skills_skills_skillcategory",
+      "label": "SkillCategory",
+      "type": "code",
+      "source": "components/pages/Skills/Skills.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_skills_skills_skillcard",
+      "label": "SkillCard()",
+      "type": "code",
+      "source": "components/pages/Skills/Skills.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_pages_skills_skills_skillssection",
+      "label": "SkillsSection()",
+      "type": "code",
+      "source": "components/pages/Skills/Skills.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_animatedcursor",
+      "label": "AnimatedCursor.tsx",
+      "type": "code",
+      "source": "components/ui/AnimatedCursor.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_animatedcursor_animatedcursor",
+      "label": "AnimatedCursor()",
+      "type": "code",
+      "source": "components/ui/AnimatedCursor.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_blurtext",
+      "label": "BlurText.tsx",
+      "type": "code",
+      "source": "components/ui/BlurText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 4
+    },
+    {
+      "id": "components_ui_blurtext_blurtextprops",
+      "label": "BlurTextProps",
+      "type": "code",
+      "source": "components/ui/BlurText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_blurtext_buildkeyframes",
+      "label": "buildKeyframes()",
+      "type": "code",
+      "source": "components/ui/BlurText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_blurtext_blurtext",
+      "label": "BlurText()",
+      "type": "code",
+      "source": "components/ui/BlurText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 3
+    },
+    {
+      "id": "components_ui_cursorgrid",
+      "label": "CursorGrid.tsx",
+      "type": "code",
+      "source": "components/ui/CursorGrid.tsx",
+      "community": 9,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 8
+    },
+    {
+      "id": "components_ui_cursorgrid_falloff",
+      "label": "Falloff",
+      "type": "code",
+      "source": "components/ui/CursorGrid.tsx",
+      "community": 9,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_cursorgrid_cursorgridprops",
+      "label": "CursorGridProps",
+      "type": "code",
+      "source": "components/ui/CursorGrid.tsx",
+      "community": 9,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_cursorgrid_gridconfig",
+      "label": "GridConfig",
+      "type": "code",
+      "source": "components/ui/CursorGrid.tsx",
+      "community": 9,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_cursorgrid_pulse",
+      "label": "Pulse",
+      "type": "code",
+      "source": "components/ui/CursorGrid.tsx",
+      "community": 9,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_cursorgrid_falloff_curves",
+      "label": "FALLOFF_CURVES",
+      "type": "code",
+      "source": "components/ui/CursorGrid.tsx",
+      "community": 9,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_cursorgrid_hextorgb",
+      "label": "hexToRgb()",
+      "type": "code",
+      "source": "components/ui/CursorGrid.tsx",
+      "community": 9,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_cursorgrid_cursorgrid",
+      "label": "CursorGrid()",
+      "type": "code",
+      "source": "components/ui/CursorGrid.tsx",
+      "community": 9,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 3
+    },
+    {
+      "id": "components_ui_decryptedtext",
+      "label": "DecryptedText.tsx",
+      "type": "code",
+      "source": "components/ui/DecryptedText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 4
+    },
+    {
+      "id": "components_ui_decryptedtext_decryptedtextprops",
+      "label": "DecryptedTextProps",
+      "type": "code",
+      "source": "components/ui/DecryptedText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_decryptedtext_direction",
+      "label": "Direction",
+      "type": "code",
+      "source": "components/ui/DecryptedText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_decryptedtext_decryptedtext",
+      "label": "DecryptedText()",
+      "type": "code",
+      "source": "components/ui/DecryptedText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_gradienttext",
+      "label": "GradientText.tsx",
+      "type": "code",
+      "source": "components/ui/GradientText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 3
+    },
+    {
+      "id": "components_ui_gradienttext_gradienttextprops",
+      "label": "GradientTextProps",
+      "type": "code",
+      "source": "components/ui/GradientText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_gradienttext_gradienttext",
+      "label": "GradientText()",
+      "type": "code",
+      "source": "components/ui/GradientText.tsx",
+      "community": 5,
+      "community_name": "Interactive Cursor & Grid FX",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_magnet",
+      "label": "Magnet.tsx",
+      "type": "code",
+      "source": "components/ui/Magnet.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 5
+    },
+    {
+      "id": "components_ui_magnet_magnetprops",
+      "label": "MagnetProps",
+      "type": "code",
+      "source": "components/ui/Magnet.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_magnet_magnet",
+      "label": "Magnet()",
+      "type": "code",
+      "source": "components/ui/Magnet.tsx",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_sectionheading",
+      "label": "SectionHeading.tsx",
+      "type": "code",
+      "source": "components/ui/SectionHeading.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 8
+    },
+    {
+      "id": "components_ui_sectionheading_sectionheadingprops",
+      "label": "SectionHeadingProps",
+      "type": "code",
+      "source": "components/ui/SectionHeading.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_sectionheading_sectionheading",
+      "label": "SectionHeading()",
+      "type": "code",
+      "source": "components/ui/SectionHeading.tsx",
+      "community": 7,
+      "community_name": "About Section & Skills",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_badge",
+      "label": "badge.tsx",
+      "type": "code",
+      "source": "components/ui/badge.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 6
+    },
+    {
+      "id": "components_ui_badge_badgevariants",
+      "label": "badgeVariants",
+      "type": "code",
+      "source": "components/ui/badge.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_badge_badgeprops",
+      "label": "BadgeProps",
+      "type": "code",
+      "source": "components/ui/badge.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_badge_badge",
+      "label": "Badge()",
+      "type": "code",
+      "source": "components/ui/badge.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 4
+    },
+    {
+      "id": "components_ui_card",
+      "label": "card.tsx",
+      "type": "code",
+      "source": "components/ui/card.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 10
+    },
+    {
+      "id": "components_ui_card_cardprops",
+      "label": "CardProps",
+      "type": "code",
+      "source": "components/ui/card.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_card_card",
+      "label": "Card",
+      "type": "code",
+      "source": "components/ui/card.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_card_cardcontent",
+      "label": "CardContent",
+      "type": "code",
+      "source": "components/ui/card.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_card_cardheader",
+      "label": "CardHeader",
+      "type": "code",
+      "source": "components/ui/card.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_card_cardtitle",
+      "label": "CardTitle",
+      "type": "code",
+      "source": "components/ui/card.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_card_carddescription",
+      "label": "CardDescription",
+      "type": "code",
+      "source": "components/ui/card.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_card_cardfooter",
+      "label": "CardFooter",
+      "type": "code",
+      "source": "components/ui/card.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_globe_demo",
+      "label": "globe-demo.tsx",
+      "type": "code",
+      "source": "components/ui/globe-demo.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 4
+    },
+    {
+      "id": "components_ui_globe_demo_slugs",
+      "label": "slugs",
+      "type": "code",
+      "source": "components/ui/globe-demo.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_globe_demo_globedemo",
+      "label": "GlobeDemo()",
+      "type": "code",
+      "source": "components/ui/globe-demo.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_icon_cloud",
+      "label": "icon-cloud.tsx",
+      "type": "code",
+      "source": "components/ui/icon-cloud.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 6
+    },
+    {
+      "id": "components_ui_icon_cloud_iconcloudprops",
+      "label": "IconCloudProps",
+      "type": "code",
+      "source": "components/ui/icon-cloud.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_icon_cloud_simpleiconsresponse",
+      "label": "SimpleIconsResponse",
+      "type": "code",
+      "source": "components/ui/icon-cloud.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_icon_cloud_cloudprops",
+      "label": "cloudProps",
+      "type": "code",
+      "source": "components/ui/icon-cloud.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_icon_cloud_rendercustomicon",
+      "label": "renderCustomIcon()",
+      "type": "code",
+      "source": "components/ui/icon-cloud.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_icon_cloud_iconcloud",
+      "label": "IconCloud()",
+      "type": "code",
+      "source": "components/ui/icon-cloud.tsx",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 2
+    },
+    {
+      "id": "components_ui_spotlight_new",
+      "label": "spotlight-new.tsx",
+      "type": "code",
+      "source": "components/ui/spotlight-new.tsx",
+      "community": 10,
+      "community_name": "Hero Section & Visual FX",
+      "degree": 3
+    },
+    {
+      "id": "components_ui_spotlight_new_spotlightprops",
+      "label": "SpotlightProps",
+      "type": "code",
+      "source": "components/ui/spotlight-new.tsx",
+      "community": 10,
+      "community_name": "Hero Section & Visual FX",
+      "degree": 1
+    },
+    {
+      "id": "components_ui_spotlight_new_spotlight",
+      "label": "Spotlight()",
+      "type": "code",
+      "source": "components/ui/spotlight-new.tsx",
+      "community": 10,
+      "community_name": "Hero Section & Visual FX",
+      "degree": 2
+    },
+    {
+      "id": "data_course_links",
+      "label": "course_links.ts",
+      "type": "code",
+      "source": "data/course_links.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 4
+    },
+    {
+      "id": "data_course_links_courselinks",
+      "label": "courseLinks",
+      "type": "code",
+      "source": "data/course_links.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 3
+    },
+    {
+      "id": "data_projects",
+      "label": "projects.ts",
+      "type": "code",
+      "source": "data/projects.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 7
+    },
+    {
+      "id": "data_projects_projects",
+      "label": "projects",
+      "type": "code",
+      "source": "data/projects.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 5
+    },
+    {
+      "id": "eslint_config",
+      "label": "eslint.config.mjs",
+      "type": "code",
+      "source": "eslint.config.mjs",
+      "community": 19,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "eslint_config_eslintconfig",
+      "label": "eslintConfig",
+      "type": "code",
+      "source": "eslint.config.mjs",
+      "community": 19,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "lib_utils",
+      "label": "lib/utils.ts",
+      "type": "code",
+      "source": "lib/utils.ts",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 4
+    },
+    {
+      "id": "lib_utils_cn",
+      "label": "cn()",
+      "type": "code",
+      "source": "lib/utils.ts",
+      "community": 2,
+      "community_name": "Navigation Bar & Links",
+      "degree": 7
+    },
+    {
+      "id": "next_config",
+      "label": "next.config.ts",
+      "type": "code",
+      "source": "next.config.ts",
+      "community": 27,
+      "community_name": "Next Config",
+      "degree": 1
+    },
+    {
+      "id": "next_config_nextconfig",
+      "label": "nextConfig",
+      "type": "code",
+      "source": "next.config.ts",
+      "community": 27,
+      "community_name": "Next Config",
+      "degree": 1
+    },
+    {
+      "id": "package",
+      "label": "package.json",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 6
+    },
+    {
+      "id": "package_name",
+      "label": "name",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_version",
+      "label": "version",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_private",
+      "label": "private",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_scripts",
+      "label": "scripts",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 5
+    },
+    {
+      "id": "package_scripts_dev",
+      "label": "dev",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_scripts_build",
+      "label": "build",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_scripts_start",
+      "label": "start",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_scripts_lint",
+      "label": "lint",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies",
+      "label": "dependencies",
+      "type": "code",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 36
+    },
+    {
+      "id": "package_dependencies_next_third_parties",
+      "label": "@next/third-parties",
+      "type": "code",
+      "source": "package.json",
+      "community": 29,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "next_third_parties",
+      "label": "@next/third-parties",
+      "type": "concept",
+      "source": "package.json",
+      "community": 29,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_radix_ui_react_toast",
+      "label": "@radix-ui/react-toast",
+      "type": "code",
+      "source": "package.json",
+      "community": 30,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "radix_ui_react_toast",
+      "label": "@radix-ui/react-toast",
+      "type": "concept",
+      "source": "package.json",
+      "community": 30,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react_three_drei",
+      "label": "@react-three/drei",
+      "type": "code",
+      "source": "package.json",
+      "community": 37,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react_three_drei",
+      "label": "@react-three/drei",
+      "type": "concept",
+      "source": "package.json",
+      "community": 37,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react_three_fiber",
+      "label": "@react-three/fiber",
+      "type": "code",
+      "source": "package.json",
+      "community": 38,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react_three_fiber",
+      "label": "@react-three/fiber",
+      "type": "concept",
+      "source": "package.json",
+      "community": 38,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_studio_freight_lenis",
+      "label": "@studio-freight/lenis",
+      "type": "code",
+      "source": "package.json",
+      "community": 42,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "studio_freight_lenis",
+      "label": "@studio-freight/lenis",
+      "type": "concept",
+      "source": "package.json",
+      "community": 42,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_tailwindcss_typography",
+      "label": "@tailwindcss/typography",
+      "type": "code",
+      "source": "package.json",
+      "community": 44,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "tailwindcss_typography",
+      "label": "@tailwindcss/typography",
+      "type": "concept",
+      "source": "package.json",
+      "community": 44,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_types_animejs",
+      "label": "@types/animejs",
+      "type": "code",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "types_animejs",
+      "label": "@types/animejs",
+      "type": "concept",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_types_three",
+      "label": "@types/three",
+      "type": "code",
+      "source": "package.json",
+      "community": 47,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "types_three",
+      "label": "@types/three",
+      "type": "concept",
+      "source": "package.json",
+      "community": 47,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_vercel_analytics",
+      "label": "@vercel/analytics",
+      "type": "code",
+      "source": "package.json",
+      "community": 48,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "vercel_analytics",
+      "label": "@vercel/analytics",
+      "type": "concept",
+      "source": "package.json",
+      "community": 48,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_animejs",
+      "label": "animejs",
+      "type": "code",
+      "source": "package.json",
+      "community": 14,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "animejs",
+      "label": "animejs",
+      "type": "concept",
+      "source": "package.json",
+      "community": 14,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_class_variance_authority",
+      "label": "class-variance-authority",
+      "type": "code",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "class_variance_authority",
+      "label": "class-variance-authority",
+      "type": "concept",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_clsx",
+      "label": "clsx",
+      "type": "code",
+      "source": "package.json",
+      "community": 18,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "clsx",
+      "label": "clsx",
+      "type": "concept",
+      "source": "package.json",
+      "community": 18,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_framer_motion",
+      "label": "framer-motion",
+      "type": "code",
+      "source": "package.json",
+      "community": 20,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "framer_motion",
+      "label": "framer-motion",
+      "type": "concept",
+      "source": "package.json",
+      "community": 20,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_gsap",
+      "label": "gsap",
+      "type": "code",
+      "source": "package.json",
+      "community": 21,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "gsap",
+      "label": "gsap",
+      "type": "concept",
+      "source": "package.json",
+      "community": 21,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_jsonfile",
+      "label": "jsonfile",
+      "type": "code",
+      "source": "package.json",
+      "community": 22,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "jsonfile",
+      "label": "jsonfile",
+      "type": "concept",
+      "source": "package.json",
+      "community": 22,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_lenis",
+      "label": "lenis",
+      "type": "code",
+      "source": "package.json",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 3
+    },
+    {
+      "id": "lenis",
+      "label": "lenis",
+      "type": "concept",
+      "source": "package.json",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_lucide_react",
+      "label": "lucide-react",
+      "type": "code",
+      "source": "package.json",
+      "community": 23,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "lucide_react",
+      "label": "lucide-react",
+      "type": "concept",
+      "source": "package.json",
+      "community": 23,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_moment",
+      "label": "moment",
+      "type": "code",
+      "source": "package.json",
+      "community": 24,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "moment",
+      "label": "moment",
+      "type": "concept",
+      "source": "package.json",
+      "community": 24,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_motion",
+      "label": "motion",
+      "type": "code",
+      "source": "package.json",
+      "community": 25,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "motion",
+      "label": "motion",
+      "type": "concept",
+      "source": "package.json",
+      "community": 25,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_next",
+      "label": "next",
+      "type": "code",
+      "source": "package.json",
+      "community": 26,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "next",
+      "label": "next",
+      "type": "concept",
+      "source": "package.json",
+      "community": 26,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_next_themes",
+      "label": "next-themes",
+      "type": "code",
+      "source": "package.json",
+      "community": 28,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "next_themes",
+      "label": "next-themes",
+      "type": "concept",
+      "source": "package.json",
+      "community": 28,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_random",
+      "label": "random",
+      "type": "code",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "random",
+      "label": "random",
+      "type": "concept",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react",
+      "label": "react",
+      "type": "code",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react",
+      "label": "react",
+      "type": "concept",
+      "source": "package.json",
+      "community": 8,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react_bootstrap_icons",
+      "label": "react-bootstrap-icons",
+      "type": "code",
+      "source": "package.json",
+      "community": 31,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react_bootstrap_icons",
+      "label": "react-bootstrap-icons",
+      "type": "concept",
+      "source": "package.json",
+      "community": 31,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react_dom",
+      "label": "react-dom",
+      "type": "code",
+      "source": "package.json",
+      "community": 32,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react_dom",
+      "label": "react-dom",
+      "type": "concept",
+      "source": "package.json",
+      "community": 32,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react_hook_form",
+      "label": "react-hook-form",
+      "type": "code",
+      "source": "package.json",
+      "community": 33,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react_hook_form",
+      "label": "react-hook-form",
+      "type": "concept",
+      "source": "package.json",
+      "community": 33,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react_icon_cloud",
+      "label": "react-icon-cloud",
+      "type": "code",
+      "source": "package.json",
+      "community": 34,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react_icon_cloud",
+      "label": "react-icon-cloud",
+      "type": "concept",
+      "source": "package.json",
+      "community": 34,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react_icons",
+      "label": "react-icons",
+      "type": "code",
+      "source": "package.json",
+      "community": 35,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react_icons",
+      "label": "react-icons",
+      "type": "concept",
+      "source": "package.json",
+      "community": 35,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_react_markdown",
+      "label": "react-markdown",
+      "type": "code",
+      "source": "package.json",
+      "community": 36,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "react_markdown",
+      "label": "react-markdown",
+      "type": "concept",
+      "source": "package.json",
+      "community": 36,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_remark_gfm",
+      "label": "remark-gfm",
+      "type": "code",
+      "source": "package.json",
+      "community": 39,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "remark_gfm",
+      "label": "remark-gfm",
+      "type": "concept",
+      "source": "package.json",
+      "community": 39,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_sharp",
+      "label": "sharp",
+      "type": "code",
+      "source": "package.json",
+      "community": 40,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "sharp",
+      "label": "sharp",
+      "type": "concept",
+      "source": "package.json",
+      "community": 40,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_simple_git",
+      "label": "simple-git",
+      "type": "code",
+      "source": "package.json",
+      "community": 41,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "simple_git",
+      "label": "simple-git",
+      "type": "concept",
+      "source": "package.json",
+      "community": 41,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_tailwind_merge",
+      "label": "tailwind-merge",
+      "type": "code",
+      "source": "package.json",
+      "community": 43,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "tailwind_merge",
+      "label": "tailwind-merge",
+      "type": "concept",
+      "source": "package.json",
+      "community": 43,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_three",
+      "label": "three",
+      "type": "code",
+      "source": "package.json",
+      "community": 45,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "three",
+      "label": "three",
+      "type": "concept",
+      "source": "package.json",
+      "community": 45,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_dependencies_three_globe",
+      "label": "three-globe",
+      "type": "code",
+      "source": "package.json",
+      "community": 46,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "three_globe",
+      "label": "three-globe",
+      "type": "concept",
+      "source": "package.json",
+      "community": 46,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies",
+      "label": "devDependencies",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 11
+    },
+    {
+      "id": "package_devdependencies_tailwindcss_postcss",
+      "label": "@tailwindcss/postcss",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "tailwindcss_postcss",
+      "label": "@tailwindcss/postcss",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_types_node",
+      "label": "@types/node",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "types_node",
+      "label": "@types/node",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_types_react",
+      "label": "@types/react",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "types_react",
+      "label": "@types/react",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_types_react_dom",
+      "label": "@types/react-dom",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "types_react_dom",
+      "label": "@types/react-dom",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_eslint",
+      "label": "eslint",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "eslint",
+      "label": "eslint",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_eslint_config_next",
+      "label": "eslint-config-next",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "eslint_config_next",
+      "label": "eslint-config-next",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_shadcn",
+      "label": "shadcn",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "shadcn",
+      "label": "shadcn",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_tailwindcss",
+      "label": "tailwindcss",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "tailwindcss",
+      "label": "tailwindcss",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_tw_animate_css",
+      "label": "tw-animate-css",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "tw_animate_css",
+      "label": "tw-animate-css",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "package_devdependencies_typescript",
+      "label": "typescript",
+      "type": "code",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 2
+    },
+    {
+      "id": "typescript",
+      "label": "typescript",
+      "type": "concept",
+      "source": "package.json",
+      "community": 3,
+      "community_name": "Package Dependencies & Config",
+      "degree": 1
+    },
+    {
+      "id": "postcss_config",
+      "label": "postcss.config.mjs",
+      "type": "code",
+      "source": "postcss.config.mjs",
+      "community": 49,
+      "community_name": "Postcss Config",
+      "degree": 1
+    },
+    {
+      "id": "postcss_config_config",
+      "label": "config",
+      "type": "code",
+      "source": "postcss.config.mjs",
+      "community": 49,
+      "community_name": "Postcss Config",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig",
+      "label": "tsconfig.json",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 3
+    },
+    {
+      "id": "tsconfig_compileroptions",
+      "label": "compilerOptions",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 16
+    },
+    {
+      "id": "tsconfig_compileroptions_target",
+      "label": "target",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_lib",
+      "label": "lib",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 4
+    },
+    {
+      "id": "ref_dom",
+      "label": "dom",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "ref_dom_iterable",
+      "label": "dom.iterable",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "ref_esnext",
+      "label": "esnext",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_allowjs",
+      "label": "allowJs",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_skiplibcheck",
+      "label": "skipLibCheck",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_strict",
+      "label": "strict",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_noemit",
+      "label": "noEmit",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_esmoduleinterop",
+      "label": "esModuleInterop",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_module",
+      "label": "module",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_moduleresolution",
+      "label": "moduleResolution",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_resolvejsonmodule",
+      "label": "resolveJsonModule",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_isolatedmodules",
+      "label": "isolatedModules",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_jsx",
+      "label": "jsx",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_incremental",
+      "label": "incremental",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_plugins",
+      "label": "plugins",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_compileroptions_paths",
+      "label": "paths",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_include",
+      "label": "include",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 8
+    },
+    {
+      "id": "ref_next_env_d_ts",
+      "label": "next-env.d.ts",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "ref_ts",
+      "label": "**/*.ts",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "ref_tsx",
+      "label": "**/*.tsx",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "ref_next_types_ts",
+      "label": ".next/types/**/*.ts",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "ref_next_dev_types_ts",
+      "label": ".next/dev/types/**/*.ts",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "ref_mts",
+      "label": "**/*.mts",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "ref_components_pages_background_starbackground_tsx",
+      "label": "components/pages/Background/Starbackground.tsx",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "tsconfig_exclude",
+      "label": "exclude",
+      "type": "code",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "ref_node_modules",
+      "label": "node_modules",
+      "type": "concept",
+      "source": "tsconfig.json",
+      "community": 4,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "types_d",
+      "label": "types.d.ts",
+      "type": "code",
+      "source": "types.d.ts",
+      "community": 50,
+      "community_name": "Types D",
+      "degree": 1
+    },
+    {
+      "id": "types_d_css",
+      "label": "*.css",
+      "type": "code",
+      "source": "types.d.ts",
+      "community": 50,
+      "community_name": "Types D",
+      "degree": 1
+    },
+    {
+      "id": "types_course_link",
+      "label": "course_link.ts",
+      "type": "code",
+      "source": "types/course_link.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "types_course_link_courselink",
+      "label": "CourseLink",
+      "type": "code",
+      "source": "types/course_link.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 2
+    },
+    {
+      "id": "types_project",
+      "label": "project.ts",
+      "type": "code",
+      "source": "types/project.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 7
+    },
+    {
+      "id": "types_project_projectcategory",
+      "label": "ProjectCategory",
+      "type": "code",
+      "source": "types/project.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "types_project_pageinfo",
+      "label": "PageInfo",
+      "type": "code",
+      "source": "types/project.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "types_project_project",
+      "label": "Project",
+      "type": "code",
+      "source": "types/project.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 8
+    },
+    {
+      "id": "utils_usedevicetier",
+      "label": "useDeviceTier.ts",
+      "type": "code",
+      "source": "utils/useDeviceTier.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 9
+    },
+    {
+      "id": "utils_usedevicetier_devicetier",
+      "label": "DeviceTier",
+      "type": "code",
+      "source": "utils/useDeviceTier.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 1
+    },
+    {
+      "id": "utils_usedevicetier_detecttier",
+      "label": "detectTier()",
+      "type": "code",
+      "source": "utils/useDeviceTier.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 3
+    },
+    {
+      "id": "utils_usedevicetier_usedevicetier",
+      "label": "useDeviceTier()",
+      "type": "code",
+      "source": "utils/useDeviceTier.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 4
+    },
+    {
+      "id": "utils_usedevicetier_getdevicetier",
+      "label": "getDeviceTier()",
+      "type": "code",
+      "source": "utils/useDeviceTier.ts",
+      "community": 1,
+      "community_name": "Background Effects & Stars",
+      "degree": 10
+    },
+    {
+      "id": "utils_utils",
+      "label": "utils/utils.ts",
+      "type": "code",
+      "source": "utils/utils.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 8
+    },
+    {
+      "id": "utils_utils_cn",
+      "label": "cn()",
+      "type": "code",
+      "source": "utils/utils.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "utils_utils_kebabcase",
+      "label": "kebabCase()",
+      "type": "code",
+      "source": "utils/utils.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 12
+    },
+    {
+      "id": "utils_utils_kebabarray",
+      "label": "kebabArray()",
+      "type": "code",
+      "source": "utils/utils.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 2
+    },
+    {
+      "id": "utils_utils_randomnumbertext",
+      "label": "randomNumberText()",
+      "type": "code",
+      "source": "utils/utils.ts",
+      "community": 0,
+      "community_name": "Project Details & Routing",
+      "degree": 1
+    },
+    {
+      "id": "AGENTS.md",
+      "label": "Repository Guidelines & Rules",
+      "type": "concept",
+      "source": "AGENTS.md",
+      "community": 11,
+      "community_name": "Documentation & Standards",
+      "degree": 2
+    },
+    {
+      "id": "DESIGN.md",
+      "label": "Nexus Core Visual Specification",
+      "type": "concept",
+      "source": "DESIGN.md",
+      "community": 11,
+      "community_name": "Documentation & Standards",
+      "degree": 1
+    },
+    {
+      "id": "README.md",
+      "label": "Project Overview & Setup",
+      "type": "concept",
+      "source": "README.md",
+      "community": 11,
+      "community_name": "Documentation & Standards",
+      "degree": 2
+    },
+    {
+      "id": "public_resume_vedang_dhuri_resume",
+      "label": "Vedang Dhuri Resume",
+      "type": "concept",
+      "source": "public/Resume/Vedang_Dhuri_Resume.pdf",
+      "community": 13,
+      "community_name": "Resume Page & PDF Assets",
+      "degree": 1
+    },
+    {
+      "id": "GoogleCloudCertifications",
+      "label": "Google Cloud Certifications & Badges",
+      "type": "concept",
+      "source": "public/course_certificates",
+      "community": 13,
+      "community_name": "Resume Page & PDF Assets",
+      "degree": 1
+    },
+    {
+      "id": "MatchMasterNexus",
+      "label": "Match Master Nexus Project",
+      "type": "concept",
+      "source": "public/illustrations/projects/match-master-nexus.png",
+      "community": 51,
+      "community_name": "Matchmasternexus",
+      "degree": 1
+    },
+    {
+      "id": "OptiTimeNexus",
+      "label": "Opti Time Nexus Project",
+      "type": "concept",
+      "source": "public/illustrations/projects/opti-time-nexus.png",
+      "community": 52,
+      "community_name": "Optitimenexus",
+      "degree": 1
+    },
+    {
+      "id": "PortfolioNexus",
+      "label": "Portfolio Nexus Project",
+      "type": "concept",
+      "source": "public/illustrations/projects/portfolio-nexus.png",
+      "community": 11,
+      "community_name": "Documentation & Standards",
+      "degree": 1
+    },
+    {
+      "id": "RoastRoomNexus",
+      "label": "RoastRoom Nexus Project",
+      "type": "concept",
+      "source": "public/illustrations/projects/roastroom-nexus.png",
+      "community": 53,
+      "community_name": "Roastroomnexus",
+      "degree": 1
+    },
+    {
+      "id": "SafeCityNexus",
+      "label": "Safe City Nexus Project",
+      "type": "concept",
+      "source": "public/illustrations/projects/safe-city-nexus.png",
+      "community": 54,
+      "community_name": "Safecitynexus",
+      "degree": 1
+    }
+  ],
+  "links": [
+    {
+      "source": "app_api_contact_route",
+      "target": "app_api_contact_route_post",
+      "relation": "contains"
+    },
+    {
+      "source": "app_layout",
+      "target": "app_layout_bricolage",
+      "relation": "contains"
+    },
+    {
+      "source": "app_layout",
+      "target": "app_layout_inter",
+      "relation": "contains"
+    },
+    {
+      "source": "app_layout",
+      "target": "app_layout_jetbrainsmono",
+      "relation": "contains"
+    },
+    {
+      "source": "app_layout",
+      "target": "app_layout_jsonld",
+      "relation": "contains"
+    },
+    {
+      "source": "app_layout",
+      "target": "app_layout_metadata",
+      "relation": "contains"
+    },
+    {
+      "source": "app_layout",
+      "target": "app_layout_outfit",
+      "relation": "contains"
+    },
+    {
+      "source": "app_layout",
+      "target": "app_layout_rootlayout",
+      "relation": "contains"
+    },
+    {
+      "source": "app_layout",
+      "target": "components_pages_footer_footer",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_layout",
+      "target": "components_pages_footer_footer_footer",
+      "relation": "imports"
+    },
+    {
+      "source": "app_layout",
+      "target": "components_pages_navbar_navbar",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_layout",
+      "target": "components_pages_navbar_navbar_navbar",
+      "relation": "imports"
+    },
+    {
+      "source": "app_layout",
+      "target": "components_ui_animatedcursor",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_layout",
+      "target": "components_ui_animatedcursor_animatedcursor",
+      "relation": "imports"
+    },
+    {
+      "source": "app_not_found",
+      "target": "app_not_found_notfound",
+      "relation": "contains"
+    },
+    {
+      "source": "app_page",
+      "target": "app_page_home",
+      "relation": "contains"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_about_about",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_certifications_certifications",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_certifications_certifications_certificationssection",
+      "relation": "imports"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_contact_contact",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_github_githubgraph",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_github_githubgraph_githubgraph",
+      "relation": "imports"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_hero_herovisual",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_loader_loader",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_project_projectspreview",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_pages_skills_skills",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_ui_cursorgrid",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "components_ui_cursorgrid_cursorgrid",
+      "relation": "imports"
+    },
+    {
+      "source": "app_page",
+      "target": "utils_usedevicetier",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_page",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "imports"
+    },
+    {
+      "source": "app_page_home",
+      "target": "package_dependencies_lenis",
+      "relation": "references"
+    },
+    {
+      "source": "app_page_home",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "calls"
+    },
+    {
+      "source": "app_projects_id_page",
+      "target": "app_projects_id_page_generatemetadata",
+      "relation": "contains"
+    },
+    {
+      "source": "app_projects_id_page",
+      "target": "app_projects_id_page_generatestaticparams",
+      "relation": "contains"
+    },
+    {
+      "source": "app_projects_id_page",
+      "target": "app_projects_id_page_projectpage",
+      "relation": "contains"
+    },
+    {
+      "source": "app_projects_id_page",
+      "target": "components_pages_project_projectdetail",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_projects_id_page",
+      "target": "data_projects",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_projects_id_page",
+      "target": "data_projects_projects",
+      "relation": "imports"
+    },
+    {
+      "source": "app_projects_id_page",
+      "target": "utils_utils",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_projects_id_page",
+      "target": "utils_utils_kebabcase",
+      "relation": "imports"
+    },
+    {
+      "source": "app_projects_id_page_generatestaticparams",
+      "target": "utils_utils_kebabcase",
+      "relation": "calls"
+    },
+    {
+      "source": "app_projects_id_page_generatemetadata",
+      "target": "utils_utils_kebabcase",
+      "relation": "calls"
+    },
+    {
+      "source": "app_projects_id_page_projectpage",
+      "target": "utils_utils_kebabcase",
+      "relation": "calls"
+    },
+    {
+      "source": "app_projects_page",
+      "target": "app_projects_page_metadata",
+      "relation": "contains"
+    },
+    {
+      "source": "app_projects_page",
+      "target": "app_projects_page_projectspage",
+      "relation": "contains"
+    },
+    {
+      "source": "app_projects_page",
+      "target": "components_pages_project_projectsshowcase",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_projects_page",
+      "target": "data_projects",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_projects_page",
+      "target": "data_projects_projects",
+      "relation": "imports"
+    },
+    {
+      "source": "app_resume_page",
+      "target": "app_resume_page_metadata",
+      "relation": "contains"
+    },
+    {
+      "source": "app_resume_page",
+      "target": "app_resume_page_resumepage",
+      "relation": "contains"
+    },
+    {
+      "source": "app_robots",
+      "target": "app_robots_robots",
+      "relation": "contains"
+    },
+    {
+      "source": "app_sitemap",
+      "target": "app_sitemap_sitemap",
+      "relation": "contains"
+    },
+    {
+      "source": "app_sitemap",
+      "target": "data_projects",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_sitemap",
+      "target": "data_projects_projects",
+      "relation": "imports"
+    },
+    {
+      "source": "app_sitemap",
+      "target": "utils_utils",
+      "relation": "imports_from"
+    },
+    {
+      "source": "app_sitemap",
+      "target": "utils_utils_kebabcase",
+      "relation": "imports"
+    },
+    {
+      "source": "app_sitemap_sitemap",
+      "target": "utils_utils_kebabcase",
+      "relation": "calls"
+    },
+    {
+      "source": "components",
+      "target": "components_aliases",
+      "relation": "contains"
+    },
+    {
+      "source": "components",
+      "target": "components_iconlibrary",
+      "relation": "contains"
+    },
+    {
+      "source": "components",
+      "target": "components_registries",
+      "relation": "contains"
+    },
+    {
+      "source": "components",
+      "target": "components_rsc",
+      "relation": "contains"
+    },
+    {
+      "source": "components",
+      "target": "components_schema",
+      "relation": "contains"
+    },
+    {
+      "source": "components",
+      "target": "components_style",
+      "relation": "contains"
+    },
+    {
+      "source": "components",
+      "target": "components_tailwind",
+      "relation": "contains"
+    },
+    {
+      "source": "components",
+      "target": "components_tsx",
+      "relation": "contains"
+    },
+    {
+      "source": "components_tailwind",
+      "target": "components_tailwind_basecolor",
+      "relation": "contains"
+    },
+    {
+      "source": "components_tailwind",
+      "target": "components_tailwind_config",
+      "relation": "contains"
+    },
+    {
+      "source": "components_tailwind",
+      "target": "components_tailwind_css",
+      "relation": "contains"
+    },
+    {
+      "source": "components_tailwind",
+      "target": "components_tailwind_cssvariables",
+      "relation": "contains"
+    },
+    {
+      "source": "components_tailwind",
+      "target": "components_tailwind_prefix",
+      "relation": "contains"
+    },
+    {
+      "source": "components_aliases",
+      "target": "components_aliases_components",
+      "relation": "contains"
+    },
+    {
+      "source": "components_aliases",
+      "target": "components_aliases_hooks",
+      "relation": "contains"
+    },
+    {
+      "source": "components_aliases",
+      "target": "components_aliases_lib",
+      "relation": "contains"
+    },
+    {
+      "source": "components_aliases",
+      "target": "components_aliases_ui",
+      "relation": "contains"
+    },
+    {
+      "source": "components_aliases",
+      "target": "components_aliases_utils",
+      "relation": "contains"
+    },
+    {
+      "source": "components_registries",
+      "target": "components_registries_aceternity",
+      "relation": "contains"
+    },
+    {
+      "source": "components_registries",
+      "target": "components_registries_magicui",
+      "relation": "contains"
+    },
+    {
+      "source": "components_registries",
+      "target": "components_registries_react_bits",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_about_about",
+      "target": "components_pages_about_about_about",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_about_about",
+      "target": "components_pages_about_about_corecompetencies",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_about_about",
+      "target": "components_pages_about_about_hobbies",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_about_about",
+      "target": "components_pages_about_about_hobbycard",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_about_about",
+      "target": "components_pages_about_about_hobbycardprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_about_about",
+      "target": "components_pages_about_about_journeytimeline",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_about_about",
+      "target": "components_ui_sectionheading",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_background_starbackground",
+      "target": "components_pages_background_starbackground_starbackground",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_background_starbackground",
+      "target": "utils_usedevicetier",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_background_starbackground",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_background_starbackground_starbackground",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "calls"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_badgecard",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_badgecardprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_certificationssection",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_marqueerow",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_marqueerowprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_marqueestrip",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_row_1",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_row_2",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_statitem",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_pages_certifications_certifications_stats",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "components_ui_sectionheading",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "data_course_links",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "data_course_links_courselinks",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "utils_usedevicetier",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_certifications_certifications",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_certifications_certifications_certificationssection",
+      "target": "components_pages_certifications_certifications_stats",
+      "relation": "references"
+    },
+    {
+      "source": "components_pages_certifications_certifications_marqueerowprops",
+      "target": "data_course_links_courselinks",
+      "relation": "references"
+    },
+    {
+      "source": "components_pages_certifications_certifications_certificationssection",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "calls"
+    },
+    {
+      "source": "components_pages_contact_contact",
+      "target": "components_pages_contact_contact_contact",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_contact_contact",
+      "target": "components_pages_contact_contact_formdata",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_contact_contact",
+      "target": "components_ui_sectionheading",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_pages_footer_footer_footer",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_pages_footer_footer_navlinks",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_pages_footer_footer_sociallinks",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_ui_blurtext",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_ui_blurtext_blurtext",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_ui_decryptedtext",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_ui_decryptedtext_decryptedtext",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_ui_gradienttext",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_ui_gradienttext_gradienttext",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_footer_footer",
+      "target": "components_ui_magnet",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_github_githubgraph",
+      "target": "components_pages_github_githubgraph_githubgraph",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_github_githubgraph",
+      "target": "components_ui_sectionheading",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_hero_hero",
+      "target": "components_pages_hero_hero_hero",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_hero_hero",
+      "target": "components_pages_hero_hero_herosocials",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_hero_hero",
+      "target": "utils_usedevicetier",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_hero_hero",
+      "target": "utils_usedevicetier_usedevicetier",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_hero_hero_hero",
+      "target": "utils_usedevicetier_usedevicetier",
+      "relation": "calls"
+    },
+    {
+      "source": "components_pages_hero_herovisual",
+      "target": "components_pages_hero_herovisual_herovisual",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_hero_herovisual",
+      "target": "components_pages_hero_herovisual_personal",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_hero_herovisual",
+      "target": "components_ui_spotlight_new",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_hero_herovisual",
+      "target": "components_ui_spotlight_new_spotlight",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_loader_loader",
+      "target": "components_pages_loader_loader_loader",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_loader_loader",
+      "target": "components_pages_loader_loader_loaderprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_loader_loader",
+      "target": "utils_usedevicetier",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_loader_loader",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_loader_loader_loader",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "calls"
+    },
+    {
+      "source": "components_pages_navbar_navbar",
+      "target": "components_pages_navbar_navbar_magneticitem",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_navbar_navbar",
+      "target": "components_pages_navbar_navbar_navbar",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_navbar_navbar",
+      "target": "components_pages_navbar_navbar_navitems",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_navbar_navbar",
+      "target": "lib_utils",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_navbar_navbar",
+      "target": "lib_utils_cn",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_navbar_navbar_magneticitem",
+      "target": "lib_utils_cn",
+      "relation": "calls"
+    },
+    {
+      "source": "components_pages_navbar_navbar_navbar",
+      "target": "lib_utils_cn",
+      "relation": "calls"
+    },
+    {
+      "source": "components_pages_project_projectcard",
+      "target": "components_pages_project_projectcard_projectcard",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_project_projectcard",
+      "target": "components_pages_project_projectcard_projectcardprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_project_projectcard",
+      "target": "components_ui_magnet",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectcard",
+      "target": "types_project",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectcard",
+      "target": "types_project_project",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_project_projectcard",
+      "target": "utils_utils",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectcard",
+      "target": "utils_utils_kebabcase",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_project_projectsshowcase",
+      "target": "components_pages_project_projectcard",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectcard_projectcardprops",
+      "target": "types_project_project",
+      "relation": "references"
+    },
+    {
+      "source": "components_pages_project_projectcard_projectcard",
+      "target": "utils_utils_kebabcase",
+      "relation": "calls"
+    },
+    {
+      "source": "components_pages_project_projectdetail",
+      "target": "components_pages_project_projectdetail_projectdetail",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_project_projectdetail",
+      "target": "components_pages_project_projectdetail_projectdetailprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_project_projectdetail",
+      "target": "components_ui_magnet",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectdetail",
+      "target": "types_project",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectdetail",
+      "target": "types_project_project",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_project_projectdetail_projectdetailprops",
+      "target": "types_project_project",
+      "relation": "references"
+    },
+    {
+      "source": "components_pages_project_projectspreview",
+      "target": "components_pages_project_projectspreview_projectcard",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_project_projectspreview",
+      "target": "components_pages_project_projectspreview_projectspreview",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_project_projectspreview",
+      "target": "components_ui_sectionheading",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectspreview",
+      "target": "data_projects",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectspreview",
+      "target": "data_projects_projects",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_project_projectspreview",
+      "target": "utils_utils",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectspreview",
+      "target": "utils_utils_kebabcase",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_project_projectspreview_projectcard",
+      "target": "utils_utils_kebabcase",
+      "relation": "calls"
+    },
+    {
+      "source": "components_pages_project_projectsshowcase",
+      "target": "components_pages_project_projectsshowcase_projectsshowcase",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_project_projectsshowcase",
+      "target": "components_pages_project_projectsshowcase_projectsshowcaseprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_project_projectsshowcase",
+      "target": "types_project",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_project_projectsshowcase",
+      "target": "types_project_project",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_project_projectsshowcase_projectsshowcaseprops",
+      "target": "types_project_project",
+      "relation": "references"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_pages_skills_skills_skill",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_pages_skills_skills_skillcard",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_pages_skills_skills_skillcardprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_pages_skills_skills_skillcategory",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_pages_skills_skills_skillssection",
+      "relation": "contains"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_ui_badge",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_ui_badge_badge",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_ui_card",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_ui_card_card",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_ui_card_cardcontent",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_ui_globe_demo",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_ui_globe_demo_globedemo",
+      "relation": "imports"
+    },
+    {
+      "source": "components_pages_skills_skills",
+      "target": "components_ui_sectionheading",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_ui_animatedcursor",
+      "target": "components_ui_animatedcursor_animatedcursor",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_blurtext",
+      "target": "components_ui_blurtext_blurtext",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_blurtext",
+      "target": "components_ui_blurtext_blurtextprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_blurtext",
+      "target": "components_ui_blurtext_buildkeyframes",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_blurtext_blurtext",
+      "target": "components_ui_blurtext_buildkeyframes",
+      "relation": "calls"
+    },
+    {
+      "source": "components_ui_cursorgrid",
+      "target": "components_ui_cursorgrid_cursorgrid",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_cursorgrid",
+      "target": "components_ui_cursorgrid_cursorgridprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_cursorgrid",
+      "target": "components_ui_cursorgrid_falloff",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_cursorgrid",
+      "target": "components_ui_cursorgrid_falloff_curves",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_cursorgrid",
+      "target": "components_ui_cursorgrid_gridconfig",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_cursorgrid",
+      "target": "components_ui_cursorgrid_hextorgb",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_cursorgrid",
+      "target": "components_ui_cursorgrid_pulse",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_cursorgrid_cursorgrid",
+      "target": "components_ui_cursorgrid_hextorgb",
+      "relation": "calls"
+    },
+    {
+      "source": "components_ui_decryptedtext",
+      "target": "components_ui_decryptedtext_decryptedtext",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_decryptedtext",
+      "target": "components_ui_decryptedtext_decryptedtextprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_decryptedtext",
+      "target": "components_ui_decryptedtext_direction",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_gradienttext",
+      "target": "components_ui_gradienttext_gradienttext",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_gradienttext",
+      "target": "components_ui_gradienttext_gradienttextprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_magnet",
+      "target": "components_ui_magnet_magnet",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_magnet",
+      "target": "components_ui_magnet_magnetprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_sectionheading",
+      "target": "components_ui_sectionheading_sectionheading",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_sectionheading",
+      "target": "components_ui_sectionheading_sectionheadingprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_badge",
+      "target": "components_ui_badge_badge",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_badge",
+      "target": "components_ui_badge_badgeprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_badge",
+      "target": "components_ui_badge_badgevariants",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_badge",
+      "target": "lib_utils",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_ui_badge",
+      "target": "lib_utils_cn",
+      "relation": "imports"
+    },
+    {
+      "source": "components_ui_badge_badge",
+      "target": "components_ui_badge_badgevariants",
+      "relation": "calls"
+    },
+    {
+      "source": "components_ui_badge_badge",
+      "target": "lib_utils_cn",
+      "relation": "calls"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "components_ui_card_card",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "components_ui_card_cardcontent",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "components_ui_card_carddescription",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "components_ui_card_cardfooter",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "components_ui_card_cardheader",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "components_ui_card_cardprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "components_ui_card_cardtitle",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "lib_utils",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_ui_card",
+      "target": "lib_utils_cn",
+      "relation": "imports"
+    },
+    {
+      "source": "components_ui_globe_demo",
+      "target": "components_ui_globe_demo_globedemo",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_globe_demo",
+      "target": "components_ui_globe_demo_slugs",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_globe_demo",
+      "target": "components_ui_icon_cloud",
+      "relation": "imports_from"
+    },
+    {
+      "source": "components_ui_icon_cloud",
+      "target": "components_ui_icon_cloud_cloudprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_icon_cloud",
+      "target": "components_ui_icon_cloud_iconcloud",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_icon_cloud",
+      "target": "components_ui_icon_cloud_iconcloudprops",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_icon_cloud",
+      "target": "components_ui_icon_cloud_rendercustomicon",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_icon_cloud",
+      "target": "components_ui_icon_cloud_simpleiconsresponse",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_icon_cloud_iconcloud",
+      "target": "components_ui_icon_cloud_rendercustomicon",
+      "relation": "calls"
+    },
+    {
+      "source": "components_ui_spotlight_new",
+      "target": "components_ui_spotlight_new_spotlight",
+      "relation": "contains"
+    },
+    {
+      "source": "components_ui_spotlight_new",
+      "target": "components_ui_spotlight_new_spotlightprops",
+      "relation": "contains"
+    },
+    {
+      "source": "data_course_links",
+      "target": "data_course_links_courselinks",
+      "relation": "contains"
+    },
+    {
+      "source": "data_course_links",
+      "target": "types_course_link",
+      "relation": "imports_from"
+    },
+    {
+      "source": "data_course_links",
+      "target": "types_course_link_courselink",
+      "relation": "imports"
+    },
+    {
+      "source": "data_projects",
+      "target": "data_projects_projects",
+      "relation": "contains"
+    },
+    {
+      "source": "data_projects",
+      "target": "types_project",
+      "relation": "imports_from"
+    },
+    {
+      "source": "data_projects",
+      "target": "types_project_project",
+      "relation": "imports"
+    },
+    {
+      "source": "eslint_config",
+      "target": "eslint_config_eslintconfig",
+      "relation": "contains"
+    },
+    {
+      "source": "lib_utils",
+      "target": "lib_utils_cn",
+      "relation": "contains"
+    },
+    {
+      "source": "next_config",
+      "target": "next_config_nextconfig",
+      "relation": "contains"
+    },
+    {
+      "source": "package",
+      "target": "package_dependencies",
+      "relation": "contains"
+    },
+    {
+      "source": "package",
+      "target": "package_devdependencies",
+      "relation": "contains"
+    },
+    {
+      "source": "package",
+      "target": "package_name",
+      "relation": "contains"
+    },
+    {
+      "source": "package",
+      "target": "package_private",
+      "relation": "contains"
+    },
+    {
+      "source": "package",
+      "target": "package_scripts",
+      "relation": "contains"
+    },
+    {
+      "source": "package",
+      "target": "package_version",
+      "relation": "contains"
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_build",
+      "relation": "contains"
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_dev",
+      "relation": "contains"
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_lint",
+      "relation": "contains"
+    },
+    {
+      "source": "package_scripts",
+      "target": "package_scripts_start",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_animejs",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_class_variance_authority",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_clsx",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_framer_motion",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_gsap",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_jsonfile",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_lenis",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_lucide_react",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_moment",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_motion",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_next",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_next_themes",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_next_third_parties",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_radix_ui_react_toast",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_random",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_bootstrap_icons",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_dom",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_hook_form",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_icon_cloud",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_icons",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_markdown",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_three_drei",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_react_three_fiber",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_remark_gfm",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_sharp",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_simple_git",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_studio_freight_lenis",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_tailwind_merge",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_tailwindcss_typography",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_three",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_three_globe",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_types_animejs",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_types_three",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies",
+      "target": "package_dependencies_vercel_analytics",
+      "relation": "contains"
+    },
+    {
+      "source": "package_dependencies_next_third_parties",
+      "target": "next_third_parties",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_radix_ui_react_toast",
+      "target": "radix_ui_react_toast",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react_three_drei",
+      "target": "react_three_drei",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react_three_fiber",
+      "target": "react_three_fiber",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_studio_freight_lenis",
+      "target": "studio_freight_lenis",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_tailwindcss_typography",
+      "target": "tailwindcss_typography",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_types_animejs",
+      "target": "types_animejs",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_types_three",
+      "target": "types_three",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_vercel_analytics",
+      "target": "vercel_analytics",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_animejs",
+      "target": "animejs",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_class_variance_authority",
+      "target": "class_variance_authority",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_clsx",
+      "target": "clsx",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_framer_motion",
+      "target": "framer_motion",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_gsap",
+      "target": "gsap",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_jsonfile",
+      "target": "jsonfile",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_lenis",
+      "target": "lenis",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_lucide_react",
+      "target": "lucide_react",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_moment",
+      "target": "moment",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_motion",
+      "target": "motion",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_next",
+      "target": "next",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_next_themes",
+      "target": "next_themes",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_random",
+      "target": "random",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react",
+      "target": "react",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react_bootstrap_icons",
+      "target": "react_bootstrap_icons",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react_dom",
+      "target": "react_dom",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react_hook_form",
+      "target": "react_hook_form",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react_icon_cloud",
+      "target": "react_icon_cloud",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react_icons",
+      "target": "react_icons",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_react_markdown",
+      "target": "react_markdown",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_remark_gfm",
+      "target": "remark_gfm",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_sharp",
+      "target": "sharp",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_simple_git",
+      "target": "simple_git",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_tailwind_merge",
+      "target": "tailwind_merge",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_three",
+      "target": "three",
+      "relation": "imports"
+    },
+    {
+      "source": "package_dependencies_three_globe",
+      "target": "three_globe",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_eslint",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_eslint_config_next",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_shadcn",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tailwindcss",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tailwindcss_postcss",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_tw_animate_css",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_node",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_react",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_types_react_dom",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies",
+      "target": "package_devdependencies_typescript",
+      "relation": "contains"
+    },
+    {
+      "source": "package_devdependencies_tailwindcss_postcss",
+      "target": "tailwindcss_postcss",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_types_node",
+      "target": "types_node",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_types_react",
+      "target": "types_react",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_types_react_dom",
+      "target": "types_react_dom",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_eslint",
+      "target": "eslint",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_eslint_config_next",
+      "target": "eslint_config_next",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_shadcn",
+      "target": "shadcn",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_tailwindcss",
+      "target": "tailwindcss",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_tw_animate_css",
+      "target": "tw_animate_css",
+      "relation": "imports"
+    },
+    {
+      "source": "package_devdependencies_typescript",
+      "target": "typescript",
+      "relation": "imports"
+    },
+    {
+      "source": "postcss_config",
+      "target": "postcss_config_config",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig",
+      "target": "tsconfig_compileroptions",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig",
+      "target": "tsconfig_exclude",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig",
+      "target": "tsconfig_include",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_allowjs",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_esmoduleinterop",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_incremental",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_isolatedmodules",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_jsx",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_lib",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_module",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_moduleresolution",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_noemit",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_paths",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_plugins",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_resolvejsonmodule",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_skiplibcheck",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_strict",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions",
+      "target": "tsconfig_compileroptions_target",
+      "relation": "contains"
+    },
+    {
+      "source": "tsconfig_compileroptions_lib",
+      "target": "ref_dom",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_compileroptions_lib",
+      "target": "ref_dom_iterable",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_compileroptions_lib",
+      "target": "ref_esnext",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_include",
+      "target": "ref_components_pages_background_starbackground_tsx",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_include",
+      "target": "ref_mts",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_include",
+      "target": "ref_next_dev_types_ts",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_include",
+      "target": "ref_next_env_d_ts",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_include",
+      "target": "ref_next_types_ts",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_include",
+      "target": "ref_ts",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_include",
+      "target": "ref_tsx",
+      "relation": "extends"
+    },
+    {
+      "source": "tsconfig_exclude",
+      "target": "ref_node_modules",
+      "relation": "extends"
+    },
+    {
+      "source": "types_d",
+      "target": "types_d_css",
+      "relation": "contains"
+    },
+    {
+      "source": "types_course_link",
+      "target": "types_course_link_courselink",
+      "relation": "contains"
+    },
+    {
+      "source": "types_project",
+      "target": "types_project_pageinfo",
+      "relation": "contains"
+    },
+    {
+      "source": "types_project",
+      "target": "types_project_project",
+      "relation": "contains"
+    },
+    {
+      "source": "types_project",
+      "target": "types_project_projectcategory",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_usedevicetier",
+      "target": "utils_usedevicetier_detecttier",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_usedevicetier",
+      "target": "utils_usedevicetier_devicetier",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_usedevicetier",
+      "target": "utils_usedevicetier_getdevicetier",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_usedevicetier",
+      "target": "utils_usedevicetier_usedevicetier",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_usedevicetier_getdevicetier",
+      "target": "utils_usedevicetier_detecttier",
+      "relation": "calls"
+    },
+    {
+      "source": "utils_usedevicetier_usedevicetier",
+      "target": "utils_usedevicetier_detecttier",
+      "relation": "calls"
+    },
+    {
+      "source": "utils_utils",
+      "target": "utils_utils_cn",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_utils",
+      "target": "utils_utils_kebabarray",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_utils",
+      "target": "utils_utils_kebabcase",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_utils",
+      "target": "utils_utils_randomnumbertext",
+      "relation": "contains"
+    },
+    {
+      "source": "utils_utils_kebabarray",
+      "target": "utils_utils_kebabcase",
+      "relation": "calls"
+    },
+    {
+      "source": "AGENTS.md",
+      "target": "DESIGN.md",
+      "relation": "REFERENCES"
+    },
+    {
+      "source": "README.md",
+      "target": "AGENTS.md",
+      "relation": "GOVERNED_BY"
+    },
+    {
+      "source": "PortfolioNexus",
+      "target": "README.md",
+      "relation": "DESCRIBED_IN"
+    },
+    {
+      "source": "public_resume_vedang_dhuri_resume",
+      "target": "GoogleCloudCertifications",
+      "relation": "INCLUDES"
+    }
+  ]
+}
