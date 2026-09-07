@@ -15,6 +15,7 @@ import {
   Menu,
   X,
   Award,
+  FileText,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -24,6 +25,7 @@ const navItems = [
   { logo: <Code size={20} />, href: "/#skills", text: "Skills" },
   { logo: <Laptop size={20} />, href: "/projects", text: "Projects" },
   { logo: <Award size={20} />, href: "/#certifications", text: "Certifications" },
+  { logo: <FileText size={20} />, href: "/resume", text: "Resume" },
   { logo: <Mail size={20} />, href: "/#contact", text: "Contact" },
   { logo: <Github size={20} />, href: "/#github", text: "Github" },
 ];
@@ -141,6 +143,13 @@ export const Navbar = () => {
       if (activeLink !== "/projects") {
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setActiveLink("/projects");
+      }
+      return;
+    }
+
+    if (pathname === "/resume") {
+      if (activeLink !== "/resume") {
+        setActiveLink("/resume");
       }
       return;
     }
