@@ -15,7 +15,6 @@ export default function GitHubGraph() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-
       // Bento Grid Stagger Entrance
       if (gridRef.current) {
         const cards = gsap.utils.toArray(".bento-item");
@@ -48,7 +47,7 @@ export default function GitHubGraph() {
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
-          <SectionHeading 
+          <SectionHeading
             title="GitHub Activity"
             subtitle="A real-time overview of my open-source contributions, repositories, and coding consistency."
             alignment="center"
@@ -65,13 +64,18 @@ export default function GitHubGraph() {
           <div className="bento-item opacity-0 md:col-span-12 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-6 md:p-8 overflow-hidden hover:border-[#3fb950]/30 transition-all duration-500 shadow-2xl">
             {/* Subtle Glow */}
             <div className="absolute -top-40 -right-40 w-80 h-80 bg-[#3fb950]/10 blur-[100px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            
+
             <div className="flex items-center justify-between mb-6">
               <h3 className="text-sm font-mono tracking-widest uppercase text-white/60 flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#3fb950] animate-pulse" />
                 Contribution Heatmap
               </h3>
-              <a href="https://github.com/vedangdhuri" target="_blank" rel="noopener noreferrer" className="text-white/30 hover:text-[#3fb950] transition-colors">
+              <a
+                href="https://github.com/vedangdhuri"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-white/30 hover:text-[#3fb950] transition-colors"
+              >
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>
@@ -82,7 +86,8 @@ export default function GitHubGraph() {
                 alt="Vedang Dhuri's GitHub Contribution Heatmap"
                 className="w-full min-w-[700px] h-auto rounded-md opacity-90 group-hover:opacity-100 transition-opacity duration-300"
                 style={{
-                  filter: "invert(1) hue-rotate(180deg) brightness(0.85) contrast(1.2)",
+                  filter:
+                    "invert(1) hue-rotate(180deg) brightness(0.85) contrast(1.2)",
                 }}
                 loading="lazy"
               />
@@ -147,14 +152,14 @@ export default function GitHubGraph() {
           </a>
 
           {/* 5. Activity Line Graph (Full Width) */}
-          <div className="bento-item opacity-0 md:col-span-12 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-6 md:p-8 overflow-hidden hover:border-[#3fb950]/30 transition-all duration-500 shadow-2xl mt-2">
-            {/* Subtle Glow */}
+          {/* <div className="bento-item opacity-0 md:col-span-12 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-6 md:p-8 overflow-hidden hover:border-[#3fb950]/30 transition-all duration-500 shadow-2xl mt-2">
+          
             <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#3fb950]/10 blur-[100px] rounded-full pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
-            
+
             <h3 className="text-sm font-mono tracking-widest uppercase text-white/60 mb-6">
               Contribution History
             </h3>
-            
+
             <div className="w-full overflow-x-auto overflow-y-hidden pb-2 scrollbar-thin scrollbar-track-transparent scrollbar-thumb-white/10">
               <img
                 src="https://github-readme-activity-graph.vercel.app/graph?username=vedangdhuri&theme=github-dark&hide_border=true&bg_color=transparent&color=3fb950&line=3fb950&point=ffffff&area=true&area_color=238636"
@@ -163,7 +168,7 @@ export default function GitHubGraph() {
                 loading="lazy"
               />
             </div>
-          </div>
+          </div> */}
         </div>
 
         {/* Profile Link / CTA */}

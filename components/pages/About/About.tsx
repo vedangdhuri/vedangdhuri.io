@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import SectionHeading from "@/components/ui/SectionHeading";
 import Image from "next/image";
+import Link from "next/link";
 import {
   Camera,
   Gamepad2,
@@ -19,6 +20,8 @@ import {
   Code2,
   BrainCircuit,
   Layers,
+  FileText,
+  Download,
 } from "lucide-react";
 import main_image from "@/public/img/main_image.png";
 
@@ -421,7 +424,7 @@ const About = () => {
 
             <h3 className="philosophy-text text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
               Engineering Scalable Systems &{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-t from-[#00E5FF] via-cyan-400 to-blue-500">
+              <span className="text-transparent bg-clip-text bg-linear-to-t from-[#00E5FF] via-cyan-400 to-blue-500">
                 Immersive Digital Experiences.
               </span>
             </h3>
@@ -484,6 +487,25 @@ const About = () => {
                 <BrainCircuit className="w-3.5 h-3.5 text-[#00E5FF]" /> 3D
                 Assets & Open Source
               </span>
+            </div>
+
+            {/* Resume CTAs */}
+            <div className="philosophy-text flex flex-wrap items-center gap-3 pt-3">
+              <Link
+                href="/resume"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-[#00E5FF] text-white font-semibold text-xs font-mono uppercase tracking-[0.15em] shadow-[0_0_20px_rgba(0,229,255,0.25)] hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+              >
+                <FileText className="w-4 h-4" />
+                <span>View Full Resume</span>
+              </Link>
+              <a
+                href="/Resume/Vedang_Dhuri_Resume.pdf"
+                download="Vedang_Dhuri_Resume.pdf"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#00E5FF]/40 text-neutral-300 hover:text-white font-medium text-xs font-mono uppercase tracking-[0.15em] hover:bg-white/10 transition-all"
+              >
+                <Download className="w-4 h-4 text-[#00E5FF]" />
+                <span>Download PDF</span>
+              </a>
             </div>
           </div>
         </div>

@@ -489,110 +489,110 @@ Decrypted text: Hello Vedang
 Licensed under the [MIT License](https://raw.githubusercontent.com/vedangdhuri/AES-Encryption-Decryption-Using-Java/main/LICENSE).
     `
   },
-  {
-    title: "To Do List Using React",
-    shortDescription: "A responsive To-Do List app built with React.js that helps users efficiently organize tasks with an intuitive interface for adding, editing, deleting, and marking tasks as completed.",
-    techStack: ["React.js", "JavaScript", "Vite", "Beginner level"],
-    category: "personal",
-    thumbnail: "/projects/todolist/to_do_list_using_react.webp",
-    github: "https://github.com/vedangdhuri/To-Do-List-Using-REACT",
-    liveUrl: "https://to-do-list-using-react-vd.netlify.app/",
-    pagesInfoArr: [
-      {
-        title: "Task Dashboard",
-        description: "The main task management screen showing active and completed to-do items.",
-        imgArr: ["/projects/todolist/to_do_list_using_react.webp"]
-      }
-    ],
-    readme: `
-# ✅ TO-DO-LIST-USING-REACT
+//   {
+//     title: "To Do List Using React",
+//     shortDescription: "A responsive To-Do List app built with React.js that helps users efficiently organize tasks with an intuitive interface for adding, editing, deleting, and marking tasks as completed.",
+//     techStack: ["React.js", "JavaScript", "Vite", "Beginner level"],
+//     category: "personal",
+//     thumbnail: "/projects/todolist/to_do_list_using_react.webp",
+//     github: "https://github.com/vedangdhuri/To-Do-List-Using-REACT",
+//     liveUrl: "https://to-do-list-using-react-vd.netlify.app/",
+//     pagesInfoArr: [
+//       {
+//         title: "Task Dashboard",
+//         description: "The main task management screen showing active and completed to-do items.",
+//         imgArr: ["/projects/todolist/to_do_list_using_react.webp"]
+//       }
+//     ],
+//     readme: `
+// # ✅ TO-DO-LIST-USING-REACT
 
-### Transform Tasks into Triumphs with Seamless Simplicity
+// ### Transform Tasks into Triumphs with Seamless Simplicity
 
-## ✅ Overview
-To-Do List Using React is a sleek, modular task management application designed to help developers organize tasks efficiently with a clean, scalable architecture. Built with modern tools like Vite and React, it emphasizes rapid development and maintainability.
+// ## ✅ Overview
+// To-Do List Using React is a sleek, modular task management application designed to help developers organize tasks efficiently with a clean, scalable architecture. Built with modern tools like Vite and React, it emphasizes rapid development and maintainability.
 
-## ✨ Why To-Do-List-Using-REACT?
-- **🧩 Modular Components:** Reusable task cards, tags, and columns for flexible UI management.
-- **🚀 Fast Development Setup:** Powered by Vite for quick builds and hot-reloading.
-- **🔍 Code Quality:** Enforced through ESLint configuration, ensuring consistent, maintainable code.
-- **📝 Interactive Task Management:** Create, categorize, and delete tasks seamlessly.
-- **🌟 Clear Architecture:** Well-defined component interactions for easy customization.
+// ## ✨ Why To-Do-List-Using-REACT?
+// - **🧩 Modular Components:** Reusable task cards, tags, and columns for flexible UI management.
+// - **🚀 Fast Development Setup:** Powered by Vite for quick builds and hot-reloading.
+// - **🔍 Code Quality:** Enforced through ESLint configuration, ensuring consistent, maintainable code.
+// - **📝 Interactive Task Management:** Create, categorize, and delete tasks seamlessly.
+// - **🌟 Clear Architecture:** Well-defined component interactions for easy customization.
 
-## ⚙️ Installation & Setup
+// ## ⚙️ Installation & Setup
 
-\`\`\`bash
-# Clone the repository
-git clone https://github.com/vedangdhuri/To-Do-List-Using-REACT.git
+// \`\`\`bash
+// # Clone the repository
+// git clone https://github.com/vedangdhuri/To-Do-List-Using-REACT.git
 
-# Install dependencies
-npm install
+// # Install dependencies
+// npm install
 
-# Start the dev server
-npm run dev
-\`\`\`
-*The app will automatically open at \`http://localhost:5173/\`*
+// # Start the dev server
+// npm run dev
+// \`\`\`
+// *The app will automatically open at \`http://localhost:5173/\`*
 
-## 🚀 Future Enhancements
-- 🌓 Dark mode toggle
-- 🔍 Search and filter options
-- 📁 Category-based organization
-- 📶 PWA offline support
+// ## 🚀 Future Enhancements
+// - 🌓 Dark mode toggle
+// - 🔍 Search and filter options
+// - 📁 Category-based organization
+// - 📶 PWA offline support
 
-## 📜 License
-Licensed under the [MIT License](https://github.com/vedangdhuri/To-Do-List-Using-REACT/blob/main/LICENSE).
-    `
-  },
-  {
-    title: "Weather App",
-    shortDescription: "Weather-App is a fast, modern React project built with Vite. It includes hot module replacement, ESLint, and support for TypeScript and the React compiler, providing a solid foundation for building high-performance, maintainable weather applications.",
-    techStack: ["React", "JavaScript", "Vite", "Beginner level"],
-    category: "personal",
-    thumbnail: "/projects/weatherapp/weather-app.webp",
-    github: "https://github.com/vedangdhuri/Weather-App",
-    liveUrl: "https://weather-app-vd69.netlify.app",
-    pagesInfoArr: [
-      {
-        title: "Weather Report",
-        description: "The current weather conditions and forecast overview.",
-        imgArr: ["/projects/weatherapp/weather-app.webp"]
-      }
-    ],
-    readme: `
-# ✅ WEATHER-APP
+// ## 📜 License
+// Licensed under the [MIT License](https://github.com/vedangdhuri/To-Do-List-Using-REACT/blob/main/LICENSE).
+//     `
+//   },
+//   {
+//     title: "Weather App",
+//     shortDescription: "Weather-App is a fast, modern React project built with Vite. It includes hot module replacement, ESLint, and support for TypeScript and the React compiler, providing a solid foundation for building high-performance, maintainable weather applications.",
+//     techStack: ["React", "JavaScript", "Vite", "Beginner level"],
+//     category: "personal",
+//     thumbnail: "/projects/weatherapp/weather-app.webp",
+//     github: "https://github.com/vedangdhuri/Weather-App",
+//     liveUrl: "https://weather-app-vd69.netlify.app",
+//     pagesInfoArr: [
+//       {
+//         title: "Weather Report",
+//         description: "The current weather conditions and forecast overview.",
+//         imgArr: ["/projects/weatherapp/weather-app.webp"]
+//       }
+//     ],
+//     readme: `
+// # ✅ WEATHER-APP
 
-### Predict Tomorrow’s Weather, Today’s Confidence
+// ### Predict Tomorrow’s Weather, Today’s Confidence
 
-## ✅ Overview
-Weather-App is a modern React-based project designed to streamline the development of dynamic weather applications. Built with Vite, it offers fast, efficient builds, hot module replacement, and integrated ESLint support to ensure high code quality. The project provides a solid foundation for creating maintainable, high-performance React apps with support for advanced features like TypeScript and React's compiler.
+// ## ✅ Overview
+// Weather-App is a modern React-based project designed to streamline the development of dynamic weather applications. Built with Vite, it offers fast, efficient builds, hot module replacement, and integrated ESLint support to ensure high code quality. The project provides a solid foundation for creating maintainable, high-performance React apps with support for advanced features like TypeScript and React's compiler.
 
-## ✨ This project simplifies building real-time weather interfaces with a focus on speed, quality, and flexibility. The core features include:
-- **🚀 Fast Development Setup:** Leverages Vite for rapid builds and hot module replacement, reducing development time.
-- **🌐 Real-Time Data:** Integrates external APIs to fetch and display current weather conditions dynamically.
-- **🧹 Code Quality: Incorporates ESLint configurations to enforce modern JavaScript and React best practices.
-- **⚙️ Flexible Architecture: Supports TypeScript and React's compiler for scalable, maintainable codebases.
-- **🌟 Clear Structure: Organized project setup with centralized constants and modular components for easy customization.
+// ## ✨ This project simplifies building real-time weather interfaces with a focus on speed, quality, and flexibility. The core features include:
+// - **🚀 Fast Development Setup:** Leverages Vite for rapid builds and hot module replacement, reducing development time.
+// - **🌐 Real-Time Data:** Integrates external APIs to fetch and display current weather conditions dynamically.
+// - **🧹 Code Quality: Incorporates ESLint configurations to enforce modern JavaScript and React best practices.
+// - **⚙️ Flexible Architecture: Supports TypeScript and React's compiler for scalable, maintainable codebases.
+// - **🌟 Clear Structure: Organized project setup with centralized constants and modular components for easy customization.
 
-## ⚙️ Installation & Setup
+// ## ⚙️ Installation & Setup
 
-\`\`\`bash
-# Clone the repository
-git clone git clone https://github.com/vedangdhuri/Weather-App
-cd Weather-App
+// \`\`\`bash
+// # Clone the repository
+// git clone git clone https://github.com/vedangdhuri/Weather-App
+// cd Weather-App
 
-# Install dependencies
-npm install
+// # Install dependencies
+// npm install
 
-# Start the dev server
-npm run dev
-\`\`\`
-*The app will automatically open at \`http://localhost:5173/\`*
+// # Start the dev server
+// npm run dev
+// \`\`\`
+// *The app will automatically open at \`http://localhost:5173/\`*
 
-## 📜 License
-Licensed under the [MIT License](https://github.com/vedangdhuri/Weather-App/blob/main/LICENSE).
-    `
-  },
-  // {
+// ## 📜 License
+// Licensed under the [MIT License](https://github.com/vedangdhuri/Weather-App/blob/main/LICENSE).
+//     `
+//   },
+// {
   //   title: "Builtdesign Blogs",
   //   shortDescription: "Crafted Builtdesign's dynamic Blogs Website using Netlify CMS and React for engaging content experiences.",
   //   techStack: ["Web Dev", "Full Stack", "UI/UX"],
