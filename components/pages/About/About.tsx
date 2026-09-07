@@ -424,7 +424,7 @@ const About = () => {
 
             <h3 className="philosophy-text text-3xl md:text-4xl lg:text-5xl font-bold leading-tight tracking-tight">
               Engineering Scalable Systems &{" "}
-              <span className="text-transparent bg-clip-text bg-gradient-to-t from-[#00E5FF] via-cyan-400 to-blue-500">
+              <span className="text-transparent bg-clip-text bg-linear-to-t from-[#00E5FF] via-cyan-400 to-blue-500">
                 Immersive Digital Experiences.
               </span>
             </h3>
@@ -493,7 +493,7 @@ const About = () => {
             <div className="philosophy-text flex flex-wrap items-center gap-3 pt-3">
               <Link
                 href="/resume"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-[#00E5FF] text-black font-semibold text-xs font-mono uppercase tracking-[0.15em] shadow-[0_0_20px_rgba(0,229,255,0.25)] hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-[#00E5FF] text-white font-semibold text-xs font-mono uppercase tracking-[0.15em] shadow-[0_0_20px_rgba(0,229,255,0.25)] hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
                 <FileText className="w-4 h-4" />
                 <span>View Full Resume</span>
