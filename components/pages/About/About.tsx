@@ -3,8 +3,6 @@
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import SectionHeading from "@/components/ui/SectionHeading";
-import Image from "next/image";
 import Link from "next/link";
 import {
   Camera,
@@ -23,7 +21,6 @@ import {
   FileText,
   Download,
 } from "lucide-react";
-import main_image from "@/public/img/main_image.png";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -178,7 +175,7 @@ const HobbyCard = ({ hobby }: HobbyCardProps) => {
       ref={cardRef}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
-      className="hobby-card group relative p-6 rounded-2xl bg-white/5 border border-white/10 overflow-hidden cursor-pointer transition-all duration-500 hover:border-[#00E5FF]/40 hover:shadow-[0_10px_30px_-10px_rgba(0,229,255,0.15)]"
+      className="hobby-card group relative cursor-pointer overflow-hidden border border-white/10 bg-black/30 p-6 transition-all duration-500 hover:border-[#00E5FF]/40 hover:bg-[#00E5FF]/[0.04] hover:shadow-[0_10px_30px_-10px_rgba(0,229,255,0.15)]"
       style={{
         transform:
           "perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) translateZ(0)",
@@ -189,7 +186,7 @@ const HobbyCard = ({ hobby }: HobbyCardProps) => {
     >
       {/* Dynamic Mouse Spotlight overlay */}
       <div
-        className="pointer-events-none absolute -inset-px rounded-2xl opacity-0 transition-opacity duration-500 z-30"
+        className="pointer-events-none absolute -inset-px opacity-0 transition-opacity duration-500 z-30"
         style={{
           opacity: "var(--opacity, 0)",
           background:
@@ -201,7 +198,7 @@ const HobbyCard = ({ hobby }: HobbyCardProps) => {
       <div className="absolute inset-0 bg-gradient-to-br from-[#00E5FF]/10 to-blue-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
 
       <div className="relative z-10 flex flex-col items-center text-center space-y-4">
-        <div className="w-12 h-12 rounded-full bg-black/50 border border-white/10 flex items-center justify-center text-neutral-400 group-hover:text-[#00E5FF] group-hover:scale-110 group-hover:border-[#00E5FF]/40 transition-all duration-300 shadow-lg">
+        <div className="flex h-12 w-12 items-center justify-center border border-white/10 bg-black/50 text-neutral-400 shadow-lg transition-all duration-300 group-hover:scale-110 group-hover:border-[#00E5FF]/40 group-hover:text-[#00E5FF]">
           <Icon className="w-6 h-6" />
         </div>
         <div>
@@ -224,6 +221,25 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
+      // Lift the About section into the viewport as the hero gives way.
+      if (sectionRef.current) {
+        gsap.fromTo(
+          sectionRef.current,
+          { y: 96, opacity: 0.35 },
+          {
+            y: 0,
+            opacity: 1,
+            ease: "none",
+            scrollTrigger: {
+              trigger: sectionRef.current,
+              start: "top bottom",
+              end: "top 55%",
+              scrub: 0.6,
+            },
+          },
+        );
+      }
+
       // 1. Intro Animation
       if (introRef.current) {
         const tl = gsap.timeline({
@@ -235,30 +251,10 @@ const About = () => {
         });
 
         tl.fromTo(
-          ".avatar-container",
-          { opacity: 0, scale: 0.8, rotate: -5 },
-          {
-            opacity: 1,
-            scale: 1,
-            rotate: 0,
-            duration: 1,
-            ease: "back.out(1.5)",
-          },
-        ).fromTo(
           ".philosophy-text",
           { opacity: 0, y: 30 },
-          { opacity: 1, y: 0, duration: 0.8, stagger: 0.2, ease: "power3.out" },
-          "-=0.6",
+          { opacity: 1, y: 0, duration: 0.8, stagger: 0.15, ease: "power3.out" },
         );
-
-        // Floating animation for avatar
-        gsap.to(".avatar-container", {
-          y: -10,
-          duration: 3,
-          ease: "sine.inOut",
-          yoyo: true,
-          repeat: -1,
-        });
       }
 
       // 2. Competencies Grid Entrance
@@ -384,40 +380,39 @@ const About = () => {
     <section
       ref={sectionRef}
       id="about"
-      className="relative py-32 text-white overflow-hidden"
+      className="relative isolate overflow-hidden border-y border-white/5 bg-[#07090d] py-24 text-white md:py-32"
     >
-      <div className="container mx-auto px-6 max-w-7xl relative z-10">
-        <SectionHeading title="About Me" alignment="center" className="mb-20" />
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background-image:linear-gradient(rgba(0,229,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,255,0.045)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div className="pointer-events-none absolute left-1/2 top-0 -z-10 h-72 w-[34rem] -translate-x-1/2 rounded-full bg-[#00E5FF]/10 blur-[120px]" />
+
+      <div className="container relative z-10 mx-auto max-w-7xl px-6">
+        <header className="about-header mb-16 border-b border-white/10 pb-8 md:mb-20 md:flex md:items-end md:justify-between md:gap-10">
+          <div>
+            <div className="mb-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#00E5FF]">
+              <span className="h-2 w-2 rounded-full bg-[#00E5FF] shadow-[0_0_12px_rgba(0,229,255,0.9)]" />
+              01 // Developer Profile
+            </div>
+            <h2 className="font-heading text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl md:text-6xl">
+              About <span className="text-[#00E5FF]">Me</span>
+            </h2>
+          </div>
+          <p className="mt-5 max-w-sm font-mono text-xs uppercase leading-relaxed tracking-[0.14em] text-white/45 md:mt-0 md:text-right">
+            Building useful systems where engineering discipline meets thoughtful interface design.
+          </p>
+        </header>
 
         {/* Part 1: Intro & Bio */}
         <div
           ref={introRef}
-          className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 mb-28 items-center"
+          className="relative mx-auto mb-28 max-w-5xl border border-white/10 bg-black/30 p-6 shadow-[0_20px_80px_rgba(0,0,0,0.28)] backdrop-blur-md sm:p-8 md:p-10"
         >
-          {/* Avatar Visual */}
-          <div className="lg:col-span-5 flex justify-center">
-            <div className="avatar-container relative w-64 h-64 md:w-80 md:h-80">
-              {/* Glowing background aura */}
-              <div className="absolute inset-0 bg-[#00E5FF] rounded-full blur-[80px] opacity-20"></div>
-
-              {/* Avatar Glassmorphic Frame */}
-              <div className="relative w-full h-full rounded-3xl border border-white/10 bg-white/5 backdrop-blur-md overflow-hidden flex flex-col items-center justify-center p-4 group">
-                <div className="w-full h-full rounded-2xl bg-black/40 border border-white/5 relative overflow-hidden transition-all duration-500 group-hover:bg-black/20">
-                  <Image
-                    src={main_image}
-                    alt="Vedang Dhuri"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
+          <div className="absolute inset-y-0 left-0 w-px bg-gradient-to-b from-transparent via-[#00E5FF] to-transparent" />
+          <div className="absolute right-4 top-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white/25">
+            STATUS: ACTIVE
           </div>
-
           {/* Philosophy & Summary */}
-          <div className="lg:col-span-7 flex flex-col space-y-6">
-            <div className="inline-flex items-center space-x-2 px-3 py-1.5 rounded-full bg-[#00E5FF]/10 border border-[#00E5FF]/20 text-[#00E5FF] text-xs font-mono w-fit">
+          <div className="flex flex-col space-y-6">
+            <div className="inline-flex w-fit items-center space-x-2 border border-[#00E5FF]/25 bg-[#00E5FF]/10 px-3 py-1.5 font-mono text-xs text-[#00E5FF]">
               <MapPin className="w-3.5 h-3.5" />
               <span>Sawantwadi, Maharashtra, India</span>
             </div>
@@ -443,8 +438,8 @@ const About = () => {
               .
             </p>
 
-            <div className="philosophy-text p-5 sm:p-6 rounded-2xl bg-white/[0.03] border border-white/10 backdrop-blur-md relative overflow-hidden group hover:border-[#00E5FF]/40 transition-all duration-300">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-gradient-to-b from-[#00E5FF] to-blue-600 rounded-l-2xl"></div>
+            <div className="philosophy-text relative overflow-hidden border border-white/10 bg-white/[0.03] p-5 backdrop-blur-md transition-all duration-300 hover:border-[#00E5FF]/40 sm:p-6">
+              <div className="absolute left-0 top-0 h-full w-1 bg-gradient-to-b from-[#00E5FF] to-blue-600"></div>
               <p className="text-base md:text-lg text-neutral-200 font-light leading-relaxed italic">
                 &ldquo;My approach combines technical expertise with creative
                 problem-solving. Great software is not just about writing code;
@@ -475,15 +470,15 @@ const About = () => {
             </p>
 
             <div className="philosophy-text flex flex-wrap gap-2.5 pt-1">
-              <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
+              <span className="flex items-center gap-1.5 border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-xs text-neutral-300 transition-colors hover:border-[#00E5FF]/40">
                 <Code2 className="w-3.5 h-3.5 text-[#00E5FF]" /> Full Stack
                 Architect
               </span>
-              <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
+              <span className="flex items-center gap-1.5 border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-xs text-neutral-300 transition-colors hover:border-[#00E5FF]/40">
                 <Sparkles className="w-3.5 h-3.5 text-[#00E5FF]" /> Creative
                 Problem Solving
               </span>
-              <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
+              <span className="flex items-center gap-1.5 border border-white/10 bg-white/5 px-3 py-1.5 font-mono text-xs text-neutral-300 transition-colors hover:border-[#00E5FF]/40">
                 <BrainCircuit className="w-3.5 h-3.5 text-[#00E5FF]" /> 3D
                 Assets & Open Source
               </span>
@@ -512,11 +507,12 @@ const About = () => {
 
         {/* Part 2: Core Competencies Grid */}
         <div ref={competenciesRef} className="mb-32">
-          <div className="text-center mb-12">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+          <div className="mb-12 border-l border-[#00E5FF]/50 pl-4">
+            <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[#00E5FF]">02 // Core Systems</p>
+            <h3 className="mb-3 font-heading text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">
               Core Expertise
             </h3>
-            <p className="text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="max-w-xl text-sm text-neutral-400 md:text-base">
               Key domains and technologies highlighted from my software
               engineering background.
             </p>
@@ -528,7 +524,7 @@ const About = () => {
               return (
                 <div
                   key={idx}
-                  className="competency-card p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00E5FF]/40 backdrop-blur-sm transition-all duration-300 group flex items-start space-x-4"
+                   className="competency-card group flex items-start space-x-4 border border-white/10 bg-black/30 p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#00E5FF]/40 hover:bg-[#00E5FF]/[0.04]"
                 >
                   <div className="p-3 rounded-xl bg-black/50 border border-white/10 text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-all duration-300 shrink-0">
                     <Icon className="w-6 h-6" />
@@ -549,11 +545,12 @@ const About = () => {
 
         {/* Part 3: Professional Journey & Education Timeline */}
         <div ref={timelineRef} className="mb-32 relative">
-          <div className="text-center mb-16">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+          <div className="mb-16 border-l border-[#00E5FF]/50 pl-4">
+            <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[#00E5FF]">03 // Timeline</p>
+            <h3 className="mb-3 font-heading text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">
               Experience & Education
             </h3>
-            <p className="text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="max-w-xl text-sm text-neutral-400 md:text-base">
               My academic path and hands-on industry background.
             </p>
           </div>
@@ -591,7 +588,7 @@ const About = () => {
                     <div
                       className={`w-full pl-16 md:pl-0 md:w-[45%] ${isLeft ? "md:pr-12 md:text-right" : "md:pl-12 md:text-left"}`}
                     >
-                      <div className="timeline-node-card p-6 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 hover:border-[#00E5FF]/40 hover:shadow-[0_0_25px_rgba(0,229,255,0.15)] transition-all duration-300 space-y-3">
+                      <div className="timeline-node-card space-y-3 border border-white/10 bg-black/30 p-6 backdrop-blur-sm transition-all duration-300 hover:border-[#00E5FF]/40 hover:bg-[#00E5FF]/[0.04] hover:shadow-[0_0_25px_rgba(0,229,255,0.15)]">
                         <div
                           className={`flex items-center space-x-2 ${isLeft ? "md:justify-end" : "md:justify-start"}`}
                         >
@@ -640,11 +637,12 @@ const About = () => {
 
         {/* Part 4: Personal Interests / Hobbies */}
         <div ref={hobbiesRef} className="max-w-5xl mx-auto">
-          <div className="text-center mb-14">
-            <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">
+          <div className="mb-14 border-l border-[#00E5FF]/50 pl-4">
+            <p className="mb-2 font-mono text-[10px] uppercase tracking-[0.22em] text-[#00E5FF]">04 // Beyond Work</p>
+            <h3 className="mb-3 font-heading text-2xl font-bold uppercase tracking-tight text-white md:text-3xl">
               Beyond the Code
             </h3>
-            <p className="text-neutral-400 text-sm md:text-base max-w-xl mx-auto">
+            <p className="max-w-xl text-sm text-neutral-400 md:text-base">
               What keeps me inspired and creative outside software development.
             </p>
           </div>
