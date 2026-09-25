@@ -221,25 +221,6 @@ const About = () => {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Lift the About section into the viewport as the hero gives way.
-      if (sectionRef.current) {
-        gsap.fromTo(
-          sectionRef.current,
-          { y: 96, opacity: 0.35 },
-          {
-            y: 0,
-            opacity: 1,
-            ease: "none",
-            scrollTrigger: {
-              trigger: sectionRef.current,
-              start: "top bottom",
-              end: "top 55%",
-              scrub: 0.6,
-            },
-          },
-        );
-      }
-
       // 1. Intro Animation
       if (introRef.current) {
         const tl = gsap.timeline({
