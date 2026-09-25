@@ -54,7 +54,7 @@ export default function SectionHeading({
               duration: 0.8,
               stagger: 0.03,
               ease: "back.out(1.4)",
-            }
+            },
           );
         }
 
@@ -64,7 +64,7 @@ export default function SectionHeading({
             lineRef.current,
             { scaleX: 0 },
             { scaleX: 1, duration: 0.6, ease: "power3.inOut" },
-            "-=0.5"
+            "-=0.5",
           );
         }
 
@@ -74,7 +74,7 @@ export default function SectionHeading({
             subtitleRef.current,
             { opacity: 0, y: 20 },
             { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" },
-            "-=0.4"
+            "-=0.4",
           );
         }
       }
