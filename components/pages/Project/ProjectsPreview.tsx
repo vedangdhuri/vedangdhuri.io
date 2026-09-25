@@ -7,7 +7,6 @@ import Link from "next/link";
 import { projects } from "@/data/projects";
 import { kebabCase } from "@/utils/utils";
 import { ArrowUpRight } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -43,7 +42,7 @@ const ProjectCard = ({
       href={`/projects/${kebabCase(project.title)}`}
       ref={cardRef}
       onMouseMove={handleMouseMove}
-      className={`bento-card group relative flex flex-col bg-white/[0.015] border border-white/[0.05] hover:border-white/[0.1] rounded-2xl overflow-hidden backdrop-blur-md transition-all duration-700 cursor-pointer ${className}`}
+      className={`bento-card group relative flex flex-col overflow-hidden border border-white/10 bg-black/35 backdrop-blur-md transition-all duration-700 hover:border-[#00E5FF]/45 hover:bg-[#00E5FF]/[0.035] cursor-pointer ${className}`}
     >
       {/* Dynamic Hover Gradient (Glass Shimmer) */}
       <div
@@ -71,12 +70,12 @@ const ProjectCard = ({
         <div className="absolute top-5 left-5 right-5 flex items-start justify-between">
           <div className="flex flex-wrap gap-2">
             {index === 0 && (
-              <span className="px-3 py-1 bg-white/10 text-white text-[10px] font-semibold tracking-widest uppercase rounded-full backdrop-blur-md border border-white/10 shadow-xl">
+              <span className="border border-white/15 bg-black/45 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-white backdrop-blur-md shadow-xl">
                 Featured
               </span>
             )}
             {project.liveUrl && (
-              <span className="px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-semibold tracking-widest uppercase rounded-full backdrop-blur-md border border-emerald-500/20 flex items-center gap-1.5 shadow-xl">
+              <span className="flex items-center gap-1.5 border border-emerald-500/25 bg-emerald-500/10 px-3 py-1 text-[10px] font-semibold uppercase tracking-widest text-emerald-400 backdrop-blur-md shadow-xl">
                 <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
                 Live
               </span>
@@ -84,7 +83,7 @@ const ProjectCard = ({
           </div>
           
           {/* Arrow Icon */}
-          <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-white/10 group-hover:text-white transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 backdrop-blur-md shadow-xl">
+          <div className="flex h-9 w-9 items-center justify-center border border-white/10 bg-black/45 text-white/50 shadow-xl backdrop-blur-md transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 group-hover:border-[#00E5FF]/50 group-hover:bg-[#00E5FF]/15 group-hover:text-[#00E5FF]">
             <ArrowUpRight size={16} />
           </div>
         </div>
@@ -106,13 +105,13 @@ const ProjectCard = ({
             {project.techStack.slice(0, index === 0 ? 6 : 3).map((tech) => (
               <span
                 key={tech}
-                className="px-2.5 py-1 text-[10px] font-medium bg-black/40 text-neutral-300 rounded-md border border-white/10 backdrop-blur-md"
+                className="border border-white/10 bg-black/45 px-2.5 py-1 text-[10px] font-medium text-neutral-300 backdrop-blur-md"
               >
                 {tech}
               </span>
             ))}
             {project.techStack.length > (index === 0 ? 6 : 3) && (
-              <span className="px-2.5 py-1 text-[10px] font-medium bg-black/40 text-neutral-500 rounded-md border border-white/10 backdrop-blur-md">
+              <span className="border border-white/10 bg-black/45 px-2.5 py-1 text-[10px] font-medium text-neutral-500 backdrop-blur-md">
                 +{project.techStack.length - (index === 0 ? 6 : 3)}
               </span>
             )}
@@ -187,22 +186,34 @@ export default function ProjectsPreview() {
   };
 
   return (
-    <section id="projects" className="relative py-24 md:py-32 px-4 sm:px-6 overflow-hidden">
-      <div className="max-w-7xl mx-auto relative z-10">
+    <section id="projects" className="relative isolate overflow-hidden border-y border-white/5 bg-[#07090d] px-4 py-24 text-white sm:px-6 md:py-32">
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background-image:linear-gradient(rgba(0,229,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,255,0.045)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div className="pointer-events-none absolute right-[-12rem] top-1/4 -z-10 h-96 w-96 rounded-full bg-[#00E5FF]/10 blur-[140px]" />
+
+      <div className="relative z-10 mx-auto max-w-7xl">
         
         {/* Header */}
-        <SectionHeading 
-          title="Selected Works"
-          subtitle="A collection of robust, scalable applications and experiences crafted with modern web technologies and a focus on premium design."
-          alignment="center"
-          className="mb-16 md:mb-24"
-        />
+        <header className="mb-16 border-b border-white/10 pb-8 md:mb-20 md:flex md:items-end md:justify-between md:gap-10">
+          <div>
+            <div className="mb-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#00E5FF]">
+              <span className="h-2 w-2 rounded-full bg-[#00E5FF] shadow-[0_0_12px_rgba(0,229,255,0.9)]" />
+              03 // Project Archive
+            </div>
+            <h2 className="font-heading text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl md:text-6xl">
+              Selected <span className="text-[#00E5FF]">Works</span>
+            </h2>
+          </div>
+          <p className="mt-5 max-w-sm font-mono text-xs uppercase leading-relaxed tracking-[0.14em] text-white/45 md:mt-0 md:text-right">
+            Robust, scalable products built with modern web technologies and a focus on thoughtful user experience.
+          </p>
+        </header>
 
         {/* Bento Box Grid */}
-        <div
-          ref={gridRef}
-          className="grid grid-cols-1 md:grid-cols-3 auto-rows-[minmax(0,1fr)] gap-4 md:gap-5 mb-16"
-        >
+        <div className="mb-6 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#00E5FF]">
+          <span className="h-px w-8 bg-[#00E5FF]" />
+          Featured Deployments
+        </div>
+        <div ref={gridRef} className="mb-16 grid auto-rows-[minmax(0,1fr)] grid-cols-1 gap-4 md:grid-cols-3 md:gap-5">
           {displayProjects.map((project, i) => (
             <ProjectCard
               key={project.title}
@@ -218,7 +229,7 @@ export default function ProjectsPreview() {
           <Link
             ref={btnRef as React.RefObject<HTMLAnchorElement>}
             href="/projects"
-            className="group opacity-0 flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-white bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300"
+            className="group flex items-center gap-2 border border-white/15 bg-white/[0.03] px-7 py-3.5 text-sm font-medium text-white opacity-0 transition-all duration-300 hover:border-[#00E5FF]/50 hover:bg-[#00E5FF]/10 hover:text-[#00E5FF]"
           >
             View All Projects
             <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
