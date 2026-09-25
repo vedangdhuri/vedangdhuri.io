@@ -8,7 +8,6 @@ import { SplitText } from "gsap/SplitText";
 import { courseLinks } from "@/data/course_links";
 import { getDeviceTier } from "@/utils/useDeviceTier";
 import { ExternalLink, Award, BookOpen, Zap } from "lucide-react";
-import SectionHeading from "@/components/ui/SectionHeading";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -53,9 +52,9 @@ const ROW_2 = courseLinks.slice(10, 20);
 function MarqueeStrip() {
   const items = [...courseLinks, ...courseLinks];
   return (
-    <div className="relative overflow-hidden py-4 border-y border-white/5 mb-16">
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-24 z-10 bg-gradient-to-r from-[#0A0A0A] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-24 z-10 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
+    <div className="relative mb-16 overflow-hidden border-y border-white/10 py-4">
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-24 bg-gradient-to-r from-[#07090d] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-24 bg-gradient-to-l from-[#07090d] to-transparent" />
       <div className="flex gap-8 animate-marquee whitespace-nowrap">
         {items.map((cert, idx) => (
           <span
@@ -85,7 +84,7 @@ function BadgeCard({ title, link, img }: BadgeCardProps) {
       target="_blank"
       rel="noopener noreferrer"
       aria-label={`View badge: ${title}`}
-      className="group relative flex-shrink-0 flex items-center justify-center p-2 cursor-pointer transition-transform duration-300 hover:scale-105"
+      className="group relative flex flex-shrink-0 cursor-pointer items-center justify-center border border-white/10 bg-black/35 p-2 transition-all duration-300 hover:scale-105 hover:border-[#00E5FF]/45 hover:bg-[#00E5FF]/[0.04]"
     >
       <div
         className="badge-img-wrap relative w-44 h-44 sm:w-52 sm:h-52 md:w-60 md:h-60 lg:w-64 lg:h-64 flex-shrink-0 drop-shadow-[0_0_20px_rgba(0,229,255,0.15)] group-hover:drop-shadow-[0_0_35px_rgba(0,229,255,0.45)] transition-all duration-300"
@@ -116,8 +115,8 @@ function MarqueeRow({ certs, direction, rowRef }: MarqueeRowProps) {
   return (
     <div className="relative overflow-hidden">
       {/* Edge fades */}
-      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-24 md:w-32 z-10 bg-gradient-to-r from-[#0A0A0A] to-transparent" />
-      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-24 md:w-32 z-10 bg-gradient-to-l from-[#0A0A0A] to-transparent" />
+      <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-16 bg-gradient-to-r from-[#07090d] to-transparent sm:w-24 md:w-32" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-16 bg-gradient-to-l from-[#07090d] to-transparent sm:w-24 md:w-32" />
 
       <div
         ref={rowRef}
@@ -257,36 +256,38 @@ export default function CertificationsSection() {
     <section
       ref={sectionRef}
       id="certifications"
-      className="relative z-10"
+      className="relative isolate overflow-hidden border-y border-white/5 bg-[#07090d] py-24 text-white md:py-32"
     >
+      <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background-image:linear-gradient(rgba(0,229,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,255,0.045)_1px,transparent_1px)] [background-size:48px_48px]" />
+      <div className="pointer-events-none absolute left-1/2 top-20 -z-10 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-[#00E5FF]/10 blur-[130px]" />
       {/* ── Inner container for non-pinned content ── */}
-      <div className="container mx-auto px-4 pt-16">
+      <div className="container mx-auto max-w-7xl px-6">
 
         {/* Section heading */}
-        <div className="text-center mb-12">
-          <SectionHeading 
-            title="Certifications & Achievements"
-            subtitle={
-              <>
-                Verified credentials earned through the{" "}
-                <span className="text-[#00E5FF]/80">Google Cloud Skills Boost</span>{" "}
-                platform{" — "}spanning AI, data engineering, cloud infrastructure, and security.
-              </>
-            }
-            alignment="center"
-            className="!mb-0"
-          />
-        </div>
+        <header className="mb-16 border-b border-white/10 pb-8 md:mb-20 md:flex md:items-end md:justify-between md:gap-10">
+          <div>
+            <div className="mb-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#00E5FF]">
+              <span className="h-2 w-2 rounded-full bg-[#00E5FF] shadow-[0_0_12px_rgba(0,229,255,0.9)]" />
+              04 // Credentials Vault
+            </div>
+            <h2 className="font-heading text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl md:text-6xl">
+              Certifications <span className="text-[#00E5FF]">&amp; Achievements</span>
+            </h2>
+          </div>
+          <p className="mt-5 max-w-sm font-mono text-xs uppercase leading-relaxed tracking-[0.14em] text-white/45 md:mt-0 md:text-right">
+            Verified Google Cloud credentials spanning AI, data engineering, cloud infrastructure, and security.
+          </p>
+        </header>
 
         {/* Stats bar */}
         <div
           ref={statsRef}
-          className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-12"
+          className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-3"
         >
           {STATS.map((stat, i) => (
             <div
               key={i}
-              className="flex flex-col items-center gap-2 border border-white/8 bg-white/[0.03] backdrop-blur-sm px-6 py-5"
+              className="flex flex-col items-center gap-2 border border-white/10 bg-black/30 px-6 py-5 backdrop-blur-sm transition-colors duration-300 hover:border-[#00E5FF]/40 hover:bg-[#00E5FF]/[0.04]"
             >
               <span className={`${stat.color} mb-1`}>{stat.icon}</span>
               <span
@@ -307,7 +308,7 @@ export default function CertificationsSection() {
       </div>
 
       {/* ── Two-row certificate marquee ───────────────────────────────────── */}
-      <div ref={rowsWrapRef} className="relative py-8 md:py-12 space-y-6 md:space-y-8">
+      <div ref={rowsWrapRef} className="relative space-y-6 border-y border-white/10 py-8 md:space-y-8 md:py-12">
         {/* Row 1 — scrolls left */}
         <MarqueeRow certs={ROW_1} direction="left" rowRef={row1Ref} />
 
@@ -321,7 +322,7 @@ export default function CertificationsSection() {
           href="https://www.skills.google/public_profiles/dd4f0778-2e40-45dc-a7b1-a0df3a2ee621"
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-2 text-xs font-mono tracking-[2px] uppercase text-white/40 hover:text-[#00E5FF] transition-colors duration-200 border border-white/10 hover:border-[#00E5FF]/30 px-6 py-3 cursor-pointer"
+          className="group inline-flex cursor-pointer items-center gap-2 border border-white/15 bg-white/[0.03] px-6 py-3 font-mono text-xs uppercase tracking-[2px] text-white/55 transition-colors duration-200 hover:border-[#00E5FF]/50 hover:bg-[#00E5FF]/10 hover:text-[#00E5FF]"
         >
           View Full Profile on Google Skills
           <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
