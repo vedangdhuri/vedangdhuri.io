@@ -153,7 +153,7 @@ const SkillCard = ({
       className={`h-full ${className || ""}`}
       style={{ opacity: 0, perspective: "800px" }}
     >
-      <Card className="group relative z-10 h-full overflow-hidden rounded-none border border-white/10 bg-black/30 backdrop-blur-md transition-all duration-500 hover:border-[#00E5FF]/40 hover:bg-[#00E5FF]/[0.02] hover:shadow-[0_10px_30px_-15px_rgba(0,229,255,0.2)] sm:rounded-sm">
+      <Card className="group relative overflow-hidden bg-indigo-950/20 backdrop-blur-sm border-white/10 hover:scale-[1.02] transition-all duration-300 hover:shadow-xl hover:shadow-[#00E5FF]/15 z-10 hover:border-[#00E5FF]/40 h-full">
         {/* Dynamic Interactive Cursor Spotlight Glow */}
         <div
           className="pointer-events-none absolute -inset-px rounded-xl opacity-0 transition-opacity duration-500 z-30"
@@ -164,36 +164,32 @@ const SkillCard = ({
           }}
         />
 
-        <div className="absolute inset-0 bg-gradient-to-br from-[#00E5FF]/5 to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100 pointer-events-none" />
+        {/* Shimmer effect overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[rgba(0,229,255,0.05)] to-transparent group-hover:via-[rgba(0,229,255,0.15)] animate-shimmer pointer-events-none" />
 
-        <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-white/20 transition-colors group-hover:border-[#00E5FF]/50 pointer-events-none" />
-        <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-white/20 transition-colors group-hover:border-[#00E5FF]/50 pointer-events-none" />
-        <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-white/20 transition-colors group-hover:border-[#00E5FF]/50 pointer-events-none" />
-        <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-white/20 transition-colors group-hover:border-[#00E5FF]/50 pointer-events-none" />
-        
         {/* Terminal Header */}
         <div className="flex items-center justify-between px-5 py-3 border-b border-white/5 bg-white/[0.02] relative z-10">
           <div className="flex items-center gap-2">
-            <span className="text-[10px] font-mono text-[#00E5FF]/70 tracking-widest font-bold uppercase">
-              CMD_ [{title.toLowerCase().replace(/\s+/g, "_")}]
+            <span className="text-[10px] font-mono text-gray-500 tracking-wider font-bold uppercase">
+              {">"}_ {title.toLowerCase().replace(/\s+/g, "_")}
             </span>
           </div>
-          <div className="flex gap-1.5 opacity-50 transition-opacity group-hover:opacity-100">
-            <span className="w-1 h-3 bg-white/20 transition-colors duration-300 group-hover:bg-[#00E5FF]/40" />
-            <span className="w-1 h-3 bg-white/20 transition-colors duration-300 group-hover:bg-[#00E5FF]/60" />
-            <span className="w-1 h-3 bg-white/20 transition-colors duration-300 group-hover:bg-[#00E5FF]/80" />
+          <div className="flex gap-1.5">
+            <span className="w-2 h-2 rounded-full bg-red-500/40 group-hover:bg-red-500/70 transition-colors duration-300" />
+            <span className="w-2 h-2 rounded-full bg-yellow-500/40 group-hover:bg-yellow-500/70 transition-colors duration-300" />
+            <span className="w-2 h-2 rounded-full bg-green-500/40 group-hover:bg-green-500/70 transition-colors duration-300" />
           </div>
         </div>
-        
+
         <CardContent className="p-6 relative z-10 cursor-target h-full">
           <div className="flex flex-col h-full">
             <div className="flex items-center gap-4 mb-6">
               <div
-                className={`p-2.5 bg-black/50 border border-white/10 ${color} group-hover:text-[#00E5FF] group-hover:border-[#00E5FF]/30 transition-all duration-300 shadow-md group-hover:shadow-[0_0_15px_rgba(0,229,255,0.2)]`}
+                className={`p-3 rounded-xl bg-white/5 ${color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-md group-hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]`}
               >
-                <Icon className="w-6 h-6" />
+                <Icon className="w-8 h-8" />
               </div>
-              <h3 className="text-xl font-bold tracking-tight text-white transition-colors duration-300 group-hover:text-[#00E5FF]">
+              <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:to-[#00E5FF] transition-all duration-300">
                 {title}
               </h3>
             </div>
@@ -205,12 +201,12 @@ const SkillCard = ({
                 <Badge
                   key={idx}
                   variant="outline"
-                  className="group/badge relative bg-white/[0.03] hover:bg-[#00E5FF]/10 text-gray-300 hover:text-white border-white/10 flex items-center gap-2 py-1.5 px-3 transition-all duration-300 hover:scale-105 hover:border-[#00E5FF]/40 h-fit rounded-none"
+                  className="group/badge relative bg-white/5 hover:bg-white/10 text-gray-100 border-white/10 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00E5FF]/20 hover:-translate-y-0.5 hover:border-[#00E5FF]/40 h-fit"
                 >
-                  <span className="opacity-80 transition-all duration-300 group-hover/badge:scale-110 group-hover/badge:opacity-100">
+                  <span className="transform group-hover/badge:scale-110 group-hover/badge:rotate-12 transition-transform duration-300">
                     {skill.icon}
                   </span>
-                  <span className="font-mono text-xs font-medium tracking-wide">{skill.name}</span>
+                  <span className="font-medium">{skill.name}</span>
                 </Badge>
               ))}
             </div>
@@ -374,64 +370,53 @@ const SkillsSection = () => {
       className="relative isolate overflow-hidden border-y border-white/5 bg-[#07090d] py-24 text-white md:py-32"
     >
       <div className="pointer-events-none absolute inset-0 -z-10 opacity-40 [background-image:linear-gradient(rgba(0,229,255,0.045)_1px,transparent_1px),linear-gradient(90deg,rgba(0,229,255,0.045)_1px,transparent_1px)] [background-size:48px_48px]" />
-      <div className="pointer-events-none absolute right-1/4 top-1/4 -z-10 h-96 w-96 rounded-full bg-[#0E0E0E] shadow-[0_0_150px_100px_#00E5FF15]" />
+      <div className="pointer-events-none absolute left-1/2 top-24 -z-10 h-80 w-[36rem] -translate-x-1/2 rounded-full bg-[#00E5FF]/10 blur-[130px]" />
 
       <div className="container relative z-10 mx-auto max-w-7xl px-6">
         <header className="mb-16 border-b border-white/10 pb-8 md:mb-20 md:flex md:items-end md:justify-between md:gap-10">
           <div>
             <div className="mb-4 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.24em] text-[#00E5FF]">
               <span className="h-2 w-2 rounded-full bg-[#00E5FF] shadow-[0_0_12px_rgba(0,229,255,0.9)]" />
-              02 // Systems Architecture
+              02 // Capabilities Matrix
             </div>
             <h2 className="font-heading text-4xl font-black uppercase leading-none tracking-tight text-white sm:text-5xl md:text-6xl">
-              Skills & <span className="text-[#00E5FF]">Expertise</span>
+              Skills <span className="text-[#00E5FF]">&amp; Expertise</span>
             </h2>
           </div>
           <p className="mt-5 max-w-sm font-mono text-xs uppercase leading-relaxed tracking-[0.14em] text-white/45 md:mt-0 md:text-right">
-            A comprehensive overview of my technical skills and proficiency
-            levels across multiple domains.
+            The technologies and creative tools I use to turn complex ideas into reliable digital products.
           </p>
         </header>
 
-        <div className="flex flex-col items-start gap-12 lg:flex-row lg:gap-8">
-          <div className="relative flex w-full flex-col items-center justify-center lg:sticky lg:top-32 lg:w-5/12">
-            <div className="relative mx-auto aspect-square w-full max-w-[500px] overflow-hidden rounded-full border border-[#00E5FF]/20 bg-black/40 shadow-[0_0_60px_-15px_rgba(0,229,255,0.3)] backdrop-blur-xl">
-              <div className="pointer-events-none absolute inset-0 z-10 rounded-full bg-gradient-to-br from-[#00E5FF]/5 to-transparent" />
-              <div className="absolute inset-4 rounded-full border border-white/5 animate-[spin_60s_linear_infinite]" />
-              <div className="absolute inset-10 rounded-full border border-dashed border-white/5 animate-[spin_40s_linear_infinite_reverse]" />
-              <div className="absolute inset-0 flex scale-90 items-center justify-center sm:scale-100">
-                <GlobeDemo />
-              </div>
-            </div>
+        {/* 3D Icon Globe Demo — component preserved */}
+        <div className="relative mb-16 flex items-center justify-center border-y border-white/10 py-8 md:py-10">
+          <span className="absolute left-0 top-4 font-mono text-[10px] uppercase tracking-[0.2em] text-white/30">
+            Interactive Skill Orbit
+          </span>
+          <span className="absolute bottom-4 right-0 font-mono text-[10px] uppercase tracking-[0.2em] text-[#00E5FF]/70">
+            Live Stack Overview
+          </span>
+          <GlobeDemo />
+        </div>
 
-            <div className="mt-8 w-full px-4 text-center">
-              <p className="mb-3 font-mono text-[11px] uppercase tracking-[0.3em] text-[#00E5FF]">
-                &lt; Active Technologies /&gt;
-              </p>
-              <div className="h-px w-full bg-gradient-to-r from-transparent via-white/15 to-transparent" />
-            </div>
+        {/* Skill cards — component designs preserved */}
+        <div>
+          <div className="mb-8 flex items-center gap-3 font-mono text-[10px] font-semibold uppercase tracking-[0.22em] text-[#00E5FF]">
+            <span className="h-px w-8 bg-[#00E5FF]" />
+            Skill Modules
           </div>
-
-          <div className="grid w-full auto-rows-max grid-cols-1 gap-5 sm:grid-cols-2 lg:w-7/12 lg:pl-10">
-            {skillCategories.map((category, index) => {
-              const translateYClass =
-                index % 2 === 0 ? "sm:-translate-y-8" : "sm:translate-y-8";
-
-              return (
-                <div
-                  key={category.title}
-                  className={`w-full ${index > 1 ? translateYClass : ""}`}
-                >
-                  <SkillCard
-                    index={index}
-                    icon={category.icon}
-                    title={category.title}
-                    skills={category.skills}
-                    color={category.color}
-                  />
-                </div>
-              );
-            })}
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+            {skillCategories.map((category, index) => (
+              <SkillCard
+                key={index}
+                index={index}
+                icon={category.icon}
+                title={category.title}
+                skills={category.skills}
+                color={category.color}
+                className="col-span-1"
+              />
+            ))}
           </div>
         </div>
       </div>
