@@ -1,6 +1,17 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  experimental: {
+    // Tree-shake react-icons — only bundle the specific icons imported
+    optimizePackageImports: [
+      "react-icons/fa",
+      "react-icons/si",
+      "react-icons/tb",
+      "react-icons/bs",
+      "react-icons/md",
+      "react-icons/ri",
+    ],
+  },
   async headers() {
     return [
       {
@@ -30,5 +41,6 @@ const nextConfig: NextConfig = {
 };
 
 export default nextConfig;
+
 
 
