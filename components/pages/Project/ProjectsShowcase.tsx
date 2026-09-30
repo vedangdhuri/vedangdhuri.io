@@ -190,9 +190,10 @@ export default function ProjectsShowcase({ projects }: ProjectsShowcaseProps) {
         <Link
           ref={backRef}
           href="/"
+          aria-label="Back to Home"
           className="inline-flex items-center gap-2 text-neutral-500 hover:text-[#00E5FF] transition-colors duration-300 mb-12 group opacity-0"
         >
-          <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
+          <ArrowLeft aria-hidden="true" className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
           <span className="text-xs font-mono tracking-widest uppercase">
             Home
           </span>

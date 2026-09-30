@@ -169,9 +169,10 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
         <Link
           ref={backRef}
           href="/projects"
+          aria-label="Back to Projects"
           className="inline-flex items-center gap-2 text-neutral-500 hover:text-[#00E5FF] transition-colors duration-300 mb-10 group opacity-0"
         >
-          <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
+          <ArrowLeft aria-hidden="true" className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1" />
           <span className="text-xs font-mono tracking-widest uppercase">
             Back to Projects
           </span>
@@ -233,7 +234,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-black bg-[#00E5FF] rounded-xl hover:bg-[#00E5FF]/90 hover:shadow-[0_0_30px_rgba(0,229,255,0.25)] transition-all duration-300 cursor-pointer"
               >
-                <Github className="w-4 h-4" />
+                <Github aria-hidden="true" className="w-4 h-4" />
                 View on GitHub
               </a>
             </Magnet>
@@ -245,7 +246,7 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
                   rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-white/80 bg-white/[0.04] border border-white/[0.08] rounded-xl hover:bg-white/[0.08] hover:border-white/[0.15] hover:text-white transition-all duration-300 cursor-pointer"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink aria-hidden="true" className="w-4 h-4" />
                   Live Demo
                 </a>
               </Magnet>
