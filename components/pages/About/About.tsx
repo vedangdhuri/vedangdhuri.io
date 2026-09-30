@@ -476,15 +476,15 @@ const About = () => {
 
             <div className="philosophy-text flex flex-wrap gap-2.5 pt-1">
               <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
-                <Code2 className="w-3.5 h-3.5 text-[#00E5FF]" /> Full Stack
+                <Code2 aria-hidden="true" className="w-3.5 h-3.5 text-[#00E5FF]" /> Full Stack
                 Architect
               </span>
               <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
-                <Sparkles className="w-3.5 h-3.5 text-[#00E5FF]" /> Creative
+                <Sparkles aria-hidden="true" className="w-3.5 h-3.5 text-[#00E5FF]" /> Creative
                 Problem Solving
               </span>
               <span className="px-3 py-1.5 rounded-lg text-xs font-mono bg-white/5 border border-white/10 text-neutral-300 flex items-center gap-1.5 hover:border-[#00E5FF]/40 transition-colors">
-                <BrainCircuit className="w-3.5 h-3.5 text-[#00E5FF]" /> 3D
+                <BrainCircuit aria-hidden="true" className="w-3.5 h-3.5 text-[#00E5FF]" /> 3D
                 Assets & Open Source
               </span>
             </div>
@@ -493,17 +493,19 @@ const About = () => {
             <div className="philosophy-text flex flex-wrap items-center gap-3 pt-3">
               <Link
                 href="/resume"
+                aria-label="View Full Resume"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-cyan-500 to-[#00E5FF] text-white font-semibold text-xs font-mono uppercase tracking-[0.15em] shadow-[0_0_20px_rgba(0,229,255,0.25)] hover:shadow-[0_0_30px_rgba(0,229,255,0.4)] hover:scale-[1.02] active:scale-[0.98] transition-all"
               >
-                <FileText className="w-4 h-4" />
+                <FileText aria-hidden="true" className="w-4 h-4" />
                 <span>View Full Resume</span>
               </Link>
               <a
                 href="/Resume/Vedang_Dhuri_Resume.pdf"
                 download="Vedang_Dhuri_Resume.pdf"
+                aria-label="Download Vedang Dhuri Resume PDF"
                 className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/5 border border-white/10 hover:border-[#00E5FF]/40 text-neutral-300 hover:text-white font-medium text-xs font-mono uppercase tracking-[0.15em] hover:bg-white/10 transition-all"
               >
-                <Download className="w-4 h-4 text-[#00E5FF]" />
+                <Download aria-hidden="true" className="w-4 h-4 text-[#00E5FF]" />
                 <span>Download PDF</span>
               </a>
             </div>
@@ -531,7 +533,7 @@ const About = () => {
                   className="competency-card p-6 rounded-2xl bg-white/5 border border-white/10 hover:border-[#00E5FF]/40 backdrop-blur-sm transition-all duration-300 group flex items-start space-x-4"
                 >
                   <div className="p-3 rounded-xl bg-black/50 border border-white/10 text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-all duration-300 shrink-0">
-                    <Icon className="w-6 h-6" />
+                    <Icon aria-hidden="true" className="w-6 h-6" />
                   </div>
                   <div className="space-y-1">
                     <h4 className="text-lg font-bold text-white group-hover:text-[#00E5FF] transition-colors">
@@ -584,7 +586,7 @@ const About = () => {
                   >
                     {/* Timeline Node Icon */}
                     <div className="timeline-node-icon absolute left-6 md:left-1/2 -translate-x-1/2 w-9 h-9 rounded-full bg-black border-2 border-[#00E5FF] z-10 flex items-center justify-center text-[#00E5FF] transition-shadow duration-500">
-                      <Icon className="w-4 h-4" />
+                      <Icon aria-hidden="true" className="w-4 h-4" />
                     </div>
 
                     {/* Content Card */}
