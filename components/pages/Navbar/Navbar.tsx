@@ -228,16 +228,14 @@ export const Navbar = () => {
       >
         <div className="flex gap-2 relative z-10">
           {navItems.map((item, key) => (
-            <Link key={key} href={item.href} passHref legacyBehavior>
-              <a>
-                <MagneticItem
-                  isActive={activeLink === item.href}
-                  text={item.text}
-                  onClick={() => handleNavClick(item.href)}
-                >
-                  {item.logo}
-                </MagneticItem>
-              </a>
+            <Link key={key} href={item.href} aria-label={item.text}>
+              <MagneticItem
+                isActive={activeLink === item.href}
+                text={item.text}
+                onClick={() => handleNavClick(item.href)}
+              >
+                {item.logo}
+              </MagneticItem>
             </Link>
           ))}
         </div>
@@ -253,7 +251,7 @@ export const Navbar = () => {
           className="p-3 rounded-[20px] bg-[#0A0A0A]/60 backdrop-blur-sm border border-white/20 text-white shadow-[0_25px_50px_-12px_rgba(0,0,0,0.25),0_0_8px_0_rgba(0,229,255,0.3)] focus:outline-none hover:bg-white/10 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center justify-center cursor-pointer"
           aria-label="Toggle Menu"
         >
-          {isOpen ? <X size={24} /> : <Menu size={24} />}
+          {isOpen ? <X aria-hidden="true" size={24} /> : <Menu aria-hidden="true" size={24} />}
         </button>
       </div>
 
@@ -317,10 +315,15 @@ export const Navbar = () => {
                     )}
 
                     <span className="relative z-10 flex items-center gap-5 w-full">
-                      <span className={cn(
-                        "flex-shrink-0 transition-transform duration-200 group-hover:scale-110",
-                        activeLink === item.href ? "text-[#00E5FF]" : ""
-                      )}>{item.logo}</span>
+                      <span
+                        aria-hidden="true"
+                        className={cn(
+                          "flex-shrink-0 transition-transform duration-200 group-hover:scale-110",
+                          activeLink === item.href ? "text-[#00E5FF]" : ""
+                        )}
+                      >
+                        {item.logo}
+                      </span>
                       <span className="font-semibold tracking-wide">{item.text}</span>
                     </span>
                   </Link>
