@@ -1,10 +1,10 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { ArrowDownRight, Zap, Code2, X } from "lucide-react";
+import { ArrowDownRight, Zap, Code2 } from "lucide-react";
 import { FaGithub, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 import { useDeviceTier } from "@/utils/useDeviceTier";
 
@@ -499,12 +499,13 @@ const Hero = () => {
             {/* Resume CTA */}
             <motion.a
               href="/resume"
+              aria-label="View Resume"
               className="group flex items-center gap-3 text-sm font-mono text-white/70 hover:text-white transition-all duration-300 uppercase tracking-[0.15em] cursor-pointer"
               whileHover={{ x: 4 }}
             >
               Resume
               <span className="flex items-center justify-center w-8 h-8 rounded-full border border-white/20 group-hover:border-white/50 group-hover:bg-white/5 transition-all duration-300">
-                <ArrowDownRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-300" />
+                <ArrowDownRight aria-hidden="true" className="w-4 h-4 group-hover:translate-x-0.5 group-hover:translate-y-0.5 transition-transform duration-300" />
               </span>
             </motion.a>
           </div>
@@ -519,7 +520,7 @@ const Hero = () => {
         whileTap={{ scale: 0.9 }}
         aria-label="Scroll down"
       >
-        <ArrowDownRight className="w-5 h-5" />
+        <ArrowDownRight aria-hidden="true" className="w-5 h-5" />
       </motion.a>
     </section>
   );
