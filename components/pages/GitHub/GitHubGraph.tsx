@@ -74,9 +74,10 @@ export default function GitHubGraph() {
                 href="https://github.com/vedangdhuri"
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label="Visit Vedang's GitHub Profile"
                 className="text-white/30 hover:text-[#3fb950] transition-colors"
               >
-                <ExternalLink className="w-4 h-4" />
+                <ExternalLink aria-hidden="true" className="w-4 h-4" />
               </a>
             </div>
 
@@ -111,6 +112,7 @@ export default function GitHubGraph() {
             href="https://github.com/vedangdhuri"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="View Vedang's GitHub profile and statistics"
             className="bento-item opacity-0 md:col-span-4 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-5 md:p-6 flex flex-col justify-center items-center hover:border-[#3fb950]/30 hover:bg-white/[0.03] transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(63,185,80,0.1)]"
           >
             <img
@@ -126,6 +128,7 @@ export default function GitHubGraph() {
             href="https://github.com/vedangdhuri"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="View Vedang's GitHub top programming languages"
             className="bento-item opacity-0 md:col-span-4 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-5 md:p-6 flex flex-col justify-center items-center hover:border-[#3fb950]/30 hover:bg-white/[0.03] transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(63,185,80,0.1)]"
           >
             <img
@@ -141,6 +144,7 @@ export default function GitHubGraph() {
             href="https://github.com/vedangdhuri"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="View Vedang's GitHub contribution streak"
             className="bento-item opacity-0 md:col-span-4 group relative rounded-3xl border border-white/[0.05] bg-white/[0.015] backdrop-blur-xl p-5 md:p-6 flex flex-col justify-center items-center hover:border-[#3fb950]/30 hover:bg-white/[0.03] transition-all duration-500 shadow-xl hover:shadow-[0_0_30px_rgba(63,185,80,0.1)]"
           >
             <img
@@ -177,10 +181,11 @@ export default function GitHubGraph() {
             href="https://github.com/vedangdhuri"
             target="_blank"
             rel="noopener noreferrer"
+            aria-label="Explore Vedang's repositories on GitHub"
             className="group inline-flex items-center gap-2 text-xs font-mono tracking-[2px] uppercase text-white/40 hover:text-[#3fb950] transition-colors duration-200 border border-white/10 hover:border-[#3fb950]/30 px-6 py-3 rounded-full cursor-pointer bg-white/[0.02] backdrop-blur-sm hover:bg-[#3fb950]/5"
           >
             Explore Repositories
-            <ExternalLink className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
+            <ExternalLink aria-hidden="true" className="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200" />
           </a>
         </div>
       </div>
