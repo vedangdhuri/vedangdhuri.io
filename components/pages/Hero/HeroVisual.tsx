@@ -171,9 +171,11 @@ export function HeroVisual() {
                       ?.url
                   }
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Vedang's GitHub profile"
                   className="block"
                 >
-                  <Github size={32} />
+                  <Github aria-hidden="true" size={32} />
                 </a>
               </div>
               <motion.h1
@@ -200,9 +202,11 @@ export function HeroVisual() {
                       ?.url
                   }
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Vedang's LinkedIn profile"
                   className="block"
                 >
-                  <Linkedin size={32} />
+                  <Linkedin aria-hidden="true" size={32} />
                 </a>
               </div>
               <div
@@ -215,9 +219,11 @@ export function HeroVisual() {
                       ?.url
                   }
                   target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Vedang's Instagram profile"
                   className="block"
                 >
-                  <Instagram size={32} />
+                  <Instagram aria-hidden="true" size={32} />
                 </a>
               </div>
               <motion.h1
@@ -262,7 +268,7 @@ export function HeroVisual() {
             >
               <span className="">&amp;</span>
               <div ref={botRef} className="mx-[0.05em] relative">
-                <Code2 className="w-[0.85em] h-[0.85em] text-indigo-400 fill-indigo-400/10" />
+                <Code2 aria-hidden="true" className="w-[0.85em] h-[0.85em] text-indigo-400 fill-indigo-400/10" />
               </div>
               <span className="">DESIGNER</span>
             </motion.h1>
@@ -286,13 +292,13 @@ export function HeroVisual() {
             <div className="text-[10px] md:text-xs whitespace-nowrap font-bold tracking-[0.3em] text-white/40 uppercase">
               MAHARASHTRA, IN — {new Date().getFullYear()}
             </div>
-            <Link href="/resume" className="group flex items-center">
+            <Link href="/resume" aria-label="View Resume" className="group flex items-center">
               <motion.div className="relative flex items-center bg-zinc-100 dark:bg-white h-12 w-12 group-hover:w-44 rounded-full transition-all duration-500 ease-[0.23,1,0.32,1] overflow-hidden shadow-xl">
                 <span className="whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-200 group-hover:delay-150 text-[10px] font-black uppercase tracking-widest text-zinc-900 dark:text-black pl-6 pr-12">
                   View Resume
                 </span>
                 <div className="absolute right-0 flex items-center justify-center size-12 text-zinc-900 dark:text-black group-hover:rotate-45 transition-transform duration-500">
-                  <ArrowDownRight className="w-5 h-5" />
+                  <ArrowDownRight aria-hidden="true" className="w-5 h-5" />
                 </div>
               </motion.div>
             </Link>

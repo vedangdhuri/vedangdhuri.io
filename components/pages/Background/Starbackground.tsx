@@ -7,6 +7,9 @@ export const StarBackground = () => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+    const container = containerRef.current;
+    if (!container) return;
+
     const tier = getDeviceTier();
 
     // Tier 2 = prefers-reduced-motion → skip all animations
@@ -48,7 +51,7 @@ export const StarBackground = () => {
     layers.forEach((layer) => {
       const layerDiv = document.createElement("div");
       layerDiv.className = `absolute inset-0 ${layer.class}`;
-      containerRef.current?.appendChild(layerDiv);
+      container.appendChild(layerDiv);
 
       for (let i = 0; i < layer.count; i++) {
         const star = document.createElement("div");
@@ -109,12 +112,12 @@ export const StarBackground = () => {
     // Meteors — skip entirely on Tier 1 (mobile/low-end)
     if (tier === 1) {
       return () => {
-        if (containerRef.current) containerRef.current.innerHTML = "";
+        container.innerHTML = "";
       };
     }
 
     const meteorInterval = setInterval(() => {
-      if (!containerRef.current) return;
+      if (!container) return;
       const count = Math.random() > 0.7 ? 2 : 1;
       for (let i = 0; i < count; i++) {
         setTimeout(() => {
@@ -131,7 +134,7 @@ export const StarBackground = () => {
             "absolute top-1/2 -translate-y-1/2 right-full h-[1px] w-[100px] bg-gradient-to-r from-transparent to-white/80";
           meteorWrapper.appendChild(meteorTail);
 
-          containerRef.current?.appendChild(meteorWrapper);
+          container.appendChild(meteorWrapper);
 
           setTimeout(() => {
             meteorWrapper.remove();
@@ -142,7 +145,7 @@ export const StarBackground = () => {
 
     return () => {
       clearInterval(meteorInterval);
-      if (containerRef.current) containerRef.current.innerHTML = "";
+      container.innerHTML = "";
     };
   }, []);
 

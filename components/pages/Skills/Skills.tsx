@@ -186,7 +186,7 @@ const SkillCard = ({
               <div
                 className={`p-3 rounded-xl bg-white/5 ${color} group-hover:scale-110 group-hover:rotate-6 transition-all duration-300 shadow-md group-hover:shadow-[0_0_15px_rgba(0,229,255,0.3)]`}
               >
-                <Icon className="w-8 h-8" />
+                <Icon aria-hidden="true" className="w-8 h-8" />
               </div>
               <h3 className="text-2xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400 group-hover:to-[#00E5FF] transition-all duration-300">
                 {title}
@@ -202,8 +202,13 @@ const SkillCard = ({
                   variant="outline"
                   className="group/badge relative bg-white/5 hover:bg-white/10 text-gray-100 border-white/10 flex items-center gap-2 py-2 px-3 transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-[#00E5FF]/20 hover:-translate-y-0.5 hover:border-[#00E5FF]/40 h-fit"
                 >
-                  <span className="transform group-hover/badge:scale-110 group-hover/badge:rotate-12 transition-transform duration-300">
-                    {skill.icon}
+                  <span
+                    aria-hidden="true"
+                    className="transform group-hover/badge:scale-110 group-hover/badge:rotate-12 transition-transform duration-300"
+                  >
+                    {React.isValidElement(skill.icon)
+                      ? React.cloneElement(skill.icon as React.ReactElement<{ "aria-hidden"?: boolean | "true" | "false" }>, { "aria-hidden": "true" })
+                      : skill.icon}
                   </span>
                   <span className="font-medium">{skill.name}</span>
                 </Badge>

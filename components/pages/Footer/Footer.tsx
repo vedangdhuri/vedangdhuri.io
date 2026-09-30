@@ -16,32 +16,32 @@ gsap.registerPlugin(ScrollTrigger);
 
 const socialLinks = [
   {
-    logo: <Github className="w-5 h-5" />,
+    logo: <Github aria-hidden="true" className="w-5 h-5" />,
     href: "https://github.com/vedangdhuri",
     label: "GitHub",
   },
   {
-    logo: <Linkedin className="w-5 h-5" />,
+    logo: <Linkedin aria-hidden="true" className="w-5 h-5" />,
     href: "https://www.linkedin.com/in/vedang-dhuri-b03280348",
     label: "LinkedIn",
   },
   {
-    logo: <Instagram className="w-5 h-5" />,
+    logo: <Instagram aria-hidden="true" className="w-5 h-5" />,
     href: "https://www.instagram.com/vedang.dhuri.69",
     label: "Instagram",
   },
   {
-    logo: <Facebook className="w-5 h-5" />,
+    logo: <Facebook aria-hidden="true" className="w-5 h-5" />,
     href: "https://www.facebook.com/vedang.dhuri.69/",
     label: "Facebook",
   },
   {
-    logo: <Discord className="w-5 h-5" />,
+    logo: <Discord aria-hidden="true" className="w-5 h-5" />,
     href: "https://discord.com/users/767682446959050753",
     label: "Discord",
   },
   {
-    logo: <TwitterX className="w-5 h-5" />,
+    logo: <TwitterX aria-hidden="true" className="w-5 h-5" />,
     href: "https://x.com/VedangDhuri69",
     label: "X",
   },
@@ -198,7 +198,11 @@ export const Footer = () => {
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
         {/* Name with GradientText */}
         <div className="text-center z-10">
-          <a href="#home" className="inline-block group">
+          <a
+            href="#home"
+            aria-label="Back to top - Vedang Dhuri"
+            className="inline-block group"
+          >
             <GradientText
               colors={["#00E5FF", "#0A3BFF", "#00E5FF", "#FFFFFF", "#00E5FF"]}
               animationSpeed={6}
@@ -272,7 +276,7 @@ export const Footer = () => {
         >
           {/* Coded with love indicator */}
           <div className="flex items-center gap-2 text-xs text-white/30">
-            <Code2 size={14} className="text-[#00E5FF]/50" />
+            <Code2 aria-hidden="true" size={14} className="text-[#00E5FF]/50" />
             <span>Crafted with passion</span>
           </div>
 

@@ -4,6 +4,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
+import Image from "next/image";
 import { projects } from "@/data/projects";
 import { kebabCase } from "@/utils/utils";
 import { ArrowUpRight } from "lucide-react";
@@ -17,10 +18,12 @@ gsap.registerPlugin(ScrollTrigger);
 const ProjectCard = ({
   project,
   index,
+  priority = false,
   className = "",
 }: {
   project: (typeof projects)[0];
   index: number;
+  priority?: boolean;
   className?: string;
 }) => {
   const cardRef = useRef<HTMLAnchorElement>(null);
@@ -43,6 +46,7 @@ const ProjectCard = ({
       href={`/projects/${kebabCase(project.title)}`}
       ref={cardRef}
       onMouseMove={handleMouseMove}
+      aria-label={`View project details for ${project.title}`}
       className={`bento-card group relative flex flex-col bg-white/[0.015] border border-white/[0.05] hover:border-white/[0.1] rounded-2xl overflow-hidden backdrop-blur-md transition-all duration-700 cursor-pointer ${className}`}
     >
       {/* Dynamic Hover Gradient (Glass Shimmer) */}
@@ -55,10 +59,16 @@ const ProjectCard = ({
 
       {/* Image Container */}
       <div className="relative w-full h-full flex-1 overflow-hidden min-h-[160px]">
-        <img
+        <Image
           src={project.thumbnail}
           alt={project.title}
-          className="absolute inset-0 w-full h-full object-cover transition-transform duration-[1.5s] group-hover:scale-105"
+          fill
+          sizes={index === 0
+            ? "(max-width: 768px) 100vw, 66vw"
+            : "(max-width: 768px) 100vw, 33vw"
+          }
+          priority={priority}
+          className="object-cover transition-transform duration-[1.5s] group-hover:scale-105"
         />
         {/* Gradient overlays to ensure text readability */}
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-90 transition-opacity duration-700 group-hover:opacity-70" />
@@ -85,7 +95,7 @@ const ProjectCard = ({
           
           {/* Arrow Icon */}
           <div className="w-9 h-9 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-white/50 group-hover:bg-white/10 group-hover:text-white transition-all duration-300 group-hover:-translate-y-1 group-hover:translate-x-1 backdrop-blur-md shadow-xl">
-            <ArrowUpRight size={16} />
+            <ArrowUpRight aria-hidden="true" size={16} />
           </div>
         </div>
 
@@ -208,6 +218,7 @@ export default function ProjectsPreview() {
               key={project.title}
               project={project}
               index={i}
+              priority={i === 0}
               className={getBentoClasses(i)}
             />
           ))}
@@ -218,10 +229,11 @@ export default function ProjectsPreview() {
           <Link
             ref={btnRef as React.RefObject<HTMLAnchorElement>}
             href="/projects"
+            aria-label="View All Projects"
             className="group opacity-0 flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-white bg-white/[0.03] border border-white/[0.08] rounded-full hover:bg-white/[0.06] hover:border-white/[0.15] transition-all duration-300"
           >
             View All Projects
-            <ArrowUpRight className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
+            <ArrowUpRight aria-hidden="true" className="w-4 h-4 group-hover:-translate-y-0.5 group-hover:translate-x-0.5 transition-transform" />
           </Link>
         </div>
       </div>

@@ -50,7 +50,7 @@ export default function ResumeViewer() {
             href="/"
             className="group inline-flex items-center gap-2.5 px-4 py-2 rounded-full bg-white/[0.04] border border-white/10 hover:border-[#00E5FF]/40 text-neutral-300 hover:text-white transition-all duration-300 backdrop-blur-md"
           >
-            <ArrowLeft className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1 text-[#00E5FF]" />
+            <ArrowLeft aria-hidden="true" className="w-4 h-4 transition-transform duration-300 group-hover:-translate-x-1 text-[#00E5FF]" />
             <span className="text-xs font-mono tracking-wider uppercase">
               Back to Portfolio
             </span>
@@ -67,12 +67,12 @@ export default function ResumeViewer() {
             >
               {downloaded ? (
                 <>
-                  <CheckCircle2 className="w-4 h-4 text-white" />
+                  <CheckCircle2 aria-hidden="true" className="w-4 h-4 text-white" />
                   <span>Downloaded!</span>
                 </>
               ) : (
                 <>
-                  <Download className="w-4 h-4 text-white" />
+                  <Download aria-hidden="true" className="w-4 h-4 text-white" />
                   <span>Download PDF</span>
                 </>
               )}
@@ -85,7 +85,7 @@ export default function ResumeViewer() {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-full bg-white/[0.05] border border-white/15 hover:border-[#00E5FF]/40 text-white text-xs font-mono tracking-wider uppercase hover:bg-white/10 transition-all duration-300 backdrop-blur-md"
             >
-              <ExternalLink className="w-4 h-4 text-[#00E5FF]" />
+              <ExternalLink aria-hidden="true" className="w-4 h-4 text-[#00E5FF]" />
               <span className="hidden sm:inline">Open in New Tab</span>
               <span className="sm:hidden">Open</span>
             </a>
@@ -165,7 +165,7 @@ export default function ResumeViewer() {
                   title="Expand Fullscreen"
                   aria-label="Expand Page 1 Fullscreen"
                 >
-                  <Maximize2 className="w-4 h-4" />
+                  <Maximize2 aria-hidden="true" className="w-4 h-4" />
                 </button>
                 <a
                   href="/Resume/Vedang_Dhuri_Resume.pdf"
@@ -175,7 +175,7 @@ export default function ResumeViewer() {
                   title="Open PDF"
                   aria-label="Open PDF"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink aria-hidden="true" className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -217,7 +217,7 @@ export default function ResumeViewer() {
                   title="Expand Fullscreen"
                   aria-label="Expand Page 2 Fullscreen"
                 >
-                  <Maximize2 className="w-4 h-4" />
+                  <Maximize2 aria-hidden="true" className="w-4 h-4" />
                 </button>
                 <a
                   href="/Resume/Vedang_Dhuri_Resume.pdf"
@@ -227,7 +227,7 @@ export default function ResumeViewer() {
                   title="Open PDF"
                   aria-label="Open PDF"
                 >
-                  <ExternalLink className="w-4 h-4" />
+                  <ExternalLink aria-hidden="true" className="w-4 h-4" />
                 </a>
               </div>
             </div>
@@ -264,14 +264,14 @@ export default function ResumeViewer() {
               onClick={handleDownload}
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#00E5FF] text-black text-xs font-mono font-bold tracking-wider uppercase shadow-[0_0_25px_rgba(0,229,255,0.3)] hover:scale-105 active:scale-95 transition-all"
             >
-              <Download className="w-4 h-4" />
+              <Download aria-hidden="true" className="w-4 h-4" />
               <span>Download PDF Resume</span>
             </a>
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/5 border border-white/10 hover:border-[#00E5FF]/40 text-white text-xs font-mono tracking-wider uppercase hover:bg-white/10 transition-all"
             >
-              <Mail className="w-4 h-4 text-[#00E5FF]" />
+              <Mail aria-hidden="true" className="w-4 h-4 text-[#00E5FF]" />
               <span>Get in Touch</span>
             </Link>
             <Link
