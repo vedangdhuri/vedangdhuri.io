@@ -188,9 +188,13 @@ const Contact = () => {
               </p>
               
               <div className="flex flex-col gap-6 mb-10">
-                <a href="mailto:vedangdhuri.work@gmail.com" className="flex items-center gap-4 group cursor-pointer w-max">
+                <a
+                  href="mailto:vedangdhuri.work@gmail.com"
+                  aria-label="Send email to vedangdhuri.work@gmail.com"
+                  className="flex items-center gap-4 group cursor-pointer w-max"
+                >
                   <div className="contact-icon-float w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-colors duration-200 shadow-[0_0_15px_rgba(0,229,255,0.15)]">
-                    <Mail size={20} />
+                    <Mail aria-hidden="true" size={20} />
                   </div>
                   <div>
                     <p className="text-sm text-gray-400 font-medium">Email</p>
@@ -200,7 +204,7 @@ const Contact = () => {
                 
                 <div className="flex items-center gap-4 group w-max">
                   <div className="contact-icon-float w-12 h-12 rounded-full bg-[#00E5FF]/10 flex items-center justify-center text-[#00E5FF] group-hover:bg-[#00E5FF] group-hover:text-black transition-colors duration-200 shadow-[0_0_15px_rgba(0,229,255,0.15)]">
-                    <MapPin size={20} />
+                    <MapPin aria-hidden="true" size={20} />
                   </div>
                   <div>
                     <p className="text-sm text-gray-400 font-medium">Location</p>
@@ -211,14 +215,32 @@ const Contact = () => {
               
               {/* Social Links */}
               <div className="flex gap-4">
-                <a href="https://github.com/vedangdhuri" target="_blank" rel="noopener noreferrer" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
-                  <Github size={20} />
+                <a
+                  href="https://github.com/vedangdhuri"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Vedang's GitHub profile"
+                  className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+                >
+                  <Github aria-hidden="true" size={20} />
                 </a>
-                <a href="https://www.linkedin.com/in/vedang-dhuri" target="_blank" rel="noopener noreferrer" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
-                  <Linkedin size={20} />
+                <a
+                  href="https://www.linkedin.com/in/vedang-dhuri"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Vedang's LinkedIn profile"
+                  className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+                >
+                  <Linkedin aria-hidden="true" size={20} />
                 </a>
-                <a href="https://twitter.com/vedangdhuri" target="_blank" rel="noopener noreferrer" className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]">
-                  <Twitter size={20} />
+                <a
+                  href="https://twitter.com/vedangdhuri"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Visit Vedang's Twitter profile"
+                  className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
+                >
+                  <Twitter aria-hidden="true" size={20} />
                 </a>
               </div>
             </div>
@@ -332,7 +354,7 @@ const Contact = () => {
                   <span className="animate-pulse">Sending...</span>
                 ) : (
                   <>
-                    Send Message <Send size={18} />
+                    Send Message <Send aria-hidden="true" size={18} />
                   </>
                 )}
               </motion.button>
@@ -343,7 +365,7 @@ const Contact = () => {
                   animate={{ opacity: 1, y: 0 }}
                   className="p-4 bg-[#00E5FF]/10 border border-[#00E5FF]/30 rounded-[4px] flex items-center gap-3 text-[#00E5FF]"
                 >
-                  <CheckCircle size={20} />
+                  <CheckCircle aria-hidden="true" size={20} />
                   <span>
                     Message sent successfully! {"I'll"} get back to you soon.
                   </span>
@@ -356,7 +378,7 @@ const Contact = () => {
                   role="alert"
                   className="p-4 bg-red-500/10 border border-red-500/30 rounded-[4px] flex items-center gap-3 text-red-300"
                 >
-                  <AlertCircle size={20} />
+                  <AlertCircle aria-hidden="true" size={20} />
                   <span>Your message could not be sent. Please try again or email me directly.</span>
                 </motion.div>
               )}
