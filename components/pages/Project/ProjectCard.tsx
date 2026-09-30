@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Project } from "@/types/project";
 import { kebabCase } from "@/utils/utils";
 import { ArrowUpRight, Github } from "lucide-react";
@@ -66,10 +67,12 @@ export default function ProjectCard({ project, className = "" }: ProjectCardProp
       <div className="relative h-52 overflow-hidden bg-neutral-950">
         {/* Bottom gradient */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-10" />
-        <img
+        <Image
           src={project.thumbnail}
           alt={project.title}
-          className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
+          fill
+          className="object-cover transition-transform duration-700 ease-out group-hover:scale-[1.08]"
+          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         />
         {/* Cyan tinted overlay on hover */}
         <div className="absolute inset-0 bg-[#00E5FF]/[0.04] opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-20" />
