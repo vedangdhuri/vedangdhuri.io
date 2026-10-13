@@ -132,7 +132,7 @@ npm run dev
     techStack: ["Frontend", "UI/UX", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "GSAP Animations"],
     category: "personal",
     thumbnail: "/illustrations/projects/portfolio-nexus.webp",
-    github: "https://github.com/vedangdhuri/vedangdhuri-io",
+    github: "https://github.com/vedangdhuri/vedangdhuri.io",
     liveUrl: "https://vedangdhuri-io.vercel.app",
     pagesInfoArr: [
       {
