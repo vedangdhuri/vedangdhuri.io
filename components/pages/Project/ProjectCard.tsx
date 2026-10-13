@@ -123,10 +123,11 @@ export default function ProjectCard({ project, className = "" }: ProjectCardProp
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={`View source code for ${project.title} on GitHub`}
               className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-white/80 bg-white/[0.04] border border-white/[0.08] rounded-lg hover:bg-white/[0.08] hover:border-white/[0.15] hover:text-white transition-all duration-300 cursor-pointer"
             >
               <Github className="w-3.5 h-3.5" />
-              Code
+              Source Code
             </a>
           </Magnet>
         </div>
