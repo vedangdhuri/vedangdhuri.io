@@ -225,7 +225,7 @@ const Contact = () => {
                   <Github aria-hidden="true" size={20} />
                 </a>
                 <a
-                  href="https://www.linkedin.com/in/vedang-dhuri"
+                  href="https://www.linkedin.com/in/vedang-dhuri-b03280348"
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Visit Vedang's LinkedIn profile"
