@@ -1,4 +1,15 @@
 import Link from "next/link";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "404 — Page Not Found",
+  description:
+    "The page or project you're looking for doesn't exist or has been moved.",
+  robots: {
+    index: false,
+    follow: true,
+  },
+};
 
 export default function NotFound() {
   return (
@@ -13,25 +24,32 @@ export default function NotFound() {
             The project you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
         </div>
-        <Link
-          href="/projects"
-          className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-900 bg-neutral-100 rounded-lg hover:bg-white transition-all duration-300"
-        >
-          <svg
-            className="w-4 h-4"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="flex flex-wrap justify-center gap-3">
+          <Link
+            href="/"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-900 bg-neutral-100 rounded-lg hover:bg-white transition-all duration-300"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          View All Projects
-        </Link>
+            Return Home
+          </Link>
+          <Link
+            href="/projects"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-200 border border-neutral-700 rounded-lg hover:border-neutral-500 hover:bg-neutral-900 transition-all duration-300"
+          >
+            Browse Projects
+          </Link>
+          <Link
+            href="/#about"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-200 border border-neutral-700 rounded-lg hover:border-neutral-500 hover:bg-neutral-900 transition-all duration-300"
+          >
+            About Vedang
+          </Link>
+          <Link
+            href="/#contact"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-neutral-200 border border-neutral-700 rounded-lg hover:border-neutral-500 hover:bg-neutral-900 transition-all duration-300"
+          >
+            Contact Vedang
+          </Link>
+        </div>
       </div>
     </div>
   );
