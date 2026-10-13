@@ -33,11 +33,14 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://vedangdhuri.xyz";
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: "Vedang Dhuri | Full Stack Developer & AI Engineer",
+    default: "Full-Stack Software Engineer | Vedang Dhuri",
     template: "%s | Vedang Dhuri",
   },
   description:
-    "Portfolio of Vedang Dhuri, Full Stack Developer and AI Engineer specializing in modern web applications, Next.js, React, and interactive visual experiences.",
+    "Vedang Dhuri is a Full-Stack Software Engineer building modern web applications, interactive experiences, and practical software projects.",
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Vedang Dhuri",
     "Portfolio",
@@ -101,7 +104,11 @@ const jsonLd = {
       jobTitle: "Full Stack Developer & AI Engineer",
       sameAs: [
         "https://github.com/vedangdhuri",
-        "https://linkedin.com/in/vedangdhuri",
+        "https://www.linkedin.com/in/vedang-dhuri-b03280348",
+        "https://www.instagram.com/vedang.dhuri.69",
+        "https://www.facebook.com/vedang.dhuri.69/",
+        "https://discord.com/users/767682446959050753",
+        "https://x.com/VedangDhuri69",
       ],
     },
     {
