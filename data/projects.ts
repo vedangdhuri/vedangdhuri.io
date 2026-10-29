@@ -133,7 +133,7 @@ npm run dev
     category: "personal",
     thumbnail: "/illustrations/projects/portfolio-nexus.webp",
     github: "https://github.com/vedangdhuri/vedangdhuri.io",
-    liveUrl: "https://vedangdhuri-io.vercel.app",
+    liveUrl: "https://vedangdhuri.xyz",
     pagesInfoArr: [
       {
         title: "Project Overview",
