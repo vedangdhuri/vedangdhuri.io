@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -13,6 +14,8 @@ import BlurText from "@/components/ui/BlurText";
 import Magnet from "@/components/ui/Magnet";
 
 gsap.registerPlugin(ScrollTrigger);
+
+const MotionLink = motion.create(Link);
 
 const socialLinks = [
   {
@@ -198,8 +201,8 @@ export const Footer = () => {
       <div className="max-w-5xl mx-auto flex flex-col items-center gap-10">
         {/* Name with GradientText */}
         <div className="text-center z-10">
-          <a
-            href="#home"
+          <Link
+            href="/#home"
             aria-label="Back to top - Vedang Dhuri"
             className="inline-block group"
           >
@@ -210,7 +213,7 @@ export const Footer = () => {
             >
               VEDANG DHURI
             </GradientText>
-          </a>
+          </Link>
         </div>
 
         {/* DecryptedText tagline */}
@@ -235,13 +238,13 @@ export const Footer = () => {
           className="flex flex-wrap justify-center gap-6 md:gap-8 z-50"
         >
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-xs font-medium uppercase tracking-[0.15em] text-white/40 hover:text-[#00E5FF] transition-colors duration-300 opacity-0"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
@@ -292,8 +295,8 @@ export const Footer = () => {
 
           {/* Back to top */}
           <Magnet padding={80} magnetStrength={2}>
-            <motion.a
-              href="#home"
+            <MotionLink
+              href="/#home"
               className="group flex items-center gap-2 text-xs text-white/30 hover:text-[#00E5FF] transition-colors duration-300"
               whileHover={{ y: -2 }}
               whileTap={{ scale: 0.9 }}
@@ -304,7 +307,7 @@ export const Footer = () => {
               <div className="p-2 rounded-full border border-white/10 group-hover:border-[#00E5FF]/40 group-hover:bg-[#00E5FF]/[0.06] group-hover:shadow-[0_0_15px_rgba(0,229,255,0.15)] transition-all duration-300">
                 <ArrowUp size={14} />
               </div>
-            </motion.a>
+            </MotionLink>
           </Magnet>
         </div>
       </div>
