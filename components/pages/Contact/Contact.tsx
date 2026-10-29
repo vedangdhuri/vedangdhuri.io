@@ -234,10 +234,10 @@ const Contact = () => {
                   <Linkedin aria-hidden="true" size={20} />
                 </a>
                 <a
-                  href="https://twitter.com/vedangdhuri"
+                  href="https://x.com/VedangDhuri69"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label="Visit Vedang's Twitter profile"
+                  aria-label="Visit Vedang's X profile"
                   className="contact-icon-float w-12 h-12 rounded-full bg-[#0A0A0A]/40 border border-white/20 flex items-center justify-center text-white/70 hover:text-[#00E5FF] hover:border-[#00E5FF]/50 transition-all duration-200 cursor-pointer hover:shadow-[0_0_20px_rgba(0,229,255,0.4)]"
                 >
                   <Twitter aria-hidden="true" size={20} />
