@@ -238,13 +238,13 @@ export const Footer = () => {
           className="flex flex-wrap justify-center gap-6 md:gap-8 z-50"
         >
           {navLinks.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-xs font-medium uppercase tracking-[0.15em] text-white/40 hover:text-[#00E5FF] transition-colors duration-300 opacity-0"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </div>
 
