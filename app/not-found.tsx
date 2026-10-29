@@ -18,10 +18,10 @@ export default function NotFound() {
         <div className="space-y-2">
           <h1 className="text-8xl font-bold text-neutral-200">404</h1>
           <h2 className="text-2xl font-semibold text-neutral-300">
-            Project Not Found
+            Page Not Found
           </h2>
           <p className="text-neutral-400 max-w-md mx-auto">
-            The project you&apos;re looking for doesn&apos;t exist or has been moved.
+            The page or project you&apos;re looking for doesn&apos;t exist or has been moved.
           </p>
         </div>
         <div className="flex flex-wrap justify-center gap-3">
